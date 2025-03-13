@@ -1,14 +1,17 @@
 import React from 'react';
 
 // 图标类型
-export type IconName = 'infoCircle' | 'globe' | 'code' | 'users';
+export type IconName = 'infoCircle' | 'globe' | 'code' | 'users' | 'document' | 'blog' | 'externalLink';
 
 // 图标路径映射
 export const iconFiles: Record<IconName, string> = {
   infoCircle: "/icons/info-circle.svg",
   globe: "/icons/globe.svg",
   code: "/icons/code.svg",
-  users: "/icons/users.svg"
+  users: "/icons/users.svg",
+  document: "/icons/document.svg",
+  blog: "/icons/blog.svg",
+  externalLink: "/icons/external-link.svg"
 };
 
 // HAMi菜单图标组件
@@ -25,4 +28,4 @@ const HamiIcon: React.FC<{ iconName: IconName, className?: string }> = ({ iconNa
   </div>
 );
 
-export default HamiIcon; 
+export default HamiIcon;

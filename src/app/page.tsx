@@ -124,14 +124,18 @@ export default function Home() {
               animate="visible"
               variants={fadeIn}
               transition={{ duration: 0.7, delay: 0.2 }}
-              className="relative h-72 md:h-96"
+              className="relative"
             >
               <div className="w-full h-full bg-primary-light rounded-lg flex items-center justify-center">
-                <div className="text-center">
-                  <div className="w-32 h-32 bg-primary-light rounded-full mx-auto flex items-center justify-center">
-                    <span className="text-primary font-bold text-xl">kantaloupe</span>
-                  </div>
-                  <p className="mt-4 text-sm text-gray-600">Product Visualization</p>
+                <div className="text-center p-2">
+                  <Image 
+                    src="/images/products/kantaloupe.png" 
+                    alt="Kantaloupe Overview" 
+                    width={700}
+                    height={700}
+                    className="rounded-lg"
+                    style={{ objectFit: 'contain', width: '100%', height: 'auto' }}
+                  />
                 </div>
               </div>
             </motion.div>

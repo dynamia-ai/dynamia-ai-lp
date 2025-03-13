@@ -1,6 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { CheckIcon, XMarkIcon } from '@heroicons/react/24/solid';
+import { motion } from 'framer-motion';
 
 interface FeatureProps {
   name: string;
@@ -22,34 +23,223 @@ interface FeatureComparisonData {
   enterprise: string;
 }
 
+// 动画配置
+const fadeIn = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0 }
+};
+
 export default function FeatureComparisonTable() {
   const { t } = useTranslation();
   
   // 从i18n中获取表格配置
   const featureComparisonData = t('products.kantaloupe.featureComparison', { returnObjects: true }) as FeatureComparisonData;
-  const categories = featureComparisonData.categories || [];
+  
+  // 如果翻译数据不可用，使用默认数据
+  const defaultComparisonData: FeatureComparisonData = {
+    title: "Feature Comparison",
+    subTitle: "HAMi (Open Source) vs Kantaloupe (Enterprise) Feature Comparison",
+    categoryHeader: "Feature Category",
+    featureHeader: "Feature Item",
+    openSource: "HAMi Open Source",
+    enterprise: "Kantaloupe Enterprise",
+    categories: [
+      {
+        name: "Environment Support",
+        features: [
+          {
+            name: "X86 Environment Support",
+            hami: true,
+            kantaloupe: true
+          },
+          {
+            name: "Domestic IT Support",
+            hami: false,
+            kantaloupe: true
+          }
+        ]
+      },
+      {
+        name: "GPU Kernel Capabilities",
+        features: [
+          {
+            name: "GPU Resource Pooling",
+            hami: true,
+            kantaloupe: true
+          },
+          {
+            name: "Nvidia GPU Fine-grained Virtualization",
+            hami: true,
+            kantaloupe: true
+          },
+          {
+            name: "Native nvidia-smi Support",
+            hami: true,
+            kantaloupe: true
+          },
+          {
+            name: "Gunicorn Multi-task Support (Flask API)",
+            hami: false,
+            kantaloupe: true
+          },
+          {
+            name: "Video Memory Overcommitment",
+            hami: false,
+            kantaloupe: true
+          },
+          {
+            name: "Computing Power Overcommitment",
+            hami: false,
+            kantaloupe: true
+          },
+          {
+            name: "Precise Computing/Memory Limits",
+            hami: false,
+            kantaloupe: true
+          }
+        ]
+      },
+      {
+        name: "Scheduling Capabilities",
+        features: [
+          {
+            name: "Node/Card Level Binpack/Spread Scheduling",
+            hami: true,
+            kantaloupe: true
+          },
+          {
+            name: "Nvidia MIG Support",
+            hami: true,
+            kantaloupe: true
+          },
+          {
+            name: "Nvidia MIG Dynamic Virtualization",
+            hami: true,
+            kantaloupe: true
+          },
+          {
+            name: "Nvidia NUMA Affinity Scheduling",
+            hami: true,
+            kantaloupe: true
+          }
+        ]
+      },
+      {
+        name: "Monitoring Capabilities",
+        features: [
+          {
+            name: "GPU-Application Binding",
+            hami: true,
+            kantaloupe: true
+          },
+          {
+            name: "Application Computing/Memory Monitoring",
+            hami: true,
+            kantaloupe: true
+          },
+          {
+            name: "GPU Fault Metrics/Alerts/Self-recovery",
+            hami: false,
+            kantaloupe: true
+          },
+          {
+            name: "Idle Resource Alerts",
+            hami: false,
+            kantaloupe: true
+          }
+        ]
+      },
+      {
+        name: "Enterprise Features",
+        features: [
+          {
+            name: "GPU Software Stack Management",
+            hami: false,
+            kantaloupe: true
+          },
+          {
+            name: "Single Cluster GUI",
+            hami: true,
+            kantaloupe: true
+          },
+          {
+            name: "Metering & Billing System",
+            hami: false,
+            kantaloupe: true
+          },
+          {
+            name: "Flexible License Management",
+            hami: false,
+            kantaloupe: true
+          },
+          {
+            name: "Fine-grained Quota Management",
+            hami: false,
+            kantaloupe: true
+          },
+          {
+            name: "Training & Inference Switching",
+            hami: false,
+            kantaloupe: true
+          },
+          {
+            name: "Large-scale Scheduling Optimization",
+            hami: false,
+            kantaloupe: true
+          }
+        ]
+      }
+    ]
+  };
+  
+  const categories = featureComparisonData?.categories || defaultComparisonData.categories;
+  const title = featureComparisonData?.title || defaultComparisonData.title;
+  const subTitle = featureComparisonData?.subTitle || defaultComparisonData.subTitle;
+  const categoryHeader = featureComparisonData?.categoryHeader || defaultComparisonData.categoryHeader;
+  const featureHeader = featureComparisonData?.featureHeader || defaultComparisonData.featureHeader;
+  const openSource = featureComparisonData?.openSource || defaultComparisonData.openSource;
+  const enterprise = featureComparisonData?.enterprise || defaultComparisonData.enterprise;
   
   return (
     <div className="mt-16">
-      <h2 className="text-2xl font-bold text-gray-900 mb-8 text-center">
-        {featureComparisonData.title || '功能对比'}
-      </h2>
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={fadeIn}
+        transition={{ duration: 0.5 }}
+        className="text-center max-w-4xl mx-auto mb-12"
+      >
+        <h2 className="text-3xl font-bold text-gray-900 mb-4">
+          {title}
+        </h2>
+        <p className="text-lg text-gray-600">
+          {subTitle}
+        </p>
+      </motion.div>
       
-      <div className="overflow-x-auto">
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={fadeIn}
+        transition={{ duration: 0.5, delay: 0.2 }}
+        className="overflow-x-auto"
+      >
         <table className="min-w-full divide-y divide-gray-200 border border-gray-200 shadow-md rounded-lg">
           <thead className="bg-primary-light">
             <tr>
               <th scope="col" className="px-6 py-3 text-center text-xs font-bold text-primary uppercase tracking-wider">
-                {featureComparisonData.categoryHeader || '功能类别'}
+                {categoryHeader}
               </th>
               <th scope="col" className="px-6 py-3 text-center text-xs font-bold text-primary uppercase tracking-wider">
-                {featureComparisonData.featureHeader || '功能项'}
+                {featureHeader}
               </th>
               <th scope="col" className="px-6 py-3 text-center text-xs font-bold text-primary uppercase tracking-wider">
-                {featureComparisonData.openSource || 'HAMi 开源版'}
+                {openSource}
               </th>
               <th scope="col" className="px-6 py-3 text-center text-xs font-bold text-primary uppercase tracking-wider">
-                {featureComparisonData.enterprise || 'Kantaloupe 企业版'}
+                {enterprise}
               </th>
             </tr>
           </thead>
@@ -91,7 +281,7 @@ export default function FeatureComparisonTable() {
             ))}
           </tbody>
         </table>
-      </div>
+      </motion.div>
     </div>
   );
 } 

@@ -1,0 +1,28 @@
+<svg width="160" height="160" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- 背景圆 -->
+  <circle cx="80" cy="80" r="80" fill="#F0FFF5"/>
+  
+  <!-- 外部监控框架 -->
+  <rect x="40" y="40" width="80" height="80" rx="8" fill="white" stroke="#0FD05D" stroke-width="2"/>
+  
+  <!-- 监控数据线 -->
+  <path d="M50 90C55 90 58 70 65 70C72 70 75 100 80 100C85 100 88 60 95 60C102 60 105 80 110 80" stroke="#0FD05D" stroke-width="3" stroke-linecap="round"/>
+  
+  <!-- 数据点 -->
+  <circle cx="65" cy="70" r="3" fill="#0FD05D"/>
+  <circle cx="80" cy="100" r="3" fill="#0FD05D"/>
+  <circle cx="95" cy="60" r="3" fill="#0FD05D"/>
+  
+  <!-- 监控指标 -->
+  <rect x="50" y="110" width="15" height="4" rx="1" fill="#0FD05D" opacity="0.7"/>
+  <rect x="73" y="110" width="15" height="4" rx="1" fill="#0FD05D" opacity="0.7"/>
+  <rect x="96" y="110" width="15" height="4" rx="1" fill="#0FD05D" opacity="0.7"/>
+  
+  <!-- 上方指标图标 -->
+  <path d="M55 50L65 50" stroke="#0FD05D" stroke-width="2" stroke-linecap="round"/>
+  <path d="M75 50L85 50" stroke="#0FD05D" stroke-width="2" stroke-linecap="round"/>
+  <path d="M95 50L105 50" stroke="#0FD05D" stroke-width="2" stroke-linecap="round"/>
+  
+  <!-- 实时指示器 -->
+  <circle cx="120" cy="45" r="5" fill="#4CAF50"/>
+</svg> 

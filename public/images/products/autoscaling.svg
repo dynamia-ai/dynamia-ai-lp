@@ -1,0 +1,36 @@
+<svg width="160" height="160" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- 背景圆 -->
+  <circle cx="80" cy="80" r="80" fill="#F0FFF5"/>
+  
+  <!-- 中心图形 -->
+  <rect x="70" y="70" width="20" height="20" rx="3" fill="#0FD05D"/>
+  
+  <!-- 扩展指示图形 - 垂直方向 -->
+  <rect x="70" y="40" width="20" height="20" rx="3" fill="#0FD05D" opacity="0.8"/>
+  <rect x="70" y="100" width="20" height="20" rx="3" fill="#0FD05D" opacity="0.8"/>
+  
+  <!-- 扩展指示图形 - 水平方向 -->
+  <rect x="40" y="70" width="20" height="20" rx="3" fill="#0FD05D" opacity="0.8"/>
+  <rect x="100" y="70" width="20" height="20" rx="3" fill="#0FD05D" opacity="0.8"/>
+  
+  <!-- 扩展箭头 - 向上 -->
+  <path d="M80 65L80 55" stroke="#0FD05D" stroke-width="2"/>
+  <path d="M75 60L80 55L85 60" stroke="#0FD05D" stroke-width="2"/>
+  
+  <!-- 扩展箭头 - 向下 -->
+  <path d="M80 95L80 105" stroke="#0FD05D" stroke-width="2"/>
+  <path d="M75 100L80 105L85 100" stroke="#0FD05D" stroke-width="2"/>
+  
+  <!-- 扩展箭头 - 向左 -->
+  <path d="M65 80L55 80" stroke="#0FD05D" stroke-width="2"/>
+  <path d="M60 75L55 80L60 85" stroke="#0FD05D" stroke-width="2"/>
+  
+  <!-- 扩展箭头 - 向右 -->
+  <path d="M95 80L105 80" stroke="#0FD05D" stroke-width="2"/>
+  <path d="M100 75L105 80L100 85" stroke="#0FD05D" stroke-width="2"/>
+  
+  <!-- 优化指示器 -->
+  <circle cx="80" cy="80" r="3" fill="white"/>
+  <circle cx="117" cy="43" r="8" fill="#FFCA28" stroke="#0FD05D" stroke-width="1.5"/>
+  <path d="M115 43L119 43M117 41L117 45" stroke="#0FD05D" stroke-width="1.5" stroke-linecap="round"/>
+</svg> 

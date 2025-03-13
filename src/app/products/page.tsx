@@ -4,119 +4,295 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import Link from 'next/link';
 import MainLayout from '@/components/layout/MainLayout';
-import FeatureComparisonTable from '@/components/FeatureComparisonTable';
 import Image from 'next/image';
+import { motion } from 'framer-motion';
+import { CheckIcon } from '@heroicons/react/24/solid';
+
+// 动画配置
+const fadeIn = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0 }
+};
+
+// 商业特性图标映射
+const featureIcons = [
+  'scheduler',
+  'monitoring',
+  'autoscaling',
+  'multi-cluster',
+  'security',
+  'support'
+];
+
+// 特性接口定义
+interface Feature {
+  title: string;
+  description: string;
+}
 
 export default function Products() {
   const { t } = useTranslation();
 
+  // 使用翻译数据获取商业特性
+  const commercialFeatures = t('products.kantaloupe.commercialFeatures.list', { returnObjects: true });
+  const features = Array.isArray(commercialFeatures) 
+    ? commercialFeatures 
+    : [
+        { 
+          title: '高级调度引擎', 
+          description: '智能工作负载分配与队列管理，确保资源高效利用并减少等待时间。'
+        },
+        { 
+          title: '实时监控与分析', 
+          description: '全方位监控系统性能，提供深入洞察和趋势分析，帮助您优化资源配置和成本。'
+        },
+        { 
+          title: '自动扩展与优化', 
+          description: '根据工作负载需求自动调整资源分配，优化资源使用效率并降低成本。'
+        },
+        { 
+          title: '多集群管理', 
+          description: '统一管理多个计算集群，提供一致的跨集群资源分配和工作负载调度。'
+        },
+        { 
+          title: '企业级安全保障', 
+          description: '全面的安全解决方案，包括身份验证、授权、加密和审计日志。'
+        },
+        { 
+          title: '企业级支持与服务', 
+          description: '专业的技术支持团队，提供全天候响应和定期维护服务。'
+        }
+      ];
+
   return (
     <MainLayout>
-      <div className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h1 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+      {/* 页面标题区域 */}
+      <section className="bg-gradient-to-b from-white to-gray-50 pt-20 pb-12">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={fadeIn}
+            transition={{ duration: 0.5 }}
+            className="text-center max-w-4xl mx-auto"
+          >
+            <h1 className="text-4xl font-bold text-gray-900 sm:text-5xl">
               {t('products.kantaloupe.title')}
             </h1>
-            <p className="mt-3 max-w-2xl mx-auto text-xl text-gray-500 sm:mt-4">
+            <p className="mt-6 text-xl text-gray-600 leading-relaxed">
               {t('products.kantaloupe.subtitle')}
             </p>
-          </div>
+          </motion.div>
+        </div>
+      </section>
 
-          <div className="mt-12">
-            <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-              <div className="flex flex-col justify-center">
-                <h2 className="text-2xl font-bold text-gray-900 mb-4">
-                  {t('products.kantaloupe.title')}
-                </h2>
-                <p className="text-gray-600 mb-6">
-                  {t('products.kantaloupe.description')}
-                </p>
-                <div className="space-y-4">
-                  {(
-                    function() {
-                      const features = t('products.kantaloupe.features', { returnObjects: true });
-                      return Array.isArray(features) 
-                        ? features 
-                        : ['智能工作负载调度', '实时资源监控', '自动化扩展和优化', '跨平台兼容性', '企业级安全'];
-                    }()
-                  ).map((feature: string, index: number) => (
-                    <div key={index} className="flex items-start">
-                      <div className="flex-shrink-0">
-                        <svg className="h-6 w-6 text-primary" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                        </svg>
-                      </div>
-                      <p className="ml-3 text-base text-gray-600">{feature}</p>
+      {/* 产品概述区域 */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 items-center">
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={fadeIn}
+              transition={{ duration: 0.5 }}
+              className="flex flex-col justify-center"
+            >
+              <h2 className="text-3xl font-bold text-gray-900 mb-6">
+                {t('products.kantaloupe.overview.title')}
+              </h2>
+              <p className="text-lg text-gray-600 mb-8 leading-relaxed">
+                {t('products.kantaloupe.overview.description')}
+              </p>
+              <div className="space-y-4">
+                {(
+                  function() {
+                    const highlights = t('products.kantaloupe.overview.highlights', { returnObjects: true });
+                    return Array.isArray(highlights) 
+                      ? highlights 
+                      : ['基于HAMi开源核心', '企业级功能增强', '专业技术支持', '持续更新与维护'];
+                  }()
+                ).map((highlight: string, index: number) => (
+                  <div key={index} className="flex items-start">
+                    <div className="flex-shrink-0">
+                      <CheckIcon className="h-6 w-6 text-primary" />
                     </div>
-                  ))}
-                </div>
-                <div className="mt-8 flex flex-wrap gap-4">
-                  <Link
-                    href="/free-trial"
-                    className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-primary hover:bg-primary-dark transition-colors"
-                  >
-                    {t('navigation.freeTrial')}
-                  </Link>
-                  <Link
-                    href="/request-demo"
-                    className="inline-flex items-center px-6 py-3 border border-primary text-base font-medium rounded-md text-primary bg-white hover:bg-gray-50 transition-colors"
-                  >
-                    {t('navigation.requestDemo')}
-                  </Link>
-                </div>
-              </div>
-              <div className="bg-gray-100 rounded-lg p-6 flex items-center justify-center">
-                <div className="text-center">
-                  <div className="w-48 h-48 bg-primary-light rounded-lg mx-auto flex items-center justify-center">
-                    <span className="text-primary font-bold text-xl">kantaloupe</span>
+                    <p className="ml-3 text-base text-gray-600">{highlight}</p>
                   </div>
-                  <p className="mt-4 text-sm text-gray-600">Product Screenshot</p>
+                ))}
+              </div>
+              <div className="mt-8 flex flex-wrap gap-4">
+                <Link
+                  href="/pricing"
+                  className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-primary hover:bg-primary-dark transition-colors"
+                >
+                  {t('products.kantaloupe.viewPricing')}
+                </Link>
+                <Link
+                  href="/request-demo"
+                  className="inline-flex items-center px-6 py-3 border border-primary text-base font-medium rounded-md text-primary bg-white hover:bg-gray-50 transition-colors"
+                >
+                  {t('navigation.requestDemo')}
+                </Link>
+              </div>
+            </motion.div>
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={fadeIn}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="flex justify-center"
+            >
+              <div className="w-full max-w-md bg-primary-light rounded-lg overflow-hidden p-0">
+                <div className="p-2 flex items-center justify-center">
+                  <Image 
+                    src="/images/products/product-overview.png" 
+                    alt="Kantaloupe Overview" 
+                    width={550}
+                    height={550}
+                    className="rounded-lg"
+                    style={{ objectFit: 'contain', width: '100%', height: 'auto' }}
+                  />
                 </div>
               </div>
-            </div>
+            </motion.div>
           </div>
+        </div>
+      </section>
 
-          <div className="mt-16">
-            <h2 className="text-2xl font-bold text-gray-900 mb-8 text-center">
+      {/* 技术架构区域 */}
+      <section className="py-16 bg-gray-50">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeIn}
+            transition={{ duration: 0.5 }}
+            className="text-center max-w-4xl mx-auto mb-12"
+          >
+            <h2 className="text-3xl font-bold text-gray-900 mb-6">
               {t('products.kantaloupe.technicalArchitecture')}
             </h2>
-            <div className="bg-gray-100 rounded-lg p-8 flex items-center justify-center">
-              <div className="w-full max-w-3xl bg-white rounded border border-gray-200 flex items-center justify-center p-4 relative h-64">
+            <p className="text-lg text-gray-600 leading-relaxed">
+              {t('products.kantaloupe.architectureDescription')}
+            </p>
+          </motion.div>
+          
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeIn}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="flex justify-center"
+          >
+            <div className="w-full max-w-5xl bg-white rounded-lg shadow-lg overflow-hidden p-0">
+              <div className="p-2 flex items-center justify-center">
                 <Image 
                   src="/images/products/architecture-diagram.png" 
                   alt={t('products.kantaloupe.architectureDiagram')} 
-                  fill
-                  style={{ objectFit: 'contain' }}
-                  sizes="(max-width: 768px) 100vw, 768px"
+                  width={900}
+                  height={500}
+                  className="rounded-lg"
+                  style={{ objectFit: 'contain', width: '100%', height: 'auto' }}
                 />
               </div>
             </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* 商业特性区域 */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeIn}
+            transition={{ duration: 0.5 }}
+            className="text-center max-w-4xl mx-auto mb-16"
+          >
+            <h2 className="text-3xl font-bold text-gray-900 mb-6">
+              {t('products.kantaloupe.commercialFeatures.title')}
+            </h2>
+            <p className="text-lg text-gray-600 leading-relaxed">
+              {t('products.kantaloupe.commercialFeatures.subtitle')}
+            </p>
+          </motion.div>
+
+          {/* 核心特性列表 */}
+          <div className="space-y-20">
+            {features.map((feature: Feature, index: number) => (
+              <motion.div
+                key={index}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={fadeIn}
+                transition={{ duration: 0.5, delay: 0.1 * index }}
+                className={`flex flex-col ${
+                  index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'
+                } items-center gap-8 lg:gap-16`}
+              >
+                <div className="w-full lg:w-1/2 flex justify-center">
+                  <div className="w-60 h-60 bg-primary-light rounded-full flex items-center justify-center p-3">
+                    <Image
+                      src={`/images/products/${featureIcons[index]}.svg`}
+                      alt={feature.title}
+                      width={150}
+                      height={150}
+                      className="rounded-lg"
+                      style={{ objectFit: 'contain' }}
+                    />
+                  </div>
+                </div>
+                <div className="w-full lg:w-1/2">
+                  <h3 className="text-2xl font-bold text-gray-900 mb-4">{feature.title}</h3>
+                  <p className="text-lg text-gray-600 leading-relaxed">{feature.description}</p>
+                </div>
+              </motion.div>
+            ))}
           </div>
+        </div>
+      </section>
 
-          <FeatureComparisonTable />
-
-          <div className="mt-16 text-center">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">
+      {/* CTA区域 */}
+      <section className="bg-primary-light py-16">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeIn}
+            transition={{ duration: 0.5 }}
+            className="text-center max-w-4xl mx-auto"
+          >
+            <h2 className="text-3xl font-bold text-gray-900 mb-6">
               {t('products.kantaloupe.readyToStart')}
             </h2>
-            <div className="flex flex-wrap justify-center gap-4">
+            <p className="text-lg text-gray-700 mb-8 leading-relaxed">
+              {t('products.kantaloupe.ctaDescription')}
+            </p>
+            <div className="flex flex-col sm:flex-row justify-center gap-4">
+              <Link
+                href="/pricing"
+                className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primary hover:bg-primary-dark"
+              >
+                {t('products.kantaloupe.viewPricing')}
+              </Link>
               <Link
                 href="/free-trial"
-                className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-primary hover:bg-primary-dark transition-colors"
+                className="inline-flex items-center justify-center px-6 py-3 border border-primary text-base font-medium rounded-md text-primary bg-white hover:bg-gray-50"
               >
                 {t('navigation.freeTrial')}
               </Link>
-              <Link
-                href="/request-demo"
-                className="inline-flex items-center px-6 py-3 border border-primary text-base font-medium rounded-md text-primary bg-white hover:bg-gray-50 transition-colors"
-              >
-                {t('navigation.requestDemo')}
-              </Link>
             </div>
-          </div>
+          </motion.div>
         </div>
-      </div>
+      </section>
     </MainLayout>
   );
 } 

@@ -11,16 +11,17 @@ import {
   ChevronDownIcon
 } from '@heroicons/react/24/outline';
 import HamiIcon from '@/components/HamiIcon';
+import ExternalLinkIcon from '@/components/ExternalLinkIcon';
 // 暂时注释Search组件导入
 // import Search from '@/components/Search';
 
 // 定义子菜单项类型
-type HamiSubmenuItem = {
+type SubmenuItem = {
   name: string;
   description: string;
   href: string;
   external: boolean;
-  iconName: 'infoCircle' | 'globe' | 'code' | 'users';
+  iconName: 'infoCircle' | 'globe' | 'code' | 'users' | 'document' | 'blog';
 }
 
 const Header: React.FC = () => {
@@ -74,15 +75,16 @@ const Header: React.FC = () => {
 
   // 导航链接
   const navigation = [
-    { name: t('navigation.hami'), href: '#', hasSubmenu: true },
+    { name: t('navigation.hami'), href: '#', hasSubmenu: true, submenuType: 'hami' },
     { name: t('navigation.products'), href: currentLocale === 'zh' ? '/zh/products' : '/products' },
     { name: t('navigation.solutions'), href: currentLocale === 'zh' ? '/zh/solutions' : '/solutions' },
-    { name: t('navigation.resources'), href: currentLocale === 'zh' ? '/zh/resources' : '/resources' },
+    { name: t('navigation.pricing'), href: currentLocale === 'zh' ? '/zh/pricing' : '/pricing' },
+    { name: t('navigation.resources'), href: '#', hasSubmenu: true, submenuType: 'resources' },
     { name: t('navigation.company'), href: currentLocale === 'zh' ? '/zh/company' : '/company' },
   ];
 
   // HAMi子菜单
-  const hamiSubmenu: HamiSubmenuItem[] = [
+  const hamiSubmenu: SubmenuItem[] = [
     { 
       name: t('navigation.whatIsHami'), 
       description: t('navigation.whatIsHamiDesc'),
@@ -113,44 +115,90 @@ const Header: React.FC = () => {
     },
   ];
 
+  // 资源子菜单
+  const resourcesSubmenu: SubmenuItem[] = [
+    { 
+      name: t('navigation.resourcesDoc'), 
+      description: t('navigation.resourcesDocDesc'),
+      href: 'https://project-hami.io/docs/', 
+      external: true,
+      iconName: 'document'
+    },
+    { 
+      name: t('navigation.resourcesBlog'), 
+      description: t('navigation.resourcesBlogDesc'),
+      href: 'https://project-hami.io/blog', 
+      external: true,
+      iconName: 'blog'
+    }
+  ];
+
   // 控制下拉菜单的状态
   const [isHamiMenuOpen, setIsHamiMenuOpen] = useState(false);
+  const [isResourcesMenuOpen, setIsResourcesMenuOpen] = useState(false);
   const hamiMenuRef = useRef<HTMLDivElement>(null);
-  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const resourcesMenuRef = useRef<HTMLDivElement>(null);
+  const hamiTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const resourcesTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   
-  const clearCloseTimeout = () => {
-    if (timeoutRef.current) {
-      clearTimeout(timeoutRef.current);
-      timeoutRef.current = null;
+  const clearHamiCloseTimeout = () => {
+    if (hamiTimeoutRef.current) {
+      clearTimeout(hamiTimeoutRef.current);
+      hamiTimeoutRef.current = null;
     }
   };
   
-  // 打开菜单
-  const handleMouseEnter = () => {
-    clearCloseTimeout();
+  const clearResourcesCloseTimeout = () => {
+    if (resourcesTimeoutRef.current) {
+      clearTimeout(resourcesTimeoutRef.current);
+      resourcesTimeoutRef.current = null;
+    }
+  };
+  
+  // 打开HAMi菜单
+  const handleHamiMouseEnter = () => {
+    clearHamiCloseTimeout();
     setIsHamiMenuOpen(true);
   };
   
-  // 延迟关闭菜单
-  const handleMouseLeave = () => {
-    clearCloseTimeout();
-    timeoutRef.current = setTimeout(() => {
+  // 延迟关闭HAMi菜单
+  const handleHamiMouseLeave = () => {
+    clearHamiCloseTimeout();
+    hamiTimeoutRef.current = setTimeout(() => {
       setIsHamiMenuOpen(false);
+    }, 300); // 300ms延迟，给用户足够时间移动到下拉菜单
+  };
+
+  // 打开资源菜单
+  const handleResourcesMouseEnter = () => {
+    clearResourcesCloseTimeout();
+    setIsResourcesMenuOpen(true);
+  };
+  
+  // 延迟关闭资源菜单
+  const handleResourcesMouseLeave = () => {
+    clearResourcesCloseTimeout();
+    resourcesTimeoutRef.current = setTimeout(() => {
+      setIsResourcesMenuOpen(false);
     }, 300); // 300ms延迟，给用户足够时间移动到下拉菜单
   };
   
   // 清除超时器
   useEffect(() => {
     return () => {
-      clearCloseTimeout();
+      clearHamiCloseTimeout();
+      clearResourcesCloseTimeout();
     };
   }, []);
   
-  // 处理点击外部关闭菜单
+  // 处理点击外部关闭HAMi菜单
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
       if (hamiMenuRef.current && !hamiMenuRef.current.contains(event.target as Node)) {
         setIsHamiMenuOpen(false);
+      }
+      if (resourcesMenuRef.current && !resourcesMenuRef.current.contains(event.target as Node)) {
+        setIsResourcesMenuOpen(false);
       }
     }
     
@@ -158,7 +206,7 @@ const Header: React.FC = () => {
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [hamiMenuRef]);
+  }, [hamiMenuRef, resourcesMenuRef]);
 
   return (
     <Disclosure as="nav" className="bg-white shadow-sm sticky top-0 z-50">
@@ -177,35 +225,35 @@ const Header: React.FC = () => {
                     item.hasSubmenu ? (
                       <div 
                         key={item.name} 
-                        ref={hamiMenuRef}
+                        ref={item.submenuType === 'hami' ? hamiMenuRef : resourcesMenuRef}
                         className="relative flex items-center h-full"
                       >
                         <div
                           className={`inline-flex items-center px-1 h-full border-b-2 text-sm font-medium ${
-                            isHamiMenuOpen
+                            (item.submenuType === 'hami' && isHamiMenuOpen) || (item.submenuType === 'resources' && isResourcesMenuOpen)
                               ? 'border-primary text-gray-900'
                               : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700'
                           }`}
-                          onMouseEnter={handleMouseEnter}
-                          onMouseLeave={handleMouseLeave}
+                          onMouseEnter={item.submenuType === 'hami' ? handleHamiMouseEnter : handleResourcesMouseEnter}
+                          onMouseLeave={item.submenuType === 'hami' ? handleHamiMouseLeave : handleResourcesMouseLeave}
                         >
                           {item.name}
                           <ChevronDownIcon 
                             className={`ml-1 h-4 w-4 transition-transform duration-200 ${
-                              isHamiMenuOpen ? 'transform rotate-180' : ''
+                              (item.submenuType === 'hami' && isHamiMenuOpen) || (item.submenuType === 'resources' && isResourcesMenuOpen) ? 'transform rotate-180' : ''
                             }`} 
                           />
                         </div>
                         
-                        {isHamiMenuOpen && (
+                        {((item.submenuType === 'hami' && isHamiMenuOpen) || (item.submenuType === 'resources' && isResourcesMenuOpen)) && (
                           <div 
                             className="absolute left-0 top-full mt-1 w-[650px] rounded-lg shadow-lg bg-white ring-1 hami-menu-border z-50 fadeIn"
-                            onMouseEnter={handleMouseEnter}
-                            onMouseLeave={handleMouseLeave}
+                            onMouseEnter={item.submenuType === 'hami' ? handleHamiMouseEnter : handleResourcesMouseEnter}
+                            onMouseLeave={item.submenuType === 'hami' ? handleHamiMouseLeave : handleResourcesMouseLeave}
                           >
                             <div className="p-4">
                               <div className="grid grid-cols-2 gap-4">
-                                {hamiSubmenu.map((subItem) => (
+                                {(item.submenuType === 'hami' ? hamiSubmenu : resourcesSubmenu).map((subItem) => (
                                   <div 
                                     key={subItem.name} 
                                     className="p-3 rounded-md transition-colors duration-150 hami-menu-item"
@@ -221,8 +269,11 @@ const Header: React.FC = () => {
                                           <div className="flex-shrink-0 mr-4">
                                             <HamiIcon iconName={subItem.iconName} />
                                           </div>
-                                          <div>
-                                            <h3 className="text-base font-medium text-gray-900">{subItem.name}</h3>
+                                          <div className="flex-grow">
+                                            <div className="flex justify-between items-center">
+                                              <h3 className="text-base font-medium text-gray-900">{subItem.name}</h3>
+                                              <ExternalLinkIcon className="h-4 w-4 text-gray-400" aria-hidden="true" />
+                                            </div>
                                             <p className="mt-1 text-sm text-gray-500">{subItem.description}</p>
                                           </div>
                                         </div>
@@ -236,8 +287,10 @@ const Header: React.FC = () => {
                                           <div className="flex-shrink-0 mr-4">
                                             <HamiIcon iconName={subItem.iconName} />
                                           </div>
-                                          <div>
-                                            <h3 className="text-base font-medium text-gray-900">{subItem.name}</h3>
+                                          <div className="flex-grow">
+                                            <div className="flex justify-between items-center">
+                                              <h3 className="text-base font-medium text-gray-900">{subItem.name}</h3>
+                                            </div>
                                             <p className="mt-1 text-sm text-gray-500">{subItem.description}</p>
                                           </div>
                                         </div>
@@ -308,93 +361,97 @@ const Header: React.FC = () => {
             <div className="pt-2 pb-3 space-y-1">
               {navigation.map((item) => (
                 item.hasSubmenu ? (
-                  <Disclosure key={item.name}>
-                    {({ open }) => (
-                      <>
-                        <Disclosure.Button className="w-full flex items-center pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-500 hover:bg-primary-lighter hover:border-primary hover:text-gray-700">
-                          {item.name}
-                          <ChevronDownIcon
-                            className={`${open ? 'transform rotate-180' : ''} ml-auto h-5 w-5 transition-transform duration-200`}
-                          />
-                        </Disclosure.Button>
-                        <Disclosure.Panel className="pl-6 space-y-1">
-                          {hamiSubmenu.map((subItem) => (
-                            <div key={subItem.name} className="p-3 rounded-md hover:bg-primary-lighter transition-colors duration-150">
-                              {subItem.external ? (
-                                <a
-                                  href={subItem.href}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  className="block"
-                                >
-                                  <div className="flex items-start">
-                                    <div className="flex-shrink-0 mr-4">
-                                      <HamiIcon iconName={subItem.iconName} />
-                                    </div>
-                                    <div>
-                                      <h3 className="text-base font-medium text-gray-900">{subItem.name}</h3>
-                                      <p className="mt-1 text-sm text-gray-500">{subItem.description}</p>
-                                    </div>
-                                  </div>
-                                </a>
-                              ) : (
-                                <Link
-                                  href={subItem.href}
-                                  className="block"
-                                >
-                                  <div className="flex items-start">
-                                    <div className="flex-shrink-0 mr-4">
-                                      <HamiIcon iconName={subItem.iconName} />
-                                    </div>
-                                    <div>
-                                      <h3 className="text-base font-medium text-gray-900">{subItem.name}</h3>
-                                      <p className="mt-1 text-sm text-gray-500">{subItem.description}</p>
-                                    </div>
-                                  </div>
-                                </Link>
-                              )}
+                  <div key={item.name}>
+                    <Disclosure>
+                      {({ open }) => (
+                        <>
+                          <Disclosure.Button
+                            className="block w-full text-left px-3 py-2 text-base font-medium text-gray-500 hover:text-gray-700 hover:bg-gray-50"
+                          >
+                            <div className="flex justify-between items-center">
+                              <span>{item.name}</span>
+                              <ChevronDownIcon 
+                                className={`h-5 w-5 transition-transform duration-200 ${
+                                  open ? 'transform rotate-180' : ''
+                                }`} 
+                              />
                             </div>
-                          ))}
-                        </Disclosure.Panel>
-                      </>
-                    )}
-                  </Disclosure>
+                          </Disclosure.Button>
+                          <Disclosure.Panel className="pl-6 space-y-1">
+                            {(item.submenuType === 'hami' ? hamiSubmenu : resourcesSubmenu).map((subItem) => (
+                              <div key={subItem.name} className="p-3 rounded-md hover:bg-primary-lighter transition-colors duration-150">
+                                {subItem.external ? (
+                                  <a
+                                    href={subItem.href}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="block text-gray-500 hover:text-gray-900"
+                                  >
+                                    <div className="flex items-center justify-between">
+                                      <div className="flex items-center">
+                                        <div className="mr-3">
+                                          <HamiIcon iconName={subItem.iconName} className="h-5 w-5" />
+                                        </div>
+                                        <span>{subItem.name}</span>
+                                      </div>
+                                      <ExternalLinkIcon className="h-4 w-4 text-gray-400" aria-hidden="true" />
+                                    </div>
+                                  </a>
+                                ) : (
+                                  <Link
+                                    href={subItem.href}
+                                    className="block text-gray-500 hover:text-gray-900"
+                                  >
+                                    <div className="flex items-center justify-between">
+                                      <div className="flex items-center">
+                                        <div className="mr-3">
+                                          <HamiIcon iconName={subItem.iconName} className="h-5 w-5" />
+                                        </div>
+                                        <span>{subItem.name}</span>
+                                      </div>
+                                    </div>
+                                  </Link>
+                                )}
+                              </div>
+                            ))}
+                          </Disclosure.Panel>
+                        </>
+                      )}
+                    </Disclosure>
+                  </div>
                 ) : (
-                  <Disclosure.Button
-                    key={item.name}
-                    as={Link}
+                  <Link
+                    key={item.href}
                     href={item.href}
-                    className={`block pl-3 pr-4 py-2 border-l-4 text-base font-medium ${
+                    className={`block px-3 py-2 text-base font-medium ${
                       pathname === item.href
-                        ? 'border-primary text-primary bg-primary-lighter'
-                        : 'border-transparent text-gray-500 hover:bg-primary-lighter hover:border-primary hover:text-gray-700'
+                        ? 'text-primary-dark bg-primary-lighter'
+                        : 'text-gray-500 hover:text-gray-700 hover:bg-gray-50'
                     }`}
                   >
                     {item.name}
-                  </Disclosure.Button>
+                  </Link>
                 )
               ))}
-              <div className="px-4 py-2">
-                {/* 暂时隐藏搜索栏 */}
-                {/* <Search /> */}
-              </div>
-              <div className="pt-4 pb-3 border-t border-gray-200">
-                <div className="space-y-1">
+            </div>
+            <div className="pt-4 pb-3 border-t border-gray-200">
+              <div className="flex items-center px-4">
+                <div className="ml-3 space-y-2">
                   <Link
                     href={currentLocale === 'zh' ? '/zh/free-trial' : '/free-trial'}
-                    className="block px-4 py-2 text-base font-medium text-primary hover:bg-gray-100"
+                    className="block rounded-md px-4 py-2 text-base font-medium text-white bg-primary hover:bg-primary-dark text-center"
                   >
                     {t('navigation.freeTrial')}
                   </Link>
                   <Link
                     href={currentLocale === 'zh' ? '/zh/request-demo' : '/request-demo'}
-                    className="block px-4 py-2 text-base font-medium text-primary hover:bg-gray-100"
+                    className="block rounded-md px-4 py-2 text-base font-medium text-primary border border-primary hover:bg-gray-50 text-center"
                   >
                     {t('navigation.requestDemo')}
                   </Link>
                   <button
                     onClick={() => changeLanguage(currentLocale === 'zh' ? 'en' : 'zh')}
-                    className="block w-full text-left px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100"
+                    className="block rounded-md px-4 py-2 w-full text-base font-medium text-gray-500 hover:text-gray-700 hover:bg-gray-50 text-center"
                   >
                     {currentLocale === 'zh' ? 'English' : '中文'}
                   </button>

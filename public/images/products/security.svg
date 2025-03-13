@@ -1,0 +1,28 @@
+<svg width="160" height="160" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- 背景圆 -->
+  <circle cx="80" cy="80" r="80" fill="#F0FFF5"/>
+  
+  <!-- 安全盾牌轮廓 -->
+  <path d="M80 35L45 50V80C45 97.6731 57.1309 115.089 80 125C102.869 115.089 115 97.6731 115 80V50L80 35Z" fill="white" stroke="#0FD05D" stroke-width="3"/>
+  
+  <!-- 安全盾牌内部 -->
+  <path d="M80 45L55 55V80C55 93 64 105 80 113C96 105 105 93 105 80V55L80 45Z" fill="#0FD05D" opacity="0.2"/>
+  
+  <!-- 锁图标 -->
+  <rect x="67" y="75" width="26" height="20" rx="3" fill="#0FD05D"/>
+  <rect x="72" y="63" width="16" height="12" rx="6" stroke="#0FD05D" stroke-width="3"/>
+  <circle cx="80" cy="83" r="3" fill="white"/>
+  <rect x="79" y="83" width="2" height="5" fill="white"/>
+  
+  <!-- 安全关键点 - 代表加密与保护 -->
+  <circle cx="60" cy="65" r="3" fill="#0FD05D"/>
+  <circle cx="100" cy="65" r="3" fill="#0FD05D"/>
+  <circle cx="60" cy="95" r="3" fill="#0FD05D"/>
+  <circle cx="100" cy="95" r="3" fill="#0FD05D"/>
+  
+  <!-- 连接线 - 代表安全网络 -->
+  <path d="M60 65L80 50L100 65" stroke="#0FD05D" stroke-width="1.5" stroke-dasharray="2 2"/>
+  <path d="M60 95L80 110L100 95" stroke="#0FD05D" stroke-width="1.5" stroke-dasharray="2 2"/>
+  <path d="M60 65L60 95" stroke="#0FD05D" stroke-width="1.5" stroke-dasharray="2 2"/>
+  <path d="M100 65L100 95" stroke="#0FD05D" stroke-width="1.5" stroke-dasharray="2 2"/>
+</svg> 

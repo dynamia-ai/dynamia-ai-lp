@@ -12,7 +12,12 @@
     "communityDesc": "加入 HAMi 用户社区，分享经验与获取帮助",
     "products": "产品",
     "solutions": "解决方案",
+    "pricing": "定价",
     "resources": "资源",
+    "resourcesDoc": "文档",
+    "resourcesDocDesc": "访问HAMi的全面指南和参考资料",
+    "resourcesBlog": "博客",
+    "resourcesBlogDesc": "阅读有关HAMi的最新消息、教程和更新",
     "company": "公司",
     "freeTrial": "免费试用",
     "requestDemo": "申请演示",
@@ -290,6 +295,53 @@
         "newsletterTitle": "订阅我们的技术通讯",
         "newsletterDescription": "定期获取最新的产品更新、技术文章和行业见解，直接发送到您的邮箱。",
         "subscribeButton": "订阅"
+      },
+      "title": "Kantaloupe 企业版",
+      "subtitle": "企业级异构计算虚拟化平台",
+      "viewPricing": "查看定价",
+      "readyToStart": "准备好转变您的计算基础设施了吗？",
+      "ctaDescription": "体验Kantaloupe如何优化您的计算资源。立即开始免费试用或申请定制定价方案。",
+      "overview": {
+        "title": "企业级异构计算解决方案",
+        "description": "Kantaloupe基于HAMi开源技术的强大基础，增加了企业级功能、安全性和对关键业务环境的支持。",
+        "highlights": [
+          "基于HAMi开源核心",
+          "增强的企业级功能",
+          "专业技术支持",
+          "持续更新和维护"
+        ]
+      },
+      "architectureDescription": "Kantaloupe提供了全面的基础设施，用于高效管理异构计算资源。",
+      "architectureDiagram": "架构图",
+      "commercialFeatures": {
+        "title": "企业级功能",
+        "subtitle": "Kantaloupe通过为生产环境设计的企业级功能增强了HAMi的核心功能。",
+        "list": [
+          {
+            "title": "高级调度引擎",
+            "description": "智能工作负载分配与队列管理，确保资源高效利用并减少等待时间。"
+          },
+          {
+            "title": "实时监控与分析",
+            "description": "全方位监控系统性能，提供深入洞察和趋势分析，帮助您优化资源配置和成本。"
+          },
+          {
+            "title": "自动扩展与优化",
+            "description": "根据工作负载需求自动调整资源分配，优化资源使用效率并降低成本。"
+          },
+          {
+            "title": "多集群管理",
+            "description": "统一管理多个计算集群，提供一致的跨集群资源分配和工作负载调度。"
+          },
+          {
+            "title": "企业级安全保障",
+            "description": "全面的安全解决方案，包括身份验证、授权、加密和审计日志。"
+          },
+          {
+            "title": "企业级支持与服务",
+            "description": "专业的技术支持团队，提供全天候响应和定期维护服务。"
+          }
+        ]
       }
     }
   },
@@ -512,5 +564,43 @@
     "ctaDesc": "加入我们的社区，提升您的 AI 计算资源管理效率。",
     "githubButton": "GitHub 仓库",
     "websiteButton": "访问官网"
+  },
+  "pricing": {
+    "title": "定价方案",
+    "headline": "您的计算需求是独特的，应该拥有定制化的定价方案。",
+    "description": "Kantaloupe 的定价模型取决于您环境的特定因素，例如节点数量、GPU数量和其他计算资源。请联系我们获取符合您需求的准确定价。",
+    "benefits": [
+      "根据您的需求定制化定价",
+      "根据您的集群规模灵活调整",
+      "专业技术支持",
+      "持续的功能更新和升级"
+    ],
+    "form": {
+      "title": "获取您的定制报价",
+      "name": "姓名",
+      "email": "电子邮箱",
+      "company": "公司名称",
+      "jobTitle": "职位",
+      "nodeCount": "节点数量",
+      "gpuCount": "GPU数量",
+      "nodeCountOptions": {
+        "small": "少于10个节点",
+        "medium": "10-50个节点",
+        "large": "50-200个节点",
+        "enterprise": "超过200个节点"
+      },
+      "gpuCountOptions": {
+        "small": "1-10个GPU",
+        "medium": "10-50个GPU",
+        "large": "50-200个GPU",
+        "enterprise": "超过200个GPU"
+      },
+      "message": "其他需求",
+      "submitButton": "申请定价"
+    },
+    "trustedBy": {
+      "title": "行业领导者的信赖选择",
+      "description": "各行业的领先组织都依靠Kantaloupe高效管理其异构计算资源。"
+    }
   }
 } 

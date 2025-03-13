@@ -1,0 +1,28 @@
+<svg width="160" height="160" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- 背景圆 -->
+  <circle cx="80" cy="80" r="80" fill="#F0FFF5"/>
+  
+  <!-- 中央处理单元 -->
+  <rect x="60" y="60" width="40" height="40" rx="6" fill="#0FD05D" opacity="0.9"/>
+  
+  <!-- 调度网格 -->
+  <rect x="30" y="30" width="20" height="20" rx="4" fill="#0FD05D" opacity="0.7"/>
+  <rect x="110" y="30" width="20" height="20" rx="4" fill="#0FD05D" opacity="0.7"/>
+  <rect x="30" y="110" width="20" height="20" rx="4" fill="#0FD05D" opacity="0.7"/>
+  <rect x="110" y="110" width="20" height="20" rx="4" fill="#0FD05D" opacity="0.7"/>
+  
+  <!-- 连接线 -->
+  <path d="M50 40L60 60" stroke="#0FD05D" stroke-width="2" stroke-dasharray="2 2"/>
+  <path d="M110 40L100 60" stroke="#0FD05D" stroke-width="2" stroke-dasharray="2 2"/>
+  <path d="M50 110L60 100" stroke="#0FD05D" stroke-width="2" stroke-dasharray="2 2"/>
+  <path d="M110 110L100 100" stroke="#0FD05D" stroke-width="2" stroke-dasharray="2 2"/>
+  
+  <!-- 调度指示器 -->
+  <circle cx="40" cy="40" r="4" fill="#ffffff" stroke="#0FD05D" stroke-width="1.5"/>
+  <circle cx="120" cy="40" r="4" fill="#ffffff" stroke="#0FD05D" stroke-width="1.5"/>
+  <circle cx="40" cy="120" r="4" fill="#ffffff" stroke="#0FD05D" stroke-width="1.5"/>
+  <circle cx="120" cy="120" r="4" fill="#ffffff" stroke="#0FD05D" stroke-width="1.5"/>
+  
+  <!-- 中央图标 -->
+  <path d="M72 70H88M72 80H88M72 90H88" stroke="white" stroke-width="2" stroke-linecap="round"/>
+</svg> 

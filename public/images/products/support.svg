@@ -1,0 +1,33 @@
+<svg width="160" height="160" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- 背景圆 -->
+  <circle cx="80" cy="80" r="80" fill="#F0FFF5"/>
+  
+  <!-- 支持/服务的中心图形 -->
+  <circle cx="80" cy="80" r="40" fill="white" stroke="#0FD05D" stroke-width="2"/>
+  
+  <!-- 耳机/支持图标 -->
+  <path d="M60 75V85C60 87.7614 62.2386 90 65 90H70V75H65C62.2386 75 60 77.2386 60 80V75Z" fill="#0FD05D"/>
+  <path d="M100 75V85C100 87.7614 97.7614 90 95 90H90V75H95C97.7614 75 100 77.2386 100 80V75Z" fill="#0FD05D"/>
+  <path d="M60 75V70C60 58.9543 68.9543 50 80 50C91.0457 50 100 58.9543 100 70V75" stroke="#0FD05D" stroke-width="3"/>
+  
+  <!-- 技术支持图标 -->
+  <circle cx="80" cy="95" r="8" fill="#0FD05D" opacity="0.7"/>
+  <path d="M75 95H85M80 90V100" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+  
+  <!-- 外围支持指示器 -->
+  <circle cx="45" cy="60" r="6" fill="#0FD05D" opacity="0.5"/>
+  <circle cx="115" cy="60" r="6" fill="#0FD05D" opacity="0.5"/>
+  <circle cx="45" cy="100" r="6" fill="#0FD05D" opacity="0.5"/>
+  <circle cx="115" cy="100" r="6" fill="#0FD05D" opacity="0.5"/>
+  
+  <!-- 连接线 - 代表全方位支持 -->
+  <path d="M50 65L65 75" stroke="#0FD05D" stroke-width="1.5" stroke-dasharray="2 2"/>
+  <path d="M50 95L65 85" stroke="#0FD05D" stroke-width="1.5" stroke-dasharray="2 2"/>
+  <path d="M110 65L95 75" stroke="#0FD05D" stroke-width="1.5" stroke-dasharray="2 2"/>
+  <path d="M110 95L95 85" stroke="#0FD05D" stroke-width="1.5" stroke-dasharray="2 2"/>
+  
+  <!-- 24/7服务指示 -->
+  <circle cx="80" cy="65" r="7" fill="#FFCA28" stroke="#0FD05D" stroke-width="1"/>
+  <path d="M77 65L80 65L83 65" stroke="#0FD05D" stroke-width="1.5" stroke-linecap="round"/>
+  <path d="M80 62L80 65L80 68" stroke="#0FD05D" stroke-width="1.5" stroke-linecap="round"/>
+</svg> 

@@ -12,7 +12,12 @@
     "communityDesc": "Join the HAMi user community to share experiences and get help",
     "products": "Products",
     "solutions": "Solutions",
+    "pricing": "Pricing",
     "resources": "Resources",
+    "resourcesDoc": "Documentation",
+    "resourcesDocDesc": "Access comprehensive guides and reference materials for HAMi",
+    "resourcesBlog": "Blog",
+    "resourcesBlogDesc": "Read the latest news, tutorials and updates about HAMi",
     "company": "Company",
     "freeTrial": "Free Trial",
     "requestDemo": "Request Demo",
@@ -73,223 +78,53 @@
   },
   "products": {
     "kantaloupe": {
-      "title": "Kantaloupe",
-      "subtitle": "The next generation heterogeneous computing platform",
-      "description": "Kantaloupe provides a unified platform for managing heterogeneous computing resources, optimizing performance and reducing costs.",
-      "features": [
-        "Intelligent workload scheduling",
-        "Real-time resource monitoring",
-        "Automated scaling and optimization",
-        "Cross-platform compatibility",
-        "Enterprise-grade security"
-      ],
-      "featureComparison": {
-        "title": "Feature Comparison",
-        "subTitle": "HAMi (Open Source) vs Kantaloupe (Enterprise) Feature Comparison",
-        "categoryHeader": "Feature Category",
-        "featureHeader": "Feature Item",
-        "categories": [
-          {
-            "name": "Environment Support",
-            "features": [
-              {
-                "name": "X86 Environment Support",
-                "hami": true,
-                "kantaloupe": true
-              },
-              {
-                "name": "Domestic IT Support",
-                "hami": false,
-                "kantaloupe": true
-              }
-            ]
-          },
-          {
-            "name": "GPU Kernel Capabilities",
-            "features": [
-              {
-                "name": "GPU Resource Pooling",
-                "hami": true,
-                "kantaloupe": true
-              },
-              {
-                "name": "Nvidia GPU Fine-grained Virtualization",
-                "hami": true,
-                "kantaloupe": true
-              },
-              {
-                "name": "Native nvidia-smi Support",
-                "hami": true,
-                "kantaloupe": true
-              },
-              {
-                "name": "Gunicorn Multi-task Support (Flask API)",
-                "hami": false,
-                "kantaloupe": true
-              },
-              {
-                "name": "Video Memory Overcommitment",
-                "hami": false,
-                "kantaloupe": true
-              },
-              {
-                "name": "Computing Power Overcommitment",
-                "hami": false,
-                "kantaloupe": true
-              },
-              {
-                "name": "Precise Computing/Memory Limits",
-                "hami": false,
-                "kantaloupe": true
-              }
-            ]
-          },
-          {
-            "name": "Scheduling Capabilities",
-            "features": [
-              {
-                "name": "Node/Card Level Binpack/Spread Scheduling",
-                "hami": true,
-                "kantaloupe": true
-              },
-              {
-                "name": "Nvidia MIG Support",
-                "hami": true,
-                "kantaloupe": true
-              },
-              {
-                "name": "Nvidia MIG Dynamic Virtualization",
-                "hami": true,
-                "kantaloupe": true
-              },
-              {
-                "name": "Nvidia NUMA Affinity Scheduling",
-                "hami": true,
-                "kantaloupe": true
-              }
-            ]
-          },
-          {
-            "name": "Heterogeneous Chip Management",
-            "features": [
-              {
-                "name": "Ascend (Full/Virtual/Dynamic)",
-                "hami": true,
-                "kantaloupe": true
-              },
-              {
-                "name": "Cambricon (Full/Virtual/Dynamic)",
-                "hami": true,
-                "kantaloupe": true
-              },
-              {
-                "name": "Hygon (Full/Virtual/Dynamic)",
-                "hami": true,
-                "kantaloupe": true
-              },
-              {
-                "name": "Iluvatar (Full/Virtual/Dynamic)",
-                "hami": true,
-                "kantaloupe": true
-              },
-              {
-                "name": "Mthreads (Full/Virtual/Dynamic)",
-                "hami": true,
-                "kantaloupe": true
-              },
-              {
-                "name": "Metax (Full/Virtual/NUMA & Network)",
-                "hami": true,
-                "kantaloupe": true
-              }
-            ]
-          },
-          {
-            "name": "Monitoring Capabilities",
-            "features": [
-              {
-                "name": "GPU-Application Binding",
-                "hami": true,
-                "kantaloupe": true
-              },
-              {
-                "name": "Application Computing/Memory Monitoring",
-                "hami": true,
-                "kantaloupe": true
-              },
-              {
-                "name": "GPU Fault Metrics/Alerts/Self-recovery",
-                "hami": false,
-                "kantaloupe": true
-              },
-              {
-                "name": "Idle Resource Alerts",
-                "hami": false,
-                "kantaloupe": true
-              }
-            ]
-          },
-          {
-            "name": "Enterprise Features",
-            "features": [
-              {
-                "name": "GPU Software Stack Management",
-                "hami": false,
-                "kantaloupe": true
-              },
-              {
-                "name": "Single Cluster GUI",
-                "hami": true,
-                "kantaloupe": true
-              },
-              {
-                "name": "Metering & Billing System",
-                "hami": false,
-                "kantaloupe": true
-              },
-              {
-                "name": "Flexible License Management",
-                "hami": false,
-                "kantaloupe": true
-              },
-              {
-                "name": "Fine-grained Quota Management",
-                "hami": false,
-                "kantaloupe": true
-              },
-              {
-                "name": "Training & Inference Switching",
-                "hami": false,
-                "kantaloupe": true
-              },
-              {
-                "name": "Large-scale Scheduling Optimization",
-                "hami": false,
-                "kantaloupe": true
-              }
-            ]
-          }
-        ],
-        "openSource": "HAMi Open Source",
-        "enterprise": "Kantaloupe Enterprise"
+      "title": "Kantaloupe Enterprise",
+      "subtitle": "Enterprise-grade heterogeneous computing virtualization platform",
+      "viewPricing": "View Pricing",
+      "readyToStart": "Ready to Transform Your Computing Infrastructure?",
+      "ctaDescription": "Experience how Kantaloupe can optimize your computing resources. Get started today with a free trial or request a custom pricing quote.",
+      "overview": {
+        "title": "Enterprise-Ready Heterogeneous Computing Solution",
+        "description": "Kantaloupe builds on the powerful foundation of HAMi open-source technology, adding enterprise-grade features, security, and support for mission-critical environments.",
+        "highlights": [
+          "Built on HAMi open-source core",
+          "Enhanced enterprise features",
+          "Professional technical support",
+          "Continuous updates and maintenance"
+        ]
       },
       "technicalArchitecture": "Technical Architecture",
+      "architectureDescription": "Kantaloupe provides a comprehensive infrastructure for managing heterogeneous computing resources efficiently.",
       "architectureDiagram": "Architecture Diagram",
-      "readyToStart": "Ready to start using kantaloupe?",
-      "customSolutions": {
-        "title": "Custom Solutions",
-        "description": "We understand that every organization has unique needs. Our expert team can customize Kantaloupe solutions for your specific challenges.",
-        "contactText": "Contact our solution experts and get ready to address your computing challenges"
-      },
-      "exploreResources": {
-        "title": "Explore Our Technical Documentation",
-        "description": "Browse our technical documentation, blog articles, and whitepapers to learn more about Kantaloupe"
-      },
-      "latestResources": {
-        "title": "Latest Resources",
-        "newsletterTitle": "Subscribe to Our Technical Newsletter",
-        "newsletterDescription": "Receive regular updates on product improvements, technical articles, and industry insights delivered directly to your inbox.",
-        "subscribeButton": "Subscribe"
+      "commercialFeatures": {
+        "title": "Enterprise Features",
+        "subtitle": "Kantaloupe enhances the core functionality of HAMi with enterprise-grade features designed for production environments.",
+        "list": [
+          {
+            "title": "Advanced Scheduling Engine",
+            "description": "Intelligent workload allocation and queue management that ensures resource efficiency and reduces wait times."
+          },
+          {
+            "title": "Real-time Monitoring & Analytics",
+            "description": "Comprehensive system performance monitoring that provides deep insights and trend analysis to help optimize your resource configuration and costs."
+          },
+          {
+            "title": "Auto-scaling & Optimization",
+            "description": "Automatically adjust resource allocation based on workload demands, optimizing resource efficiency and reducing costs."
+          },
+          {
+            "title": "Multi-cluster Management",
+            "description": "Unified management of multiple compute clusters, providing consistent cross-cluster resource allocation and workload scheduling."
+          },
+          {
+            "title": "Enterprise-grade Security",
+            "description": "Comprehensive security solution including authentication, authorization, encryption, and audit logging."
+          },
+          {
+            "title": "Enterprise Support & Services",
+            "description": "Professional technical support team providing round-the-clock response and regular maintenance services."
+          }
+        ]
       }
     }
   },
@@ -512,5 +347,43 @@
     "ctaDesc": "Join our community and enhance your AI computing resource management efficiency.",
     "githubButton": "GitHub Repository",
     "websiteButton": "Visit Website"
+  },
+  "pricing": {
+    "title": "Pricing Plans",
+    "headline": "Your computing needs are unique, they deserve a tailored pricing.",
+    "description": "Kantaloupe's pricing model depends on specific factors of your environment, such as the number of nodes, GPUs, and other computing resources. Contact us to get an accurate pricing for your needs.",
+    "benefits": [
+      "Customized pricing tailored to your needs",
+      "Flexible options based on your cluster scale",
+      "Professional technical support",
+      "Continuous updates and enhancements"
+    ],
+    "form": {
+      "title": "Get Your Custom Quote",
+      "name": "Full Name",
+      "email": "Email Address",
+      "company": "Company Name",
+      "jobTitle": "Job Title",
+      "nodeCount": "Number of Nodes",
+      "gpuCount": "Number of GPUs",
+      "nodeCountOptions": {
+        "small": "Less than 10 nodes",
+        "medium": "10-50 nodes",
+        "large": "50-200 nodes",
+        "enterprise": "More than 200 nodes"
+      },
+      "gpuCountOptions": {
+        "small": "1-10 GPUs",
+        "medium": "10-50 GPUs",
+        "large": "50-200 GPUs",
+        "enterprise": "More than 200 GPUs"
+      },
+      "message": "Additional Requirements",
+      "submitButton": "Request Pricing"
+    },
+    "trustedBy": {
+      "title": "Trusted by Industry Leaders",
+      "description": "Leading organizations across various industries rely on Kantaloupe to manage their heterogeneous computing resources efficiently."
+    }
   }
 } 
