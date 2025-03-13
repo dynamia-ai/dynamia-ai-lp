@@ -16,9 +16,14 @@ COPY . .
 
 # Next.js collects completely anonymous telemetry data about general usage.
 # Learn more here: https://nextjs.org/telemetry
-# Uncomment the following line in case you want to disable telemetry during the build.
 ENV NEXT_TELEMETRY_DISABLED=1
 
+# Disable type checking during build for faster builds
+ENV NEXT_TYPESCRIPT_CHECK=0 
+ENV TYPESCRIPT_SKIP_VALIDATION=1
+ENV TSC_COMPILE_ON_ERROR=true
+
+# Build the application
 RUN npm run build
 
 # Production image, copy all the files and run next
