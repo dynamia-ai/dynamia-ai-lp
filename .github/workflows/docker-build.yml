@@ -1,0 +1,79 @@
+name: Build and Deploy Frontend
+
+env:
+  IMAGE_REPO: dynamia-ai
+  REGISTER: ghcr.io
+  BUILD_PLATFORM: linux/amd64
+  REGISTER_USER: ${{ github.actor }}
+  REGISTER_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
+  NODE_VERSION: 18
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    tags:
+      - v*
+
+jobs:
+  docker-build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get version
+        id: get_version
+        run: |
+          VERSION=${GITHUB_REF#refs/tags/}
+          if [[ ${GITHUB_REF} == "refs/heads/main" ]]; then
+            VERSION=latest
+          fi
+          echo "VERSION=${VERSION}" >> $GITHUB_OUTPUT
+
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+          registry-url: 'https://npm.pkg.github.com'
+          scope: '@dynamia-ai'
+
+      - name: Configure NPM authentication
+        run: |
+          echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" > .npmrc
+          echo "@dynamia-ai:registry=https://npm.pkg.github.com/" >> .npmrc
+          echo "registry=https://registry.npmmirror.com/" >> .npmrc
+
+      - name: Login to container registry
+        run: |
+          echo "${{ env.REGISTER_PASSWORD }}" | docker login ${{ env.REGISTER }} -u ${{ env.REGISTER_USER }} --password-stdin
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+        with:
+          driver-opts: image=moby/buildkit:master
+
+      - name: Build and push image
+        uses: docker/build-push-action@v6.13.0
+        with:
+          context: .
+          file: Dockerfile
+          labels: |-
+            org.opencontainers.image.source=https://github.com/${{ github.repository }}
+            org.opencontainers.image.revision=${{ github.sha }}
+          platforms: ${{ env.BUILD_PLATFORM }}
+          build-args: |
+            VERSION=${{ steps.get_version.outputs.VERSION }}
+            GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
+          tags: ${{ env.REGISTER }}/${{ env.IMAGE_REPO }}/dynamia-ai-lp:${{ steps.get_version.outputs.VERSION }}
+          push: true
+          provenance: false
+          github-token: ${{ env.REGISTER_PASSWORD }} 

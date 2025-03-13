@@ -1,0 +1,471 @@
+{
+  "navigation": {
+    "home": "Home",
+    "products": "Products",
+    "solutions": "Solutions",
+    "resources": "Resources",
+    "company": "Company",
+    "freeTrial": "Free Trial",
+    "requestDemo": "Request Demo",
+    "openMenu": "Open menu"
+  },
+  "home": {
+    "hero": {
+      "title": "Cloud-Native, Efficient Heterogeneous AI Computing Virtualization Middleware",
+      "subtitle": "Unlock efficient management of heterogeneous computing and experience the power of Kantaloupe now!",
+      "chineseSlogan": "Unified heterogeneous computing for resource efficiency"
+    },
+    "socialProof": {
+      "title": "Trusted by leading AI labs and enterprises worldwide"
+    },
+    "keyAdvantages": {
+      "title": "Why Kantaloupe?",
+      "advantages": [
+        {
+          "title": "High-Performance Scheduling",
+          "description": "Optimize resource allocation with intelligent workload scheduling"
+        },
+        {
+          "title": "Multi-Cluster Orchestration",
+          "description": "Seamlessly manage resources across multiple clusters and environments"
+        },
+        {
+          "title": "GPU Acceleration Management",
+          "description": "Maximize the use of specialized hardware for AI, ML, and HPC workloads"
+        },
+        {
+          "title": "Cost Optimization & Autoscaling",
+          "description": "Automatically scale resources up or down based on workload demands"
+        }
+      ]
+    },
+    "testimonials": {
+      "title": "What Our Customers Say",
+      "items": [
+        {
+          "quote": "Kantaloupe has dramatically improved our computational efficiency, allowing us to scale our AI research faster than ever before.",
+          "author": "Dr. Jane Smith",
+          "position": "CTO",
+          "company": "AI Research Institute"
+        },
+        {
+          "quote": "The seamless integration across our heterogeneous computing environment has reduced deployment time by 60%.",
+          "author": "Michael Johnson",
+          "position": "VP of Engineering",
+          "company": "TechCorp Global"
+        }
+      ]
+    },
+    "cta": {
+      "title": "Ready to transform your computing infrastructure?",
+      "freeTrialButton": "Start Free Trial",
+      "requestDemoButton": "Request a Demo"
+    }
+  },
+  "products": {
+    "kantaloupe": {
+      "title": "Kantaloupe",
+      "subtitle": "The next generation heterogeneous computing platform",
+      "description": "Kantaloupe provides a unified platform for managing heterogeneous computing resources, optimizing performance and reducing costs.",
+      "features": [
+        "Intelligent workload scheduling",
+        "Real-time resource monitoring",
+        "Automated scaling and optimization",
+        "Cross-platform compatibility",
+        "Enterprise-grade security"
+      ],
+      "featureComparison": {
+        "title": "Feature Comparison",
+        "subTitle": "HAMi (Open Source) vs Kantaloupe (Enterprise) Feature Comparison",
+        "categoryHeader": "Feature Category",
+        "featureHeader": "Feature Item",
+        "categories": [
+          {
+            "name": "Environment Support",
+            "features": [
+              {
+                "name": "X86 Environment Support",
+                "hami": true,
+                "kantaloupe": true
+              },
+              {
+                "name": "Domestic IT Support",
+                "hami": false,
+                "kantaloupe": true
+              }
+            ]
+          },
+          {
+            "name": "GPU Kernel Capabilities",
+            "features": [
+              {
+                "name": "GPU Resource Pooling",
+                "hami": true,
+                "kantaloupe": true
+              },
+              {
+                "name": "Nvidia GPU Fine-grained Virtualization",
+                "hami": true,
+                "kantaloupe": true
+              },
+              {
+                "name": "Native nvidia-smi Support",
+                "hami": true,
+                "kantaloupe": true
+              },
+              {
+                "name": "Gunicorn Multi-task Support (Flask API)",
+                "hami": false,
+                "kantaloupe": true
+              },
+              {
+                "name": "Video Memory Overcommitment",
+                "hami": false,
+                "kantaloupe": true
+              },
+              {
+                "name": "Computing Power Overcommitment",
+                "hami": false,
+                "kantaloupe": true
+              },
+              {
+                "name": "Precise Computing/Memory Limits",
+                "hami": false,
+                "kantaloupe": true
+              }
+            ]
+          },
+          {
+            "name": "Scheduling Capabilities",
+            "features": [
+              {
+                "name": "Node/Card Level Binpack/Spread Scheduling",
+                "hami": true,
+                "kantaloupe": true
+              },
+              {
+                "name": "Nvidia MIG Support",
+                "hami": true,
+                "kantaloupe": true
+              },
+              {
+                "name": "Nvidia MIG Dynamic Virtualization",
+                "hami": true,
+                "kantaloupe": true
+              },
+              {
+                "name": "Nvidia NUMA Affinity Scheduling",
+                "hami": true,
+                "kantaloupe": true
+              }
+            ]
+          },
+          {
+            "name": "Heterogeneous Chip Management",
+            "features": [
+              {
+                "name": "Ascend (Full/Virtual/Dynamic)",
+                "hami": true,
+                "kantaloupe": true
+              },
+              {
+                "name": "Cambricon (Full/Virtual/Dynamic)",
+                "hami": true,
+                "kantaloupe": true
+              },
+              {
+                "name": "Hygon (Full/Virtual/Dynamic)",
+                "hami": true,
+                "kantaloupe": true
+              },
+              {
+                "name": "Iluvatar (Full/Virtual/Dynamic)",
+                "hami": true,
+                "kantaloupe": true
+              },
+              {
+                "name": "Mthreads (Full/Virtual/Dynamic)",
+                "hami": true,
+                "kantaloupe": true
+              },
+              {
+                "name": "Metax (Full/Virtual/NUMA & Network)",
+                "hami": true,
+                "kantaloupe": true
+              }
+            ]
+          },
+          {
+            "name": "Monitoring Capabilities",
+            "features": [
+              {
+                "name": "GPU-Application Binding",
+                "hami": true,
+                "kantaloupe": true
+              },
+              {
+                "name": "Application Computing/Memory Monitoring",
+                "hami": true,
+                "kantaloupe": true
+              },
+              {
+                "name": "GPU Fault Metrics/Alerts/Self-recovery",
+                "hami": false,
+                "kantaloupe": true
+              },
+              {
+                "name": "Idle Resource Alerts",
+                "hami": false,
+                "kantaloupe": true
+              }
+            ]
+          },
+          {
+            "name": "Enterprise Features",
+            "features": [
+              {
+                "name": "GPU Software Stack Management",
+                "hami": false,
+                "kantaloupe": true
+              },
+              {
+                "name": "Single Cluster GUI",
+                "hami": true,
+                "kantaloupe": true
+              },
+              {
+                "name": "Metering & Billing System",
+                "hami": false,
+                "kantaloupe": true
+              },
+              {
+                "name": "Flexible License Management",
+                "hami": false,
+                "kantaloupe": true
+              },
+              {
+                "name": "Fine-grained Quota Management",
+                "hami": false,
+                "kantaloupe": true
+              },
+              {
+                "name": "Training & Inference Switching",
+                "hami": false,
+                "kantaloupe": true
+              },
+              {
+                "name": "Large-scale Scheduling Optimization",
+                "hami": false,
+                "kantaloupe": true
+              }
+            ]
+          }
+        ],
+        "openSource": "HAMi Open Source",
+        "enterprise": "Kantaloupe Enterprise"
+      },
+      "technicalArchitecture": "Technical Architecture",
+      "architectureDiagram": "Architecture Diagram",
+      "readyToStart": "Ready to start using kantaloupe?",
+      "customSolutions": {
+        "title": "Custom Solutions",
+        "description": "We understand that every organization has unique needs. Our expert team can customize Kantaloupe solutions for your specific challenges.",
+        "contactText": "Contact our solution experts and get ready to address your computing challenges"
+      },
+      "exploreResources": {
+        "title": "Explore Our Technical Documentation",
+        "description": "Browse our technical documentation, blog articles, and whitepapers to learn more about Kantaloupe"
+      },
+      "latestResources": {
+        "title": "Latest Resources",
+        "newsletterTitle": "Subscribe to Our Technical Newsletter",
+        "newsletterDescription": "Receive regular updates on product improvements, technical articles, and industry insights delivered directly to your inbox.",
+        "subscribeButton": "Subscribe"
+      }
+    }
+  },
+  "solutions": {
+    "title": "Solutions",
+    "subtitle": "Powerful computing solutions for complex challenges",
+    "categories": [
+      {
+        "title": "AI/ML",
+        "description": "Optimize your machine learning infrastructure for faster training and inference",
+        "learnMore": "Learn more"
+      },
+      {
+        "title": "HPC",
+        "description": "Scale your high-performance computing workloads efficiently",
+        "learnMore": "Learn more"
+      },
+      {
+        "title": "Edge Computing",
+        "description": "Extend your computing capabilities to the edge with optimized resource allocation",
+        "learnMore": "Learn more"
+      }
+    ],
+    "customSolutions": {
+      "title": "Custom Solutions",
+      "description": "We understand that every organization has unique needs. Our expert team can customize Kantaloupe solutions for your specific challenges.",
+      "contactButton": "Contact our solution experts"
+    },
+    "successStories": {
+      "title": "Success Stories",
+      "subtitle": "Learn how our solutions have helped customers address complex computing challenges",
+      "viewAllButton": "View all stories"
+    },
+    "readyForChallenge": "Ready to address your computing challenges?"
+  },
+  "freeTrial": {
+    "title": "Free Trial",
+    "subtitle": "Start your 30-day free trial today and experience the power of kantaloupe",
+    "form": {
+      "name": "Name",
+      "email": "Work Email",
+      "company": "Company Name",
+      "phone": "Phone Number",
+      "useCase": "How do you plan to use kantaloupe?",
+      "terms": "I agree to dynamia ai's Terms of Service and Privacy Policy",
+      "submitButton": "Start Free Trial"
+    },
+    "disclaimer": "After your free trial ends, you can choose to upgrade to a paid plan or cancel your account. No credit card required."
+  },
+  "requestDemo": {
+    "title": "Request a Demo",
+    "subtitle": "Schedule a personalized demo to learn how kantaloupe can help your organization optimize computing resources",
+    "demoContent": {
+      "title": "Demo Content",
+      "items": [
+        "Overview of kantaloupe platform features",
+        "Customized demonstration tailored to your needs",
+        "Interactive session with our solution experts",
+        "Detailed exploration of deployment options and pricing"
+      ]
+    },
+    "form": {
+      "title": "Your Information",
+      "name": "Name",
+      "email": "Work Email",
+      "company": "Company Name",
+      "jobTitle": "Job Title",
+      "message": "What would you like to learn in the demo?",
+      "submitButton": "Request Demo"
+    },
+    "followUp": "After submitting your request, our team will contact you within 24 hours to schedule your demo."
+  },
+  "resources": {
+    "title": "Resources",
+    "subtitle": "Explore our technical documentation, blog articles, and whitepapers to learn more about Kantaloupe",
+    "viewMore": "View more",
+    "documentation": {
+      "title": "Documentation",
+      "description": "Technical guides, API references, and best practices"
+    },
+    "blog": {
+      "title": "Blog",
+      "description": "Insights, tutorials, and news from our team"
+    },
+    "whitepapers": {
+      "title": "Whitepapers",
+      "description": "In-depth analysis and research reports"
+    },
+    "latestResources": {
+      "title": "Latest Resources",
+      "articles": [
+        {
+          "title": "Kantaloupe v2.0 Release: New Features and Improvements",
+          "category": "Blog",
+          "date": "2025-01-15",
+          "excerpt": "Learn about the important updates and performance enhancements in the latest version of Kantaloupe.",
+          "link": "/resources/blog/kantaloupe-v2-release"
+        },
+        {
+          "title": "Heterogeneous Computing in Large-Scale AI Training",
+          "category": "Whitepaper",
+          "date": "2024-12-10",
+          "excerpt": "Explore how to use Kantaloupe to optimize resource allocation for large-scale AI model training.",
+          "link": "/resources/whitepapers/heterogeneous-computing-ai-training"
+        },
+        {
+          "title": "Kantaloupe API Reference Guide",
+          "category": "Documentation",
+          "date": "2024-11-28",
+          "excerpt": "Comprehensive API documentation to help developers integrate and extend the Kantaloupe platform.",
+          "link": "/resources/documentation/api-reference"
+        },
+        {
+          "title": "Case Study: How TechCorp Saved 40% on Computing Costs",
+          "category": "Blog",
+          "date": "2024-11-15",
+          "excerpt": "Learn how TechCorp used Kantaloupe to optimize their HPC workloads and significantly reduce costs.",
+          "link": "/resources/blog/techcorp-case-study"
+        }
+      ],
+      "newsletterTitle": "Subscribe to Our Technical Newsletter",
+      "newsletterDescription": "Receive regular updates on product improvements, technical articles, and industry insights delivered directly to your inbox.",
+      "emailPlaceholder": "Your email address",
+      "subscribeButton": "Subscribe"
+    }
+  },
+  "company": {
+    "about": {
+      "title": "About Us",
+      "description": "We are pioneering the future of heterogeneous computing to help organizations maximize their computational resources",
+      "mission": {
+        "title": "Our Mission",
+        "description1": "At dynamia ai, we are committed to helping organizations maximize the value of their computing resources through innovative heterogeneous computing solutions. We believe that by intelligently managing and optimizing computing resources, we can accelerate scientific discovery, drive technological innovation, and create value for customers across industries worldwide.",
+        "description2": "Our flagship product, kantaloupe, is a unified heterogeneous computing platform designed to handle today's most complex computational challenges. Whether for AI training, high-performance computing, or edge computing, kantaloupe delivers unparalleled resource efficiency and performance optimization."
+      },
+      "vision": {
+        "title": "Company Vision",
+        "points": [
+          "Build the world's leading heterogeneous computing management platform",
+          "Drive efficient utilization of computing resources, reducing energy waste",
+          "Empower organizations to achieve innovation through optimized computing infrastructure"
+        ]
+      }
+    },
+    "team": {
+      "title": "Leadership Team",
+      "members": [
+        { "name": "Xiao Zhang", "position": "Founder & CEO", "image": "CEO" },
+        { "name": "Mengxuan Li", "position": "Chief Technology Officer", "image": "CTO" },
+        { "name": "Wen Chen", "position": "Chief Product Officer", "image": "CPO" },
+        { "name": "Yu Yin", "position": "Chief Operating Officer", "image": "COO" }
+      ]
+    },
+    "careers": {
+      "title": "Careers",
+      "description": "Join our team of innovators and shape the future of computing",
+      "jobs": [
+        { "title": "Senior Software Engineer", "location": "Beijing", "type": "Full-time" },
+        { "title": "Machine Learning Engineer", "location": "Shanghai", "type": "Full-time" },
+        { "title": "Product Manager", "location": "Remote", "type": "Full-time" },
+        { "title": "Solutions Architect", "location": "Shenzhen", "type": "Full-time" }
+      ],
+      "viewJobsButton": "View all positions",
+      "applyButton": "Apply"
+    },
+    "contact": {
+      "title": "Contact",
+      "description": "Get in touch with our team",
+      "address": "123 Tech Avenue, San Francisco, CA 94105",
+      "email": "info@dynamia.ai",
+      "phone": "+1 (555) 123-4567",
+      "formTitle": "Send a Message",
+      "nameLabel": "Your Name",
+      "emailLabel": "Your Email",
+      "messageLabel": "Message",
+      "submitButton": "Send"
+    }
+  },
+  "footer": {
+    "copyright": "© 2025 dynamia ai",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfService": "Terms of Service"
+  },
+  "search": {
+    "placeholder": "Search...",
+    "noResults": "No results found"
+  }
+} 

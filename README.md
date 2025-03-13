@@ -1,3 +1,5 @@
+# Dynamia AI Landing Page
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
@@ -19,6 +21,51 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+
+## Build and Deployment
+
+### Docker
+
+This project includes a Dockerfile for containerization. To build and run the Docker image locally:
+
+```bash
+# Build the Docker image
+docker build -t dynamia-ai-lp .
+
+# Run the container
+docker run -p 3000:3000 dynamia-ai-lp
+```
+
+### GitHub Actions
+
+The project includes a GitHub Actions workflow in `.github/workflows/docker-build.yml` that:
+
+1. Builds the application
+2. Creates a Docker image
+3. Pushes the image to GitHub Container Registry (ghcr.io)
+
+The workflow is triggered on:
+- Push to the main branch (tagged as 'latest')
+- Push of tags starting with 'v' (tagged with the version number)
+- Manual workflow dispatch
+
+### Kubernetes Deployment with Helm
+
+A Helm chart is provided in the `charts` directory for deploying to Kubernetes:
+
+```bash
+# Create image pull secret (if not already created)
+kubectl create secret docker-registry ghcr-secret \
+  --docker-server=ghcr.io \
+  --docker-username=YOUR_GITHUB_USERNAME \
+  --docker-password=YOUR_GITHUB_TOKEN \
+  --docker-email=YOUR_EMAIL
+
+# Install/Upgrade the application
+helm upgrade --install dynamia-ai-lp ./charts/dynamia-ai-lp
+```
+
+For more detailed information about the Helm chart, see the [chart README](./charts/dynamia-ai-lp/README.md).
 
 ## Learn More
 

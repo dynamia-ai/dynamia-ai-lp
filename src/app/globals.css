@@ -1,8 +1,19 @@
 @import "tailwindcss";
 
 :root {
+  /* 基础颜色 */
   --background: #ffffff;
   --foreground: #171717;
+  
+  /* 主题色系统 */
+  --primary: #0FD05D; /* 主色调 - 绿色 */
+  --primary-dark: #0CAB4D; /* 深色版本 - 用于悬停状态 */
+  --primary-darker: #0A8F41; /* 更深色版本 - 用于激活状态 */
+  --primary-light: rgba(15, 208, 93, 0.1); /* 淡色版本 - 10%透明度 */
+  --primary-lighter: rgba(15, 208, 93, 0.05); /* 更淡色版本 - 5%透明度 */
+  
+  /* 文字在主色调背景上的颜色 */
+  --on-primary: #ffffff;
 }
 
 @theme inline {
@@ -16,6 +27,10 @@
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
+    
+    /* 暗色模式下可以调整主色调的亮度 */
+    --primary-light: rgba(15, 208, 93, 0.2); /* 暗色模式下稍微提高透明度 */
+    --primary-lighter: rgba(15, 208, 93, 0.1);
   }
 }
 
@@ -23,4 +38,48 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+/* 主题色辅助类 */
+.bg-primary { background-color: var(--primary); }
+.bg-primary-dark { background-color: var(--primary-dark); }
+.bg-primary-darker { background-color: var(--primary-darker); }
+.bg-primary-light { background-color: var(--primary-light); }
+.bg-primary-lighter { background-color: var(--primary-lighter); }
+
+.text-primary { color: var(--primary); }
+.border-primary { border-color: var(--primary); }
+
+/* 悬停状态 */
+.hover\:bg-primary-dark:hover { background-color: var(--primary-dark); }
+.hover\:text-primary:hover { color: var(--primary); }
+.hover\:border-primary:hover { border-color: var(--primary); }
+
+/* 动画延迟类 */
+.animation-delay-200 {
+  animation-delay: 200ms;
+}
+
+.animation-delay-400 {
+  animation-delay: 400ms;
+}
+
+/* 优化动画性能和平滑度 */
+.animate-spin {
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
+
+.animate-pulse {
+  animation: pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }

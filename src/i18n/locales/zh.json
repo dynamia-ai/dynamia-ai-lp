@@ -1,0 +1,471 @@
+{
+  "navigation": {
+    "home": "首页",
+    "products": "产品",
+    "solutions": "解决方案",
+    "resources": "资源",
+    "company": "公司",
+    "freeTrial": "免费试用",
+    "requestDemo": "申请演示",
+    "openMenu": "打开菜单"
+  },
+  "home": {
+    "hero": {
+      "title": "云原生、高效异构 AI 计算虚拟化中间件",
+      "subtitle": "解锁异构计算的高效管理，即刻体验 Kantaloupe 的强大功能！",
+      "chineseSlogan": "统一异构计算、高效利用资源"
+    },
+    "socialProof": {
+      "title": "全球领先的 AI 实验室和企业值得信赖"
+    },
+    "keyAdvantages": {
+      "title": "为什么选择 Kantaloupe？",
+      "advantages": [
+        {
+          "title": "高性能调度",
+          "description": "通过智能工作负载调度优化资源分配"
+        },
+        {
+          "title": "多集群编排",
+          "description": "无缝管理跨多个集群和环境的资源"
+        },
+        {
+          "title": "GPU 加速管理",
+          "description": "最大程度地利用专用硬件，用于 AI、ML 和 HPC 工作负载"
+        },
+        {
+          "title": "成本优化与自动扩展",
+          "description": "根据工作负载需求自动扩展或缩减资源"
+        }
+      ]
+    },
+    "testimonials": {
+      "title": "客户评价",
+      "items": [
+        {
+          "quote": "Kantaloupe 大大提高了我们的计算效率，使我们能够比以往更快地扩展 AI 研究。",
+          "author": "Dr. Jane Smith",
+          "position": "首席技术官",
+          "company": "AI 研究所"
+        },
+        {
+          "quote": "在我们的 AI 计算基础设施中，跨异构计算环境的无缝集成减少了 60% 的部署时间。",
+          "author": "Michael Johnson",
+          "position": "工程副总裁",
+          "company": "TechCorp Global"
+        }
+      ]
+    },
+    "cta": {
+      "title": "准备好改造您的 AI 计算基础设施了吗？",
+      "freeTrialButton": "开始免费试用",
+      "requestDemoButton": "申请演示"
+    }
+  },
+  "products": {
+    "kantaloupe": {
+      "title": "Kantaloupe",
+      "subtitle": "下一代异构计算平台",
+      "description": "Kantaloupe 提供了一个统一平台，用于管理异构计算资源，优化性能并降低成本。",
+      "features": [
+        "智能工作负载调度",
+        "实时资源监控",
+        "自动扩展和优化",
+        "跨平台兼容性",
+        "企业级安全"
+      ],
+      "featureComparison": {
+        "title": "特性对比",
+        "subTitle": "HAMi（开源版）和 Kantaloupe（企业版）功能对比",
+        "categoryHeader": "功能类别",
+        "featureHeader": "功能项",
+        "categories": [
+          {
+            "name": "环境支持",
+            "features": [
+              {
+                "name": "X86 环境支持",
+                "hami": true,
+                "kantaloupe": true
+              },
+              {
+                "name": "国产 IT 支持",
+                "hami": false,
+                "kantaloupe": true
+              }
+            ]
+          },
+          {
+            "name": "GPU Kernel 能力",
+            "features": [
+              {
+                "name": "GPU 资源池化",
+                "hami": true,
+                "kantaloupe": true
+              },
+              {
+                "name": "Nvidia GPU 细粒度虚拟化",
+                "hami": true,
+                "kantaloupe": true
+              },
+              {
+                "name": "原生 nvidia-smi 支持",
+                "hami": true,
+                "kantaloupe": true
+              },
+              {
+                "name": "Gunicorn 多任务支持（Flask API）",
+                "hami": false,
+                "kantaloupe": true
+              },
+              {
+                "name": "显存超分",
+                "hami": false,
+                "kantaloupe": true
+              },
+              {
+                "name": "算力超分",
+                "hami": false,
+                "kantaloupe": true
+              },
+              {
+                "name": "精准算力/显存限制",
+                "hami": false,
+                "kantaloupe": true
+              }
+            ]
+          },
+          {
+            "name": "调度能力",
+            "features": [
+              {
+                "name": "节点/卡级 Binpack/Spread 调度",
+                "hami": true,
+                "kantaloupe": true
+              },
+              {
+                "name": "Nvidia MIG 支持",
+                "hami": true,
+                "kantaloupe": true
+              },
+              {
+                "name": "Nvidia MIG 动态虚拟化",
+                "hami": true,
+                "kantaloupe": true
+              },
+              {
+                "name": "Nvidia NUMA 亲和性调度",
+                "hami": true,
+                "kantaloupe": true
+              }
+            ]
+          },
+          {
+            "name": "异构芯片管理",
+            "features": [
+              {
+                "name": "Ascend（全卡/虚拟/动态）",
+                "hami": true,
+                "kantaloupe": true
+              },
+              {
+                "name": "寒武纪（全卡/虚拟/动态）",
+                "hami": true,
+                "kantaloupe": true
+              },
+              {
+                "name": "海光（全卡/虚拟/动态）",
+                "hami": true,
+                "kantaloupe": true
+              },
+              {
+                "name": "天数智芯（全卡/虚拟/动态）",
+                "hami": true,
+                "kantaloupe": true
+              },
+              {
+                "name": "摩尔线程（全卡/虚拟/动态）",
+                "hami": true,
+                "kantaloupe": true
+              },
+              {
+                "name": "壁仞（全卡/虚拟/NUMA & 网络）",
+                "hami": true,
+                "kantaloupe": true
+              }
+            ]
+          },
+          {
+            "name": "监控能力",
+            "features": [
+              {
+                "name": "GPU-应用绑定关系",
+                "hami": true,
+                "kantaloupe": true
+              },
+              {
+                "name": "应用算力/内存监控",
+                "hami": true,
+                "kantaloupe": true
+              },
+              {
+                "name": "GPU 故障指标/告警/自愈能力",
+                "hami": false,
+                "kantaloupe": true
+              },
+              {
+                "name": "空闲资源告警",
+                "hami": false,
+                "kantaloupe": true
+              }
+            ]
+          },
+          {
+            "name": "企业级功能",
+            "features": [
+              {
+                "name": "GPU 软件栈管理",
+                "hami": false,
+                "kantaloupe": true
+              },
+              {
+                "name": "单集群图形界面",
+                "hami": true,
+                "kantaloupe": true
+              },
+              {
+                "name": "计量计费系统",
+                "hami": false,
+                "kantaloupe": true
+              },
+              {
+                "name": "灵活的 License 管理",
+                "hami": false,
+                "kantaloupe": true
+              },
+              {
+                "name": "细粒度配额管理",
+                "hami": false,
+                "kantaloupe": true
+              },
+              {
+                "name": "训练推理切换",
+                "hami": false,
+                "kantaloupe": true
+              },
+              {
+                "name": "大规模调度优化",
+                "hami": false,
+                "kantaloupe": true
+              }
+            ]
+          }
+        ],
+        "openSource": "HAMi 开源版",
+        "enterprise": "Kantaloupe 企业版"
+      },
+      "technicalArchitecture": "技术架构",
+      "architectureDiagram": "架构示意图",
+      "readyToStart": "准备好开始使用 kantaloupe 了吗？",
+      "customSolutions": {
+        "title": "定制解决方案",
+        "description": "我们了解每个组织都有独特的需求。我们的专家团队可以为您的特定挑战定制 kantaloupe 解决方案。",
+        "contactText": "联系我们的解决方案专家，准备好解决您的 AI 计算挑战了吗？"
+      },
+      "exploreResources": {
+        "title": "探索我们的技术文档",
+        "description": "探索我们的技术文档、博客文章和白皮书，了解更多关于 kantaloupe 的信息"
+      },
+      "latestResources": {
+        "title": "最新资源",
+        "newsletterTitle": "订阅我们的技术通讯",
+        "newsletterDescription": "定期获取最新的产品更新、技术文章和行业见解，直接发送到您的邮箱。",
+        "subscribeButton": "订阅"
+      }
+    }
+  },
+  "solutions": {
+    "title": "解决方案",
+    "subtitle": "为复杂挑战提供强大计算解决方案",
+    "categories": [
+      {
+        "title": "AI/ML",
+        "description": "优化您的机器学习基础设施，实现更快的训练和推理",
+        "learnMore": "了解更多"
+      },
+      {
+        "title": "HPC",
+        "description": "高效扩展您的高性能计算工作负载",
+        "learnMore": "了解更多"
+      },
+      {
+        "title": "边缘计算",
+        "description": "通过优化的资源分配将您的计算能力扩展到边缘",
+        "learnMore": "了解更多"
+      }
+    ],
+    "customSolutions": {
+      "title": "定制解决方案",
+      "description": "我们了解每个组织都有独特的需求。我们的专家团队可以为您的特定挑战定制 kantaloupe 解决方案。",
+      "contactButton": "联系我们的解决方案专家"
+    },
+    "successStories": {
+      "title": "成功案例",
+      "subtitle": "了解我们的解决方案如何帮助客户解决复杂的计算挑战",
+      "viewAllButton": "查看所有案例"
+    },
+    "readyForChallenge": "准备好解决您的 AI 计算挑战了吗？"
+  },
+  "freeTrial": {
+    "title": "免费试用",
+    "subtitle": "立即开始您的 30 天免费试用，体验 kantaloupe 的强大功能",
+    "form": {
+      "name": "姓名",
+      "email": "企业邮箱",
+      "company": "公司名称",
+      "phone": "电话号码",
+      "useCase": "您计划如何使用 kantaloupe?",
+      "terms": "我同意 dynamia ai 的服务条款和隐私政策",
+      "submitButton": "开始免费试用"
+    },
+    "disclaimer": "免费试用期结束后，您可以选择升级到付费计划或取消您的账户。无需信用卡。"
+  },
+  "requestDemo": {
+    "title": "申请演示",
+    "subtitle": "安排一次个性化演示，了解 kantaloupe 如何帮助您的组织优化计算资源",
+    "demoContent": {
+      "title": "演示内容",
+      "items": [
+        "kantaloupe 平台功能概述",
+        "针对您特定需求的定制演示",
+        "与我们的解决方案专家互动交流",
+        "详细了解部署选项和定价"
+      ]
+    },
+    "form": {
+      "title": "填写信息",
+      "name": "姓名",
+      "email": "企业邮箱",
+      "company": "公司名称",
+      "jobTitle": "职位",
+      "message": "您希望在演示中了解什么？",
+      "submitButton": "申请演示"
+    },
+    "followUp": "提交申请后，我们的团队将在 24 小时内与您联系，安排演示时间。"
+  },
+  "resources": {
+    "title": "资源中心",
+    "subtitle": "探索我们的技术文档、博客文章和白皮书，了解更多关于 kantaloupe 的信息",
+    "viewMore": "查看更多",
+    "documentation": {
+      "title": "文档",
+      "description": "技术指南、API参考和最佳实践"
+    },
+    "blog": {
+      "title": "博客",
+      "description": "来自我们团队的见解、教程和新闻"
+    },
+    "whitepapers": {
+      "title": "白皮书",
+      "description": "深入分析和研究报告"
+    },
+    "latestResources": {
+      "title": "最新资源",
+      "articles": [
+        {
+          "title": "Kantaloupe v2.0 发布：新特性与改进",
+          "category": "博客",
+          "date": "2025-01-15",
+          "excerpt": "了解 Kantaloupe 最新版本中的重要更新和性能提升。",
+          "link": "/resources/blog/kantaloupe-v2-release"
+        },
+        {
+          "title": "异构计算在大规模 AI 训练中的应用",
+          "category": "白皮书",
+          "date": "2024-12-10",
+          "excerpt": "探索如何利用 Kantaloupe 优化大规模 AI 模型训练的资源分配。",
+          "link": "/resources/whitepapers/heterogeneous-computing-ai-training"
+        },
+        {
+          "title": "Kantaloupe API 参考指南",
+          "category": "文档",
+          "date": "2024-11-28",
+          "excerpt": "全面的 API 文档，帮助开发者集成和扩展 Kantaloupe 平台。",
+          "link": "/resources/documentation/api-reference"
+        },
+        {
+          "title": "案例研究：TechCorp 如何节省 40% 的计算成本",
+          "category": "博客",
+          "date": "2024-11-15",
+          "excerpt": "了解 TechCorp 如何使用 Kantaloupe 优化其 HPC 工作负载并显著降低成本。",
+          "link": "/resources/blog/techcorp-case-study"
+        }
+      ],
+      "newsletterTitle": "订阅我们的技术通讯",
+      "newsletterDescription": "定期获取最新的产品更新、技术文章和行业见解，直接发送到您的邮箱。",
+      "emailPlaceholder": "您的邮箱地址",
+      "subscribeButton": "订阅"
+    }
+  },
+  "company": {
+    "about": {
+      "title": "关于我们",
+      "description": "我们正在开创异构计算的未来，帮助组织最大限度地利用其计算资源",
+      "mission": {
+        "title": "我们的使命",
+        "description1": "在 dynamia ai，我们致力于通过创新的异构计算解决方案，帮助组织最大化其计算资源的价值。我们相信，通过智能地管理和优化计算资源，可以加速科学发现、推动技术创新，并为全球各行各业的客户创造价值。",
+        "description2": "我们的旗舰产品 kantaloupe 是一个统一的异构计算平台，专为处理当今最复杂的计算挑战而设计。无论是 AI 训练、高性能计算还是边缘计算，kantaloupe 都能提供无与伦比的资源效率和性能优化。"
+      },
+      "vision": {
+        "title": "公司愿景",
+        "points": [
+          "打造全球领先的异构计算管理平台",
+          "推动计算资源的高效利用，减少能源浪费",
+          "赋能组织通过优化计算基础设施实现创新"
+        ]
+      }
+    },
+    "team": {
+      "title": "领导团队",
+      "members": [
+        { "name": "张潇", "position": "创始人兼首席执行官", "image": "CEO" },
+        { "name": "李孟轩", "position": "首席技术官", "image": "CTO" },
+        { "name": "陈文", "position": "首席产品官", "image": "CPO" },
+        { "name": "尹玉", "position": "首席运营官", "image": "COO" }
+      ]
+    },
+    "careers": {
+      "title": "职业机会",
+      "description": "加入我们的创新团队，塑造计算的未来",
+      "jobs": [
+        { "title": "高级软件工程师", "location": "北京", "type": "全职" },
+        { "title": "机器学习工程师", "location": "上海", "type": "全职" },
+        { "title": "产品经理", "location": "远程", "type": "全职" },
+        { "title": "解决方案架构师", "location": "深圳", "type": "全职" }
+      ],
+      "viewJobsButton": "查看所有职位",
+      "applyButton": "申请"
+    },
+    "contact": {
+      "title": "联系我们",
+      "description": "与我们的团队联系",
+      "address": "上海市徐汇区龙台路 180 号 f2 栋 5F503",
+      "email": "info@dynamia.ai",
+      "phone": "+86 21 0000 0000",
+      "formTitle": "发送消息",
+      "nameLabel": "您的姓名",
+      "emailLabel": "您的邮箱",
+      "messageLabel": "消息",
+      "submitButton": "发送"
+    }
+  },
+  "footer": {
+    "copyright": "© 2025 dynamia ai",
+    "privacyPolicy": "隐私政策",
+    "termsOfService": "服务条款"
+  },
+  "search": {
+    "placeholder": "搜索...",
+    "noResults": "未找到相关结果"
+  }
+} 

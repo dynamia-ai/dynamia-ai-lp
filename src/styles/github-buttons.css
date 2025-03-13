@@ -1,0 +1,129 @@
+/* GitHub按钮样式 */
+.github-btn {
+  height: 20px;
+  overflow: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 14px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.github-btn .gh-btn, 
+.github-btn .gh-count, 
+.github-btn .gh-ico {
+  float: left;
+}
+
+.github-btn .gh-btn, 
+.github-btn .gh-count {
+  padding: 2px 5px 2px 4px;
+  color: #333;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+.github-btn .gh-btn {
+  background-color: #eee;
+  background-image: linear-gradient(to bottom, #fcfcfc 0, #eee 100%);
+  background-repeat: no-repeat;
+  border: 1px solid #d5d5d5;
+}
+
+.github-btn .gh-btn:hover, 
+.github-btn .gh-btn:focus {
+  text-decoration: none;
+  background-color: #ddd;
+  background-image: linear-gradient(to bottom, #eee 0, #ddd 100%);
+  border-color: #ccc;
+}
+
+.github-btn .gh-btn:active {
+  background-color: #dcdcdc;
+  background-image: none;
+  border-color: #b5b5b5;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+.github-btn .gh-ico {
+  width: 14px;
+  height: 14px;
+  margin-right: 4px;
+  background: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='12 12 40 40'%3e%3cpath fill='%23333' d='M32 13.4c-10.5 0-19 8.5-19 19 0 8.4 5.5 15.5 13 18 1 .2 1.3-.4 1.3-.9v-3.2c-5.3 1.1-6.4-2.6-6.4-2.6-.9-2.1-2.1-2.7-2.1-2.7-1.7-1.2.1-1.1.1-1.1 1.9.1 2.9 2 2.9 2 1.7 2.9 4.5 2.1 5.5 1.6.2-1.2.7-2.1 1.2-2.6-4.2-.5-8.7-2.1-8.7-9.4 0-2.1.7-3.7 2-5.1-.2-.5-.8-2.4.2-5 0 0 1.6-.5 5.2 2 1.5-.4 3.1-.7 4.8-.7 1.6 0 3.3.2 4.7.7 3.6-2.4 5.2-2 5.2-2 1 2.6.4 4.6.2 5 1.2 1.3 2 3 2 5.1 0 7.3-4.5 8.9-8.7 9.4.7.6 1.3 1.7 1.3 3.5v5.2c0 .5.4 1.1 1.3.9 7.5-2.6 13-9.7 13-18.1 0-10.5-8.5-19-19-19z'/%3e%3c/svg%3e") 0 0/100% 100% no-repeat;
+}
+
+.github-btn .gh-count {
+  position: relative !important;
+  margin-left: 4px !important;
+  background-color: #fafafa !important;
+  border: 1px solid #d4d4d4 !important;
+}
+
+.github-btn .gh-count:hover, 
+.github-btn .gh-count:focus {
+  color: #0366d6;
+}
+
+.github-btn .gh-count::before, 
+.github-btn .gh-count::after {
+  position: absolute !important;
+  display: inline-block !important;
+  width: 0 !important;
+  height: 0 !important;
+  content: "" !important;
+  border-color: transparent !important;
+  border-style: solid !important;
+}
+
+.github-btn .gh-count::before {
+  top: 50% !important;
+  left: -3px !important;
+  margin-top: -4px !important;
+  border-width: 4px 4px 4px 0 !important;
+  border-right-color: #fafafa !important;
+}
+
+.github-btn .gh-count::after {
+  top: 50% !important;
+  left: -4px !important;
+  z-index: -1 !important;
+  margin-top: -5px !important;
+  border-width: 5px 5px 5px 0 !important;
+  border-right-color: #d4d4d4 !important;
+}
+
+.github-btn-large {
+  height: 30px;
+}
+
+.github-btn-large .gh-btn, 
+.github-btn-large .gh-count {
+  padding: 3px 10px 3px 8px;
+  font-size: 16px;
+  line-height: 22px;
+  border-radius: 4px;
+}
+
+.github-btn-large .gh-ico {
+  width: 20px;
+  height: 20px;
+}
+
+.github-btn-large .gh-count {
+  margin-left: 6px !important;
+}
+
+.github-btn-large .gh-count::before {
+  left: -5px !important;
+  margin-top: -6px !important;
+  border-width: 6px 6px 6px 0 !important;
+}
+
+.github-btn-large .gh-count::after {
+  left: -6px !important;
+  margin-top: -7px !important;
+  border-width: 7px 7px 7px 0 !important;
+} 
