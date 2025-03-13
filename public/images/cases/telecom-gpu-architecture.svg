@@ -1,0 +1,109 @@
+<svg width="900" height="500" viewBox="0 0 900 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- 背景 -->
+  <rect width="900" height="500" rx="12" fill="#E8FFF0"/>
+  
+  <!-- 分层结构背景 -->
+  <rect x="100" y="70" width="700" height="380" rx="8" fill="white" stroke="#0FD05D" stroke-width="2"/>
+  
+  <!-- 标题装饰 -->
+  <rect x="350" y="25" width="200" height="6" rx="3" fill="#0FD05D" opacity="0.4"/>
+  <rect x="325" y="40" width="250" height="6" rx="3" fill="#0FD05D" opacity="0.3"/>
+  <circle cx="315" cy="33" r="4" fill="#0FD05D" opacity="0.5"/>
+  <circle cx="585" cy="33" r="4" fill="#0FD05D" opacity="0.5"/>
+  
+  <!-- 应用层 -->
+  <rect x="150" y="100" width="600" height="60" rx="6" fill="#E6FFEF" stroke="#0FD05D" stroke-width="1.5"/>
+  <!-- 居中显示应用层文字 -->
+  <text x="450" y="118" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#0FD05D" text-anchor="middle">应用层</text>
+  
+  <!-- 应用实例 -->
+  <rect x="180" y="130" width="100" height="40" rx="4" fill="white" stroke="#0FD05D" stroke-width="1"/>
+  <text x="230" y="155" font-family="Arial, sans-serif" font-size="12" fill="#333" text-anchor="middle">AI训练任务</text>
+  
+  <rect x="310" y="130" width="100" height="40" rx="4" fill="white" stroke="#0FD05D" stroke-width="1"/>
+  <text x="360" y="155" font-family="Arial, sans-serif" font-size="12" fill="#333" text-anchor="middle">推理服务</text>
+  
+  <rect x="440" y="130" width="100" height="40" rx="4" fill="white" stroke="#0FD05D" stroke-width="1"/>
+  <text x="490" y="155" font-family="Arial, sans-serif" font-size="12" fill="#333" text-anchor="middle">数据分析</text>
+  
+  <rect x="570" y="130" width="130" height="40" rx="4" fill="white" stroke="#0FD05D" stroke-width="1"/>
+  <text x="635" y="155" font-family="Arial, sans-serif" font-size="12" fill="#333" text-anchor="middle">客户服务AI系统</text>
+  
+  <!-- HAMi 调度层 -->
+  <rect x="150" y="190" width="600" height="80" rx="6" fill="#C1F7D7" stroke="#0FD05D" stroke-width="1.5"/>
+  <!-- 居中显示调度层文字 -->
+  <text x="450" y="208" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#0FD05D" text-anchor="middle">调度与管理层</text>
+  
+  <!-- 调度组件 -->
+  <rect x="180" y="220" width="160" height="40" rx="4" fill="white" stroke="#0FD05D" stroke-width="1"/>
+  <text x="260" y="245" font-family="Arial, sans-serif" font-size="12" fill="#333" text-anchor="middle">智能工作负载调度器</text>
+  
+  <rect x="370" y="220" width="160" height="40" rx="4" fill="white" stroke="#0FD05D" stroke-width="1"/>
+  <text x="450" y="245" font-family="Arial, sans-serif" font-size="12" fill="#333" text-anchor="middle">GPU 资源管理器</text>
+  
+  <rect x="560" y="220" width="160" height="40" rx="4" fill="white" stroke="#0FD05D" stroke-width="1"/>
+  <text x="640" y="245" font-family="Arial, sans-serif" font-size="12" fill="#333" text-anchor="middle">多租户隔离控制器</text>
+  
+  <!-- HAMi 虚拟化层 -->
+  <rect x="150" y="290" width="600" height="60" rx="6" fill="#A3F0C0" stroke="#0FD05D" stroke-width="1.5"/>
+  <!-- 居中显示虚拟化层文字，增大字体并上下居中 -->
+  <text x="450" y="325" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#0FD05D" text-anchor="middle">虚拟化设备管理层</text>
+  
+  <!-- 物理资源层 -->
+  <rect x="150" y="360" width="600" height="80" rx="6" fill="#E6FFEF" stroke="#0FD05D" stroke-width="1.5"/>
+  <!-- 居中显示物理资源层文字 -->
+  <text x="450" y="378" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#0FD05D" text-anchor="middle">物理资源层</text>
+  
+  <!-- GPU资源 -->
+  <rect x="180" y="390" width="90" height="40" rx="4" fill="white" stroke="#0FD05D" stroke-width="1"/>
+  <text x="225" y="415" font-family="Arial, sans-serif" font-size="12" fill="#333" text-anchor="middle">NVIDIA A100</text>
+  
+  <rect x="290" y="390" width="90" height="40" rx="4" fill="white" stroke="#0FD05D" stroke-width="1"/>
+  <text x="335" y="415" font-family="Arial, sans-serif" font-size="12" fill="#333" text-anchor="middle">NVIDIA V100</text>
+  
+  <rect x="400" y="390" width="90" height="40" rx="4" fill="white" stroke="#0FD05D" stroke-width="1"/>
+  <text x="445" y="415" font-family="Arial, sans-serif" font-size="12" fill="#333" text-anchor="middle">NVIDIA T4</text>
+  
+  <rect x="510" y="390" width="90" height="40" rx="4" fill="white" stroke="#0FD05D" stroke-width="1"/>
+  <text x="555" y="415" font-family="Arial, sans-serif" font-size="12" fill="#333" text-anchor="middle">昇腾910</text>
+  
+  <rect x="620" y="390" width="90" height="40" rx="4" fill="white" stroke="#0FD05D" stroke-width="1"/>
+  <text x="665" y="415" font-family="Arial, sans-serif" font-size="12" fill="#333" text-anchor="middle">寒武纪MLU</text>
+  
+  <!-- 监控与分析模块 -->
+  <rect x="780" y="180" width="40" height="160" rx="6" fill="#33E07D" opacity="0.7" stroke="#0FD05D" stroke-width="1.5"/>
+  <text x="800" y="265" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#0FD05D" text-anchor="middle" transform="rotate(90, 800, 265)">实时监控与分析</text>
+  
+  <!-- 连接线 - 应用到调度 -->
+  <path d="M230 170 L230 190" stroke="#0FD05D" stroke-width="1" stroke-dasharray="4"/>
+  <path d="M360 170 L360 190" stroke="#0FD05D" stroke-width="1" stroke-dasharray="4"/>
+  <path d="M490 170 L490 190" stroke="#0FD05D" stroke-width="1" stroke-dasharray="4"/>
+  <path d="M635 170 L635 190" stroke="#0FD05D" stroke-width="1" stroke-dasharray="4"/>
+  
+  <!-- 连接线 - 调度到虚拟化 -->
+  <path d="M260 260 L260 290" stroke="#0FD05D" stroke-width="1" stroke-dasharray="4"/>
+  <path d="M450 260 L450 290" stroke="#0FD05D" stroke-width="1" stroke-dasharray="4"/>
+  <path d="M640 260 L640 290" stroke="#0FD05D" stroke-width="1" stroke-dasharray="4"/>
+  
+  <!-- 连接线 - 虚拟化到物理 -->
+  <path d="M225 350 L225 390" stroke="#0FD05D" stroke-width="1" stroke-dasharray="4"/>
+  <path d="M335 350 L335 390" stroke="#0FD05D" stroke-width="1" stroke-dasharray="4"/>
+  <path d="M445 350 L445 390" stroke="#0FD05D" stroke-width="1" stroke-dasharray="4"/>
+  <path d="M555 350 L555 390" stroke="#0FD05D" stroke-width="1" stroke-dasharray="4"/>
+  <path d="M665 350 L665 390" stroke="#0FD05D" stroke-width="1" stroke-dasharray="4"/>
+  
+  <!-- 连接线 - 监控到各层 -->
+  <path d="M750 230 L780 230" stroke="#0FD05D" stroke-width="1" stroke-dasharray="4"/>
+  <path d="M750 320 L780 320" stroke="#0FD05D" stroke-width="1" stroke-dasharray="4"/>
+  <path d="M750 410 L780 410" stroke="#0FD05D" stroke-width="1" stroke-dasharray="4"/>
+  
+  <!-- 关键指标 -->
+  <rect x="150" y="460" width="140" height="30" rx="15" fill="#33E07D" opacity="0.8"/>
+  <text x="220" y="480" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#333" text-anchor="middle">GPU利用率: 80%</text>
+  
+  <rect x="330" y="460" width="140" height="30" rx="15" fill="#33E07D" opacity="0.8"/>
+  <text x="400" y="480" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#333" text-anchor="middle">成本降低: 40%</text>
+  
+  <rect x="510" y="460" width="240" height="30" rx="15" fill="#33E07D" opacity="0.8"/>
+  <text x="630" y="480" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#333" text-anchor="middle">服务部署响应时间提升: 90%</text>
+</svg> 

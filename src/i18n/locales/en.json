@@ -21,7 +21,9 @@
     "company": "Company",
     "freeTrial": "Free Trial",
     "requestDemo": "Request Demo",
-    "openMenu": "Open menu"
+    "openMenu": "Open menu",
+    "caseTelecom": "Telecom Provider Case",
+    "caseTelecomDesc": "Learn how a telecom provider leverages HAMi for GPU virtualization and heterogeneous device management"
   },
   "home": {
     "hero": {
@@ -384,6 +386,69 @@
     "trustedBy": {
       "title": "Trusted by Industry Leaders",
       "description": "Leading organizations across various industries rely on Kantaloupe to manage their heterogeneous computing resources efficiently."
+    }
+  },
+  "cases": {
+    "telecomGpu": {
+      "title": "Telecom Provider GPU Virtualization Case Study",
+      "subtitle": "How a leading telecom provider leverages HAMi for GPU virtualization and heterogeneous device management",
+      "overview": {
+        "title": "Client Overview",
+        "description": "A major telecommunications provider in Asia faced increasing demands for AI/ML capabilities in their network operations, customer service systems, and value-added services. With over 200 million subscribers and operations across multiple regions, the company needed an efficient way to manage their growing GPU infrastructure.",
+        "keyPoints": [
+          "Large-scale GPU Resource Pool",
+          "Multi-tenant Isolation",
+          "High Performance with Low Latency"
+        ]
+      },
+      "challenge": {
+        "title": "Challenges & Solutions",
+        "subtitle": "Key Challenges",
+        "points": [
+          "Low GPU resource utilization (below 30%)",
+          "Management complexity with isolated clusters",
+          "Fluctuating workload demands",
+          "High hardware acquisition costs"
+        ]
+      },
+      "solution": {
+        "subtitle": "HAMi Solution",
+        "points": [
+          "Fine-grained GPU sharing and virtualization",
+          "Unified cluster management interface",
+          "Intelligent workload scheduling",
+          "Hardware-accelerated isolation"
+        ]
+      },
+      "architecture": {
+        "title": "Implementation Architecture",
+        "description": "The HAMi solution provided a comprehensive virtualization layer that enabled unified management of heterogeneous GPU resources, with optimized scheduling and resource allocation."
+      },
+      "results": {
+        "title": "Results & Benefits",
+        "items": [
+          {
+            "title": "Resource Utilization",
+            "value": "80%",
+            "description": "Significant increase in GPU utilization"
+          },
+          {
+            "title": "Cost Reduction",
+            "value": "40%",
+            "description": "Decrease in hardware and operational costs"
+          },
+          {
+            "title": "Response Time",
+            "value": "90%",
+            "description": "Improvement in service deployment and response time"
+          }
+        ]
+      },
+      "cta": {
+        "title": "Transform Your GPU Infrastructure",
+        "description": "Discover how HAMi can help your organization achieve similar results with efficient GPU virtualization and heterogeneous computing management.",
+        "button": "Contact Us"
+      }
     }
   }
 } 

@@ -77,7 +77,7 @@ const Header: React.FC = () => {
   const navigation = [
     { name: t('navigation.hami'), href: '#', hasSubmenu: true, submenuType: 'hami' },
     { name: t('navigation.products'), href: currentLocale === 'zh' ? '/zh/products' : '/products' },
-    { name: t('navigation.solutions'), href: currentLocale === 'zh' ? '/zh/solutions' : '/solutions' },
+    { name: t('navigation.solutions'), href: '#', hasSubmenu: true, submenuType: 'solutions' },
     { name: t('navigation.pricing'), href: currentLocale === 'zh' ? '/zh/pricing' : '/pricing' },
     { name: t('navigation.resources'), href: '#', hasSubmenu: true, submenuType: 'resources' },
     { name: t('navigation.company'), href: currentLocale === 'zh' ? '/zh/company' : '/company' },
@@ -133,13 +133,27 @@ const Header: React.FC = () => {
     }
   ];
 
+  // 解决方案子菜单
+  const solutionsSubmenu: SubmenuItem[] = [
+    { 
+      name: t('navigation.caseTelecom'), 
+      description: t('navigation.caseTelecomDesc'),
+      href: currentLocale === 'zh' ? '/zh/blog/case-telecom-gpu' : '/blog/case-telecom-gpu', 
+      external: false,
+      iconName: 'document'
+    }
+  ];
+
   // 控制下拉菜单的状态
   const [isHamiMenuOpen, setIsHamiMenuOpen] = useState(false);
   const [isResourcesMenuOpen, setIsResourcesMenuOpen] = useState(false);
+  const [isSolutionsMenuOpen, setIsSolutionsMenuOpen] = useState(false);
   const hamiMenuRef = useRef<HTMLDivElement>(null);
   const resourcesMenuRef = useRef<HTMLDivElement>(null);
+  const solutionsMenuRef = useRef<HTMLDivElement>(null);
   const hamiTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const resourcesTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const solutionsTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   
   const clearHamiCloseTimeout = () => {
     if (hamiTimeoutRef.current) {
@@ -152,6 +166,13 @@ const Header: React.FC = () => {
     if (resourcesTimeoutRef.current) {
       clearTimeout(resourcesTimeoutRef.current);
       resourcesTimeoutRef.current = null;
+    }
+  };
+  
+  const clearSolutionsCloseTimeout = () => {
+    if (solutionsTimeoutRef.current) {
+      clearTimeout(solutionsTimeoutRef.current);
+      solutionsTimeoutRef.current = null;
     }
   };
   
@@ -182,16 +203,31 @@ const Header: React.FC = () => {
       setIsResourcesMenuOpen(false);
     }, 300); // 300ms延迟，给用户足够时间移动到下拉菜单
   };
+
+  // 打开解决方案菜单
+  const handleSolutionsMouseEnter = () => {
+    clearSolutionsCloseTimeout();
+    setIsSolutionsMenuOpen(true);
+  };
+  
+  // 延迟关闭解决方案菜单
+  const handleSolutionsMouseLeave = () => {
+    clearSolutionsCloseTimeout();
+    solutionsTimeoutRef.current = setTimeout(() => {
+      setIsSolutionsMenuOpen(false);
+    }, 300);
+  };
   
   // 清除超时器
   useEffect(() => {
     return () => {
       clearHamiCloseTimeout();
       clearResourcesCloseTimeout();
+      clearSolutionsCloseTimeout();
     };
   }, []);
   
-  // 处理点击外部关闭HAMi菜单
+  // 处理点击外部关闭菜单
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
       if (hamiMenuRef.current && !hamiMenuRef.current.contains(event.target as Node)) {
@@ -200,13 +236,16 @@ const Header: React.FC = () => {
       if (resourcesMenuRef.current && !resourcesMenuRef.current.contains(event.target as Node)) {
         setIsResourcesMenuOpen(false);
       }
+      if (solutionsMenuRef.current && !solutionsMenuRef.current.contains(event.target as Node)) {
+        setIsSolutionsMenuOpen(false);
+      }
     }
     
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [hamiMenuRef, resourcesMenuRef]);
+  }, [hamiMenuRef, resourcesMenuRef, solutionsMenuRef]);
 
   return (
     <Disclosure as="nav" className="bg-white shadow-sm sticky top-0 z-50">
@@ -225,35 +264,78 @@ const Header: React.FC = () => {
                     item.hasSubmenu ? (
                       <div 
                         key={item.name} 
-                        ref={item.submenuType === 'hami' ? hamiMenuRef : resourcesMenuRef}
+                        ref={
+                          item.submenuType === 'hami' 
+                            ? hamiMenuRef 
+                            : item.submenuType === 'resources' 
+                              ? resourcesMenuRef 
+                              : solutionsMenuRef
+                        }
                         className="relative flex items-center h-full"
                       >
                         <div
                           className={`inline-flex items-center px-1 h-full border-b-2 text-sm font-medium ${
-                            (item.submenuType === 'hami' && isHamiMenuOpen) || (item.submenuType === 'resources' && isResourcesMenuOpen)
+                            (item.submenuType === 'hami' && isHamiMenuOpen) || 
+                            (item.submenuType === 'resources' && isResourcesMenuOpen) ||
+                            (item.submenuType === 'solutions' && isSolutionsMenuOpen)
                               ? 'border-primary text-gray-900'
                               : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700'
                           }`}
-                          onMouseEnter={item.submenuType === 'hami' ? handleHamiMouseEnter : handleResourcesMouseEnter}
-                          onMouseLeave={item.submenuType === 'hami' ? handleHamiMouseLeave : handleResourcesMouseLeave}
+                          onMouseEnter={
+                            item.submenuType === 'hami' 
+                              ? handleHamiMouseEnter 
+                              : item.submenuType === 'resources' 
+                                ? handleResourcesMouseEnter 
+                                : handleSolutionsMouseEnter
+                          }
+                          onMouseLeave={
+                            item.submenuType === 'hami' 
+                              ? handleHamiMouseLeave 
+                              : item.submenuType === 'resources' 
+                                ? handleResourcesMouseLeave 
+                                : handleSolutionsMouseLeave
+                          }
                         >
                           {item.name}
                           <ChevronDownIcon 
                             className={`ml-1 h-4 w-4 transition-transform duration-200 ${
-                              (item.submenuType === 'hami' && isHamiMenuOpen) || (item.submenuType === 'resources' && isResourcesMenuOpen) ? 'transform rotate-180' : ''
+                              (item.submenuType === 'hami' && isHamiMenuOpen) || 
+                              (item.submenuType === 'resources' && isResourcesMenuOpen) ||
+                              (item.submenuType === 'solutions' && isSolutionsMenuOpen) 
+                                ? 'transform rotate-180' : ''
                             }`} 
                           />
                         </div>
                         
-                        {((item.submenuType === 'hami' && isHamiMenuOpen) || (item.submenuType === 'resources' && isResourcesMenuOpen)) && (
+                        {((item.submenuType === 'hami' && isHamiMenuOpen) || 
+                          (item.submenuType === 'resources' && isResourcesMenuOpen) ||
+                          (item.submenuType === 'solutions' && isSolutionsMenuOpen)) && (
                           <div 
-                            className="absolute left-0 top-full mt-1 w-[650px] rounded-lg shadow-lg bg-white ring-1 hami-menu-border z-50 fadeIn"
-                            onMouseEnter={item.submenuType === 'hami' ? handleHamiMouseEnter : handleResourcesMouseEnter}
-                            onMouseLeave={item.submenuType === 'hami' ? handleHamiMouseLeave : handleResourcesMouseLeave}
+                            className={`absolute left-0 top-full mt-1 ${item.submenuType === 'solutions' ? 'w-[325px]' : 'w-[650px]'} rounded-lg shadow-lg bg-white ring-1 hami-menu-border z-50 fadeIn`}
+                            onMouseEnter={
+                              item.submenuType === 'hami' 
+                                ? handleHamiMouseEnter 
+                                : item.submenuType === 'resources' 
+                                  ? handleResourcesMouseEnter 
+                                  : handleSolutionsMouseEnter
+                            }
+                            onMouseLeave={
+                              item.submenuType === 'hami' 
+                                ? handleHamiMouseLeave 
+                                : item.submenuType === 'resources' 
+                                  ? handleResourcesMouseLeave 
+                                  : handleSolutionsMouseLeave
+                            }
                           >
                             <div className="p-4">
-                              <div className="grid grid-cols-2 gap-4">
-                                {(item.submenuType === 'hami' ? hamiSubmenu : resourcesSubmenu).map((subItem) => (
+                              <div className={`grid ${item.submenuType === 'solutions' ? 'grid-cols-1' : 'grid-cols-2'} gap-4`}>
+                                {(
+                                  item.submenuType === 'hami' 
+                                    ? hamiSubmenu 
+                                    : item.submenuType === 'resources' 
+                                      ? resourcesSubmenu 
+                                      : solutionsSubmenu
+                                ).map((subItem) => (
                                   <div 
                                     key={subItem.name} 
                                     className="p-3 rounded-md transition-colors duration-150 hami-menu-item"
@@ -378,7 +460,13 @@ const Header: React.FC = () => {
                             </div>
                           </Disclosure.Button>
                           <Disclosure.Panel className="pl-6 space-y-1">
-                            {(item.submenuType === 'hami' ? hamiSubmenu : resourcesSubmenu).map((subItem) => (
+                            {(
+                              item.submenuType === 'hami' 
+                                ? hamiSubmenu 
+                                : item.submenuType === 'resources' 
+                                  ? resourcesSubmenu 
+                                  : solutionsSubmenu
+                            ).map((subItem) => (
                               <div key={subItem.name} className="p-3 rounded-md hover:bg-primary-lighter transition-colors duration-150">
                                 {subItem.external ? (
                                   <a

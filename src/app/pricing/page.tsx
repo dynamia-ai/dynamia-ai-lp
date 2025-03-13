@@ -50,7 +50,7 @@ export default function PricingPage() {
     e.preventDefault();
     // TODO: 实现表单提交逻辑
     console.log('Form submitted:', formState);
-    alert('感谢您的提交！我们的团队将尽快与您联系。');
+    alert(t('pricing.form.submitSuccess'));
   };
 
   return (
@@ -280,7 +280,7 @@ export default function PricingPage() {
                   src={company.logo}
                   alt={company.name}
                   width={200}
-                  height={150}
+                  height={40}
                   className="object-contain max-h-20"
                 />
               </motion.div>

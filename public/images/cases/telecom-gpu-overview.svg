@@ -1,0 +1,68 @@
+<svg width="540" height="360" viewBox="0 0 540 360" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- 背景 -->
+  <rect width="540" height="360" rx="12" fill="#E8FFF0"/>
+  
+  <!-- 数据中心基础框架 -->
+  <rect x="70" y="50" width="400" height="260" rx="8" fill="white" stroke="#0FD05D" stroke-width="2"/>
+  
+  <!-- 电信运营商图标 -->
+  <circle cx="270" cy="85" r="25" fill="#0FD05D" opacity="0.1"/>
+  <path d="M270 70 L270 100 M255 75 L285 75 M255 85 L285 85 M255 95 L285 95" stroke="#0FD05D" stroke-width="2.5" stroke-linecap="round"/>
+  
+  <!-- 顶部装饰元素 -->
+  <rect x="220" y="20" width="100" height="6" rx="3" fill="#0FD05D" opacity="0.4"/>
+  <rect x="200" y="32" width="140" height="6" rx="3" fill="#0FD05D" opacity="0.3"/>
+  <circle cx="190" cy="26" r="4" fill="#0FD05D" opacity="0.5"/>
+  <circle cx="350" cy="26" r="4" fill="#0FD05D" opacity="0.5"/>
+  
+  <!-- GPU资源池框架 -->
+  <rect x="100" y="130" width="340" height="160" rx="6" fill="#F0FFEF" stroke="#0FD05D" stroke-width="1.5" stroke-dasharray="4"/>
+  <text x="270" y="150" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#0FD05D" text-anchor="middle">大规模GPU资源池</text>
+  
+  <!-- GPU服务器组 1 -->
+  <rect x="120" y="170" width="80" height="100" rx="4" fill="white" stroke="#0FD05D" stroke-width="1"/>
+  <rect x="130" y="180" width="60" height="12" rx="2" fill="#0FD05D" opacity="0.7"/>
+  <rect x="130" y="196" width="60" height="12" rx="2" fill="#0FD05D" opacity="0.7"/>
+  <rect x="130" y="212" width="60" height="12" rx="2" fill="#0FD05D" opacity="0.7"/>
+  <rect x="130" y="228" width="60" height="12" rx="2" fill="#0FD05D" opacity="0.7"/>
+  <rect x="130" y="244" width="60" height="12" rx="2" fill="#0FD05D" opacity="0.7"/>
+  
+  <!-- GPU服务器组 2 -->
+  <rect x="230" y="170" width="80" height="100" rx="4" fill="white" stroke="#0FD05D" stroke-width="1"/>
+  <rect x="240" y="180" width="60" height="12" rx="2" fill="#0FD05D" opacity="0.7"/>
+  <rect x="240" y="196" width="60" height="12" rx="2" fill="#0FD05D" opacity="0.7"/>
+  <rect x="240" y="212" width="60" height="12" rx="2" fill="#0FD05D" opacity="0.7"/>
+  <rect x="240" y="228" width="60" height="12" rx="2" fill="#0FD05D" opacity="0.7"/>
+  <rect x="240" y="244" width="60" height="12" rx="2" fill="#0FD05D" opacity="0.7"/>
+  
+  <!-- GPU服务器组 3 -->
+  <rect x="340" y="170" width="80" height="100" rx="4" fill="white" stroke="#0FD05D" stroke-width="1"/>
+  <rect x="350" y="180" width="60" height="12" rx="2" fill="#0FD05D" opacity="0.7"/>
+  <rect x="350" y="196" width="60" height="12" rx="2" fill="#0FD05D" opacity="0.7"/>
+  <rect x="350" y="212" width="60" height="12" rx="2" fill="#0FD05D" opacity="0.7"/>
+  <rect x="350" y="228" width="60" height="12" rx="2" fill="#0FD05D" opacity="0.7"/>
+  <rect x="350" y="244" width="60" height="12" rx="2" fill="#0FD05D" opacity="0.7"/>
+  
+  <!-- 租户分割线和标识 -->
+  <path d="M100 210 L440 210" stroke="#0FD05D" stroke-width="1" stroke-dasharray="4"/>
+  
+  <!-- 多租户隔离标记 -->
+  <circle cx="120" y="150" r="12" fill="#33E07D" stroke="#0FD05D" stroke-width="1"/>
+  <text x="120" y="154" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#0FD05D" text-anchor="middle">A</text>
+  
+  <circle cx="150" y="150" r="12" fill="#33E07D" stroke="#0FD05D" stroke-width="1"/>
+  <text x="150" y="154" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#0FD05D" text-anchor="middle">B</text>
+  
+  <circle cx="180" y="150" r="12" fill="#33E07D" stroke="#0FD05D" stroke-width="1"/>
+  <text x="180" y="154" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#0FD05D" text-anchor="middle">C</text>
+  
+  <!-- 虚拟化层标示 -->
+  <rect x="170" y="290" width="200" height="20" rx="4" fill="#0FD05D" opacity="0.2"/>
+  <text x="270" y="304" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#0FD05D" text-anchor="middle">HAMi GPU虚拟化层</text>
+  
+  <!-- 连接线 -->
+  <path d="M270 110 L270 130" stroke="#0FD05D" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="4"/>
+  <path d="M160 270 L160 290" stroke="#0FD05D" stroke-width="1" stroke-linecap="round" stroke-dasharray="2"/>
+  <path d="M270 270 L270 290" stroke="#0FD05D" stroke-width="1" stroke-linecap="round" stroke-dasharray="2"/>
+  <path d="M380 270 L380 290" stroke="#0FD05D" stroke-width="1" stroke-linecap="round" stroke-dasharray="2"/>
+</svg> 

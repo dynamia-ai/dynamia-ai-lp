@@ -1,0 +1,66 @@
+<svg width="900" height="500" viewBox="0 0 900 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- 背景 -->
+  <rect width="900" height="500" rx="8" fill="#F0FFF5"/>
+  
+  <!-- 标题 -->
+  
+  <!-- 架构图 -->
+  <!-- K8s 调度层 -->
+  <rect x="250" y="110" width="400" height="60" rx="6" fill="white" stroke="#0FD05D" stroke-width="3"/>
+  <text x="450" y="148" font-family="Arial, sans-serif" font-size="24" text-anchor="middle" fill="#333333">K8s 调度层</text>
+  
+  <!-- 箭头 -->
+  <path d="M450 170L450 210M450 210L430 190M450 210L470 190" stroke="#0FD05D" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- 设备复用层 -->
+  <rect x="250" y="210" width="400" height="60" rx="6" fill="white" stroke="#0FD05D" stroke-width="3"/>
+  <text x="450" y="248" font-family="Arial, sans-serif" font-size="24" text-anchor="middle" fill="#333333">设备复用层</text>
+  
+  <!-- 箭头 -->
+  <path d="M450 270L450 310M450 310L430 290M450 310L470 290" stroke="#0FD05D" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- 节点容器 -->
+  <rect x="150" y="310" width="600" height="140" rx="8" fill="white" stroke="#CCCCCC" stroke-width="2" stroke-dasharray="6 4"/>
+  
+  <!-- 节点1 -->
+  <rect x="180" y="330" width="250" height="100" rx="6" fill="#F8F8F8" stroke="#CCCCCC" stroke-width="2"/>
+  <text x="305" y="355" font-family="Arial, sans-serif" font-size="20" font-weight="bold" text-anchor="middle" fill="#333333">Node 1</text>
+  
+  <!-- GPU 0 -->
+  <text x="200" y="380" font-family="Arial, sans-serif" font-size="16" fill="#555555">GPU 0</text>
+  <rect x="200" y="385" width="210" height="16" rx="3" fill="#EEEEEE" stroke="#CCCCCC" stroke-width="1"/>
+  <rect x="200" y="385" width="150" height="16" rx="3" fill="#0FD05D"/>
+  <text x="220" y="398" font-family="Arial, sans-serif" font-size="10" fill="white">Used</text>
+  <text x="370" y="398" font-family="Arial, sans-serif" font-size="10" fill="#777777">Free</text>
+  
+  <!-- GPU 1 -->
+  <text x="200" y="415" font-family="Arial, sans-serif" font-size="16" fill="#555555">GPU 1</text>
+  <rect x="200" y="420" width="210" height="16" rx="3" fill="#EEEEEE" stroke="#CCCCCC" stroke-width="1"/>
+  <rect x="200" y="420" width="160" height="16" rx="3" fill="#0FD05D"/>
+  <text x="220" y="433" font-family="Arial, sans-serif" font-size="10" fill="white">Used</text>
+  <text x="370" y="433" font-family="Arial, sans-serif" font-size="10" fill="#777777">Free</text>
+  
+  <!-- 节点2 -->
+  <rect x="470" y="330" width="250" height="100" rx="6" fill="#F8F8F8" stroke="#CCCCCC" stroke-width="2"/>
+  <text x="595" y="355" font-family="Arial, sans-serif" font-size="20" font-weight="bold" text-anchor="middle" fill="#333333">Node 2</text>
+  
+  <!-- GPU 0 -->
+  <text x="490" y="380" font-family="Arial, sans-serif" font-size="16" fill="#555555">GPU 0</text>
+  <rect x="490" y="385" width="210" height="16" rx="3" fill="#EEEEEE" stroke="#CCCCCC" stroke-width="1"/>
+  <rect x="490" y="385" width="105" height="16" rx="3" fill="#0FD05D"/>
+  <text x="510" y="398" font-family="Arial, sans-serif" font-size="10" fill="white">Used</text>
+  <text x="660" y="398" font-family="Arial, sans-serif" font-size="10" fill="#777777">Free</text>
+  
+  <!-- GPU 1 -->
+  <text x="490" y="415" font-family="Arial, sans-serif" font-size="16" fill="#555555">GPU 1</text>
+  <rect x="490" y="420" width="210" height="16" rx="3" fill="#EEEEEE" stroke="#CCCCCC" stroke-width="1"/>
+  <rect x="490" y="420" width="210" height="16" rx="3" fill="#0FD05D"/>
+  <text x="510" y="433" font-family="Arial, sans-serif" font-size="10" fill="white">Used</text>
+  
+  <!-- 客户收益 -->
+  <rect x="150" y="460" width="280" height="30" rx="15" fill="#0FD05D" opacity="0.2" stroke="#0FD05D" stroke-width="1"/>
+  <text x="290" y="481" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="#333333">降低用户使用门槛</text>
+  
+  <rect x="450" y="460" width="300" height="30" rx="15" fill="#0FD05D" opacity="0.2" stroke="#0FD05D" stroke-width="1"/>
+  <text x="600" y="481" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="#333333">统一抽象不同体系架构下的加速卡</text>
+</svg> 

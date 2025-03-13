@@ -1,0 +1,35 @@
+<svg width="400" height="250" viewBox="0 0 400 250" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- 背景 -->
+  <rect width="400" height="250" rx="8" fill="#F0FFF5"/>
+  
+  <!-- 架构图 -->
+  <!-- K8s 调度层 -->
+  <rect x="100" y="70" width="200" height="40" rx="4" fill="white" stroke="#0FD05D" stroke-width="2"/>
+  <text x="200" y="95" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#333333">K8s 调度层</text>
+  
+  <!-- 箭头 -->
+  <path d="M200 110L200 130M200 130L190 120M200 130L210 120" stroke="#0FD05D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- 设备复用层 -->
+  <rect x="100" y="130" width="200" height="40" rx="4" fill="white" stroke="#0FD05D" stroke-width="2"/>
+  <text x="200" y="155" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#333333">设备复用层</text>
+  
+  <!-- 箭头 -->
+  <path d="M200 170L200 190M200 190L190 180M200 190L210 180" stroke="#0FD05D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- 节点 -->
+  <rect x="40" y="190" width="150" height="40" rx="4" fill="#EAEAEA" stroke="#CCCCCC" stroke-width="1"/>
+  <text x="115" y="215" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#333333">Node 1</text>
+  
+  <rect x="210" y="190" width="150" height="40" rx="4" fill="#EAEAEA" stroke="#CCCCCC" stroke-width="1"/>
+  <text x="285" y="215" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#333333">Node 2</text>
+  
+  <!-- GPU使用指示 -->
+  <rect x="60" y="180" width="15" height="10" rx="2" fill="#0FD05D" opacity="0.7"/>
+  <rect x="80" y="180" width="15" height="10" rx="2" fill="#0FD05D" opacity="0.7"/>
+  <rect x="100" y="180" width="15" height="10" rx="2" fill="white" stroke="#0FD05D" stroke-width="1" opacity="0.7"/>
+  
+  <rect x="230" y="180" width="15" height="10" rx="2" fill="#0FD05D" opacity="0.7"/>
+  <rect x="250" y="180" width="15" height="10" rx="2" fill="white" stroke="#0FD05D" stroke-width="1" opacity="0.7"/>
+  <rect x="270" y="180" width="15" height="10" rx="2" fill="#0FD05D" opacity="0.7"/>
+</svg> 

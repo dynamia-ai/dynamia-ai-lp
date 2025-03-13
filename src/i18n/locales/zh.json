@@ -21,7 +21,9 @@
     "company": "公司",
     "freeTrial": "免费试用",
     "requestDemo": "申请演示",
-    "openMenu": "打开菜单"
+    "openMenu": "打开菜单",
+    "caseTelecom": "电信运营商案例",
+    "caseTelecomDesc": "了解某电信运营商如何利用HAMi实现GPU虚拟化与异构设备管理"
   },
   "home": {
     "hero": {
@@ -601,6 +603,69 @@
     "trustedBy": {
       "title": "行业领导者的信赖选择",
       "description": "各行业的领先组织都依靠Kantaloupe高效管理其异构计算资源。"
+    }
+  },
+  "cases": {
+    "telecomGpu": {
+      "title": "电信运营商GPU虚拟化案例研究",
+      "subtitle": "某领先电信运营商如何利用HAMi实现GPU虚拟化与异构设备管理",
+      "overview": {
+        "title": "客户概述",
+        "description": "亚洲某大型电信运营商面临着网络运营、客户服务系统和增值服务中对AI/ML能力日益增长的需求。该公司拥有超过2亿用户，业务遍及多个地区，需要一种高效的方式来管理其不断扩展的GPU基础设施。",
+        "keyPoints": [
+          "大规模GPU资源池",
+          "多租户隔离",
+          "高性能与低延迟"
+        ]
+      },
+      "challenge": {
+        "title": "挑战与解决方案",
+        "subtitle": "关键挑战",
+        "points": [
+          "GPU资源利用率低（低于30%）",
+          "多个孤立集群的管理复杂性",
+          "工作负载需求波动",
+          "硬件采购成本高"
+        ]
+      },
+      "solution": {
+        "subtitle": "HAMi解决方案",
+        "points": [
+          "细粒度GPU共享与虚拟化",
+          "统一集群管理界面",
+          "智能工作负载调度",
+          "硬件加速隔离"
+        ]
+      },
+      "architecture": {
+        "title": "实施架构",
+        "description": "HAMi解决方案提供了全面的虚拟化层，实现了异构GPU资源的统一管理，优化了调度和资源分配。"
+      },
+      "results": {
+        "title": "成果与收益",
+        "items": [
+          {
+            "title": "资源利用率提升",
+            "value": "80%",
+            "description": "GPU资源利用率显著提高"
+          },
+          {
+            "title": "成本降低",
+            "value": "40%",
+            "description": "硬件与运营成本大幅减少"
+          },
+          {
+            "title": "响应时间",
+            "value": "90%",
+            "description": "服务部署与响应时间显著缩短"
+          }
+        ]
+      },
+      "cta": {
+        "title": "变革您的GPU基础设施",
+        "description": "了解HAMi如何帮助您的组织通过高效的GPU虚拟化和异构计算管理实现类似的成果。",
+        "button": "联系我们"
+      }
     }
   }
 } 
