@@ -8,7 +8,7 @@ image:
   repository: ghcr.io/dynamia-ai/dynamia-ai-lp
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "v0.1.0"
+  tag: "v0.1.3"
 
 imagePullSecrets: []
 nameOverride: ""
@@ -61,7 +61,7 @@ resources:
     memory: 256Mi
 
 autoscaling:
-  enabled: true
+  enabled: false
   minReplicas: 1
   maxReplicas: 5
   targetCPUUtilizationPercentage: 80

@@ -1,0 +1,26 @@
+<svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect x="40" y="60" width="60" height="80" rx="5" fill="#0FD05D" opacity="0.1" stroke="#0FD05D" stroke-width="3"/>
+  <rect x="110" y="60" width="60" height="80" rx="5" fill="#0FD05D" opacity="0.1" stroke="#0FD05D" stroke-width="3"/>
+  <path d="M70 46L70 60" stroke="#0FD05D" stroke-width="3"/>
+  <path d="M140 46L140 60" stroke="#0FD05D" stroke-width="3"/>
+  <circle cx="70" cy="40" r="6" stroke="#0FD05D" stroke-width="3"/>
+  <circle cx="140" cy="40" r="6" stroke="#0FD05D" stroke-width="3"/>
+  <path d="M70 140L70 154" stroke="#0FD05D" stroke-width="3"/>
+  <path d="M140 140L140 154" stroke="#0FD05D" stroke-width="3"/>
+  <circle cx="70" cy="160" r="6" stroke="#0FD05D" stroke-width="3"/>
+  <circle cx="140" cy="160" r="6" stroke="#0FD05D" stroke-width="3"/>
+  <path d="M50 100H90" stroke="#0FD05D" stroke-width="3"/>
+  <path d="M120 100H160" stroke="#0FD05D" stroke-width="3"/>
+  <path d="M65 75L75 85L65 95" stroke="#0FD05D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M55 75L45 85L55 95" stroke="#0FD05D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M50 115H60V125H50V115Z" fill="#0FD05D"/>
+  <path d="M70 115H80V125H70V115Z" fill="#0FD05D"/>
+  <path d="M125 75L125 95" stroke="#0FD05D" stroke-width="2" stroke-linecap="round"/>
+  <path d="M135 75L135 95" stroke="#0FD05D" stroke-width="2" stroke-linecap="round"/>
+  <path d="M145 75L145 95" stroke="#0FD05D" stroke-width="2" stroke-linecap="round"/>
+  <path d="M155 75L155 95" stroke="#0FD05D" stroke-width="2" stroke-linecap="round"/>
+  <path d="M120 115H125V125H120V115Z" fill="#0FD05D"/>
+  <path d="M130 115H135V125H130V115Z" fill="#0FD05D"/>
+  <path d="M140 115H145V125H140V115Z" fill="#0FD05D"/>
+  <path d="M150 115H155V125H150V115Z" fill="#0FD05D"/>
+</svg> 

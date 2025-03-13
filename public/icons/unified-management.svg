@@ -1,0 +1,26 @@
+<svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect x="30" y="40" width="140" height="120" rx="8" stroke="#0FD05D" stroke-width="3"/>
+  <path d="M30 60H170" stroke="#0FD05D" stroke-width="3"/>
+  <path d="M41 50H48" stroke="#0FD05D" stroke-width="4" stroke-linecap="round"/>
+  <path d="M55 50H62" stroke="#0FD05D" stroke-width="4" stroke-linecap="round"/>
+  <path d="M69 50H76" stroke="#0FD05D" stroke-width="4" stroke-linecap="round"/>
+  <rect x="45" y="75" width="40" height="25" rx="4" fill="#0FD05D" opacity="0.1" stroke="#0FD05D" stroke-width="2"/>
+  <rect x="45" y="110" width="40" height="25" rx="4" fill="#0FD05D" opacity="0.1" stroke="#0FD05D" stroke-width="2"/>
+  <rect x="95" y="75" width="40" height="25" rx="4" fill="#0FD05D" opacity="0.1" stroke="#0FD05D" stroke-width="2"/>
+  <rect x="95" y="110" width="40" height="25" rx="4" fill="#0FD05D" opacity="0.1" stroke="#0FD05D" stroke-width="2"/>
+  <path d="M145 75H155C157.209 75 159 76.7909 159 79V83C159 85.2091 157.209 87 155 87H145C142.791 87 141 85.2091 141 83V79C141 76.7909 142.791 75 145 75Z" fill="#0FD05D"/>
+  <path d="M145 98H155C157.209 98 159 99.7909 159 102V106C159 108.209 157.209 110 155 110H145C142.791 110 141 108.209 141 106V102C141 99.7909 142.791 98 145 98Z" fill="#0FD05D"/>
+  <path d="M145 121H155C157.209 121 159 122.791 159 125V129C159 131.209 157.209 133 155 133H145C142.791 133 141 131.209 141 129V125C141 122.791 142.791 121 145 121Z" fill="#0FD05D"/>
+  <path d="M52 82H60" stroke="#0FD05D" stroke-width="2" stroke-linecap="round"/>
+  <path d="M52 87H78" stroke="#0FD05D" stroke-width="2" stroke-linecap="round"/>
+  <path d="M52 93H72" stroke="#0FD05D" stroke-width="2" stroke-linecap="round"/>
+  <path d="M52 117H60" stroke="#0FD05D" stroke-width="2" stroke-linecap="round"/>
+  <path d="M52 122H78" stroke="#0FD05D" stroke-width="2" stroke-linecap="round"/>
+  <path d="M52 128H72" stroke="#0FD05D" stroke-width="2" stroke-linecap="round"/>
+  <path d="M102 82H110" stroke="#0FD05D" stroke-width="2" stroke-linecap="round"/>
+  <path d="M102 87H128" stroke="#0FD05D" stroke-width="2" stroke-linecap="round"/>
+  <path d="M102 93H122" stroke="#0FD05D" stroke-width="2" stroke-linecap="round"/>
+  <path d="M102 117H110" stroke="#0FD05D" stroke-width="2" stroke-linecap="round"/>
+  <path d="M102 122H128" stroke="#0FD05D" stroke-width="2" stroke-linecap="round"/>
+  <path d="M102 128H122" stroke="#0FD05D" stroke-width="2" stroke-linecap="round"/>
+</svg> 

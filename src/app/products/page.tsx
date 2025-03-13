@@ -56,13 +56,13 @@ export default function Products() {
                     href="/free-trial"
                     className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-primary hover:bg-primary-dark transition-colors"
                   >
-                    {t('navigation.freeTrialCta')}
+                    {t('navigation.freeTrial')}
                   </Link>
                   <Link
                     href="/request-demo"
                     className="inline-flex items-center px-6 py-3 border border-primary text-base font-medium rounded-md text-primary bg-white hover:bg-gray-50 transition-colors"
                   >
-                    {t('navigation.requestDemoCta')}
+                    {t('navigation.requestDemo')}
                   </Link>
                 </div>
               </div>
@@ -105,13 +105,13 @@ export default function Products() {
                 href="/free-trial"
                 className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-primary hover:bg-primary-dark transition-colors"
               >
-                {t('navigation.freeTrialCta')}
+                {t('navigation.freeTrial')}
               </Link>
               <Link
                 href="/request-demo"
                 className="inline-flex items-center px-6 py-3 border border-primary text-base font-medium rounded-md text-primary bg-white hover:bg-gray-50 transition-colors"
               >
-                {t('navigation.requestDemoCta')}
+                {t('navigation.requestDemo')}
               </Link>
             </div>
           </div>

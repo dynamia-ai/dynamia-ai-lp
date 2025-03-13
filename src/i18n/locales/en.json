@@ -1,6 +1,15 @@
 {
   "navigation": {
     "home": "Home",
+    "hami": "HAMi",
+    "whatIsHami": "What is HAMi",
+    "whatIsHamiDesc": "Learn about the core features and value of the HAMi open source project",
+    "hamiWebsite": "HAMi Website",
+    "hamiWebsiteDesc": "Visit the official HAMi website for detailed information",
+    "hamiGithub": "GitHub",
+    "hamiGithubDesc": "View the source code and contribute to HAMi's open source collaboration",
+    "community": "Community",
+    "communityDesc": "Join the HAMi user community to share experiences and get help",
     "products": "Products",
     "solutions": "Solutions",
     "resources": "Resources",
@@ -467,5 +476,41 @@
   "search": {
     "placeholder": "Search...",
     "noResults": "No results found"
+  },
+  "hamiPage": {
+    "title": "What is",
+    "introduction": "HAMi (Heterogeneous AI computing Middleware), previously known as k8s-vGPU-scheduler, is an innovative solution designed to manage heterogeneous AI computing devices within Kubernetes clusters.",
+    "solutionTitle": "One-Stop Heterogeneous AI Computing Management Solution",
+    "solutionDesc": "HAMi is a one-stop middleware that enables the sharing of various AI devices while ensuring resource isolation between different tasks. By improving the utilization of heterogeneous computing devices, HAMi provides a unified reuse interface to meet the needs of different device types.",
+    "features": [
+      {
+        "title": "Kubernetes Native API Compatibility",
+        "description": "One of HAMi's standout features is its compatibility with Kubernetes native APIs. This means users can upgrade to HAMi without modifying existing configurations, allowing for a seamless transition while maintaining Kubernetes default behaviors."
+      },
+      {
+        "title": "Open and Neutral",
+        "description": "HAMi is a collaborative initiative involving stakeholders from various domains, including internet services, finance, manufacturing, and cloud service providers. The goal is to establish open governance under the Cloud Native Computing Foundation (CNCF), ensuring HAMi remains neutral and accessible to all users."
+      },
+      {
+        "title": "Avoid Vendor Lock-in",
+        "description": "With HAMi, users can integrate with mainstream cloud service providers without being tied to proprietary vendor orchestrations. This flexibility allows organizations to choose their preferred cloud solution while leveraging HAMi's capabilities."
+      },
+      {
+        "title": "Resource Isolation",
+        "description": "HAMi provides robust resource isolation within containers. Each task running in a container is confined to its allocated resource boundaries, preventing any task from exceeding its quota. This strict isolation enhances security and stability in the computing environment."
+      },
+      {
+        "title": "Support for Multiple Heterogeneous Computing Devices",
+        "description": "HAMi excels in supporting various heterogeneous computing devices. Whether it's GPUs, MLUs, or NPUs from different manufacturers, HAMi facilitates device sharing and maximizes resource efficiency across different hardware platforms."
+      },
+      {
+        "title": "Unified Management",
+        "description": "To simplify operations, HAMi offers a unified monitoring system, along with configurable scheduling policies such as binpacking and spreading. This comprehensive management approach streamlines the governance of resources and enhances overall system performance."
+      }
+    ],
+    "ctaTitle": "Ready to start using HAMi?",
+    "ctaDesc": "Join our community and enhance your AI computing resource management efficiency.",
+    "githubButton": "GitHub Repository",
+    "websiteButton": "Visit Website"
   }
 } 
