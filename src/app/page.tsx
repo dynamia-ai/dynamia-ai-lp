@@ -60,23 +60,9 @@ export default function Home() {
         { title: "成本优化与自动扩展", description: "根据工作负载需求自动扩展资源" }
       ];
 
+  // Testimonials are currently not used in the UI but kept for future use
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const testimonials = t('home.testimonials.items', { returnObjects: true });
-  const testimonialsArray = Array.isArray(testimonials) 
-    ? testimonials 
-    : [
-        {
-          quote: "Kantaloupe极大地提高了我们的计算效率，使我们能够比以往更快地扩展AI研究。",
-          author: "简博士",
-          position: "首席技术官",
-          company: "人工智能研究院"
-        },
-        {
-          quote: "在我们的生产集群中，异构计算环境中的无缝集成已将部署时间减少了60%。",
-          author: "李明",
-          position: "工程副总裁",
-          company: "全球科技公司"
-        }
-      ];
 
   return (
     <MainLayout>
