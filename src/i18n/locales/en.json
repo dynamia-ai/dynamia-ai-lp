@@ -495,5 +495,41 @@
         "button": "Contact Us"
       }
     }
+  },
+  "privacyPolicy": {
+    "title": "Privacy Policy",
+    "lastUpdated": "Last Updated: March 03, 2025",
+    "intro": "DYNAMIA INTELLIGENCE PTE. LTD. (referred to as \"us\", \"we\", or \"our\" hereinafter) is the operator of the website https://dynamia.ai/ (the \"Site\"). This page details our policies regarding the collection, utilization, and disclosure of Personal Information we obtain from users of the Site.",
+    "consent": "We utilize your Personal Information solely for the purposes of providing and enhancing the Site. By using the Site, you consent to the collection and use of information in line with this policy.",
+    "sections": [
+      {
+        "title": "Information Collection and Use",
+        "content": "When using our Site, we may request that you supply certain personally identifiable information that can be employed to contact or identify you. Personally identifiable information may encompass, but is not restricted to, your name and email address."
+      },
+      {
+        "title": "Log Data",
+        "content": "Similar to numerous site operators, we gather information that your browser transmits each time you visit our Site (referred to as \"Log Data\"). This Log Data may include details such as your computer's Internet Protocol (IP) address, browser type, browser version, the pages of our Site you visit, the time and date of your visit, the duration spent on those pages, and other relevant statistics. Additionally, we may employ third - party services like Google Analytics to collect, monitor, and analyze this data."
+      },
+      {
+        "title": "Communications",
+        "content": "We may utilize your email address to send you newsletters, marketing or promotional materials, and other information that aids you in better understanding and using our products and services. You can always unsubscribe from such communications by clicking the unsubscribe link within the email or by updating your preferences on the Site."
+      },
+      {
+        "title": "Cookies",
+        "content": "Cookies are small data files that may contain an anonymous unique identifier. They are sent from a website to your browser and stored on your computer's hard drive. Like many sites, we use \"cookies\" to collect information. You can configure your browser to reject all cookies or to alert you when a cookie is being sent. However, if you choose not to accept cookies, you may encounter difficulties accessing and using some parts of our Site."
+      },
+      {
+        "title": "Security",
+        "content": "The security of your Personal Information is of great importance to us. Nevertheless, it's crucial to note that no method of transmission over the Internet or electronic storage is completely secure. Although we endeavor to use commercially reasonable means to safeguard your Personal Information, we cannot ensure its absolute security."
+      },
+      {
+        "title": "Changes to This Privacy Policy",
+        "content": "This Privacy Policy became effective on March 03, 2025, and will remain in force, except for any future changes to its provisions. Such changes will take effect immediately upon being posted on this page. We reserve the right to update or modify our Privacy Policy at any time. You are advised to review this Privacy Policy periodically. Continuing to use the Service after we post any modifications to the Privacy Policy on this page will signify your recognition of the changes and your consent to comply with and be bound by the revised Privacy Policy. If we make any significant changes to this Privacy Policy, we will notify you either via the email address you provided us or by placing a conspicuous notice on our website."
+      },
+      {
+        "title": "Contact Us",
+        "content": "If you have any queries regarding this Privacy Policy, please contact us at info@dynamia.ai."
+      }
+    ]
   }
 } 
