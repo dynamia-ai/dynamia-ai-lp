@@ -27,15 +27,15 @@
   },
   "home": {
     "hero": {
-      "title": "云原生、高效异构 AI 计算虚拟化中间件",
-      "subtitle": "解锁异构计算的高效管理，即刻体验 Kantaloupe 的强大功能！",
-      "chineseSlogan": "统一异构计算、高效利用资源"
+      "title": "云原生高效异构AI计算虚拟化中间件",
+      "subtitle": "解锁异构计算的高效管理，立即体验Kantaloupe的强大功能！",
+      "chineseSlogan": "统一异构计算，提升资源效率"
     },
     "socialProof": {
-      "title": "全球领先的 AI 实验室和企业值得信赖"
+      "title": "全球领先AI实验室和企业的信任之选"
     },
     "keyAdvantages": {
-      "title": "为什么选择 Kantaloupe？",
+      "title": "为什么选择Kantaloupe？",
       "advantages": [
         {
           "title": "高性能调度",
@@ -43,17 +43,53 @@
         },
         {
           "title": "多集群编排",
-          "description": "无缝管理跨多个集群和环境的资源"
+          "description": "无缝管理多个集群和环境中的资源"
         },
         {
-          "title": "GPU 加速管理",
-          "description": "最大程度地利用专用硬件，用于 AI、ML 和 HPC 工作负载"
+          "title": "GPU加速管理",
+          "description": "最大化利用专用硬件处理AI、ML和HPC工作负载"
         },
         {
-          "title": "成本优化与自动扩展",
+          "title": "成本优化和自动扩展",
           "description": "根据工作负载需求自动扩展或缩减资源"
         }
       ]
+    },
+    "poweredByHami": {
+      "title": "由 HAMi 提供支持",
+      "description": "领先的开源异构计算虚拟化中间件，用于高效管理GPU和AI加速器",
+      "learnMore": "了解更多",
+      "stats": {
+        "contributors": "+60",
+        "forks": "+270",
+        "stars": "+1.4K",
+        "commits": "+600",
+        "pulls": "+38K"
+      }
+    },
+    "joinCommunity": {
+      "title": "加入我们的社区",
+      "slack": {
+        "title": "在 Slack 与我们交流",
+        "action": "加入"
+      },
+      "twitter": {
+        "title": "在 X 上关注我们",
+        "action": "关注"
+      },
+      "discord": {
+        "title": "在 Discord 上聊天",
+        "action": "加入"
+      },
+      "reddit": {
+        "title": "在 Reddit 上讨论",
+        "action": "加入"
+      }
+    },
+    "ecosystem": {
+      "title": "生态集成",
+      "subtitle": "GPU 虚拟化与调度的集成由 HAMi 提供支持",
+      "viewDetails": "查看详情"
     },
     "testimonials": {
       "title": "客户评价",

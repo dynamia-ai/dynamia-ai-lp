@@ -55,6 +55,42 @@
         }
       ]
     },
+    "poweredByHami": {
+      "title": "Powered by HAMi",
+      "description": "The leading open-source heterogeneous computing virtualization middleware for efficient management of GPU and AI accelerators",
+      "learnMore": "Learn More",
+      "stats": {
+        "contributors": "+60",
+        "forks": "+50K",
+        "stars": "+10K",
+        "commits": "+100K",
+        "pulls": "+200M"
+      }
+    },
+    "joinCommunity": {
+      "title": "Join our community",
+      "slack": {
+        "title": "Talk with us on Slack",
+        "action": "Join"
+      },
+      "twitter": {
+        "title": "Follow us on X",
+        "action": "Follow"
+      },
+      "discord": {
+        "title": "Chat on Discord",
+        "action": "Join"
+      },
+      "reddit": {
+        "title": "Discuss on Reddit",
+        "action": "Join"
+      }
+    },
+    "ecosystem": {
+      "title": "Ecosystem Integration",
+      "subtitle": "GPU virtualization and scheduling integration powered by HAMi",
+      "viewDetails": "View details"
+    },
     "testimonials": {
       "title": "What Our Customers Say",
       "items": [

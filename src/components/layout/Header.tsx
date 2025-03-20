@@ -109,8 +109,8 @@ const Header: React.FC = () => {
     { 
       name: t('navigation.community'), 
       description: t('navigation.communityDesc'),
-      href: currentLocale === 'zh' ? '/zh/blog/community' : '/blog/community', 
-      external: false,
+      href: 'https://github.com/Project-HAMi/HAMi?tab=readme-ov-file#meeting--contact',
+      external: true,
       iconName: 'users'
     },
   ];
