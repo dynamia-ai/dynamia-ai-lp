@@ -77,7 +77,6 @@ const Header: React.FC = () => {
   const navigation = [
     { name: t('navigation.hami'), href: '#', hasSubmenu: true, submenuType: 'hami' },
     { name: t('navigation.products'), href: currentLocale === 'zh' ? '/zh/products' : '/products' },
-    { name: t('navigation.solutions'), href: '#', hasSubmenu: true, submenuType: 'solutions' },
     { name: t('navigation.pricing'), href: currentLocale === 'zh' ? '/zh/pricing' : '/pricing' },
     { name: t('navigation.resources'), href: '#', hasSubmenu: true, submenuType: 'resources' },
     { name: t('navigation.company'), href: currentLocale === 'zh' ? '/zh/company' : '/company' },
@@ -130,6 +129,13 @@ const Header: React.FC = () => {
       href: 'https://project-hami.io/blog', 
       external: true,
       iconName: 'blog'
+    },
+    { 
+      name: t('navigation.adopters'), 
+      description: t('navigation.adoptersDesc'),
+      href: 'https://project-hami.io/adopters', 
+      external: true,
+      iconName: 'users'
     }
   ];
 
@@ -274,7 +280,8 @@ const Header: React.FC = () => {
                         className="relative flex items-center h-full"
                       >
                         <div
-                          className={`inline-flex items-center px-1 h-full border-b-2 text-sm font-medium ${
+                          // 调整字体大小
+                          className={`inline-flex items-center px-1 h-full border-b-2 text-base font-medium ${
                             (item.submenuType === 'hami' && isHamiMenuOpen) || 
                             (item.submenuType === 'resources' && isResourcesMenuOpen) ||
                             (item.submenuType === 'solutions' && isSolutionsMenuOpen)
@@ -311,7 +318,7 @@ const Header: React.FC = () => {
                           (item.submenuType === 'resources' && isResourcesMenuOpen) ||
                           (item.submenuType === 'solutions' && isSolutionsMenuOpen)) && (
                           <div 
-                            className={`absolute left-0 top-full mt-1 ${item.submenuType === 'solutions' ? 'w-[325px]' : 'w-[650px]'} rounded-lg shadow-lg bg-white ring-1 hami-menu-border z-50 fadeIn`}
+                            className="fixed left-0 right-0 top-16 bg-white shadow-lg z-50 fadeIn"
                             onMouseEnter={
                               item.submenuType === 'hami' 
                                 ? handleHamiMouseEnter 
@@ -327,59 +334,66 @@ const Header: React.FC = () => {
                                   : handleSolutionsMouseLeave
                             }
                           >
-                            <div className="p-4">
-                              <div className={`grid ${item.submenuType === 'solutions' ? 'grid-cols-1' : 'grid-cols-2'} gap-4`}>
-                                {(
-                                  item.submenuType === 'hami' 
-                                    ? hamiSubmenu 
-                                    : item.submenuType === 'resources' 
-                                      ? resourcesSubmenu 
-                                      : solutionsSubmenu
-                                ).map((subItem) => (
-                                  <div 
-                                    key={subItem.name} 
-                                    className="p-3 rounded-md transition-colors duration-150 hami-menu-item"
-                                  >
-                                    {subItem.external ? (
-                                      <a
-                                        href={subItem.href}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="block"
-                                      >
-                                        <div className="flex items-start">
-                                          <div className="flex-shrink-0 mr-4">
-                                            <HamiIcon iconName={subItem.iconName} />
-                                          </div>
-                                          <div className="flex-grow">
-                                            <div className="flex justify-between items-center">
-                                              <h3 className="text-base font-medium text-gray-900">{subItem.name}</h3>
-                                              <ExternalLinkIcon className="h-4 w-4 text-gray-400" aria-hidden="true" />
-                                            </div>
-                                            <p className="mt-1 text-sm text-gray-500">{subItem.description}</p>
-                                          </div>
-                                        </div>
-                                      </a>
-                                    ) : (
-                                      <Link
-                                        href={subItem.href}
-                                        className="block"
-                                      >
-                                        <div className="flex items-start">
-                                          <div className="flex-shrink-0 mr-4">
-                                            <HamiIcon iconName={subItem.iconName} />
-                                          </div>
-                                          <div className="flex-grow">
-                                            <div className="flex justify-between items-center">
-                                              <h3 className="text-base font-medium text-gray-900">{subItem.name}</h3>
-                                            </div>
-                                            <p className="mt-1 text-sm text-gray-500">{subItem.description}</p>
-                                          </div>
-                                        </div>
-                                      </Link>
-                                    )}
+                            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+                              <div className="flex">
+                                {/* Left side - Large title */}
+                                <div className="w-1/3 pr-10 sm:pl-45">
+                                  <div className={`dropdown-description ${item.submenuType === 'hami' ? 'bg-hami-pattern' : ''}`}>
+                                    <div className="dropdown-title text-3xl font-bold text-gray-900 pt-0 mt-0">
+                                      {item.name}
+                                    </div>
                                   </div>
-                                ))}
+                                </div>
+                                
+                                {/* Right side - Menu items with dividers */}
+                                <div className="w-2/3 border-l border-gray-200 pl-10">
+                                  <ul className="grid grid-cols-2 gap-4">
+                                    {(
+                                      item.submenuType === 'hami' 
+                                        ? hamiSubmenu 
+                                        : item.submenuType === 'resources' 
+                                          ? resourcesSubmenu 
+                                          : solutionsSubmenu
+                                    ).map((subItem) => (
+                                      <li 
+                                        key={subItem.name}
+                                        className="menu-item"
+                                      >
+                                        {subItem.external ? (
+                                          <a
+                                            href={subItem.href}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="block hover:bg-primary-lighter p-4 rounded-md transition-colors duration-150"
+                                          >
+                                            <div className="menu-item__title font-medium text-gray-900 mb-1">
+                                              {subItem.name}
+                                            </div>
+                                            <span className="d-flex justify-content-between">
+                                              <div className="menu-item__text text-gray-500 text-sm">
+                                                <p>{subItem.description}</p>
+                                              </div>
+                                            </span>
+                                          </a>
+                                        ) : (
+                                          <Link
+                                            href={subItem.href}
+                                            className="block hover:bg-primary-lighter p-4 rounded-md transition-colors duration-150"
+                                          >
+                                            <div className="menu-item__title font-medium text-gray-900 mb-1">
+                                              {subItem.name}
+                                            </div>
+                                            <span className="d-flex justify-content-between">
+                                              <div className="menu-item__text text-gray-500 text-sm">
+                                                <p>{subItem.description}</p>
+                                              </div>
+                                            </span>
+                                          </Link>
+                                        )}
+                                      </li>
+                                    ))}
+                                  </ul>
+                                </div>
                               </div>
                             </div>
                           </div>
@@ -389,7 +403,7 @@ const Header: React.FC = () => {
                       <Link
                         key={item.href}
                         href={item.href}
-                        className={`inline-flex items-center h-full px-1 border-b-2 text-sm font-medium ${
+                        className={`inline-flex items-center h-full px-1 border-b-2 text-base font-medium ${
                           pathname === item.href || (pathname === '/' && item.href === '/') || (pathname === '/zh' && item.href === '/zh')
                             ? 'border-primary text-gray-900'
                             : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700'

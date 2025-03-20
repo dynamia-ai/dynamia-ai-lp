@@ -10,7 +10,7 @@
   --primary-dark: #0CAB4D; /* 深色版本 - 用于悬停状态 */
   --primary-darker: #0A8F41; /* 更深色版本 - 用于激活状态 */
   --primary-light: rgba(15, 208, 93, 0.1); /* 淡色版本 - 10%透明度 */
-  --primary-lighter: rgba(15, 208, 93, 0.05); /* 更淡色版本 - 5%透明度 */
+  --primary-lighter: rgba(15, 208, 93, 0.15); /* 更淡色版本 - 15%透明度 */
   
   /* 文字在主色调背景上的颜色 */
   --on-primary: #ffffff;
@@ -30,7 +30,7 @@
     
     /* 暗色模式下可以调整主色调的亮度 */
     --primary-light: rgba(15, 208, 93, 0.2); /* 暗色模式下稍微提高透明度 */
-    --primary-lighter: rgba(15, 208, 93, 0.1);
+    --primary-lighter: rgba(15, 208, 93, 0.15);
   }
 }
 
@@ -124,4 +124,66 @@ body {
 .hami-menu-border {
   border: 1px solid var(--primary);
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+/* Mega Menu Styles */
+.dropdown-description {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  height: 100%;
+  min-height: 150px;
+  padding-top: 0.5rem;
+}
+
+.bg-hami-pattern {
+  background-image: url('/images/hami-pattern.svg');
+  background-position: right bottom;
+  background-repeat: no-repeat;
+  background-size: 120px auto;
+}
+
+.dropdown-title {
+  font-size: 2.5rem;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  font-weight: 700;
+  text-align: left;
+}
+
+.menu-item {
+  position: relative;
+  transition: all 0.2s ease;
+  width: 100%;
+  height: 100%;
+}
+
+.menu-item a {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.menu-item a:hover {
+  background-color: var(--service-bg-hover, #F7FAFF);
+}
+
+.menu-item__title {
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  transition: color 0.2s ease;
+}
+
+.menu-item__text {
+  color: #6B7280;
+  font-size: 0.875rem;
+}
+
+.menu-item__viewbutton {
+  font-size: 0.75rem;
+  color: var(--primary);
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  transition: background-color 0.2s ease;
 }

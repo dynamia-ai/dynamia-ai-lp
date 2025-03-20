@@ -18,6 +18,8 @@
     "resourcesDocDesc": "Access comprehensive guides and reference materials for HAMi",
     "resourcesBlog": "Blog",
     "resourcesBlogDesc": "Read the latest news, tutorials and updates about HAMi",
+    "adopters": "Adopters",
+    "adoptersDesc": "See who's using HAMi in production environments",
     "company": "Company",
     "freeTrial": "Free Trial",
     "requestDemo": "Request Demo",
@@ -61,10 +63,10 @@
       "learnMore": "Learn More",
       "stats": {
         "contributors": "+60",
-        "forks": "+50K",
-        "stars": "+10K",
-        "commits": "+100K",
-        "pulls": "+200M"
+        "forks": "+270",
+        "stars": "+1.4K",
+        "commits": "+600",
+        "pulls": "+38M"
       }
     },
     "joinCommunity": {
@@ -344,7 +346,14 @@
   "footer": {
     "copyright": "© 2025 dynamia ai",
     "privacyPolicy": "Privacy Policy",
-    "termsOfService": "Terms of Service"
+    "termsOfService": "Terms of Service",
+    "company": "Company",
+    "aboutUs": "About us",
+    "contactUs": "Contact us",
+    "platformTitle": "Dynamia AI Platform",
+    "getDemo": "Get a demo",
+    "pricing": "Pricing",
+    "poweredByHami": "Powered by HAMi"
   },
   "search": {
     "placeholder": "Search...",

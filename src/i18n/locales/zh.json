@@ -18,6 +18,8 @@
     "resourcesDocDesc": "访问HAMi的全面指南和参考资料",
     "resourcesBlog": "博客",
     "resourcesBlogDesc": "阅读有关HAMi的最新消息、教程和更新",
+    "adopters": "采用者",
+    "adoptersDesc": "查看哪些组织在生产环境中使用HAMi",
     "company": "公司",
     "freeTrial": "免费试用",
     "requestDemo": "申请演示",
@@ -561,7 +563,14 @@
   "footer": {
     "copyright": "© 2025 dynamia ai",
     "privacyPolicy": "隐私政策",
-    "termsOfService": "服务条款"
+    "termsOfService": "服务条款",
+    "company": "公司",
+    "aboutUs": "关于我们",
+    "contactUs": "联系我们",
+    "platformTitle": "Dynamia AI 平台",
+    "getDemo": "获取演示",
+    "pricing": "定价",
+    "poweredByHami": "由 HAMi 提供支持"
   },
   "search": {
     "placeholder": "搜索...",

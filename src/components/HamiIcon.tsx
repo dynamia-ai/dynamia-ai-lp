@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 
 // 图标类型
 export type IconName = 'infoCircle' | 'globe' | 'code' | 'users' | 'document' | 'blog' | 'externalLink';
@@ -17,8 +18,8 @@ export const iconFiles: Record<IconName, string> = {
 // HAMi菜单图标组件
 const HamiIcon: React.FC<{ iconName: IconName, className?: string }> = ({ iconName, className = "h-6 w-6" }) => (
   <div className="rounded-md bg-primary-light p-2 inline-flex items-center justify-center">
-    {/* 使用img标签而不是next/image来显示SVG，避免Image组件对SVG的处理问题 */}
-    <img
+    {/* 使用Next.js Image组件 */}
+    <Image
       src={iconFiles[iconName]}
       alt={`${iconName} icon`}
       className={className}
