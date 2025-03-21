@@ -1,8 +1,10 @@
 "use client";
 
-import React from 'react';
+import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import MainLayout from '@/components/layout/MainLayout';
+import FormSuccessMessage from '@/components/FormSuccessMessage';
+import { isCompanyEmail } from '@/utils/validation';
 
 interface TeamMember {
   name: string;
@@ -18,6 +20,13 @@ interface TeamMember {
 
 export default function Company() {
   const { t } = useTranslation();
+  const [formState, setFormState] = useState({
+    name: '',
+    email: '',
+    message: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
   
   // 获取愿景点并确保类型安全
   const visionPointsFromTranslation = t('company.about.vision.points', { returnObjects: true });
@@ -50,6 +59,74 @@ export default function Company() {
   //       { title: "Product Manager", location: "Remote", type: "Full-time" },
   //       { title: "Solutions Architect", location: "Shenzhen", type: "Full-time" }
   //     ];
+
+  // 处理表单字段变化
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormState(prevState => ({
+      ...prevState,
+      [name]: value
+    }));
+  };
+
+  // 处理表单提交
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    // 验证是否为公司邮箱
+    if (!isCompanyEmail(formState.email)) {
+      alert(t('common.useCompanyEmail'));
+      return;
+    }
+    
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+    
+    try {
+      // Prepare email content
+      const formData = new FormData();
+      
+      // Add all form fields to FormData
+      Object.entries(formState).forEach(([key, value]) => {
+        formData.append(key, value);
+      });
+      
+      // Add email subject
+      formData.append('_subject', `Contact Form Submission - ${formState.name}`);
+      
+      // Specify the target email
+      formData.append('_replyto', formState.email);
+      
+      // Add hidden fields for FormSubmit configuration
+      formData.append('_next', typeof window !== 'undefined' ? window.location.href : '');
+      formData.append('_captcha', 'true');
+      formData.append('_template', 'box');
+      
+      // Send to FormSubmit service
+      const response = await fetch('https://formsubmit.co/xxxxx', {
+        method: 'POST',
+        body: formData
+      });
+      
+      if (response.ok) {
+        // Reset form
+        setFormState({
+          name: '',
+          email: '',
+          message: ''
+        });
+        setSubmitStatus('success');
+      } else {
+        console.error('Form submission failed:', await response.text());
+        setSubmitStatus('error');
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <MainLayout>
@@ -182,7 +259,21 @@ export default function Company() {
               </div>
               <div>
                 <h3 className="text-lg font-medium text-gray-900 mb-4">{t('company.contact.formTitle')}</h3>
-                <form className="space-y-4">
+                
+                {submitStatus === 'success' && (
+                  <FormSuccessMessage translationKey="company.contact.submitSuccess" />
+                )}
+                
+                {submitStatus === 'error' && (
+                  <FormSuccessMessage translationKey="company.contact.submitError" isError={true} />
+                )}
+                
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  {/* Hidden field for FormSubmit configuration */}
+                  <input type="hidden" name="_next" value={typeof window !== 'undefined' ? window.location.href : ''} />
+                  <input type="hidden" name="_captcha" value="true" />
+                  <input type="hidden" name="_template" value="box" />
+                  
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium text-gray-700">
                       {t('company.contact.nameLabel')}
@@ -190,6 +281,10 @@ export default function Company() {
                     <input
                       type="text"
                       id="name"
+                      name="name"
+                      value={formState.name}
+                      onChange={handleInputChange}
+                      required
                       className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:ring-primary focus:border-primary"
                     />
                   </div>
@@ -200,6 +295,10 @@ export default function Company() {
                     <input
                       type="email"
                       id="email"
+                      name="email"
+                      value={formState.email}
+                      onChange={handleInputChange}
+                      required
                       className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:ring-primary focus:border-primary"
                     />
                   </div>
@@ -209,15 +308,20 @@ export default function Company() {
                     </label>
                     <textarea
                       id="message"
+                      name="message"
+                      value={formState.message}
+                      onChange={handleInputChange}
+                      required
                       rows={4}
                       className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:ring-primary focus:border-primary"
                     ></textarea>
                   </div>
                   <button
                     type="submit"
-                    className="w-full inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-primary hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
+                    disabled={isSubmitting}
+                    className={`w-full inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-primary hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary ${isSubmitting ? 'opacity-75 cursor-not-allowed' : ''}`}
                   >
-                    {t('company.contact.submitButton')}
+                    {isSubmitting ? t('company.contact.submitting') : t('company.contact.submitButton')}
                   </button>
                 </form>
               </div>

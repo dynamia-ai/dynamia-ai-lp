@@ -514,40 +514,47 @@
   },
   "freeTrial": {
     "title": "免费试用",
-    "subtitle": "立即开始您的 30 天免费试用，体验 kantaloupe 的强大功能",
+    "subtitle": "立即开始30天免费试用，体验kantaloupe的强大功能",
     "form": {
       "name": "姓名",
-      "email": "企业邮箱",
+      "email": "工作邮箱",
       "company": "公司名称",
       "phone": "电话号码",
-      "useCase": "您计划如何使用 kantaloupe?",
-      "terms": "我同意 dynamia ai 的服务条款和隐私政策",
-      "submitButton": "开始免费试用"
+      "useCase": "您计划如何使用kantaloupe？",
+      "terms": "我同意dynamia ai的服务条款和隐私政策",
+      "termsRequired": "您必须同意条款和条件才能继续。",
+      "submitting": "处理中...",
+      "submitButton": "开始免费试用",
+      "submitSuccess": "谢谢！您的免费试用请求已提交。我们的团队将很快与您联系，提供后续步骤。",
+      "submitError": "提交请求时发生错误。请重试或直接通过info@dynamia.ai与我们联系。"
     },
-    "disclaimer": "免费试用期结束后，您可以选择升级到付费计划或取消您的账户。无需信用卡。"
+    "disclaimer": "免费试用结束后，您可以选择升级到付费计划或取消账户。无需信用卡。"
   },
   "requestDemo": {
     "title": "申请演示",
-    "subtitle": "安排一次个性化演示，了解 kantaloupe 如何帮助您的组织优化计算资源",
+    "subtitle": "安排个性化演示，了解kantaloupe如何帮助您的组织优化计算资源",
     "demoContent": {
       "title": "演示内容",
       "items": [
-        "kantaloupe 平台功能概述",
-        "针对您特定需求的定制演示",
-        "与我们的解决方案专家互动交流",
-        "详细了解部署选项和定价"
+        "kantaloupe平台功能概述",
+        "根据您的需求定制的演示",
+        "与我们的解决方案专家互动",
+        "部署选项和定价的详细探讨"
       ]
     },
     "form": {
-      "title": "填写信息",
+      "title": "您的信息",
       "name": "姓名",
-      "email": "企业邮箱",
+      "email": "工作邮箱",
       "company": "公司名称",
       "jobTitle": "职位",
       "message": "您希望在演示中了解什么？",
-      "submitButton": "申请演示"
+      "submitting": "发送请求中...",
+      "submitButton": "申请演示",
+      "submitSuccess": "谢谢！我们已收到您的演示请求。我们的团队将在24小时内联系您安排个性化演示。",
+      "submitError": "提交请求时发生错误。请重试或直接通过info@dynamia.ai与我们联系。"
     },
-    "followUp": "提交申请后，我们的团队将在 24 小时内与您联系，安排演示时间。"
+    "followUp": "提交请求后，我们的团队将在24小时内联系您安排演示。"
   },
   "resources": {
     "title": "资源中心",
@@ -606,33 +613,33 @@
   "company": {
     "about": {
       "title": "关于我们",
-      "description": "我们正在开创异构计算的未来，帮助组织最大限度地利用其计算资源",
+      "description": "我们在异构计算领域开拓创新，帮助组织最大化利用其计算资源",
       "mission": {
         "title": "我们的使命",
-        "description1": "在 dynamia ai，我们致力于通过创新的异构计算解决方案，帮助组织最大化其计算资源的价值。我们相信，通过智能地管理和优化计算资源，可以加速科学发现、推动技术创新，并为全球各行各业的客户创造价值。",
-        "description2": "我们的旗舰产品 kantaloupe 是一个统一的异构计算平台，专为处理当今最复杂的计算挑战而设计。无论是 AI 训练、高性能计算还是边缘计算，kantaloupe 都能提供无与伦比的资源效率和性能优化。"
+        "description1": "在dynamia ai，我们致力于通过创新的异构计算解决方案帮助组织最大化其计算资源的价值。我们相信，通过智能管理和优化计算资源，我们可以加速科学发现，推动技术创新，并为全球各行业的客户创造价值。",
+        "description2": "我们的旗舰产品kantaloupe是一个统一的异构计算平台，专为应对当今最复杂的计算挑战而设计。无论是AI训练、高性能计算还是边缘计算，kantaloupe都能提供无与伦比的资源效率和性能优化。"
       },
       "vision": {
         "title": "公司愿景",
         "points": [
-          "打造全球领先的异构计算管理平台",
+          "构建全球领先的异构计算管理平台",
           "推动计算资源的高效利用，减少能源浪费",
-          "赋能组织通过优化计算基础设施实现创新"
+          "通过优化计算基础设施，赋能组织实现创新"
         ]
       }
     },
     "team": {
       "title": "领导团队",
       "members": [
-        { "name": "张潇", "position": "创始人兼首席执行官", "image": "CEO" },
-        { "name": "李孟轩", "position": "首席技术官", "image": "CTO" },
+        { "name": "张晓", "position": "创始人兼首席执行官", "image": "CEO" },
+        { "name": "李梦轩", "position": "首席技术官", "image": "CTO" },
         { "name": "陈文", "position": "首席产品官", "image": "CPO" },
-        { "name": "尹玉", "position": "首席运营官", "image": "COO" }
+        { "name": "尹宇", "position": "首席运营官", "image": "COO" }
       ]
     },
     "careers": {
-      "title": "职业机会",
-      "description": "加入我们的创新团队，塑造计算的未来",
+      "title": "职业发展",
+      "description": "加入我们的创新团队，共同塑造计算的未来",
       "jobs": [
         { "title": "高级软件工程师", "location": "北京", "type": "全职" },
         { "title": "机器学习工程师", "location": "上海", "type": "全职" },
@@ -644,15 +651,18 @@
     },
     "contact": {
       "title": "联系我们",
-      "description": "与我们的团队联系",
-      "address": "上海市徐汇区龙台路 180 号 f2 栋 5F503",
+      "description": "与我们的团队取得联系",
+      "address": "美国加利福尼亚州旧金山科技大道123号，邮编94105",
       "email": "info@dynamia.ai",
-      "phone": "+86 21 0000 0000",
+      "phone": "+1 (555) 123-4567",
       "formTitle": "发送消息",
       "nameLabel": "您的姓名",
       "emailLabel": "您的邮箱",
-      "messageLabel": "消息",
-      "submitButton": "发送"
+      "messageLabel": "消息内容",
+      "submitting": "发送中...",
+      "submitButton": "发送",
+      "submitSuccess": "感谢您的留言！我们将尽快回复您。",
+      "submitError": "发送消息时出现错误。请重试或直接发送邮件至info@dynamia.ai。"
     }
   },
   "footer": {
@@ -846,5 +856,11 @@
         "button": "联系我们"
       }
     }
+  },
+  "common": {
+    "readMore": "阅读更多",
+    "viewAll": "查看全部",
+    "useCompanyEmail": "请使用公司邮箱提交表单。",
+    "submitting": "提交中..."
   }
 } 

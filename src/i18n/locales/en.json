@@ -495,7 +495,11 @@
       "phone": "Phone Number",
       "useCase": "How do you plan to use kantaloupe?",
       "terms": "I agree to dynamia ai's Terms of Service and Privacy Policy",
-      "submitButton": "Start Free Trial"
+      "termsRequired": "You must agree to the terms and conditions to proceed.",
+      "submitting": "Processing...",
+      "submitButton": "Start Free Trial",
+      "submitSuccess": "Thank you! Your free trial request has been submitted. Our team will contact you shortly with next steps.",
+      "submitError": "An error occurred while submitting your request. Please try again or contact us directly at info@dynamia.ai."
     },
     "disclaimer": "After your free trial ends, you can choose to upgrade to a paid plan or cancel your account. No credit card required."
   },
@@ -518,7 +522,10 @@
       "company": "Company Name",
       "jobTitle": "Job Title",
       "message": "What would you like to learn in the demo?",
-      "submitButton": "Request Demo"
+      "submitting": "Sending request...",
+      "submitButton": "Request Demo",
+      "submitSuccess": "Thank you! Your demo request has been received. Our team will contact you within 24 hours to schedule your personalized demo.",
+      "submitError": "An error occurred while submitting your request. Please try again or contact us directly at info@dynamia.ai."
     },
     "followUp": "After submitting your request, our team will contact you within 24 hours to schedule your demo."
   },
@@ -625,7 +632,10 @@
       "nameLabel": "Your Name",
       "emailLabel": "Your Email",
       "messageLabel": "Message",
-      "submitButton": "Send"
+      "submitting": "Sending...",
+      "submitButton": "Send",
+      "submitSuccess": "Thank you for your message! We will get back to you as soon as possible.",
+      "submitError": "An error occurred while sending your message. Please try again or email us directly at info@dynamia.ai."
     }
   },
   "footer": {
@@ -819,5 +829,11 @@
         "content": "If you have any queries regarding this Privacy Policy, please contact us at info@dynamia.ai."
       }
     ]
+  },
+  "common": {
+    "readMore": "Read More",
+    "viewAll": "View All",
+    "useCompanyEmail": "Please use a company email to submit the form.",
+    "submitting": "Submitting..."
   }
 } 
