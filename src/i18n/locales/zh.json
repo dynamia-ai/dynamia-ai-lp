@@ -631,10 +631,8 @@
     "team": {
       "title": "领导团队",
       "members": [
-        { "name": "张晓", "position": "创始人兼首席执行官", "image": "CEO" },
-        { "name": "李梦轩", "position": "首席技术官", "image": "CTO" },
-        { "name": "陈文", "position": "首席产品官", "image": "CPO" },
-        { "name": "尹宇", "position": "首席运营官", "image": "COO" }
+        { "name": "张潇", "position": "创始人兼首席执行官", "image": "CEO" },
+        { "name": "李孟轩", "position": "首席技术官", "image": "CTO" }
       ]
     },
     "careers": {
@@ -652,7 +650,7 @@
     "contact": {
       "title": "联系我们",
       "description": "与我们的团队取得联系",
-      "address": "美国加利福尼亚州旧金山科技大道123号，邮编94105",
+      "address": "上海市徐汇区龙台路 180 号 f2 栋 5F503",
       "email": "info@dynamia.ai",
       "phone": "+1 (555) 123-4567",
       "formTitle": "发送消息",
@@ -668,6 +666,7 @@
   "footer": {
     "copyright": "© 2025 dynamia ai",
     "privacyPolicy": "隐私政策",
+    "cookiesPolicy": "Cookie 政策",
     "termsOfService": "服务条款",
     "company": "公司",
     "aboutUs": "关于我们",
@@ -714,6 +713,37 @@
       {
         "title": "联系我们",
         "content": "如果您对本隐私政策有任何疑问，请通过info@dynamia.ai与我们联系。"
+      }
+    ]
+  },
+  "cookiesPolicy": {
+    "title": "Cookie 政策",
+    "lastUpdated": "最后更新：2025年3月3日",
+    "intro": "本 Cookie 政策说明了 DYNAMIA INTELLIGENCE PTE. LTD.（\"我们\"）如何在我们的网站 https://dynamia.ai/（\"本网站\"）上使用 cookie 和类似的跟踪技术。",
+    "sections": [
+      {
+        "title": "什么是 cookie？",
+        "content": "Cookie 是当您访问网站时放置在您的计算机或移动设备上的小型数据文件。网站所有者广泛使用 cookie 使其网站更高效地运行并提供报告信息。由网站所有者（在本例中为 DYNAMIA INTELLIGENCE PTE. LTD.）设置的 cookie 称为\"第一方 cookie\"。由网站所有者以外的方设置的 cookie 称为\"第三方 cookie\"。第三方 cookie 使第三方功能能够在网站上或通过网站提供（如分析、广告和交互式内容）。"
+      },
+      {
+        "title": "我们如何使用 cookie",
+        "content": "我们出于多种原因使用第一方和第三方 cookie。某些 cookie 出于技术原因是必需的，以便我们的网站能够运行，我们将这些称为\"必要\"或\"绝对必要\"的 cookie。其他 cookie 还使我们能够跟踪和定位用户的兴趣，以增强我们网站上的体验。第三方可能通过我们的网站提供 cookie，用于广告、分析和其他目的。"
+      },
+      {
+        "title": "我们使用的 cookie 类型",
+        "content": "通过我们的网站提供的特定类型的第一方和第三方 cookie 及其执行的目的包括：基本网站 cookie、性能和功能 cookie、分析和定制 cookie、广告 cookie 以及社交网络 cookie。"
+      },
+      {
+        "title": "关于 cookie 的选择",
+        "content": "如果您想限制或阻止 cookie，可以通过浏览器设置来实现。浏览器中的\"帮助\"功能应该会告诉您如何操作。或者，您可以访问 www.aboutcookies.org，其中包含有关如何在各种浏览器上限制或阻止 cookie 的综合信息。您还可以通过首次访问我们网站时出现的 cookie 同意横幅管理您的 cookie 偏好。"
+      },
+      {
+        "title": "对我们 cookie 政策的更改",
+        "content": "我们可能会不时更新我们的 Cookie 政策。对我们 Cookie 政策的更改将在此页面上更新。我们鼓励用户经常查看此页面以了解任何变更。我们 Cookie 政策的最后更新日期在政策顶部注明。"
+      },
+      {
+        "title": "联系我们",
+        "content": "如果您对我们使用 cookie 或其他技术有任何疑问，请发送电子邮件至 info@dynamia.ai 与我们联系。"
       }
     ]
   },

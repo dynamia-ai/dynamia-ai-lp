@@ -605,9 +605,7 @@
       "title": "Leadership Team",
       "members": [
         { "name": "Xiao Zhang", "position": "Founder & CEO", "image": "CEO" },
-        { "name": "Mengxuan Li", "position": "Chief Technology Officer", "image": "CTO" },
-        { "name": "Wen Chen", "position": "Chief Product Officer", "image": "CPO" },
-        { "name": "Yu Yin", "position": "Chief Operating Officer", "image": "COO" }
+        { "name": "Mengxuan Li", "position": "Chief Technology Officer", "image": "CTO" }
       ]
     },
     "careers": {
@@ -641,6 +639,7 @@
   "footer": {
     "copyright": "© 2025 dynamia ai",
     "privacyPolicy": "Privacy Policy",
+    "cookiesPolicy": "Cookies Policy",
     "termsOfService": "Terms of Service",
     "company": "Company",
     "aboutUs": "About us",
@@ -827,6 +826,37 @@
       {
         "title": "Contact Us",
         "content": "If you have any queries regarding this Privacy Policy, please contact us at info@dynamia.ai."
+      }
+    ]
+  },
+  "cookiesPolicy": {
+    "title": "Cookies Policy",
+    "lastUpdated": "Last Updated: March 03, 2025",
+    "intro": "This Cookie Policy explains how DYNAMIA INTELLIGENCE PTE. LTD. (\"we\", \"us\", or \"our\") uses cookies and similar tracking technologies on our website https://dynamia.ai/ (the \"Site\").",
+    "sections": [
+      {
+        "title": "What are cookies?",
+        "content": "Cookies are small data files that are placed on your computer or mobile device when you visit a website. Cookies are widely used by website owners to make their websites work more efficiently and to provide reporting information. Cookies set by the website owner (in this case, DYNAMIA INTELLIGENCE PTE. LTD.) are called \"first-party cookies\". Cookies set by parties other than the website owner are called \"third-party cookies\". Third-party cookies enable third-party features or functionality to be provided on or through the website (such as analytics, advertising, and interactive content)."
+      },
+      {
+        "title": "How we use cookies",
+        "content": "We use first-party and third-party cookies for several reasons. Some cookies are required for technical reasons in order for our Site to operate, and we refer to these as \"essential\" or \"strictly necessary\" cookies. Other cookies also enable us to track and target the interests of our users to enhance the experience on our Site. Third parties may serve cookies through our Site for advertising, analytics, and other purposes."
+      },
+      {
+        "title": "Types of cookies we use",
+        "content": "The specific types of first and third-party cookies served through our Site and the purposes they perform include: Essential website cookies, Performance and functionality cookies, Analytics and customization cookies, Advertising cookies, and Social networking cookies."
+      },
+      {
+        "title": "Your choices regarding cookies",
+        "content": "If you would like to restrict or block cookies, you can do this through your browser settings. The Help function within your browser should tell you how. Alternatively, you can visit www.aboutcookies.org which contains comprehensive information on how to restrict or block cookies on a wide variety of browsers. You can also manage your cookie preferences through our cookie consent banner that appears when you first visit our Site."
+      },
+      {
+        "title": "Changes to our cookie policy",
+        "content": "We may update our Cookie Policy from time to time. Changes to our Cookie Policy will be updated on this page. We encourage users to frequently check this page for any changes. The date of the last update to our Cookie Policy is indicated at the top of the policy."
+      },
+      {
+        "title": "Contact us",
+        "content": "If you have any questions about our use of cookies or other technologies, please email us at info@dynamia.ai."
       }
     ]
   },

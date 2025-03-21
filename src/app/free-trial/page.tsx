@@ -211,9 +211,9 @@ export default function FreeTrial() {
             </form>
           </div>
 
-          <div className="mt-8 text-center text-sm text-gray-500">
+          {/* <div className="mt-8 text-center text-sm text-gray-500">
             <p>{t('freeTrial.disclaimer')}</p>
-          </div>
+          </div> */}
         </div>
       </div>
     </MainLayout>
