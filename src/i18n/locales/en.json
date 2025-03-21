@@ -637,7 +637,7 @@
     }
   },
   "footer": {
-    "copyright": "© 2025 dynamia ai",
+    "copyright": "© 2025 DYNAMIA INTELLIGENCE PTE. LTD ",
     "privacyPolicy": "Privacy Policy",
     "cookiesPolicy": "Cookies Policy",
     "termsOfService": "Terms of Service",
@@ -832,19 +832,19 @@
   "cookiesPolicy": {
     "title": "Cookies Policy",
     "lastUpdated": "Last Updated: March 03, 2025",
-    "intro": "This Cookie Policy explains how DYNAMIA INTELLIGENCE PTE. LTD. (\"we\", \"us\", or \"our\") uses cookies and similar tracking technologies on our website https://dynamia.ai/ (the \"Site\").",
+    "intro": "When you visit or access our websites or applications (collectively referred to as \"Services\"), or interact with our content, we utilize (and authorize third parties to use) web beacons, cookies, pixel tags, scripts, tags, APIs, and other technologies (collectively known as \"Tracking Technologies\").\n\nThese Tracking Technologies enable us to automatically gather information about you, your online behavior, and your device (such as your computer or mobile device). This information is used to enhance your navigation on our Services, improve their performance, and customize your experience. We also use this data to collect statistics on Service usage, conduct analytics, deliver content tailored to your interests, and manage services for our users, advertisers, publishers, customers, and partners.\n\nMoreover, we permit third parties to collect information about you through Tracking Technologies.",
     "sections": [
       {
         "title": "What are cookies?",
-        "content": "Cookies are small data files that are placed on your computer or mobile device when you visit a website. Cookies are widely used by website owners to make their websites work more efficiently and to provide reporting information. Cookies set by the website owner (in this case, DYNAMIA INTELLIGENCE PTE. LTD.) are called \"first-party cookies\". Cookies set by parties other than the website owner are called \"third-party cookies\". Third-party cookies enable third-party features or functionality to be provided on or through the website (such as analytics, advertising, and interactive content)."
+        "content": "Cookies are small text files consisting solely of letters and numbers. A web server places them on your computer or mobile device when you visit a webpage. Cookies can enhance the user - friendliness of our Services, for instance, by remembering your language preferences and settings. For more details about cookies, visit www.allaboutcookies.org.\n\nCookies are extensively used to make websites function efficiently. They allow you to navigate between pages smoothly, remember your preferences, and make your interaction with the Services more seamless and efficient. Cookies also help ensure that the online advertisements you see are relevant to you and your interests."
       },
       {
-        "title": "How we use cookies",
-        "content": "We use first-party and third-party cookies for several reasons. Some cookies are required for technical reasons in order for our Site to operate, and we refer to these as \"essential\" or \"strictly necessary\" cookies. Other cookies also enable us to track and target the interests of our users to enhance the experience on our Site. Third parties may serve cookies through our Site for advertising, analytics, and other purposes."
+        "title": "Storing Tracking Technologies",
+        "content": "We store Tracking Technologies when you visit or access our Services (e.g., when browsing our websites); these are termed \"First Party Tracking Technologies\". Additionally, third parties such as our analytics service providers, business partners, and advertisers store Tracking Technologies while running content on our Services; these are called \"Third Party Tracking Technologies\".\n\nBoth types of Tracking Technologies may be stored either during your visit to our Services or for subsequent repeat visits."
       },
       {
-        "title": "Types of cookies we use",
-        "content": "The specific types of first and third-party cookies served through our Site and the purposes they perform include: Essential website cookies, Performance and functionality cookies, Analytics and customization cookies, Advertising cookies, and Social networking cookies."
+        "title": "What types of Tracking Technologies do we use?",
+        "content": "There are five primary types of Tracking Technologies:\n\n1. Strictly necessary Tracking Technologies: These are essential for you to log in, navigate, and use the features of our Services or receive a service you've requested (like your username). We don't require your consent to use these. They can be used for security and integrity purposes, such as detecting policy violations and enabling support or security features.\n2. Functionality Tracking Technologies: These enable our Services to remember your choices (e.g., your language) and offer enhanced, personalized features. For example, they're used for authentication (to recall when you're logged - in) and to support other Service features.\n3. Performance Tracking Technologies: These collect information about your online activity (e.g., the length of your visit to our Services), including behavioral data and content engagement metrics. They're used for analytics, research, and generating statistics (based on aggregated information).\n4. Marketing or Advertising Tracking Technologies: These are used to deliver customized offers and ads to you based on your inferred interests and to conduct email marketing campaigns. They can limit the number of times you see an ad and help measure the effectiveness of advertising campaigns. Usually placed by our advertisers (e.g., advertising networks), they provide insights to advertisers about those who view and interact with their ads, visit their websites, or use their apps.\n5. Social media Tracking Technologies: Our website incorporates social media features like Facebook's \"Like\" or \"Share\" buttons. These features are either hosted by a third party or directly on our Services. Your interactions with these features are subject to the privacy statement of the company providing them."
       },
       {
         "title": "Your choices regarding cookies",

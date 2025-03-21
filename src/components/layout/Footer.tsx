@@ -96,7 +96,7 @@ const Footer: React.FC = () => {
             <Link href={getLocalizedHref('/privacy-policy')} className="text-sm text-gray-400 mr-4 hover:text-gray-500">
               {t('footer.privacyPolicy')}
             </Link>
-            <Link href={getLocalizedHref('/cookies-policy')} className="text-sm text-gray-500 hover:text-gray-600">
+            <Link href={getLocalizedHref('/cookies-policy')} className="text-sm text-gray-400 mr-4 hover:text-gray-500">
               {t('footer.cookiesPolicy')}
             </Link>
           </div>

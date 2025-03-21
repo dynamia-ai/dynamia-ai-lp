@@ -5,6 +5,26 @@ import { useTranslation } from 'react-i18next';
 import MainLayout from '@/components/layout/MainLayout';
 import { ShieldCheckIcon, DocumentTextIcon, LockClosedIcon } from '@heroicons/react/24/outline';
 
+// 辅助函数：将文本中的换行符转换为段落和行内换行
+const TextWithBreaks = ({ text }: { text: string }) => {
+  if (!text) return null;
+  
+  return (
+    <>
+      {text.split('\n\n').map((paragraph, index) => (
+        <p key={index} className="mb-4">
+          {paragraph.split('\n').map((line, lineIndex) => (
+            <React.Fragment key={lineIndex}>
+              {lineIndex > 0 && <br />}
+              {line}
+            </React.Fragment>
+          ))}
+        </p>
+      ))}
+    </>
+  );
+};
+
 export default function PrivacyPolicy() {
   const { t } = useTranslation();
   
@@ -33,18 +53,24 @@ export default function PrivacyPolicy() {
               {/* Introduction paragraphs with consistent icons */}
               <div className="flex items-start mb-6 pb-4 border-b border-gray-100">
                 <DocumentTextIcon className="w-6 h-6 text-gray-500 mr-3 flex-shrink-0 mt-1" />
-                <p className="text-gray-700">{t('privacyPolicy.intro')}</p>
+                <div className="text-gray-700">
+                  <TextWithBreaks text={t('privacyPolicy.intro')} />
+                </div>
               </div>
               <div className="flex items-start mb-8 pb-4 border-b border-gray-100">
                 <LockClosedIcon className="w-6 h-6 text-gray-500 mr-3 flex-shrink-0 mt-1" />
-                <p className="text-gray-700">{t('privacyPolicy.consent')}</p>
+                <div className="text-gray-700">
+                  <TextWithBreaks text={t('privacyPolicy.consent')} />
+                </div>
               </div>
               
               <div className="space-y-8">
                 {policySections.map((section, index) => (
                   <div key={index} className="mb-6">
                     <h2 className="text-xl font-bold text-gray-900 mb-3">{section.title}</h2>
-                    <p className="text-gray-700">{section.content}</p>
+                    <div className="text-gray-700">
+                      <TextWithBreaks text={section.content} />
+                    </div>
                   </div>
                 ))}
               </div>
