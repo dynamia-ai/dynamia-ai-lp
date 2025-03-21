@@ -587,6 +587,12 @@
     "about": {
       "title": "About Us",
       "description": "We are pioneering the future of heterogeneous computing to help organizations maximize their computational resources",
+      "whoWeAre": {
+        "title": "Who we are",
+        "paragraph1": "DYNAMIA is the creator and maintainer of HAMi, which is the world's fastest-growing and most widely adopted open-source AI Native Heterogeneous AI Computing Virtualization Middleware project (an official CNCF Project and CNAI Landscape Project). It is capable of managing various types of heterogeneous devices (such as GPU, Ascend, Metax, Cambricon, Hygon, ILuvatar, Mthreads, AMD, etc.), sharing heterogeneous devices among pods, and making more optimal scheduling decisions based on the device topology and scheduling policies.",
+        "paragraph2": "DYNAMIA offers an enterprise platform for AI workloads and GPU orchestration, unlocking the full potential of AI infrastructure. It provides a global solution for enhancing general computing power efficiency and enabling efficient management of heterogeneous computing power. This allows enterprises to effortlessly tackle the challenges of AI infrastructure utilization and heterogeneous complexity. The team members consist of senior architects, engineers, and solution experts with years of experience in the fields of cloud-native, AI Infra, and heterogeneous distributed computing systems. They are located in several cities including Shanghai, Beijing, and Chengdu. In the past, they have served renowned domestic and international high-tech enterprises such as Alibaba, NetEase, Baidu, Fourth Paradigm, and DaoCloud.",
+        "paragraph3":""
+      },
       "mission": {
         "title": "Our Mission",
         "description1": "At dynamia ai, we are committed to helping organizations maximize the value of their computing resources through innovative heterogeneous computing solutions. We believe that by intelligently managing and optimizing computing resources, we can accelerate scientific discovery, drive technological innovation, and create value for customers across industries worldwide.",
@@ -604,8 +610,10 @@
     "team": {
       "title": "Leadership Team",
       "members": [
-        { "name": "Xiao Zhang", "position": "Founder & CEO", "image": "CEO" },
-        { "name": "Mengxuan Li", "position": "Chief Technology Officer", "image": "CTO" }
+        { "name": "Xiao Zhang", "position": "CEO & Founder & HAMi Maintainer", "image": "CEO" },
+        { "name": "Mengxuan Li", "position": "Chief Architect & Co-founder & HAMi Maintainer", "image": "CTO" },
+        { "name": "Yu Yin", "position": "Product Leader & HAMi Maintainer", "image": "COO" },
+        { "name": "Wen Chen", "position": "Tech Leader", "image": "CPO" }
       ]
     },
     "careers": {
@@ -633,7 +641,26 @@
       "submitting": "Sending...",
       "submitButton": "Send",
       "submitSuccess": "Thank you for your message! We will get back to you as soon as possible.",
-      "submitError": "An error occurred while sending your message. Please try again or email us directly at info@dynamia.ai."
+      "submitError": "An error occurred while sending your message. Please try again or email us directly at info@dynamia.ai.",
+      "social": {
+        "email": {
+          "title": "Email",
+          "action": "Send Email"
+        },
+        "slack": {
+          "title": "Slack",
+          "action": "Join Us"
+        },
+        "twitter": {
+          "title": "X (Twitter)",
+          "action": "Follow Us"
+        },
+        "wechat": {
+          "title": "WeChat",
+          "action": "Scan QR Code",
+          "qrPlaceholder": "WeChat QR Code Placeholder"
+        }
+      }
     }
   },
   "footer": {

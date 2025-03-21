@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import Image from 'next/image';
+// import Image from 'next/image';
 import MainLayout from '@/components/layout/MainLayout';
 import FeatureComparisonTable from '@/components/FeatureComparisonTable';
 import { motion } from 'framer-motion';
@@ -17,14 +17,14 @@ const fadeIn = {
 };
 
 // 公司/客户Logo数组
-const companies = [
-  { name: 'Company 1', logo: '/logos/company1.svg' },
-  { name: 'Company 2', logo: '/logos/company2.png' },
-  { name: 'Company 3', logo: '/logos/company3.svg' },
-  { name: 'Company 4', logo: '/logos/company4.svg' },
-  { name: 'Company 5', logo: '/logos/company5.svg' },
-  { name: 'Company 6', logo: '/logos/company6.png' },
-];
+// const companies = [
+//   { name: 'Company 1', logo: '/logos/company1.svg' },
+//   { name: 'Company 2', logo: '/logos/company2.png' },
+//   { name: 'Company 3', logo: '/logos/company3.svg' },
+//   { name: 'Company 4', logo: '/logos/company4.svg' },
+//   { name: 'Company 5', logo: '/logos/company5.svg' },
+//   { name: 'Company 6', logo: '/logos/company6.png' },
+// ];
 
 export default function PricingPage() {
   const { t } = useTranslation();
@@ -320,7 +320,7 @@ export default function PricingPage() {
         </div>
       </section>
 
-      {/* 客户信任展示区域 */}
+      {/* 客户信任展示区域 
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
           <motion.div
@@ -361,7 +361,7 @@ export default function PricingPage() {
             ))}
           </div>
         </div>
-      </section>
+      </section>*/}
     </MainLayout>
   );
 } 

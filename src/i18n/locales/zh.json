@@ -614,6 +614,12 @@
     "about": {
       "title": "关于我们",
       "description": "我们在异构计算领域开拓创新，帮助组织最大化利用其计算资源",
+      "whoWeAre": {
+        "title": "公司简介",
+        "paragraph1": "密瓜智能，HAMi 的发起者和维护者， HAMi 目前是全球增长最快、最受欢迎的开源 AI 原生异构 AI 计算虚拟化中间件项目（ CNCF sandbox 项目和 CNAI landscape 项目），可以管理不同类型的异构 AI GPU（如 GPU、Ascend、Metax、Cambricon、Hygon、ILuvatar、Mthreads、AMD 等），在 Pod 之间共享异构设备，以及丰富灵活的调度策略与优先级权重。\n",
+        "paragraph2": "HAMi 自开源以来受到广泛欢迎，用户遍布全球，超过 100+ 用户使用 HAMi 构建自己的 AI 基础设施，用于最大化提高 GPU 利用率。\n",
+        "paragraph3": "密瓜智能提供基于 HAMi 的 AI 工作负载和 GPU 编排提供企业平台，最大化 AI 基础设施的全部潜力，提供通用算力效率提升和异构算力高效管理的全球化解决方案。让企业轻松应对 AI 基础设施利用率和异构复杂性的挑战。团队成员由多年在云原生、AI 基础设施、异构分布式计算系统领域工作的资深架构师、工程师、解决方案专家组成，分布在上海、北京、成都等多个城市，过去曾服务于阿里巴巴、网易、百度、第四范式、DaoCloud 等国内外知名高科技企业。"
+      },
       "mission": {
         "title": "我们的使命",
         "description1": "在dynamia ai，我们致力于通过创新的异构计算解决方案帮助组织最大化其计算资源的价值。我们相信，通过智能管理和优化计算资源，我们可以加速科学发现，推动技术创新，并为全球各行业的客户创造价值。",
@@ -631,8 +637,10 @@
     "team": {
       "title": "领导团队",
       "members": [
-        { "name": "张潇", "position": "创始人兼首席执行官", "image": "CEO" },
-        { "name": "李孟轩", "position": "首席技术官", "image": "CTO" }
+        { "name": "张潇", "position": "首席执行官 & 创始人 & HAMi 核心维护者", "image": "CEO" },
+        { "name": "李孟轩", "position": "首席架构师 & 联合创始人 & HAMi 核心维护者", "image": "CTO" },
+        { "name": "尹玉", "position": "产品负责人 & HAMi 核心维护者", "image": "COO" },
+        { "name": "陈文", "position": "技术负责人", "image": "CPO" }
       ]
     },
     "careers": {
@@ -660,7 +668,26 @@
       "submitting": "发送中...",
       "submitButton": "发送",
       "submitSuccess": "感谢您的留言！我们将尽快回复您。",
-      "submitError": "发送消息时出现错误。请重试或直接发送邮件至info@dynamia.ai。"
+      "submitError": "发送消息时出现错误。请重试或直接发送邮件至info@dynamia.ai。",
+      "social": {
+        "email": {
+          "title": "邮件",
+          "action": "发送邮件"
+        },
+        "slack": {
+          "title": "Slack",
+          "action": "加入我们"
+        },
+        "twitter": {
+          "title": "X (Twitter)",
+          "action": "关注我们"
+        },
+        "wechat": {
+          "title": "微信",
+          "action": "扫码关注",
+          "qrPlaceholder": "微信二维码占位图"
+        }
+      }
     }
   },
   "footer": {

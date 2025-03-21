@@ -16,6 +16,10 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "dynamia ai - Unified Heterogeneous Computing",
   description: "Accelerate AI, HPC, and Edge workloads seamlessly with kantaloupe.",
+  icons: {
+    icon: '/LOGO-small.svg',
+    apple: '/LOGO-small.svg',
+  }
 };
 
 export default function RootLayout({
