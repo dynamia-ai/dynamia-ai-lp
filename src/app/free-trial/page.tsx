@@ -71,7 +71,7 @@ export default function FreeTrial() {
       formData.append('_template', 'box');
       
       // Send to FormSubmit service - use the same token as the pricing page
-      const response = await fetch('https://formsubmit.co/xxxxx', {
+      const response = await fetch('https://formsubmit.co/07d5707466ec1e05a458f1f26a8acda2', {
         method: 'POST',
         body: formData
       });

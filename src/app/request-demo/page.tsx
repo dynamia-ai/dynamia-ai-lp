@@ -61,7 +61,7 @@ export default function RequestDemo() {
       formData.append('_template', 'box');
       
       // Send to FormSubmit service
-      const response = await fetch('https://formsubmit.co/xxxxx', {
+      const response = await fetch('https://formsubmit.co/07d5707466ec1e05a458f1f26a8acda2', {
         method: 'POST',
         body: formData
       });
