@@ -2,7 +2,6 @@
 
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import Link from 'next/link';
 import MainLayout from '@/components/layout/MainLayout';
 
 interface TeamMember {
@@ -11,11 +10,11 @@ interface TeamMember {
   image: string;
 }
 
-interface Job {
-  title: string;
-  location: string;
-  type: string;
-}
+// interface Job {
+//   title: string;
+//   location: string;
+//   type: string;
+// }
 
 export default function Company() {
   const { t } = useTranslation();
@@ -42,15 +41,15 @@ export default function Company() {
       ];
   
   // 获取工作岗位并确保类型安全
-  const jobsFromTranslation = t('company.careers.jobs', { returnObjects: true });
-  const jobs: Job[] = Array.isArray(jobsFromTranslation) 
-    ? jobsFromTranslation 
-    : [
-        { title: "Senior Software Engineer", location: "Beijing", type: "Full-time" },
-        { title: "Machine Learning Engineer", location: "Shanghai", type: "Full-time" },
-        { title: "Product Manager", location: "Remote", type: "Full-time" },
-        { title: "Solutions Architect", location: "Shenzhen", type: "Full-time" }
-      ];
+  // const jobsFromTranslation = t('company.careers.jobs', { returnObjects: true });
+  // const jobs: Job[] = Array.isArray(jobsFromTranslation) 
+  //   ? jobsFromTranslation 
+  //   : [
+  //       { title: "Senior Software Engineer", location: "Beijing", type: "Full-time" },
+  //       { title: "Machine Learning Engineer", location: "Shanghai", type: "Full-time" },
+  //       { title: "Product Manager", location: "Remote", type: "Full-time" },
+  //       { title: "Solutions Architect", location: "Shenzhen", type: "Full-time" }
+  //     ];
 
   return (
     <MainLayout>
@@ -107,7 +106,7 @@ export default function Company() {
             </div>
           </div>
 
-          {/* 招聘部分 */}
+          {/* 招聘部分
           <div className="mt-20">
             <div className="bg-primary-lighter rounded-lg p-8">
               <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">
@@ -142,7 +141,7 @@ export default function Company() {
                 </Link>
               </div>
             </div>
-          </div>
+          </div>*/}
 
           {/* 联系部分 */}
           <div className="mt-20">

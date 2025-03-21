@@ -17,26 +17,36 @@ import zhTranslation from '../i18n/locales/zh.json';
 
 // 初始化配置
 const initI18n = () => {
-  i18n
-    .use(initReactI18next)
-    .init({
-      resources: {
-        en: {
-          translation: enTranslation,
+  // Debug: Check translations are loaded properly
+  console.log('Initializing i18n with translations');
+  console.log('EN pricing.form.submitSuccess:', enTranslation.pricing?.form?.submitSuccess);
+  console.log('ZH pricing.form.submitSuccess:', zhTranslation.pricing?.form?.submitSuccess);
+  
+  if (!i18n.isInitialized) {
+    i18n
+      .use(initReactI18next)
+      .init({
+        resources: {
+          en: {
+            translation: enTranslation,
+          },
+          zh: {
+            translation: zhTranslation,
+          },
         },
-        zh: {
-          translation: zhTranslation,
+        lng: 'en',
+        fallbackLng: 'en',
+        interpolation: {
+          escapeValue: false,
         },
-      },
-      lng: 'en',
-      fallbackLng: 'en',
-      interpolation: {
-        escapeValue: false,
-      },
-      react: {
-        useSuspense: false, // 禁用Suspense
-      }
-    });
+        react: {
+          useSuspense: false, // 禁用Suspense
+        },
+        debug: true, // Enable debug mode temporarily
+        nsSeparator: false, // Disable namespace separator
+        keySeparator: '.', // Use dot as key separator
+      });
+  }
   return i18n;
 };
 

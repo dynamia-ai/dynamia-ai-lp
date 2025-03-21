@@ -131,61 +131,93 @@
       "featureComparison": {
         "title": "特性对比",
         "subTitle": "HAMi（开源版）和 Kantaloupe（企业版）功能对比",
-        "categoryHeader": "功能类别",
-        "featureHeader": "功能项",
+        "categoryHeader": "功能项",
+        "featureHeader": "子功能项",
+        "openSource": "HAMi开源版",
+        "enterprise": "Kantaloupe企业版本",
         "categories": [
           {
-            "name": "环境支持",
+            "name": "架构支持",
             "features": [
               {
-                "name": "X86 环境支持",
-                "hami": true,
-                "kantaloupe": true
+                "name": "x86",
+                "hamiStatus": true,
+                "kantaloupeStatus": true
               },
               {
-                "name": "国产 IT 支持",
-                "hami": false,
-                "kantaloupe": true
+                "name": "ARM",
+                "hamiStatus": true,
+                "kantaloupeStatus": true
               }
             ]
           },
           {
-            "name": "GPU Kernel 能力",
+            "name": "操作系统",
             "features": [
               {
-                "name": "GPU 资源池化",
-                "hami": true,
-                "kantaloupe": true
+                "name": "Linux",
+                "hamiStatus": true,
+                "kantaloupeStatus": true
               },
               {
-                "name": "Nvidia GPU 细粒度虚拟化",
-                "hami": true,
-                "kantaloupe": true
+                "name": "WSL",
+                "hamiStatus": false,
+                "kantaloupeStatus": true
+              }
+            ]
+          },
+          {
+            "name": "核心能力",
+            "features": [
+              {
+                "name": "显存切分",
+                "hamiStatus": "✅ 部分场景无法准确统计",
+                "kantaloupeStatus": true
               },
               {
-                "name": "原生 nvidia-smi 支持",
-                "hami": true,
-                "kantaloupe": true
+                "name": "算力切分",
+                "hamiStatus": "✅ 部分场景存在较大波动",
+                "kantaloupeStatus": true
               },
               {
-                "name": "Gunicorn 多任务支持（Flask API）",
-                "hami": false,
-                "kantaloupe": true
+                "name": "显存超卖",
+                "hamiStatus": false,
+                "kantaloupeStatus": true
               },
               {
-                "name": "显存超分",
-                "hami": false,
-                "kantaloupe": true
+                "name": "算力超卖",
+                "hamiStatus": false,
+                "kantaloupeStatus": true
               },
               {
-                "name": "算力超分",
-                "hami": false,
-                "kantaloupe": true
+                "name": "动态调整",
+                "hamiStatus": false,
+                "kantaloupeStatus": true
               },
               {
-                "name": "精准算力/显存限制",
-                "hami": false,
-                "kantaloupe": true
+                "name": "自动适配",
+                "hamiStatus": false,
+                "kantaloupeStatus": true
+              },
+              {
+                "name": "任务优先级",
+                "hamiStatus": true,
+                "kantaloupeStatus": true
+              },
+              {
+                "name": "故障隔离",
+                "hamiStatus": true,
+                "kantaloupeStatus": true
+              },
+              {
+                "name": "统计任务空闲时间",
+                "hamiStatus": false,
+                "kantaloupeStatus": true
+              },
+              {
+                "name": "显存分析",
+                "hamiStatus": false,
+                "kantaloupeStatus": true
               }
             ]
           },
@@ -193,59 +225,79 @@
             "name": "调度能力",
             "features": [
               {
-                "name": "节点/卡级 Binpack/Spread 调度",
-                "hami": true,
-                "kantaloupe": true
+                "name": "节点级别 Binpack、Spread 调度",
+                "hamiStatus": true,
+                "kantaloupeStatus": true
               },
               {
-                "name": "Nvidia MIG 支持",
-                "hami": true,
-                "kantaloupe": true
+                "name": "卡级别 Binpack、Spread 调度",
+                "hamiStatus": true,
+                "kantaloupeStatus": true
+              },
+              {
+                "name": "Nvidia MIG",
+                "hamiStatus": true,
+                "kantaloupeStatus": true
               },
               {
                 "name": "Nvidia MIG 动态虚拟化",
-                "hami": true,
-                "kantaloupe": true
+                "hamiStatus": true,
+                "kantaloupeStatus": true
               },
               {
-                "name": "Nvidia NUMA 亲和性调度",
-                "hami": true,
-                "kantaloupe": true
+                "name": "Nvidia NUMA 亲和调度",
+                "hamiStatus": true,
+                "kantaloupeStatus": true
+              },
+              {
+                "name": "Nvidia 网络拓扑 亲和调度",
+                "hamiStatus": false,
+                "kantaloupeStatus": true
               }
             ]
           },
           {
-            "name": "异构芯片管理",
+            "name": "异构能力",
             "features": [
               {
-                "name": "Ascend（全卡/虚拟/动态）",
-                "hami": true,
-                "kantaloupe": true
+                "name": "寒武纪MLU资源切分",
+                "hamiStatus": true,
+                "kantaloupeStatus": true
               },
               {
-                "name": "寒武纪（全卡/虚拟/动态）",
-                "hami": true,
-                "kantaloupe": true
+                "name": "海光DCU资源切分",
+                "hamiStatus": true,
+                "kantaloupeStatus": true
               },
               {
-                "name": "海光（全卡/虚拟/动态）",
-                "hami": true,
-                "kantaloupe": true
+                "name": "昇腾310系列",
+                "hamiStatus": true,
+                "kantaloupeStatus": true
               },
               {
-                "name": "天数智芯（全卡/虚拟/动态）",
-                "hami": true,
-                "kantaloupe": true
+                "name": "昇腾910系列",
+                "hamiStatus": true,
+                "kantaloupeStatus": true
               },
               {
-                "name": "摩尔线程（全卡/虚拟/动态）",
-                "hami": true,
-                "kantaloupe": true
+                "name": "摩尔线程GPU",
+                "hamiStatus": true,
+                "kantaloupeStatus": true
               },
               {
-                "name": "壁仞（全卡/虚拟/NUMA & 网络）",
-                "hami": true,
-                "kantaloupe": true
+                "name": "天数智芯GPU",
+                "hamiStatus": true,
+                "kantaloupeStatus": true
+              },
+              {
+                "name": "燧原GPU",
+                "hamiStatus": true,
+                "kantaloupeStatus": true
+              },
+              {
+                "name": "沐曦GPU",
+                "hamiStatus": true,
+                "kantaloupeStatus": true
               }
             ]
           },
@@ -253,70 +305,113 @@
             "name": "监控能力",
             "features": [
               {
-                "name": "GPU-应用绑定关系",
-                "hami": true,
-                "kantaloupe": true
+                "name": "分配值，节点与应用的绑定关系",
+                "hamiStatus": true,
+                "kantaloupeStatus": true
               },
               {
-                "name": "应用算力/内存监控",
-                "hami": true,
-                "kantaloupe": true
+                "name": "应用实际使用算力、显存监控",
+                "hamiStatus": true,
+                "kantaloupeStatus": true
               },
               {
-                "name": "GPU 故障指标/告警/自愈能力",
-                "hami": false,
-                "kantaloupe": true
+                "name": "GPU 故障指标",
+                "hamiStatus": false,
+                "kantaloupeStatus": true
               },
               {
-                "name": "空闲资源告警",
-                "hami": false,
-                "kantaloupe": true
+                "name": "GPU 故障告警",
+                "hamiStatus": false,
+                "kantaloupeStatus": true
+              },
+              {
+                "name": "GPU 故障自恢复",
+                "hamiStatus": false,
+                "kantaloupeStatus": true
               }
             ]
           },
           {
-            "name": "企业级功能",
+            "name": "AI多集群管理",
             "features": [
               {
-                "name": "GPU 软件栈管理",
-                "hami": false,
-                "kantaloupe": true
+                "name": "AI 算力集群生命周期管理(创建、扩容、更新、卸载)",
+                "hamiStatus": false,
+                "kantaloupeStatus": true
               },
               {
-                "name": "单集群图形界面",
-                "hami": true,
-                "kantaloupe": true
+                "name": "AI 多集群 统一管理视角",
+                "hamiStatus": false,
+                "kantaloupeStatus": true
               },
               {
-                "name": "计量计费系统",
-                "hami": false,
-                "kantaloupe": true
+                "name": "AI 多集群 统一监控、运维视角",
+                "hamiStatus": false,
+                "kantaloupeStatus": true
               },
               {
-                "name": "灵活的 License 管理",
-                "hami": false,
-                "kantaloupe": true
+                "name": "多集群 工作台 UI",
+                "hamiStatus": false,
+                "kantaloupeStatus": true
+              }
+            ]
+          },
+          {
+            "name": "运维能力",
+            "features": [
+              {
+                "name": "GPU 软件栈一建声明式安装、运维、升级(驱动、CUDA、device plugin 等全链路依赖)",
+                "hamiStatus": false,
+                "kantaloupeStatus": true
               },
               {
-                "name": "细粒度配额管理",
-                "hami": false,
-                "kantaloupe": true
+                "name": "单集群 GUI",
+                "hamiStatus": true,
+                "kantaloupeStatus": true
               },
               {
-                "name": "训练推理切换",
-                "hami": false,
-                "kantaloupe": true
+                "name": "OpenAPI 能力对外集成",
+                "hamiStatus": false,
+                "kantaloupeStatus": true
               },
               {
-                "name": "大规模调度优化",
-                "hami": false,
-                "kantaloupe": true
+                "name": "计量计费体系",
+                "hamiStatus": false,
+                "kantaloupeStatus": true
+              }
+            ]
+          },
+          {
+            "name": "安全性",
+            "features": [
+              {
+                "name": "支持安全容器 KataContainer",
+                "hamiStatus": false,
+                "kantaloupeStatus": true
+              },
+              {
+                "name": "安全策略支持",
+                "hamiStatus": false,
+                "kantaloupeStatus": true
+              },
+              {
+                "name": "可信安全接入脱敏算力(nvidia 不合规算力脱敏）",
+                "hamiStatus": false,
+                "kantaloupeStatus": true
+              }
+            ]
+          },
+          {
+            "name": "售后服务",
+            "features": [
+              {
+                "name": "专人专家服务",
+                "hamiStatus": false,
+                "kantaloupeStatus": true
               }
             ]
           }
-        ],
-        "openSource": "HAMi 开源版",
-        "enterprise": "Kantaloupe 企业版"
+        ]
       },
       "technicalArchitecture": "技术架构",
       "architectureDiagram": "架构示意图",
@@ -649,37 +744,40 @@
     "websiteButton": "访问官网"
   },
   "pricing": {
-    "title": "定价方案",
-    "headline": "您的计算需求是独特的，应该拥有定制化的定价方案。",
-    "description": "Kantaloupe 的定价模型取决于您环境的特定因素，例如节点数量、GPU数量和其他计算资源。请联系我们获取符合您需求的准确定价。",
+    "title": "定价",
+    "headline": "灵活的计算需求定价方案",
+    "description": "我们提供一系列灵活的定价选项，适应您的计算环境规模和复杂度。联系我们获取定制化报价。",
     "benefits": [
-      "根据您的需求定制化定价",
-      "根据您的集群规模灵活调整",
+      "定制化定价方案",
+      "根据集群规模灵活调整",
       "专业技术支持",
       "持续的功能更新和升级"
     ],
     "form": {
-      "title": "获取您的定制报价",
+      "title": "获取定价信息",
       "name": "姓名",
-      "email": "电子邮箱",
-      "company": "公司名称",
+      "email": "邮箱",
+      "company": "公司",
       "jobTitle": "职位",
       "nodeCount": "节点数量",
       "gpuCount": "GPU数量",
+      "message": "留言（可选）",
+      "submitButton": "获取定价",
+      "submitting": "提交中...",
+      "submitSuccess": "感谢您的提交！我们的团队将很快与您联系，提供定价信息。",
+      "submitError": "提交请求时发生错误。请重试或直接联系我们：info@dynamia.ai。",
       "nodeCountOptions": {
-        "small": "少于10个节点",
-        "medium": "10-50个节点",
-        "large": "50-200个节点",
-        "enterprise": "超过200个节点"
+        "small": "少于10个",
+        "medium": "10-50个",
+        "large": "50-200个",
+        "enterprise": "超过200个"
       },
       "gpuCountOptions": {
-        "small": "1-10个GPU",
-        "medium": "10-50个GPU",
-        "large": "50-200个GPU",
-        "enterprise": "超过200个GPU"
-      },
-      "message": "其他需求",
-      "submitButton": "申请定价"
+        "small": "1-10个",
+        "medium": "10-50个",
+        "large": "50-200个",
+        "enterprise": "超过200个"
+      }
     },
     "trustedBy": {
       "title": "行业领导者的信赖选择",

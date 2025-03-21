@@ -7,6 +7,7 @@ import MainLayout from '@/components/layout/MainLayout';
 import FeatureComparisonTable from '@/components/FeatureComparisonTable';
 import { motion } from 'framer-motion';
 import { CheckIcon } from '@heroicons/react/24/solid';
+import FormSuccessMessage from '@/components/FormSuccessMessage';
 
 // 动画配置
 const fadeIn = {
@@ -35,6 +36,8 @@ export default function PricingPage() {
     gpuCount: '1-10',
     message: '',
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
   // 处理表单字段变化
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -46,11 +49,69 @@ export default function PricingPage() {
   };
 
   // 处理表单提交
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // TODO: 实现表单提交逻辑
-    console.log('Form submitted:', formState);
-    alert(t('pricing.form.submitSuccess'));
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+    
+    try {
+      // 构建要发送的邮件内容（用于日志或未来扩展）
+      // const emailContent = `
+      //   新的定价咨询请求：
+      //   
+      //   姓名: ${formState.name}
+      //   邮箱: ${formState.email}
+      //   公司: ${formState.company}
+      //   职位: ${formState.jobTitle}
+      //   节点数量: ${formState.nodeCount}
+      //   GPU数量: ${formState.gpuCount}
+      //   
+      //   消息内容:
+      //   ${formState.message}
+      // `;
+      
+      // 使用fetch API发送到您的邮件服务
+      // 这里我们模拟一个API调用，您需要替换为您的实际邮件服务API端点
+      // 例如: 使用FormSubmit服务，无需JavaScript集成，只需在form上添加action属性
+      const response = await fetch('https://formsubmit.co/ajax/info@dynamia.ai', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          name: formState.name,
+          email: formState.email,
+          company: formState.company,
+          jobTitle: formState.jobTitle,
+          nodeCount: formState.nodeCount,
+          gpuCount: formState.gpuCount,
+          message: formState.message,
+          _subject: `新的定价咨询请求 - ${formState.company}`,
+        })
+      });
+      
+      if (response.ok) {
+        // 重置表单
+        setFormState({
+          name: '',
+          email: '',
+          company: '',
+          jobTitle: '',
+          nodeCount: '10-50',
+          gpuCount: '1-10',
+          message: '',
+        });
+        setSubmitStatus('success');
+      } else {
+        setSubmitStatus('error');
+      }
+    } catch (error) {
+      console.error('提交表单时出错:', error);
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -99,6 +160,15 @@ export default function PricingPage() {
             {/* 右侧联系表单 */}
             <div className="bg-white p-8 rounded-lg shadow-lg border border-gray-200">
               <h3 className="text-2xl font-bold text-gray-900 mb-6">{t('pricing.form.title')}</h3>
+              
+              {submitStatus === 'success' && (
+                <FormSuccessMessage translationKey="pricing.form.submitSuccess" />
+              )}
+              
+              {submitStatus === 'error' && (
+                <FormSuccessMessage translationKey="pricing.form.submitError" isError={true} />
+              )}
+              
               <form onSubmit={handleSubmit} className="space-y-4">
                 {/* 节点数量和GPU数量放在同一行 */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -220,9 +290,10 @@ export default function PricingPage() {
                 <div>
                   <button
                     type="submit"
-                    className="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-primary hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
+                    disabled={isSubmitting}
+                    className={`w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-primary hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary ${isSubmitting ? 'opacity-75 cursor-not-allowed' : ''}`}
                   >
-                    {t('pricing.form.submitButton')}
+                    {isSubmitting ? t('pricing.form.submitting') : t('pricing.form.submitButton')}
                   </button>
                 </div>
               </form>

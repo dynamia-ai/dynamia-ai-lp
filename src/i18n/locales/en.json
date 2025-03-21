@@ -133,6 +133,291 @@
           "Continuous updates and maintenance"
         ]
       },
+      "featureComparison": {
+        "title": "Feature Comparison",
+        "subTitle": "HAMi (Open Source) vs Kantaloupe (Enterprise) Feature Comparison",
+        "categoryHeader": "Feature Category",
+        "featureHeader": "Feature Item",
+        "openSource": "HAMi Open Source",
+        "enterprise": "Kantaloupe Enterprise",
+        "categories": [
+          {
+            "name": "Architecture Support",
+            "features": [
+              {
+                "name": "x86",
+                "hamiStatus": true,
+                "kantaloupeStatus": true
+              },
+              {
+                "name": "ARM",
+                "hamiStatus": true,
+                "kantaloupeStatus": true
+              }
+            ]
+          },
+          {
+            "name": "Operating Systems",
+            "features": [
+              {
+                "name": "Linux",
+                "hamiStatus": true,
+                "kantaloupeStatus": true
+              },
+              {
+                "name": "WSL",
+                "hamiStatus": false,
+                "kantaloupeStatus": true
+              }
+            ]
+          },
+          {
+            "name": "Core Capabilities",
+            "features": [
+              {
+                "name": "Memory Partitioning",
+                "hamiStatus": "✅ Cannot accurately track in some scenarios",
+                "kantaloupeStatus": true
+              },
+              {
+                "name": "Computing Power Partitioning",
+                "hamiStatus": "✅ Significant fluctuations in some scenarios",
+                "kantaloupeStatus": true
+              },
+              {
+                "name": "Memory Overcommitment",
+                "hamiStatus": false,
+                "kantaloupeStatus": true
+              },
+              {
+                "name": "Computing Power Overcommitment",
+                "hamiStatus": false,
+                "kantaloupeStatus": true
+              },
+              {
+                "name": "Dynamic Adjustment",
+                "hamiStatus": false,
+                "kantaloupeStatus": true
+              },
+              {
+                "name": "Automatic Adaptation",
+                "hamiStatus": false,
+                "kantaloupeStatus": true
+              },
+              {
+                "name": "Task Priority",
+                "hamiStatus": true,
+                "kantaloupeStatus": true
+              },
+              {
+                "name": "Fault Isolation",
+                "hamiStatus": true,
+                "kantaloupeStatus": true
+              },
+              {
+                "name": "Task Idle Time Statistics",
+                "hamiStatus": false,
+                "kantaloupeStatus": true
+              },
+              {
+                "name": "Memory Analysis",
+                "hamiStatus": false,
+                "kantaloupeStatus": true
+              }
+            ]
+          },
+          {
+            "name": "Scheduling Capabilities",
+            "features": [
+              {
+                "name": "Node-level Binpack, Spread Scheduling",
+                "hamiStatus": true,
+                "kantaloupeStatus": true
+              },
+              {
+                "name": "Card-level Binpack, Spread Scheduling",
+                "hamiStatus": true,
+                "kantaloupeStatus": true
+              },
+              {
+                "name": "Nvidia MIG",
+                "hamiStatus": true,
+                "kantaloupeStatus": true
+              },
+              {
+                "name": "Nvidia MIG Dynamic Virtualization",
+                "hamiStatus": true,
+                "kantaloupeStatus": true
+              },
+              {
+                "name": "Nvidia NUMA Affinity Scheduling",
+                "hamiStatus": true,
+                "kantaloupeStatus": true
+              },
+              {
+                "name": "Nvidia Network Topology Affinity Scheduling",
+                "hamiStatus": false,
+                "kantaloupeStatus": true
+              }
+            ]
+          },
+          {
+            "name": "Heterogeneous Capabilities",
+            "features": [
+              {
+                "name": "Cambricon MLU Resource Partitioning",
+                "hamiStatus": true,
+                "kantaloupeStatus": true
+              },
+              {
+                "name": "Hygon DCU Resource Partitioning",
+                "hamiStatus": true,
+                "kantaloupeStatus": true
+              },
+              {
+                "name": "Ascend 310 Series",
+                "hamiStatus": true,
+                "kantaloupeStatus": true
+              },
+              {
+                "name": "Ascend 910 Series",
+                "hamiStatus": true,
+                "kantaloupeStatus": true
+              },
+              {
+                "name": "Moore Threads GPU",
+                "hamiStatus": true,
+                "kantaloupeStatus": true
+              },
+              {
+                "name": "Tianshu GPU",
+                "hamiStatus": true,
+                "kantaloupeStatus": true
+              },
+              {
+                "name": "Enflame GPU",
+                "hamiStatus": true,
+                "kantaloupeStatus": true
+              },
+              {
+                "name": "Muxi GPU",
+                "hamiStatus": true,
+                "kantaloupeStatus": true
+              }
+            ]
+          },
+          {
+            "name": "Monitoring Capabilities",
+            "features": [
+              {
+                "name": "Allocation Values, Node-Application Binding",
+                "hamiStatus": true,
+                "kantaloupeStatus": true
+              },
+              {
+                "name": "Application Computing Power, Memory Monitoring",
+                "hamiStatus": true,
+                "kantaloupeStatus": true
+              },
+              {
+                "name": "GPU Fault Metrics",
+                "hamiStatus": false,
+                "kantaloupeStatus": true
+              },
+              {
+                "name": "GPU Fault Alerts",
+                "hamiStatus": false,
+                "kantaloupeStatus": true
+              },
+              {
+                "name": "GPU Fault Self-recovery",
+                "hamiStatus": false,
+                "kantaloupeStatus": true
+              }
+            ]
+          },
+          {
+            "name": "AI Multi-cluster Management",
+            "features": [
+              {
+                "name": "AI Computing Cluster Lifecycle Management (Creation, Expansion, Updates, Uninstallation)",
+                "hamiStatus": false,
+                "kantaloupeStatus": true
+              },
+              {
+                "name": "AI Multi-cluster Unified Management View",
+                "hamiStatus": false,
+                "kantaloupeStatus": true
+              },
+              {
+                "name": "AI Multi-cluster Unified Monitoring and Operations View",
+                "hamiStatus": false,
+                "kantaloupeStatus": true
+              },
+              {
+                "name": "Multi-cluster Workbench UI",
+                "hamiStatus": false,
+                "kantaloupeStatus": true
+              }
+            ]
+          },
+          {
+            "name": "Operations Capabilities",
+            "features": [
+              {
+                "name": "GPU Software Stack Declarative Installation, Operations, Upgrades (Drivers, CUDA, Device Plugin, etc.)",
+                "hamiStatus": false,
+                "kantaloupeStatus": true
+              },
+              {
+                "name": "Single Cluster GUI",
+                "hamiStatus": true,
+                "kantaloupeStatus": true
+              },
+              {
+                "name": "OpenAPI Integration Capabilities",
+                "hamiStatus": false,
+                "kantaloupeStatus": true
+              },
+              {
+                "name": "Metering and Billing System",
+                "hamiStatus": false,
+                "kantaloupeStatus": true
+              }
+            ]
+          },
+          {
+            "name": "Security",
+            "features": [
+              {
+                "name": "KataContainer Support",
+                "hamiStatus": false,
+                "kantaloupeStatus": true
+              },
+              {
+                "name": "Security Policy Support",
+                "hamiStatus": false,
+                "kantaloupeStatus": true
+              },
+              {
+                "name": "Secure Access to Desensitized Computing Power (Nvidia Non-compliant Computing Power Desensitization)",
+                "hamiStatus": false,
+                "kantaloupeStatus": true
+              }
+            ]
+          },
+          {
+            "name": "After-sales Service",
+            "features": [
+              {
+                "name": "Dedicated Expert Service",
+                "hamiStatus": false,
+                "kantaloupeStatus": true
+              }
+            ]
+          }
+        ]
+      },
       "technicalArchitecture": "Technical Architecture",
       "architectureDescription": "Kantaloupe provides a comprehensive infrastructure for managing heterogeneous computing resources efficiently.",
       "architectureDiagram": "Architecture Diagram",
@@ -396,37 +681,40 @@
     "websiteButton": "Visit Website"
   },
   "pricing": {
-    "title": "Pricing Plans",
-    "headline": "Your computing needs are unique, they deserve a tailored pricing.",
-    "description": "Kantaloupe's pricing model depends on specific factors of your environment, such as the number of nodes, GPUs, and other computing resources. Contact us to get an accurate pricing for your needs.",
+    "title": "Pricing",
+    "headline": "Flexible Pricing for your Computational Needs",
+    "description": "We offer a range of flexible pricing options tailored to the size and complexity of your computing environment. Contact us for a customized quote.",
     "benefits": [
-      "Customized pricing tailored to your needs",
-      "Flexible options based on your cluster scale",
+      "Customized pricing plans",
+      "Flexible scaling based on your cluster size",
       "Professional technical support",
-      "Continuous updates and enhancements"
+      "Continuous feature updates and upgrades"
     ],
     "form": {
-      "title": "Get Your Custom Quote",
-      "name": "Full Name",
-      "email": "Email Address",
-      "company": "Company Name",
+      "title": "Request Pricing Information",
+      "name": "Name",
+      "email": "Email",
+      "company": "Company",
       "jobTitle": "Job Title",
       "nodeCount": "Number of Nodes",
       "gpuCount": "Number of GPUs",
+      "message": "Message (Optional)",
+      "submitButton": "Request Pricing",
+      "submitting": "Submitting...",
+      "submitSuccess": "Thank you! Your request has been submitted. Our team will contact you shortly with pricing information.",
+      "submitError": "An error occurred while submitting your request. Please try again or contact us directly at info@dynamia.ai.",
       "nodeCountOptions": {
-        "small": "Less than 10 nodes",
-        "medium": "10-50 nodes",
-        "large": "50-200 nodes",
-        "enterprise": "More than 200 nodes"
+        "small": "Less than 10",
+        "medium": "10-50",
+        "large": "50-200",
+        "enterprise": "More than 200"
       },
       "gpuCountOptions": {
-        "small": "1-10 GPUs",
-        "medium": "10-50 GPUs",
-        "large": "50-200 GPUs",
-        "enterprise": "More than 200 GPUs"
-      },
-      "message": "Additional Requirements",
-      "submitButton": "Request Pricing"
+        "small": "1-10",
+        "medium": "10-50",
+        "large": "50-200",
+        "enterprise": "More than 200"
+      }
     },
     "trustedBy": {
       "title": "Trusted by Industry Leaders",
