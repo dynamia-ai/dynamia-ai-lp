@@ -612,7 +612,7 @@
   },
   "company": {
     "about": {
-      "title": "关于我们",
+      "title": "公司简介",
       "description": "我们在异构计算领域开拓创新，帮助组织最大化利用其计算资源",
       "whoWeAre": {
         "title": "公司简介",
@@ -635,10 +635,10 @@
       }
     },
     "team": {
-      "title": "领导团队",
+      "title": "团队介绍",
       "members": [
         { "name": "张潇", "position": "首席执行官 & 创始人 & HAMi 核心维护者", "image": "CEO" },
-        { "name": "李孟轩", "position": "首席架构师 & 联合创始人 & HAMi 核心维护者", "image": "CTO" },
+        { "name": "李孟轩", "position": "首席架构师 & 联合创始人 & HAMi 项目创始人", "image": "CTO" },
         { "name": "尹玉", "position": "产品负责人 & HAMi 核心维护者", "image": "COO" },
         { "name": "陈文", "position": "技术负责人", "image": "CPO" }
       ]
