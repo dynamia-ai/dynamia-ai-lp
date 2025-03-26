@@ -71,6 +71,10 @@
     },
     "joinCommunity": {
       "title": "加入我们的社区",
+      "bilibili": {
+        "title": "在 Bilibili 上关注我们",
+        "action": "关注"
+      },
       "slack": {
         "title": "在 Slack 与我们交流",
         "action": "加入"
@@ -79,13 +83,13 @@
         "title": "在 X 上关注我们",
         "action": "关注"
       },
-      "discord": {
-        "title": "在 Discord 上聊天",
-        "action": "加入"
-      },
       "reddit": {
         "title": "在 Reddit 上讨论",
         "action": "加入"
+      },
+      "wechat": {
+        "title": "微信",
+        "action": "添加小助手进群交流"
       }
     },
     "ecosystem": {
@@ -637,7 +641,7 @@
     "team": {
       "title": "团队介绍",
       "members": [
-        { "name": "张潇", "position": "首席执行官 & 创始人 & HAMi 核心维护者", "image": "CEO" },
+        { "name": "张潇", "position": "CEO & 创始人 & HAMi 核心维护者", "image": "CEO" },
         { "name": "李孟轩", "position": "首席架构师 & 联合创始人 & HAMi 项目创始人", "image": "CTO" },
         { "name": "尹玉", "position": "产品负责人 & HAMi 核心维护者", "image": "COO" },
         { "name": "陈文", "position": "技术负责人", "image": "CPO" }
@@ -685,7 +689,7 @@
         "wechat": {
           "title": "微信",
           "action": "扫码关注",
-          "qrPlaceholder": "微信二维码占位图"
+          "qrPlaceholder": "微信二维码"
         }
       }
     }

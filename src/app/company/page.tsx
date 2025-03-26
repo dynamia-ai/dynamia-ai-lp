@@ -167,7 +167,7 @@ export default function Company() {
                 transition={{ duration: 0.5, delay: 0.1 }}
                 className="bg-white rounded-lg shadow-sm border border-gray-100 p-4 hover:shadow-md transition-shadow w-[200px] flex-grow flex-shrink-0"
               >
-                <a href="https://github.com/Project-HAMi/HAMi" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center">
+                <a href="https://dynamiaai.slack.com/join/shared_invite/zt-32j04j1s4-LPGJb8SzLOrYikNepsmC1A#/shared-invite/email" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center">
                   <div className="w-12 h-12 mb-3 flex items-center justify-center">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 122.8 122.8" width="36" height="36">
                       <path d="M25.8 77.6c0 7.1-5.8 12.9-12.9 12.9S0 84.7 0 77.6s5.8-12.9 12.9-12.9h12.9v12.9zm6.5 0c0-7.1 5.8-12.9 12.9-12.9s12.9 5.8 12.9 12.9v32.3c0 7.1-5.8 12.9-12.9 12.9s-12.9-5.8-12.9-12.9V77.6z" fill="#e01e5a"></path>
@@ -195,7 +195,7 @@ export default function Company() {
                 transition={{ duration: 0.5, delay: 0.2 }}
                 className="bg-white rounded-lg shadow-sm border border-gray-100 p-4 hover:shadow-md transition-shadow w-[200px] flex-grow flex-shrink-0"
               >
-                <a href="https://github.com/Project-HAMi/HAMi" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center">
+                <a href="https://x.com/DynamiaA61733" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center">
                   <div className="w-12 h-12 mb-3 flex items-center justify-center">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="36" height="36">
                       <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" fill="#000000"/>

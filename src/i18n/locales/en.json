@@ -71,6 +71,10 @@
     },
     "joinCommunity": {
       "title": "Join our community",
+      "bilibili": {
+        "title": "Follow us on Bilibili",
+        "action": "Follow"
+      },
       "slack": {
         "title": "Talk with us on Slack",
         "action": "Join"
@@ -79,13 +83,13 @@
         "title": "Follow us on X",
         "action": "Follow"
       },
-      "discord": {
-        "title": "Chat on Discord",
-        "action": "Join"
-      },
       "reddit": {
         "title": "Discuss on Reddit",
         "action": "Join"
+      },
+      "wechat": {
+        "title": "WeChat",
+        "action": "Scan QR Code"
       }
     },
     "ecosystem": {
