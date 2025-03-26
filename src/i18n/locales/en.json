@@ -402,11 +402,6 @@
                 "name": "Security Policy Support",
                 "hamiStatus": false,
                 "kantaloupeStatus": true
-              },
-              {
-                "name": "Secure Access to Desensitized Computing Power (Nvidia Non-compliant Computing Power Desensitization)",
-                "hamiStatus": false,
-                "kantaloupeStatus": true
               }
             ]
           },

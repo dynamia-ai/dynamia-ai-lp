@@ -399,7 +399,7 @@
                 "kantaloupeStatus": true
               },
               {
-                "name": "可信安全接入脱敏算力(nvidia 不合规算力脱敏）",
+                "name": "可信安全、算力脱敏",
                 "hamiStatus": false,
                 "kantaloupeStatus": true
               }
