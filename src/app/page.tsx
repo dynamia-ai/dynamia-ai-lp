@@ -1,35 +1,12 @@
 "use client";
 
-import React from 'react';
+import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import MainLayout from '@/components/layout/MainLayout';
 import GitHubStars from '@/components/GitHubStars';
 import Image from 'next/image';
-
-// 首页图标组件
-const FeatureIcon: React.FC<{ icon: string }> = ({ icon }) => (
-  <div className="rounded-md bg-primary-light p-3 inline-flex items-center justify-center">
-    <svg
-      className="h-6 w-6 text-primary"
-      xmlns="http://www.w3.org/2000/svg"
-      fill="none"
-      viewBox="0 0 24 24"
-      stroke="currentColor"
-    >
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={icon} />
-    </svg>
-  </div>
-);
-
-// 特性图标路径
-const icons = {
-  scheduling: "M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2",
-  multiCluster: "M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10",
-  gpu: "M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4",
-  cost: "M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z",
-};
 
 // 动画变体
 const fadeIn = {
@@ -39,15 +16,36 @@ const fadeIn = {
 
 export default function Home() {
   const { t } = useTranslation();
+  const [activeTab, setActiveTab] = useState(0);
 
-  const advantages = t('home.keyAdvantages.advantages', { returnObjects: true });
-  const advantagesArray = Array.isArray(advantages)
-    ? advantages
+  const featureTabs = t('home.keyAdvantages.tabs', { returnObjects: true });
+  const featureTabsArray = Array.isArray(featureTabs)
+    ? featureTabs
     : [
-        { title: "高性能调度", description: "通过智能工作负载调度优化资源分配" },
-        { title: "多集群编排", description: "无缝管理跨多个集群和环境的资源" },
-        { title: "GPU 加速管理", description: "最大化利用专用硬件处理AI、ML和HPC工作负载" },
-        { title: "成本优化与自动扩展", description: "根据工作负载需求自动扩展资源" }
+        {
+          title: "Heterogeneous & MultiCluster",
+          description: "Unified management of heterogeneous clusters from different device vendors, easy to maintain."
+        },
+        {
+          title: "GPU Sharing",
+          description: "Provides the capability of GPU sharing through dynamic GPU slicing, saving GPU resources."
+        },
+        {
+          title: "GPU Oversubscription",
+          description: "Oversubscribe GPU memory and computing cores, Completely transparent to applications. Further improve utilization."
+        },
+        {
+          title: "Auto Fit",
+          description: "GPU on-demand auto-scaling, seamless VPA scaling for AI workloads without restarts during GPU consumption surges."
+        },
+        {
+          title: "Heterogeneous Monitoring & Workloads inspection",
+          description: "Export metrics about how a certain device is shared (task name, corresponding resources, etc..), provide GPU profile."
+        },
+        {
+          title: "Advanced AI Scheduling",
+          description: "Advanced AI Scheduling for different scenarios including numa-aware, binpack, spread. Reduce data communication cost, Minimize fragments, Optimize task performance."
+        }
       ];
 
   // Testimonials are currently not used in the UI but kept for future use
@@ -72,9 +70,6 @@ export default function Home() {
               </h1>
               <p className="text-xl text-gray-600">
                 {t('home.hero.subtitle')}
-              </p>
-              <p className="text-md text-gray-500 italic">
-                {t('home.hero.chineseSlogan')}
               </p>
               <div className="mt-4 flex flex-wrap items-center">
                 <Link
@@ -183,25 +178,68 @@ export default function Home() {
       {/* 核心优势部分 */}
       <section className="py-16 md:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-gray-900">{t('home.keyAdvantages.title')}</h2>
+          <div className="text-center mb-12">
+            <h2 className="text-5xl font-bold text-gray-900">{t('home.keyAdvantages.title')}</h2>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {advantagesArray.map((advantage, index) => (
-              <motion.div
+          {/* 特性标签切换区域 */}
+          <div className="flex flex-wrap justify-center gap-2 md:gap-4 mb-12">
+            {featureTabsArray.map((tab, index) => (
+              <button
                 key={index}
-                initial="hidden"
-                whileInView="visible"
-                variants={fadeIn}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="flex flex-col items-start p-6 bg-white rounded-lg border border-gray-100 shadow-sm hover:shadow-md transition-shadow"
+                onClick={() => setActiveTab(index)}
+                className={`px-4 py-2 rounded-md text-sm md:text-base font-medium transition-colors ${
+                  activeTab === index
+                    ? 'bg-primary text-white'
+                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                }`}
               >
-                <FeatureIcon icon={Object.values(icons)[index % 4]} />
-                <h3 className="mt-4 text-lg font-medium text-gray-900">{advantage.title}</h3>
-                <p className="mt-2 text-base text-gray-500">{advantage.description}</p>
-              </motion.div>
+                {tab.title}
+              </button>
             ))}
+          </div>
+          {/* 特性内容展示区域 */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-center">
+            {/* 左侧图片区域 (占2/3) */}
+            <div className="lg:col-span-2 flex justify-center">
+              <div className="w-full">
+                <Image
+                  src={`/images/features/feature${activeTab + 1}.png`}
+                  alt={featureTabsArray[activeTab].title}
+                  width={600}
+                  height={400}
+                  className="rounded-lg"
+                  style={{ objectFit: 'contain', width: '100%', height: 'auto' }}
+                />
+              </div>
+            </div>
+            {/* 右侧内容区域 (占1/3) */}
+            <div className="lg:col-span-1">
+              <motion.div
+                key={activeTab}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3 }}
+                className="space-y-4"
+              >
+                <h3 className="text-2xl font-bold text-gray-900">
+                  {featureTabsArray[activeTab].title}
+                </h3>
+                <p className="text-lg text-gray-600 leading-relaxed">
+                  {featureTabsArray[activeTab].description}
+                </p>
+                <div className="pt-4">
+                  <Link
+                    href="/products"
+                    className="inline-flex items-center px-4 py-2 border border-primary text-sm font-medium rounded-md text-primary hover:bg-primary-lighter transition-colors"
+                  >
+                    {t('home.poweredByHami.learnMore')}
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-2" viewBox="0 0 20 20" fill="currentColor">
+                      <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                    </svg>
+                  </Link>
+                </div>
+              </motion.div>
+            </div>
           </div>
         </div>
       </section>
@@ -478,7 +516,7 @@ export default function Home() {
               transition={{ duration: 0.5 }}
               className="bg-white rounded-lg shadow-sm border border-gray-100 p-5 hover:shadow-md transition-shadow w-[280px]"
             >
-              <Link href="https://github.com/volcano-sh/volcano" className="flex flex-col items-center">
+              <Link href="https://github.com/volcano-sh/volcano/blob/master/docs/user-guide/how_to_use_volcano_vgpu.md" className="flex flex-col items-center">
                 <div className="w-48 h-20 flex items-center justify-center">
                   <Image
                     src="/images/volcano.png"
@@ -507,7 +545,7 @@ export default function Home() {
               transition={{ duration: 0.5, delay: 0.1 }}
               className="bg-white rounded-lg shadow-sm border border-gray-100 p-5 hover:shadow-md transition-shadow w-[280px]"
             >
-              <Link href="https://github.com/koordinator-sh/koordinator" className="flex flex-col items-center">
+              <Link href="https://koordinator.sh/docs/user-manuals/device-scheduling-gpu-share-with-hami" className="flex flex-col items-center">
                 <div className="w-48 h-20 flex items-center justify-center">
                   <Image
                     src="/images/koordinator.png"
@@ -529,45 +567,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      {/*
-      客户评价部分
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-gray-900">{t('home.testimonials.title')}</h2>
-          </div>
-          <div className="grid md:grid-cols-2 gap-8">
-            {testimonialsArray.map((testimonial, index) => (
-              <motion.div
-                key={index}
-                initial="hidden"
-                whileInView="visible"
-                variants={fadeIn}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-white p-6 rounded-lg shadow-sm"
-              >
-                <p className="text-gray-600 italic mb-4">&ldquo;{testimonial.quote}&rdquo;</p>
-                <div className="flex items-center">
-                  <div className="h-10 w-10 bg-primary-light rounded-full flex items-center justify-center">
-                    <span className="text-primary text-sm font-bold">
-                      {testimonial.author.slice(0, 2)}
-                    </span>
-                  </div>
-                  <div className="ml-3">
-                    <p className="text-sm font-medium text-gray-900">{testimonial.author}</p>
-                    <p className="text-xs text-gray-500">
-                      {testimonial.position}, {testimonial.company}
-                    </p>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-      */}
 
       {/* 再次 CTA 部分 */}
       <section className="py-16 bg-primary text-white">

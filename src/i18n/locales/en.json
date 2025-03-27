@@ -29,15 +29,15 @@
   },
   "home": {
     "hero": {
-      "title": "Cloud-Native, Efficient Heterogeneous AI Computing Virtualization Middleware",
-      "subtitle": "Unlock efficient management of heterogeneous computing and experience the power of Kantaloupe now!",
+      "title": "Open source, Accelerate AI Workflows With GPU sharing, Dynamic Orchestration",
+      "subtitle": "Dynamic AI GPU sharing, scheduling and orchestration that accelerates AI throughput, delivers seamless auto scaling, and maximizes GPU utilization.",
       "chineseSlogan": "Unified heterogeneous computing for resource efficiency"
     },
     "socialProof": {
       "title": "Trusted by leading AI labs and enterprises worldwide"
     },
     "keyAdvantages": {
-      "title": "Why Kantaloupe?",
+      "title": "Why us?",
       "advantages": [
         {
           "title": "High-Performance Scheduling",
@@ -55,11 +55,29 @@
           "title": "Cost Optimization & Autoscaling",
           "description": "Automatically scale resources up or down based on workload demands"
         }
+      ],
+      "tabs": [
+        {
+          "title": "Heterogeneous & MultiCluster",
+          "description": "Unified management of heterogeneous clusters from different device vendors, easy to maintain."
+        },
+        {
+          "title": "GPU Sharing",
+          "description": "Provides the capability of GPU sharing through dynamic GPU slicing, saving GPU resources."
+        },
+        {
+          "title": "GPU Oversubscription",
+          "description": "Oversubscribe GPU memory and computing cores, Completely transparent to applications. Further improve utilization."
+        },
+        {
+          "title": "Auto Fit",
+          "description": "GPU on-demand auto-scaling, seamless VPA scaling for AI workloads without restarts during GPU consumption surges."
+        }
       ]
     },
     "poweredByHami": {
       "title": "Powered by HAMi",
-      "description": "The leading open-source heterogeneous computing virtualization middleware for efficient management of GPU and AI accelerators",
+      "description": "Leading, open source, heterogeneous AI computing virtualization middleware",
       "learnMore": "Learn More",
       "stats": {
         "contributors": "+60",
@@ -122,14 +140,14 @@
   },
   "products": {
     "kantaloupe": {
-      "title": "Kantaloupe Enterprise",
+      "title": "Dynamia AI",
       "subtitle": "Enterprise-grade heterogeneous computing virtualization platform",
       "viewPricing": "View Pricing",
       "readyToStart": "Ready to Transform Your Computing Infrastructure?",
-      "ctaDescription": "Experience how Kantaloupe can optimize your computing resources. Get started today with a free trial or request a custom pricing quote.",
+      "ctaDescription": "Experience how Dynamia AI can optimize your computing resources. Get started today with a free trial or request a custom pricing quote.",
       "overview": {
         "title": "Enterprise-Ready Heterogeneous Computing Solution",
-        "description": "Kantaloupe builds on the powerful foundation of HAMi open-source technology, adding enterprise-grade features, security, and support for mission-critical environments.",
+        "description": "Dynamia AI builds on the powerful foundation of HAMi open-source technology, adding enterprise-grade features, security, and support for mission-critical environments.",
         "highlights": [
           "Built on HAMi open-source core",
           "Enhanced enterprise features",
@@ -139,11 +157,11 @@
       },
       "featureComparison": {
         "title": "Feature Comparison",
-        "subTitle": "HAMi (Open Source) vs Kantaloupe (Enterprise) Feature Comparison",
+        "subTitle": "HAMi (Open Source) vs Dynamia AI (Enterprise) Feature Comparison",
         "categoryHeader": "Feature Category",
         "featureHeader": "Feature Item",
         "openSource": "HAMi Open Source",
-        "enterprise": "Kantaloupe Enterprise",
+        "enterprise": "Dynamia AI Enterprise",
         "categories": [
           {
             "name": "Architecture Support",
@@ -425,28 +443,28 @@
         "subtitle": "Kantaloupe enhances the core functionality of HAMi with enterprise-grade features designed for production environments.",
         "list": [
           {
-            "title": "Advanced Scheduling Engine",
-            "description": "Intelligent workload allocation and queue management that ensures resource efficiency and reduces wait times."
+            "title": "Heterogeneous & MultiCluster",
+            "description": "Unified management of heterogeneous clusters from different device vendors, easy to maintain."
           },
           {
-            "title": "Real-time Monitoring & Analytics",
-            "description": "Comprehensive system performance monitoring that provides deep insights and trend analysis to help optimize your resource configuration and costs."
+            "title": "GPU Sharing",
+            "description": "Provides the capability of GPU sharing through dynamic GPU slicing, saving GPU resources."
           },
           {
-            "title": "Auto-scaling & Optimization",
-            "description": "Automatically adjust resource allocation based on workload demands, optimizing resource efficiency and reducing costs."
+            "title": "GPU Oversubscription",
+            "description": "Oversubscribe GPU memory and computing cores, Completely transparent to applications. Further improve utilization."
           },
           {
-            "title": "Multi-cluster Management",
-            "description": "Unified management of multiple compute clusters, providing consistent cross-cluster resource allocation and workload scheduling."
+            "title": "Auto Fit",
+            "description": "GPU on-demand auto-scaling, seamless VPA scaling for AI workloads without restarts during GPU consumption surges."
           },
           {
-            "title": "Enterprise-grade Security",
-            "description": "Comprehensive security solution including authentication, authorization, encryption, and audit logging."
+            "title": "Heterogeneous Monitoring & Workloads inspection",
+            "description": "Export metrics about how a certain device is shared (task name, corresponding resources, etc..), provide GPU profile."
           },
           {
-            "title": "Enterprise Support & Services",
-            "description": "Professional technical support team providing round-the-clock response and regular maintenance services."
+            "title": "Advanced AI Scheduling",
+            "description": "Advanced AI Scheduling for different scenarios including numa-aware, binpack, spread. Reduce data communication cost, Minimize fragments, Optimize task performance."
           }
         ]
       }
@@ -681,7 +699,9 @@
   },
   "hamiPage": {
     "title": "What is",
-    "introduction": "HAMi (Heterogeneous AI computing Middleware), previously known as k8s-vGPU-scheduler, is an innovative solution designed to manage heterogeneous AI computing devices within Kubernetes clusters.",
+    "subtitle": "An open-source, heterogeneous AI computing virtualization middleware, scales AI workloads seamlessly across hybrid and multi-cloud environments.",
+    "introduction": "HAMi is the only open-source project dedicated to GPU resource sharing. It maximizing GPU efficiency by flexible, reliable, and elastic GPU share, integrating seamlessly into hybrid AI infrastructure. Adopted by 60+ OS vendors, cloud providers, and industry leaders, it has enabled breakthroughs in finance, logistics, autonomous driving, robotics, and biotech.",
+    "creator": "HAMi was created by dynamia.ai and is a Cloud Native Computing Foundation (CNCF) sandbox project.",
     "solutionTitle": "One-Stop Heterogeneous AI Computing Management Solution",
     "solutionDesc": "HAMi is a one-stop middleware that enables the sharing of various AI devices while ensuring resource isolation between different tasks. By improving the utilization of heterogeneous computing devices, HAMi provides a unified reuse interface to meet the needs of different device types.",
     "features": [
