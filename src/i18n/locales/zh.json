@@ -196,8 +196,13 @@
             "name": "核心能力",
             "features": [
               {
-                "name": "显存切分",
-                "hamiStatus": "✅ 部分场景无法准确统计",
+                "name": "显存共享",
+                "hamiStatus": "✅",
+                "kantaloupeStatus": true
+              },
+              {
+                "name": "显存共享强隔离",
+                "hamiStatus": false,
                 "kantaloupeStatus": true
               },
               {
@@ -221,7 +226,7 @@
                 "kantaloupeStatus": true
               },
               {
-                "name": "自动适配",
+                "name": "自动扩缩容",
                 "hamiStatus": false,
                 "kantaloupeStatus": true
               },
@@ -256,7 +261,7 @@
                 "kantaloupeStatus": true
               },
               {
-                "name": "卡级别 Binpack、Spread 调度",
+                "name": "GPU 级别 Binpack、Spread 调度",
                 "hamiStatus": true,
                 "kantaloupeStatus": true
               },
@@ -286,42 +291,42 @@
             "name": "异构能力",
             "features": [
               {
-                "name": "寒武纪MLU资源切分",
+                "name": "寒武纪 MLU",
                 "hamiStatus": true,
                 "kantaloupeStatus": true
               },
               {
-                "name": "海光DCU资源切分",
+                "name": "海光 DCU",
                 "hamiStatus": true,
                 "kantaloupeStatus": true
               },
               {
-                "name": "昇腾310系列",
+                "name": "昇腾 310 系列",
                 "hamiStatus": true,
                 "kantaloupeStatus": true
               },
               {
-                "name": "昇腾910系列",
+                "name": "昇腾 910 系列",
                 "hamiStatus": true,
                 "kantaloupeStatus": true
               },
               {
-                "name": "摩尔线程GPU",
+                "name": "摩尔线程",
                 "hamiStatus": true,
                 "kantaloupeStatus": true
               },
               {
-                "name": "天数智芯GPU",
+                "name": "天数智芯",
                 "hamiStatus": true,
                 "kantaloupeStatus": true
               },
               {
-                "name": "燧原GPU",
+                "name": "燧原",
                 "hamiStatus": true,
                 "kantaloupeStatus": true
               },
               {
-                "name": "沐曦GPU",
+                "name": "沐曦",
                 "hamiStatus": true,
                 "kantaloupeStatus": true
               }
@@ -331,12 +336,17 @@
             "name": "监控能力",
             "features": [
               {
-                "name": "分配值，节点与应用的绑定关系",
+                "name": "AI 工作负载 GPU 分配情况",
                 "hamiStatus": true,
                 "kantaloupeStatus": true
               },
               {
-                "name": "应用实际使用算力、显存监控",
+                "name": "AI 工作负载节点绑定管理",
+                "hamiStatus": true,
+                "kantaloupeStatus": true
+              },
+              {
+                "name": "AI 工作负载真实使用量",
                 "hamiStatus": true,
                 "kantaloupeStatus": true
               },
@@ -386,22 +396,22 @@
             "name": "运维能力",
             "features": [
               {
-                "name": "GPU 软件栈一建声明式安装、运维、升级(驱动、CUDA、device plugin 等全链路依赖)",
+                "name": "GPU 软件栈全生命周期管理",
                 "hamiStatus": false,
                 "kantaloupeStatus": true
               },
               {
-                "name": "单集群 GUI",
+                "name": "GUI",
                 "hamiStatus": true,
                 "kantaloupeStatus": true
               },
               {
-                "name": "OpenAPI 能力对外集成",
+                "name": "OpenAPI",
                 "hamiStatus": false,
                 "kantaloupeStatus": true
               },
               {
-                "name": "计量计费体系",
+                "name": "计量计费",
                 "hamiStatus": false,
                 "kantaloupeStatus": true
               }
@@ -411,12 +421,12 @@
             "name": "安全性",
             "features": [
               {
-                "name": "支持安全容器 KataContainer",
+                "name": "KataContainer",
                 "hamiStatus": false,
                 "kantaloupeStatus": true
               },
               {
-                "name": "安全策略支持",
+                "name": "安全策略",
                 "hamiStatus": false,
                 "kantaloupeStatus": true
               },
@@ -428,12 +438,12 @@
             ]
           },
           {
-            "name": "售后服务",
+            "name": "技术支持",
             "features": [
               {
-                "name": "专人专家服务",
-                "hamiStatus": false,
-                "kantaloupeStatus": true
+                "name": "Support",
+                "hamiStatus": "社区支持：GitHub、社区用户群",
+                "kantaloupeStatus": "专业团队支持"
               }
             ]
           }

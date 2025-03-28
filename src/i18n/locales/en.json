@@ -201,8 +201,13 @@
             "name": "Core Capabilities",
             "features": [
               {
-                "name": "Memory Partitioning",
-                "hamiStatus": "✅ Cannot accurately track in some scenarios",
+                "name": "GPU Memory share",
+                "hamiStatus": "✅",
+                "kantaloupeStatus": true
+              },
+              {
+                "name": "QOS GPU Memory share",
+                "hamiStatus": false,
                 "kantaloupeStatus": true
               },
               {
@@ -211,12 +216,12 @@
                 "kantaloupeStatus": true
               },
               {
-                "name": "Memory Overcommitment",
+                "name": "GPU Memory oversubscribe",
                 "hamiStatus": false,
                 "kantaloupeStatus": true
               },
               {
-                "name": "Computing Power Overcommitment",
+                "name": "Computing Core oversubscribe",
                 "hamiStatus": false,
                 "kantaloupeStatus": true
               },
@@ -226,7 +231,7 @@
                 "kantaloupeStatus": true
               },
               {
-                "name": "Automatic Adaptation",
+                "name": "Auto Scaling",
                 "hamiStatus": false,
                 "kantaloupeStatus": true
               },
@@ -261,7 +266,7 @@
                 "kantaloupeStatus": true
               },
               {
-                "name": "Card-level Binpack, Spread Scheduling",
+                "name": "GPU-level Binpack, Spread Scheduling",
                 "hamiStatus": true,
                 "kantaloupeStatus": true
               },
@@ -291,12 +296,12 @@
             "name": "Heterogeneous Capabilities",
             "features": [
               {
-                "name": "Cambricon MLU Resource Partitioning",
+                "name": "Cambricon MLU",
                 "hamiStatus": true,
                 "kantaloupeStatus": true
               },
               {
-                "name": "Hygon DCU Resource Partitioning",
+                "name": "Hygon DCU",
                 "hamiStatus": true,
                 "kantaloupeStatus": true
               },
@@ -316,7 +321,7 @@
                 "kantaloupeStatus": true
               },
               {
-                "name": "Tianshu GPU",
+                "name": "Iluvatar GPU",
                 "hamiStatus": true,
                 "kantaloupeStatus": true
               },
@@ -326,7 +331,7 @@
                 "kantaloupeStatus": true
               },
               {
-                "name": "Muxi GPU",
+                "name": "Metax GPU",
                 "hamiStatus": true,
                 "kantaloupeStatus": true
               }
@@ -336,12 +341,17 @@
             "name": "Monitoring Capabilities",
             "features": [
               {
-                "name": "Allocation Values, Node-Application Binding",
+                "name": "GPU Allocation of AI Workloads",
                 "hamiStatus": true,
                 "kantaloupeStatus": true
               },
               {
-                "name": "Application Computing Power, Memory Monitoring",
+                "name": "Node Binding AI workloads",
+                "hamiStatus": true,
+                "kantaloupeStatus": true
+              },
+              {
+                "name": "AI workloads usage",
                 "hamiStatus": true,
                 "kantaloupeStatus": true
               },
@@ -366,7 +376,7 @@
             "name": "AI Multi-cluster Management",
             "features": [
               {
-                "name": "AI Computing Cluster Lifecycle Management (Creation, Expansion, Updates, Uninstallation)",
+                "name": "AI Cluster Lifecycle Management",
                 "hamiStatus": false,
                 "kantaloupeStatus": true
               },
@@ -391,22 +401,22 @@
             "name": "Operations Capabilities",
             "features": [
               {
-                "name": "GPU Software Stack Declarative Installation, Operations, Upgrades (Drivers, CUDA, Device Plugin, etc.)",
+                "name": "GPU Stack LCM",
                 "hamiStatus": false,
                 "kantaloupeStatus": true
               },
               {
-                "name": "Single Cluster GUI",
+                "name": "GUI",
                 "hamiStatus": true,
                 "kantaloupeStatus": true
               },
               {
-                "name": "OpenAPI Integration Capabilities",
+                "name": "OpenAPI",
                 "hamiStatus": false,
                 "kantaloupeStatus": true
               },
               {
-                "name": "Metering and Billing System",
+                "name": "Metering and Billing",
                 "hamiStatus": false,
                 "kantaloupeStatus": true
               }
@@ -416,24 +426,24 @@
             "name": "Security",
             "features": [
               {
-                "name": "KataContainer Support",
+                "name": "KataContainer",
                 "hamiStatus": false,
                 "kantaloupeStatus": true
               },
               {
-                "name": "Security Policy Support",
+                "name": "Security Policy",
                 "hamiStatus": false,
                 "kantaloupeStatus": true
               }
             ]
           },
           {
-            "name": "After-sales Service",
+            "name": "Support",
             "features": [
               {
-                "name": "Dedicated Expert Service",
-                "hamiStatus": false,
-                "kantaloupeStatus": true
+                "name": "Support",
+                "hamiStatus": "Community support: GitHub, Slack channel",
+                "kantaloupeStatus": "Professional team support"
               }
             ]
           }
