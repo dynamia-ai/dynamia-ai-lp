@@ -22,7 +22,7 @@ type SubmenuItem = {
   description: string;
   href: string;
   external: boolean;
-  iconName: 'infoCircle' | 'globe' | 'code' | 'users' | 'document' | 'blog';
+  iconName: 'infoCircle' | 'globe' | 'code' | 'users' | 'document' | 'blog' | 'folder';
 }
 
 const Header: React.FC = () => {
@@ -345,7 +345,13 @@ const Header: React.FC = () => {
                               <div className="flex">
                                 {/* Left side - Large title */}
                                 <div className="w-1/3 pr-10 sm:pl-45">
-                                  <div className={`dropdown-description ${item.submenuType === 'hami' ? 'bg-hami-pattern' : ''}`}>
+                                  <div className={`dropdown-description ${
+                                    item.submenuType === 'hami'
+                                      ? 'bg-hami-pattern'
+                                      : item.submenuType === 'resources'
+                                        ? 'bg-resources-pattern'
+                                        : ''
+                                  }`}>
                                     <div className="dropdown-title text-3xl font-bold text-gray-900 pt-0 mt-0">
                                       {item.name}
                                     </div>

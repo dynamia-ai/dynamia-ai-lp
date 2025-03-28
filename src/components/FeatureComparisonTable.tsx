@@ -42,7 +42,6 @@ export default function FeatureComparisonTable() {
   
   const {
     title,
-    subTitle,
     categoryHeader,
     featureHeader,
     openSource,
@@ -96,9 +95,6 @@ export default function FeatureComparisonTable() {
         <h2 className="text-3xl font-bold text-gray-900 mb-4">
           {title}
         </h2>
-        <p className="text-lg text-gray-600">
-          {subTitle}
-        </p>
       </motion.div>
       
       <motion.div
@@ -111,18 +107,18 @@ export default function FeatureComparisonTable() {
       >
         <div className="max-w-7xl mx-auto overflow-x-auto">
           <table className="w-full divide-y divide-gray-200 border border-gray-200 shadow-md rounded-lg">
-            <thead className="bg-primary-light">
+            <thead className="bg-primary">
               <tr>
-                <th scope="col" className="px-3 py-3 text-center text-xs font-bold text-primary uppercase tracking-wider w-[20%] min-w-[100px]">
+                <th scope="col" className="px-3 py-3 text-center text-xs font-bold text-white uppercase tracking-wider w-[22%] min-w-[100px]">
                   {categoryHeader}
                 </th>
-                <th scope="col" className="px-3 py-3 text-center text-xs font-bold text-primary uppercase tracking-wider w-[40%] min-w-[300px]">
+                <th scope="col" className="px-3 py-3 text-center text-xs font-bold text-white uppercase tracking-wider w-[38%] min-w-[300px]">
                   {featureHeader}
                 </th>
-                <th scope="col" className="px-3 py-3 text-center text-md font-bold text-primary uppercase tracking-wider w-[22%] min-w-[120px]">
+                <th scope="col" className="px-3 py-3 text-center text-md font-black text-white uppercase tracking-wider w-[22%] min-w-[120px]">
                   {openSource}
                 </th>
-                <th scope="col" className="px-3 py-3 text-center text-md font-bold text-primary uppercase tracking-wider w-[18%] min-w-[120px]">
+                <th scope="col" className="px-3 py-3 text-center text-md font-black text-white uppercase tracking-wider w-[18%] min-w-[120px]">
                   {enterprise}
                 </th>
               </tr>
@@ -136,12 +132,12 @@ export default function FeatureComparisonTable() {
                     {featureIndex === 0 ? (
                       <td 
                         rowSpan={category.features.length} 
-                        className="px-3 py-3 bg-gray-50 text-md font-bold text-gray-900 text-center align-middle border-r border-gray-200"
+                        className="px-3 py-3 bg-gray-50 text-md font-extrabold text-center align-middle border-r border-gray-200"
                       >
                         {category.name}
                       </td>
                     ) : null}
-                    <td className="px-3 py-3 text-sm font-medium text-gray-700 text-center border-r border-gray-200 break-words hyphens-auto">
+                    <td className="pl-5 pr-3 text-center text-md font-bold border-r border-gray-200 break-words hyphens-auto">
                       {feature.name}
                     </td>
                     <td className="px-2 py-3 text-sm text-gray-700 text-center border-r border-gray-200">

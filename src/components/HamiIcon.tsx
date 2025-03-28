@@ -2,7 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 
 // 图标类型
-export type IconName = 'infoCircle' | 'globe' | 'code' | 'users' | 'document' | 'blog' | 'externalLink';
+export type IconName = 'infoCircle' | 'globe' | 'code' | 'users' | 'document' | 'blog' | 'externalLink' | 'folder';
 
 // 图标路径映射
 export const iconFiles: Record<IconName, string> = {
@@ -12,7 +12,8 @@ export const iconFiles: Record<IconName, string> = {
   users: "/icons/users.svg",
   document: "/icons/document.svg",
   blog: "/icons/blog.svg",
-  externalLink: "/icons/external-link.svg"
+  externalLink: "/icons/external-link.svg",
+  folder: "/icons/folder.svg"
 };
 
 // HAMi菜单图标组件

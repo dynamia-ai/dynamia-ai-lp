@@ -144,6 +144,13 @@ body {
   background-size: 120px auto;
 }
 
+.bg-resources-pattern {
+  background-image: url('/images/resources-pattern.svg');
+  background-position: right bottom -10px;
+  background-repeat: no-repeat;
+  background-size: 90px auto;
+}
+
 .dropdown-title {
   font-size: 2.5rem;
   line-height: 1.2;
