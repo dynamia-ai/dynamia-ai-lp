@@ -1,6 +1,5 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { CheckIcon, XMarkIcon } from '@heroicons/react/24/solid';
 import { motion } from 'framer-motion';
 
 interface FeatureProps {
@@ -57,16 +56,30 @@ export default function FeatureComparisonTable() {
       // 显示带备注的状态
       return (
         <div className="flex flex-col items-center">
-          <CheckIcon className="h-5 w-5 text-green-500" />
+          <div className="rounded-full bg-primary p-1 w-5 h-5 flex items-center justify-center">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M5 13l4 4L19 7" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </div>
           <span className="text-xs text-gray-500 mt-1 text-center">{status.replace('✅', '').trim()}</span>
         </div>
       );
     } else if (status === true) {
-      // 显示勾选图标
-      return <CheckIcon className="h-5 w-5 text-green-500 mx-auto" />;
+      return (
+        <div className="rounded-full bg-primary p-1 w-5 h-5 flex items-center justify-center mx-auto">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5 13l4 4L19 7" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+        </div>
+      );
     } else {
-      // 显示叉图标
-      return <XMarkIcon className="h-5 w-5 text-red-500 mx-auto" />;
+      return (
+        <div className="rounded-full bg-gray-400 p-1 w-5 h-5 flex items-center justify-center mx-auto">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6 6l12 12M6 18L18 6" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+        </div>
+      );
     }
   };
   
@@ -100,16 +113,16 @@ export default function FeatureComparisonTable() {
           <table className="w-full divide-y divide-gray-200 border border-gray-200 shadow-md rounded-lg">
             <thead className="bg-primary-light">
               <tr>
-                <th scope="col" className="px-3 py-3 text-center text-xs font-bold text-primary uppercase tracking-wider w-[10%] min-w-[100px]">
+                <th scope="col" className="px-3 py-3 text-center text-xs font-bold text-primary uppercase tracking-wider w-[20%] min-w-[100px]">
                   {categoryHeader}
                 </th>
-                <th scope="col" className="px-3 py-3 text-center text-xs font-bold text-primary uppercase tracking-wider w-[50%] min-w-[300px]">
+                <th scope="col" className="px-3 py-3 text-center text-xs font-bold text-primary uppercase tracking-wider w-[40%] min-w-[300px]">
                   {featureHeader}
                 </th>
-                <th scope="col" className="px-3 py-3 text-center text-xs font-bold text-primary uppercase tracking-wider w-[22%] min-w-[120px]">
+                <th scope="col" className="px-3 py-3 text-center text-md font-bold text-primary uppercase tracking-wider w-[22%] min-w-[120px]">
                   {openSource}
                 </th>
-                <th scope="col" className="px-3 py-3 text-center text-xs font-bold text-primary uppercase tracking-wider w-[18%] min-w-[120px]">
+                <th scope="col" className="px-3 py-3 text-center text-md font-bold text-primary uppercase tracking-wider w-[18%] min-w-[120px]">
                   {enterprise}
                 </th>
               </tr>
@@ -119,17 +132,16 @@ export default function FeatureComparisonTable() {
                 category.features.map((feature, featureIndex) => (
                   <tr 
                     key={`${categoryIndex}-${featureIndex}`} 
-                    className={featureIndex % 2 === 0 ? 'bg-white' : 'bg-gray-50'}
                   >
                     {featureIndex === 0 ? (
                       <td 
                         rowSpan={category.features.length} 
-                        className="px-3 py-3 text-sm font-medium text-gray-900 text-center align-middle border-r border-gray-200"
+                        className="px-3 py-3 bg-gray-50 text-md font-bold text-gray-900 text-center align-middle border-r border-gray-200"
                       >
                         {category.name}
                       </td>
                     ) : null}
-                    <td className="px-3 py-3 text-sm text-gray-700 border-r border-gray-200 break-words hyphens-auto">
+                    <td className="px-3 py-3 text-sm font-medium text-gray-700 text-center border-r border-gray-200 break-words hyphens-auto">
                       {feature.name}
                     </td>
                     <td className="px-2 py-3 text-sm text-gray-700 text-center border-r border-gray-200">

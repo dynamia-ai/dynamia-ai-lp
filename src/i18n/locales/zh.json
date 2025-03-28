@@ -29,7 +29,7 @@
   },
   "home": {
     "hero": {
-      "title": "开源，多元异构 GPU 灵活共享、高效调度、统一管理, 助力 AI 基础设施效率飞跃",
+      "title": "开源，多元异构 GPU 共享、调度系统",
       "subtitle": "提供 灵活、可靠、按需、弹性的多元异构 GPU 虚拟化、调度、管理能力, 最大化提高 GPU 利用率",
       "chineseSlogan": "统一异构计算，提升资源效率"
     },
@@ -58,20 +58,24 @@
       ],
       "tabs": [
         {
-          "title": "异构 & 多集群",
-          "description": "统一管理来自多个厂商的异构算力集群，方便运维。"
+          "title": "多元异构集群",
+          "subtitle": "多元异构 AI 集群统一调度、管理",
+          "description": "Dynamia.ai 提供统一高效管理多元异构 AI 算力集群，让用户无感使用、管理、调度来自公有云、私有云、本地的 算力集群，最大化利用率，提高管理效率。"
         },
         {
           "title": "GPU 共享",
-          "description": "通过 GPU 切片的方式提供 GPU 共享能力，节约 GPU 算力。"
+          "subtitle": "最大化 GPU 利用率，降低成本，极大提高 AI 效率",
+          "description": "Dynamia.ai 支持 灵活、可靠、按需、弹性的 GPU 共享 来最大化 GPU  利用率，降低成本，让企业借助更普惠的算力加速业务进程。"
         },
         {
           "title": "GPU 超卖",
-          "description": "支持显存和算力超卖，对应用完全透明，进一步提升 GPU 利用率。"
+          "subtitle": "对齐 GPU 显存与主机内存，扩大 AI 资源池",
+          "description": "Dynamia.ai 提供无损、应用无感的 GPU 显存与主机内存对齐机制，最大化资源池，让混部 AI 应用更高效。"
         },
         {
-          "title": "自动适配",
-          "description": "无法提前预知应该使用的切片大小？自动适配功能可以通过\"先用后切\"的方式解决问题。"
+          "title": "自动弹性扩缩容",
+          "subtitle": "AI 应用无感、动态扩缩容",
+          "description": "Dynamia.ai 支持按需扩缩容，应用在波峰波谷无需重启即可弹性扩缩容 GPU 资源。"
         }
       ]
     },
@@ -153,10 +157,10 @@
       "featureComparison": {
         "title": "特性对比",
         "subTitle": "HAMi（开源版）和 Dynamia AI（企业版）功能对比",
-        "categoryHeader": "功能项",
-        "featureHeader": "子功能项",
-        "openSource": "HAMi 开源版",
-        "enterprise": "Dynamia AI 企业版本",
+        "categoryHeader": "",
+        "featureHeader": "",
+        "openSource": "HAMi",
+        "enterprise": "Dynamia AI",
         "categories": [
           {
             "name": "架构支持",
@@ -475,28 +479,28 @@
         "subtitle": "Dynamia AI 通过为生产环境设计的企业级功能增强了 HAMi 的核心功能。",
         "list": [
           {
-            "title": "异构 & 多集群",
+            "title": "多元异构集群",
             "description": "统一管理来自多个厂商的异构算力集群，方便运维。"
           },
           {
             "title": "GPU 共享",
-            "description": "通过 GPU 切片的方式提供 GPU 共享能力，节约 GPU 算力。"
+            "description": "Dynamia.ai 支持 灵活、可靠、按需、弹性的 GPU 共享 来最大化 GPU 利用率，降低成本，让企业借助更普惠的算力加速业务进程。"
           },
           {
             "title": "GPU 超卖",
-            "description": "支持显存和算力超卖，对应用完全透明，进一步提升 GPU 利用率。"
+            "description": "Dynamia.ai  提供无损、应用无感的 GPU 显存与 主机内存对齐机制，最大化资源池，让混部 AI 应用更高效。"
           },
           {
-            "title": "自动适配",
-            "description": "无法提前预知应该使用的切片大小？自动适配功能可以通过\"先用后切\"的方式解决问题。"
+            "title": "自动弹性扩缩容",
+            "description": "Dynamia.ai 支持按需扩缩容，应用在波峰波谷无需重启即可弹性扩缩容 GPU 资源。"
           },
           {
-            "title": "异构监控和任务分析",
-            "description": "包含多维度的 GPU 切片监控，任务的 GPU 使用分析，方便集成和运维。"
+            "title": "中心化的全链路 AI 可观测性",
+            "description": "集中式可观测性将来自云端、本地以及混合环境的资源进行了统一整合，为企业提供了具有可操作性的见解、策略驱动的管理模式以及精细的资源管理，从而实现高效且可扩展的人工智能运营。"
           },
           {
-            "title": "调度优化",
-            "description": "针对多场景推出了 numa 亲和，紧凑，平铺等多种调度策略，减少卡间通讯成本，最小化碎片，提升任务性能。"
+            "title": "高级 AI 调度",
+            "description": "针对包括非统一内存访问（NUMA）感知、装箱（binpack）、分散（spread）等不同场景的先进 AI 调度。降低数据通信成本，最大程度减少碎片化，优化任务性能。"
           }
         ]
       }

@@ -39,24 +39,24 @@ export default function Products() {
     ? commercialFeatures 
     : [
         {
-          title: 'Heterogeneous & MultiCluster',
-          description: 'Unified management of heterogeneous clusters from different device vendors, easy to maintain.'
+          title: 'Hetero multi-cluster',
+          description: 'Dynamia.ai provides a centralized approach to managing AI infrastructure, ensuring optimal workload distribution across hybrid, multi-cloud, and on-premises environments.'
         },
         {
           title: 'GPU Sharing',
-          description: 'Provides the capability of GPU sharing through dynamic GPU slicing, saving GPU resources.'
+          description: 'Dynamia.ai dynamically consolidates and orchestrates GPU resources. By eliminating waste, maximizing resource utilization, enterprises achieve superior ROI, reduced operational costs, and faster scaling of AI initiatives.'
         },
         {
           title: 'GPU Oversubscription',
-          description: 'Oversubscribe GPU memory and computing cores, Completely transparent to applications. Further improve utilization.'
+          description: 'Dynamia.ai support seamlessly unify GPU and host memory to maximize the efficiency of co-located AI workloads.'
         },
         {
-          title: 'Auto Fit',
+          title: 'Seamlessly Auto Scale',
           description: 'GPU on-demand auto-scaling, seamless VPA scaling for AI workloads without restarts during GPU consumption surges.'
         },
         {
-          title: 'Heterogeneous Monitoring & Workloads inspection',
-          description: 'Export metrics about how a certain device is shared (task name, corresponding resources, etc..), provide GPU profile.'
+          title: 'Centralized Observability for Complete AI insight',
+          description: 'Its centralized observability unifies resources from cloud, on-premises, and hybrid environments, empowering enterprises with actionable insights, policy-driven governance, and fine-grained resource management for efficient and scalable AI operations. '
         },
         {
           title: 'Advanced AI Scheduling',
