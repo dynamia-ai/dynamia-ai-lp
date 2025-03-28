@@ -203,7 +203,7 @@ export default function Products() {
                   <div className="w-full lg:w-1/2 flex justify-center items-start lg:items-center py-8">
                     <div className="flex items-center justify-center p-2 bg-white rounded-xl shadow-lg">
                       <Image
-                        src={`/images/features/${featureIcons[index]}.png`}
+                        src={`/images/features/${featureIcons[index]}.svg`}
                         alt={feature.title}
                         width={450}
                         height={450}

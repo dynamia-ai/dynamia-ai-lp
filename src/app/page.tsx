@@ -203,7 +203,7 @@ export default function Home() {
             <div className="lg:col-span-2 flex justify-center">
               <div className="w-full">
                 <Image
-                  src={`/images/features/feature${activeTab + 1}.png`}
+                  src={`/images/features/feature${activeTab + 1}.svg`}
                   alt={featureTabsArray[activeTab].title}
                   width={600}
                   height={400}

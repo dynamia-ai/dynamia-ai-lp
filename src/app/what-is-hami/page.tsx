@@ -187,7 +187,7 @@ export default function HamiPage() {
               className="flex-1 flex justify-center"
             >
               <a
-                href="https://landscape.cncf.io/?selected=hami&item=orchestration-management--scheduling-orchestration--hami"
+                href="https://landscape.cncf.io/?selected=hami&group=cnai&item=orchestration-management--scheduling-orchestration--hami"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="transition-transform duration-300 hover:scale-105 block"
