@@ -60,7 +60,7 @@ export default function Products() {
         },
         {
           title: 'Advanced AI Scheduling',
-          description: 'Advanced AI Scheduling for different scenarios including numa-aware, binpack, spread. Reduce data communication cost, Minimize fragments, Optimize task performance.'
+          description: 'Advanced AI Scheduling for different scenarios including numa-aware, binpack, spread. Reduce data communication cost, minimize fragments, optimize task performance.'
         }
       ];
 

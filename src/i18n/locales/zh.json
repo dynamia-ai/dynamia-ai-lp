@@ -21,7 +21,7 @@
     "adopters": "采用者",
     "adoptersDesc": "查看哪些组织在生产环境中使用 HAMi",
     "company": "公司",
-    "freeTrial": "免费试用",
+    "freeTrial": "申请试用",
     "requestDemo": "申请演示",
     "openMenu": "打开菜单",
     "caseTelecom": "电信运营商案例",
@@ -138,7 +138,7 @@
     },
     "cta": {
       "title": "准备好改造您的 AI 计算基础设施了吗？",
-      "freeTrialButton": "开始免费试用",
+      "freeTrialButton": "开始申请试用",
       "requestDemoButton": "申请演示"
     }
   },
@@ -476,7 +476,7 @@
       "architectureDiagram": "架构图",
       "commercialFeatures": {
         "title": "企业级功能",
-        "subtitle": "Dynamia AI 通过为生产环境设计的企业级功能增强了 HAMi 的核心功能。",
+        "subtitle": "Dynamia AI 基于 HAMi 核心能力，打造专为生产环境优化的企业级增强功能。",
         "list": [
           {
             "title": "多元异构集群",
@@ -539,8 +539,8 @@
     "readyForChallenge": "准备好解决您的 AI 计算挑战了吗？"
   },
   "freeTrial": {
-    "title": "免费试用",
-    "subtitle": "立即开始 30 天免费试用，体验 Dynamia AI 的强大功能",
+    "title": "申请试用",
+    "subtitle": "立即开始申请试用，体验 Dynamia AI 的强大功能",
     "form": {
       "name": "姓名",
       "email": "工作邮箱",
@@ -550,11 +550,11 @@
       "terms": "我同意 dynamia ai 的服务条款和隐私政策",
       "termsRequired": "您必须同意条款和条件才能继续。",
       "submitting": "处理中...",
-      "submitButton": "开始免费试用",
-      "submitSuccess": "谢谢！您的免费试用请求已提交。我们的团队将很快与您联系，提供后续步骤。",
+      "submitButton": "申请试用",
+      "submitSuccess": "谢谢！您的试用请求已提交。我们的团队将很快与您联系，提供后续步骤。",
       "submitError": "提交请求时发生错误。请重试或直接通过info@dynamia.ai与我们联系。"
     },
-    "disclaimer": "免费试用结束后，您可以选择升级到付费计划或取消账户。无需信用卡。"
+    "disclaimer": "试用结束后，您可以选择升级到付费计划或取消账户。无需信用卡。"
   },
   "requestDemo": {
     "title": "申请演示",

@@ -440,11 +440,11 @@
         ]
       },
       "technicalArchitecture": "Technical Architecture",
-      "architectureDescription": "Kantaloupe provides a comprehensive infrastructure for managing heterogeneous computing resources efficiently.",
+      "architectureDescription": "Dynamia AI provides a comprehensive infrastructure for managing heterogeneous computing resources efficiently.",
       "architectureDiagram": "Architecture Diagram",
       "commercialFeatures": {
         "title": "Enterprise Features",
-        "subtitle": "Kantaloupe enhances the core functionality of HAMi with enterprise-grade features designed for production environments.",
+        "subtitle": "Dynamia AI builds on HAMi’s core capabilities to deliver enterprise-grade enhancements optimized for production environments.",
         "list": [
           {
             "title": "Hetero multi-cluster",
@@ -468,7 +468,7 @@
           },
           {
             "title": "Advanced AI Scheduling",
-            "description": "Advanced AI Scheduling for different scenarios including numa-aware, binpack, spread. Reduce data communication cost, Minimize fragments, Optimize task performance."
+            "description": "Advanced AI Scheduling for different scenarios including numa-aware, binpack, spread. Reduce data communication cost, minimize fragments, optimize task performance."
           }
         ]
       }
@@ -496,7 +496,7 @@
     ],
     "customSolutions": {
       "title": "Custom Solutions",
-      "description": "We understand that every organization has unique needs. Our expert team can customize Kantaloupe solutions for your specific challenges.",
+      "description": "We understand that every organization has unique needs. Our expert team can customize Dynamia AI solutions for your specific challenges.",
       "contactButton": "Contact our solution experts"
     },
     "successStories": {
@@ -508,7 +508,7 @@
   },
   "freeTrial": {
     "title": "Free Trial",
-    "subtitle": "Start your 30-day free trial today and experience the power of Dynamia AI",
+    "subtitle": "Start your free trial and experience the power of Dynamia AI",
     "form": {
       "name": "Name",
       "email": "Work Email",
@@ -552,7 +552,7 @@
   },
   "resources": {
     "title": "Resources",
-    "subtitle": "Explore our technical documentation, blog articles, and whitepapers to learn more about Kantaloupe",
+    "subtitle": "Explore our technical documentation, blog articles, and whitepapers to learn more about Dynamia AI",
     "viewMore": "View more",
     "documentation": {
       "title": "Documentation",
@@ -617,7 +617,7 @@
       "mission": {
         "title": "Our Mission",
         "description1": "At dynamia ai, we are committed to helping organizations maximize the value of their computing resources through innovative heterogeneous computing solutions. We believe that by intelligently managing and optimizing computing resources, we can accelerate scientific discovery, drive technological innovation, and create value for customers across industries worldwide.",
-        "description2": "Our flagship product, kantaloupe, is a unified heterogeneous computing platform designed to handle today's most complex computational challenges. Whether for AI training, high-performance computing, or edge computing, kantaloupe delivers unparalleled resource efficiency and performance optimization."
+        "description2": "Our flagship product, Dynamia AI, is a unified heterogeneous computing platform designed to handle today's most complex computational challenges. Whether for AI training, high-performance computing, or edge computing, kantaloupe delivers unparalleled resource efficiency and performance optimization."
       },
       "vision": {
         "title": "Company Vision",

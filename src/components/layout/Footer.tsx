@@ -33,7 +33,7 @@ const Footer: React.FC = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link href="https://github.com/dynamia-ai" target="_blank" className="text-base text-gray-500 hover:text-gray-900">
+                    <Link href="mailto:info@dynamia.ai" className="text-base text-gray-500 hover:text-gray-900">
                       {t('footer.contactUs')}
                     </Link>
                   </li>
