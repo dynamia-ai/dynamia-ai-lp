@@ -93,7 +93,7 @@ export default function RequestDemo() {
   const demoItems: string[] = Array.isArray(demoItemsFromTranslation)
     ? demoItemsFromTranslation
     : [
-        "Overview of kantaloupe platform features",
+        "Overview of Dynamia AI platform features",
         "Customized demonstration tailored to your needs",
         "Interactive session with our solution experts",
         "Detailed exploration of deployment options and pricing"

@@ -32,7 +32,7 @@ export default function Home() {
         },
         {
           title: "GPU Oversubscription",
-          description: "Dynamia.ai support seamlessly unify GPU and host memory to maximize the efficiency of co-located AI workloads."
+          description: "Dynamia.ai supports seamlessly unify GPU and host memory to maximize the efficiency of co-located AI workloads."
         },
         {
           title: "Seamlessly Auto Scale",
@@ -207,6 +207,8 @@ export default function Home() {
                   alt={featureTabsArray[activeTab].title}
                   width={600}
                   height={400}
+                  quality={100}
+                  priority
                   className="rounded-lg"
                   style={{ objectFit: 'contain', width: '100%', height: 'auto' }}
                 />

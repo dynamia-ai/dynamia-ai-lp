@@ -15,13 +15,13 @@ export default function Company() {
       name: t('company.team.members.0.name'), 
       position: t('company.team.members.0.position'), 
       image: "/images/leadership/zx.png",
-      github: "https://github.com/archlitchi" 
+      github: "https://github.com/wawa0210"
     },
     { 
       name: t('company.team.members.1.name'), 
       position: t('company.team.members.1.position'), 
       image: "/images/leadership/lmx.png",
-      github: "https://github.com/wawa0210" 
+      github: "https://github.com/archlitchi"
     },
     { 
       name: t('company.team.members.2.name'), 
@@ -60,20 +60,18 @@ export default function Company() {
 
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 mb-20">
             {/* Who we are 部分 */}
-            <div>
-              {/* <h2 className="text-2xl font-bold text-gray-900 mb-6">{t('company.about.whoWeAre.title')}</h2> */}
-              
+            <div className="flex items-center">
               <div className="prose prose-lg max-w-none space-y-6">
                 {paragraph1.map((p: string, index: number) => (
-                  <p key={`p1-${index}`} className="text-gray-600">{p}</p>
+                  <p key={`p1-${index}`} className="text-gray-600 text-xl">{p}</p>
                 ))}
                 
                 {paragraph2.map((p: string, index: number) => (
-                  <p key={`p2-${index}`} className="text-gray-600">{p}</p>
+                  <p key={`p2-${index}`} className="text-gray-600 text-xl">{p}</p>
                 ))}
                 
                 {paragraph3.length > 0 && paragraph3.map((p: string, index: number) => (
-                  <p key={`p3-${index}`} className="text-gray-600">{p}</p>
+                  <p key={`p3-${index}`} className="text-gray-600 text-xl">{p}</p>
                 ))}
               </div>
             </div>
@@ -86,6 +84,8 @@ export default function Company() {
                 width={600} 
                 height={400} 
                 className="rounded-lg shadow-md"
+                quality={100}
+                priority
               />
             </div>
           </div>

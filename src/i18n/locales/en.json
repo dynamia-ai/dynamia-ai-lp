@@ -70,7 +70,7 @@
         {
           "title": "GPU Oversubscription",
           "subtitle": "Alignment of GPU and host memory to expand the available resource pool",
-          "description": "Dynamia.ai support seamlessly unify GPU and host memory to maximize the efficiency of co-located AI workloads."
+          "description": "Dynamia.ai supports seamlessly unify GPU and host memory to maximize the efficiency of co-located AI workloads."
         },
         {
           "title": "Seamlessly Auto Scale",
@@ -161,7 +161,7 @@
       },
       "featureComparison": {
         "title": "Feature Comparison",
-        "subTitle": "HAMi (Open Source) vs Dynamia AI (Enterprise) Feature Comparison",
+        "subTitle": "HAMi vs Dynamia AI Feature Comparison",
         "categoryHeader": "",
         "featureHeader": "",
         "openSource": "HAMi",
@@ -456,7 +456,7 @@
           },
           {
             "title": "GPU Oversubscription",
-            "description": "Dynamia.ai support seamlessly unify GPU and host memory to maximize the efficiency of co-located AI workloads."
+            "description": "Dynamia.ai supports seamlessly unify GPU and host memory to maximize the efficiency of co-located AI workloads."
           },
           {
             "title": "Seamlessly Auto Scale",
@@ -508,13 +508,13 @@
   },
   "freeTrial": {
     "title": "Free Trial",
-    "subtitle": "Start your 30-day free trial today and experience the power of kantaloupe",
+    "subtitle": "Start your 30-day free trial today and experience the power of Dynamia AI",
     "form": {
       "name": "Name",
       "email": "Work Email",
       "company": "Company Name",
       "phone": "Phone Number",
-      "useCase": "How do you plan to use kantaloupe?",
+      "useCase": "How do you plan to use Dynamia AI?",
       "terms": "I agree to dynamia ai's Terms of Service and Privacy Policy",
       "termsRequired": "You must agree to the terms and conditions to proceed.",
       "submitting": "Processing...",
@@ -526,11 +526,11 @@
   },
   "requestDemo": {
     "title": "Request a Demo",
-    "subtitle": "Schedule a personalized demo to learn how kantaloupe can help your organization optimize computing resources",
+    "subtitle": "Schedule a personalized demo to learn how Dynamia AI can help your organization optimize computing resources",
     "demoContent": {
       "title": "Demo Content",
       "items": [
-        "Overview of kantaloupe platform features",
+        "Overview of Dynamia AI platform features",
         "Customized demonstration tailored to your needs",
         "Interactive session with our solution experts",
         "Detailed exploration of deployment options and pricing"
@@ -610,8 +610,8 @@
       "description": "We are pioneering the future of heterogeneous computing to help organizations maximize their computational resources",
       "whoWeAre": {
         "title": "Who we are",
-        "paragraph1": "DYNAMIA is the creator and maintainer of HAMi, which is the world's fastest-growing and most widely adopted open-source AI Native Heterogeneous AI Computing Virtualization Middleware project (an official CNCF Project and CNAI Landscape Project). It is capable of managing various types of heterogeneous devices (such as GPU, Ascend, Metax, Cambricon, Hygon, ILuvatar, Mthreads, AMD, etc.), sharing heterogeneous devices among pods, and making more optimal scheduling decisions based on the device topology and scheduling policies.",
-        "paragraph2": "DYNAMIA offers an enterprise platform for AI workloads and GPU orchestration, unlocking the full potential of AI infrastructure. It provides a global solution for enhancing general computing power efficiency and enabling efficient management of heterogeneous computing power. This allows enterprises to effortlessly tackle the challenges of AI infrastructure utilization and heterogeneous complexity. The team members consist of senior architects, engineers, and solution experts with years of experience in the fields of cloud-native, AI Infra, and heterogeneous distributed computing systems. They are located in several cities including Shanghai, Beijing, and Chengdu. In the past, they have served renowned domestic and international high-tech enterprises such as Alibaba, NetEase, Baidu, Fourth Paradigm, and DaoCloud.",
+        "paragraph1": "Dynamia.ai is the creator and maintainer of HAMi, which is the world's fastest-growing and most widely adopted open-source, heterogeneous AI computing virtualization middleware, scales AI workloads seamlessly across hybrid and multi-cloud environments.",
+        "paragraph2": "Dynamia.ai offers an enterprise platform for AI workloads and GPU orchestration, unlocking the full potential of AI infrastructure.  This allows enterprises to effortlessly tackle the challenges of AI infrastructure utilization and hybrid complexity.",
         "paragraph3":""
       },
       "mission": {
@@ -629,7 +629,7 @@
       }
     },
     "team": {
-      "title": "Leadership Team",
+      "title": "Leadership",
       "members": [
         { "name": "Xiao Zhang", "position": "CEO & Founder & HAMi Maintainer", "image": "CEO" },
         { "name": "Mengxuan Li", "position": "Chief Architect & Co-founder & HAMi Maintainer", "image": "CTO" },

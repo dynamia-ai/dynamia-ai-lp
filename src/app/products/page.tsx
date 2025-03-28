@@ -48,7 +48,7 @@ export default function Products() {
         },
         {
           title: 'GPU Oversubscription',
-          description: 'Dynamia.ai support seamlessly unify GPU and host memory to maximize the efficiency of co-located AI workloads.'
+          description: 'Dynamia.ai supports seamlessly unify GPU and host memory to maximize the efficiency of co-located AI workloads.'
         },
         {
           title: 'Seamlessly Auto Scale',
@@ -89,7 +89,7 @@ export default function Products() {
       {/* 产品概述区域 */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 items-center">
+          <div className="max-w-6xl mx-auto grid grid-cols-1 gap-6 md:grid-cols-2 items-center">
             <motion.div
               initial="hidden"
               whileInView="visible"
@@ -144,7 +144,7 @@ export default function Products() {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="flex justify-center"
             >
-              <div className="w-full max-w-md bg-primary-light rounded-lg overflow-hidden p-0">
+              <div className="w-full bg-primary-light rounded-lg overflow-hidden p-0">
                 <div className="p-2 flex items-center justify-center">
                   <Image 
                     src="/images/products/product-overview.png" 
@@ -153,6 +153,7 @@ export default function Products() {
                     height={550}
                     className="rounded-lg"
                     style={{ objectFit: 'contain', width: '100%', height: 'auto' }}
+                    quality={100}
                   />
                 </div>
               </div>
@@ -162,7 +163,7 @@ export default function Products() {
       </section>
 
       {/* 商业特性区域 */}
-      <section className="py-20">
+      <section className="py-20 pb-0">
         <div className="container mx-auto px-4 sm:px-6 lg:px-12">
           <motion.div
             initial="hidden"
@@ -194,7 +195,7 @@ export default function Products() {
                 viewport={{ once: true }}
                 variants={fadeIn}
                 transition={{ duration: 0.5, delay: 0.1 * index }}
-                className="py-16 container mx-auto px-4 sm:px-6 lg:px-8"
+                className={`py-16 ${index === features.length - 1 ? 'pb-8' : ''} container mx-auto px-4 sm:px-6 lg:px-8`}
               >
                 <div className={`flex flex-col ${
                   index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'
@@ -208,6 +209,7 @@ export default function Products() {
                         height={450}
                         className="rounded-lg"
                         style={{ objectFit: 'contain' }}
+                        quality={100}
                       />
                     </div>
                   </div>
@@ -225,7 +227,7 @@ export default function Products() {
       </section>
 
       {/* CTA区域 */}
-      <section className="bg-primary-light py-16">
+      <section className="bg-primary-light py-16 mt-0">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial="hidden"

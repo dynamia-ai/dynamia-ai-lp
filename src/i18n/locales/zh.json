@@ -156,7 +156,7 @@
       ],
       "featureComparison": {
         "title": "特性对比",
-        "subTitle": "HAMi（开源版）和 Dynamia AI（企业版）功能对比",
+        "subTitle": "HAMi 和 Dynamia AI 功能对比",
         "categoryHeader": "",
         "featureHeader": "",
         "openSource": "HAMi",
@@ -540,14 +540,14 @@
   },
   "freeTrial": {
     "title": "免费试用",
-    "subtitle": "立即开始30天免费试用，体验kantaloupe的强大功能",
+    "subtitle": "立即开始 30 天免费试用，体验 Dynamia AI 的强大功能",
     "form": {
       "name": "姓名",
       "email": "工作邮箱",
       "company": "公司名称",
       "phone": "电话号码",
-      "useCase": "您计划如何使用kantaloupe？",
-      "terms": "我同意dynamia ai的服务条款和隐私政策",
+      "useCase": "您计划如何使用 Dynamia AI？",
+      "terms": "我同意 dynamia ai 的服务条款和隐私政策",
       "termsRequired": "您必须同意条款和条件才能继续。",
       "submitting": "处理中...",
       "submitButton": "开始免费试用",
@@ -558,11 +558,11 @@
   },
   "requestDemo": {
     "title": "申请演示",
-    "subtitle": "安排个性化演示，了解kantaloupe如何帮助您的组织优化计算资源",
+    "subtitle": "安排个性化演示，了解 Dynamia AI 如何帮助您的组织优化计算资源",
     "demoContent": {
       "title": "演示内容",
       "items": [
-        "kantaloupe平台功能概述",
+        "Dynamia AI 平台功能概述",
         "根据您的需求定制的演示",
         "与我们的解决方案专家互动",
         "部署选项和定价的详细探讨"
@@ -642,9 +642,9 @@
       "description": "我们在异构计算领域开拓创新，帮助组织最大化利用其计算资源",
       "whoWeAre": {
         "title": "公司简介",
-        "paragraph1": "密瓜智能，HAMi 的发起者和维护者， HAMi 目前是全球增长最快、最受欢迎的开源 AI 原生异构 AI 计算虚拟化中间件项目（ CNCF sandbox 项目和 CNAI landscape 项目），可以管理不同类型的异构 AI GPU（如 GPU、Ascend、Metax、Cambricon、Hygon、ILuvatar、Mthreads、AMD 等），在 Pod 之间共享异构设备，以及丰富灵活的调度策略与优先级权重。\n",
+        "paragraph1": "密瓜智能，CNCF sandbox HAMi 项目的作者与维护者。HAMi 作为全球增长最快、最受欢迎的开源 AI 原生异构 虚拟化中间件项目。通过灵活、可靠、按需、弹性的 GPU 虚拟化来提升资源利用率，可以插拔式、轻量化、无侵入地部署在任意公有云、私有云、混合云环境中，可支持 NVIDIA、昇腾、沐曦、寒武纪、海光、摩尔线程，天数智芯等异构芯片。\n",
         "paragraph2": "HAMi 自开源以来受到广泛欢迎，用户遍布全球，超过 100+ 用户使用 HAMi 构建自己的 AI 基础设施，用于最大化提高 GPU 利用率。\n",
-        "paragraph3": "密瓜智能提供基于 HAMi 的 AI 工作负载和 GPU 编排提供企业平台，最大化 AI 基础设施的全部潜力，提供通用算力效率提升和异构算力高效管理的全球化解决方案。让企业轻松应对 AI 基础设施利用率和异构复杂性的挑战。团队成员由多年在云原生、AI 基础设施、异构分布式计算系统领域工作的资深架构师、工程师、解决方案专家组成，分布在上海、北京、成都等多个城市，过去曾服务于阿里巴巴、网易、百度、第四范式、DaoCloud 等国内外知名高科技企业。"
+        "paragraph3": "密瓜智能提供统一的 AI 应用编排与 GPU 调度的企业级平台，最大化的释放 GPU 的所有潜力，提升通用 GPU 利用率，实现异构 算力集群、算力芯片的统一、高效的调度。"
       },
       "mission": {
         "title": "我们的使命",
@@ -661,7 +661,7 @@
       }
     },
     "team": {
-      "title": "团队介绍",
+      "title": "核心团队",
       "members": [
         { "name": "张潇", "position": "CEO & 创始人 & HAMi 核心维护者", "image": "CEO" },
         { "name": "李孟轩", "position": "首席架构师 & 联合创始人 & HAMi 项目创始人", "image": "CTO" },
