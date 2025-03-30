@@ -442,8 +442,8 @@
             "features": [
               {
                 "name": "Support",
-                "hamiStatus": "Community support: GitHub, Slack channel",
-                "kantaloupeStatus": "Professional team support"
+                "hamiStatus": "✅ Community support: GitHub, Slack channel",
+                "kantaloupeStatus": "✅ Professional team support"
               }
             ]
           }

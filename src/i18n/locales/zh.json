@@ -442,8 +442,8 @@
             "features": [
               {
                 "name": "Support",
-                "hamiStatus": "社区支持：GitHub、社区用户群",
-                "kantaloupeStatus": "专业团队支持"
+                "hamiStatus": "✅ 社区支持：GitHub、社区用户群",
+                "kantaloupeStatus": "✅ 专业团队支持"
               }
             ]
           }
