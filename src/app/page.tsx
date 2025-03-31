@@ -97,15 +97,16 @@ export default function Home() {
               transition={{ duration: 0.7, delay: 0.2 }}
               className="relative"
             >
-              <div className="w-full h-full bg-primary-light rounded-lg flex items-center justify-center">
-                <div className="text-center p-2">
+              <div className="w-full bg-primary-light rounded-lg overflow-hidden p-0">
+              <div className="p-2 flex items-center justify-center">
                   <Image
-                    src="/images/products/kantaloupe.png"
+                    src="/images/withhami.gif"
                     alt="Kantaloupe Overview"
-                    width={700}
-                    height={700}
+                    width={650}
+                    height={650}
                     className="rounded-lg"
                     style={{ objectFit: 'contain', width: '100%', height: 'auto' }}
+                    quality={100}
                   />
                 </div>
               </div>
