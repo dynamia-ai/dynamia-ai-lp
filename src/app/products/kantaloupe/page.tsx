@@ -89,7 +89,7 @@ export default function KantaloupeProduct() {
             </h2>
             <div className="flex flex-wrap justify-center gap-4">
               <Link
-                href="/free-trial"
+                href="/apply-trial"
                 className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-[#3867D6] hover:bg-[#2d56c2] transition-colors"
               >
                 {t('navigation.freeTrial')}

@@ -73,7 +73,7 @@ export default function Home() {
               </p>
               <div className="mt-4 flex flex-wrap items-center">
                 <Link
-                  href="/free-trial"
+                  href="/apply-trial"
                   className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-primary hover:bg-primary-dark transition-colors mr-4"
                 >
                   {t('home.cta.freeTrialButton')}
@@ -577,7 +577,7 @@ export default function Home() {
           <h2 className="text-2xl md:text-3xl font-bold mb-6">{t('home.cta.title')}</h2>
           <div className="flex flex-wrap justify-center gap-4">
             <Link
-              href="/free-trial"
+              href="/apply-trial"
               className="inline-flex items-center px-6 py-3 border border-white text-base font-medium rounded-md text-primary bg-white hover:bg-gray-100 transition-colors"
             >
               {t('home.cta.freeTrialButton')}

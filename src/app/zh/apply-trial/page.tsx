@@ -2,7 +2,7 @@
 
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import FreeTrial from '../../free-trial/page';
+import FreeTrial from '../../apply-trial/page';
 
 export default function ZhFreeTrialPage() {
   const { i18n } = useTranslation();

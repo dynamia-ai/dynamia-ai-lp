@@ -60,7 +60,7 @@ export default function FreeTrial() {
       });
       
       // Add email subject
-      formData.append('_subject', `Free Trial Request - ${formState.company}`);
+      formData.append('_subject', `Trial Application - ${formState.company}`);
       
       // Specify the target email
       formData.append('_replyto', formState.email);

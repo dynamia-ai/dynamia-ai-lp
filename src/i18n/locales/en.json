@@ -21,7 +21,7 @@
     "adopters": "Adopters",
     "adoptersDesc": "See who's using HAMi in production environments",
     "company": "Company",
-    "freeTrial": "Free Trial",
+    "freeTrial": "Apply for Trial",
     "requestDemo": "Request Demo",
     "openMenu": "Open menu",
     "caseTelecom": "Telecom Provider Case",
@@ -138,7 +138,7 @@
     },
     "cta": {
       "title": "Ready to transform your computing infrastructure?",
-      "freeTrialButton": "Start Free Trial",
+      "freeTrialButton": "Apply for Trial",
       "requestDemoButton": "Request a Demo"
     }
   },
@@ -148,7 +148,7 @@
       "subtitle": "Enterprise-grade heterogeneous computing virtualization platform",
       "viewPricing": "View Pricing",
       "readyToStart": "Ready to Transform Your Computing Infrastructure?",
-      "ctaDescription": "Experience how Dynamia AI can optimize your computing resources. Get started today with a free trial or request a custom pricing quote.",
+      "ctaDescription": "Experience how Dynamia AI can optimize your computing resources. Get started today with a trial or request a custom pricing quote.",
       "overview": {
         "title": "Enterprise-Ready Heterogeneous Computing Solution",
         "description": "Dynamia AI builds on the powerful foundation of HAMi open-source technology, adding enterprise-grade features, security, and support for mission-critical environments.",
@@ -454,7 +454,7 @@
       "architectureDiagram": "Architecture Diagram",
       "commercialFeatures": {
         "title": "Enterprise Features",
-        "subtitle": "Dynamia AI builds on HAMi’s core capabilities to deliver enterprise-grade enhancements optimized for production environments.",
+        "subtitle": "Dynamia AI builds on HAMi's core capabilities to deliver enterprise-grade enhancements optimized for production environments.",
         "list": [
           {
             "title": "Hetero multi-cluster",
@@ -517,8 +517,8 @@
     "readyForChallenge": "Ready to address your computing challenges?"
   },
   "freeTrial": {
-    "title": "Free Trial",
-    "subtitle": "Start your free trial and experience the power of Dynamia AI",
+    "title": "Apply for a Trial",
+    "subtitle": "Start your trial and experience the power of Dynamia AI",
     "form": {
       "name": "Name",
       "email": "Work Email",
@@ -528,11 +528,11 @@
       "terms": "I agree to dynamia ai's Terms of Service and Privacy Policy",
       "termsRequired": "You must agree to the terms and conditions to proceed.",
       "submitting": "Processing...",
-      "submitButton": "Start Free Trial",
-      "submitSuccess": "Thank you! Your free trial request has been submitted. Our team will contact you shortly with next steps.",
+      "submitButton": "Apply for Trial",
+      "submitSuccess": "Thank you! Your trial application has been submitted. Our team will contact you shortly with next steps.",
       "submitError": "An error occurred while submitting your request. Please try again or contact us directly at info@dynamia.ai."
     },
-    "disclaimer": "After your free trial ends, you can choose to upgrade to a paid plan or cancel your account. No credit card required."
+    "disclaimer": "After your trial ends, you can choose to upgrade to a paid plan or cancel your account. No credit card required."
   },
   "requestDemo": {
     "title": "Request a Demo",

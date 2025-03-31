@@ -116,7 +116,7 @@ export default function Solutions() {
             </h2>
             <div className="flex flex-wrap justify-center gap-4">
               <Link
-                href="/free-trial"
+                href="/apply-trial"
                 className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-primary hover:bg-primary-dark transition-colors"
               >
                 {t('navigation.freeTrial')}

@@ -30,7 +30,7 @@
   "home": {
     "hero": {
       "title": "开源，多元异构 GPU 共享、调度系统",
-      "subtitle": "提供 灵活、可靠、按需、弹性的多元异构 GPU 虚拟化、调度、管理能力, 最大化提高 GPU 利用率",
+      "subtitle": "提供灵活、可靠、按需、弹性的多元异构 GPU 虚拟化、调度、管理能力, 最大化提高 GPU 利用率",
       "chineseSlogan": "统一异构计算，提升资源效率"
     },
     "socialProof": {

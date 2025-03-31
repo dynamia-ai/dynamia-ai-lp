@@ -433,7 +433,7 @@ const Header: React.FC = () => {
                 {/* <Search /> */}
                 
                 <Link
-                  href={currentLocale === 'zh' ? '/zh/free-trial' : '/free-trial'}
+                  href={currentLocale === 'zh' ? '/zh/apply-trial' : '/apply-trial'}
                   className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-primary hover:bg-primary-dark"
                 >
                   {t('navigation.freeTrial')}
@@ -556,7 +556,7 @@ const Header: React.FC = () => {
               <div className="flex items-center px-4">
                 <div className="ml-3 space-y-2">
                   <Link
-                    href={currentLocale === 'zh' ? '/zh/free-trial' : '/free-trial'}
+                    href={currentLocale === 'zh' ? '/zh/apply-trial' : '/apply-trial'}
                     className="block rounded-md px-4 py-2 text-base font-medium text-white bg-primary hover:bg-primary-dark text-center"
                   >
                     {t('navigation.freeTrial')}
