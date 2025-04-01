@@ -60,10 +60,21 @@ export default function RequestDemo() {
       formData.append('_captcha', 'true');
       formData.append('_template', 'box');
       
-      // Send to FormSubmit service
-      const response = await fetch('https://formsubmit.co/07d5707466ec1e05a458f1f26a8acda2', {
+      // Send to API route using Resend
+      const response = await fetch('/api/contact', {
         method: 'POST',
-        body: formData
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formState.name,
+          email: formState.email,
+          company: formState.company,
+          jobTitle: formState.jobTitle,
+          message: formState.message,
+          _subject: `Demo Request - ${formState.company}`,
+          _replyto: formState.email
+        })
       });
       
       if (response.ok) {

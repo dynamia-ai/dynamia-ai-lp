@@ -70,10 +70,21 @@ export default function FreeTrial() {
       formData.append('_captcha', 'true');
       formData.append('_template', 'box');
       
-      // Send to FormSubmit service - use the same token as the pricing page
-      const response = await fetch('https://formsubmit.co/07d5707466ec1e05a458f1f26a8acda2', {
+      // Send to API route using Resend
+      const response = await fetch('/api/contact', {
         method: 'POST',
-        body: formData
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formState.name,
+          email: formState.email,
+          company: formState.company,
+          phone: formState.phone,
+          useCase: formState.useCase,
+          _subject: `Trial Application - ${formState.company}`,
+          _replyto: formState.email
+        })
       });
       
       if (response.ok) {

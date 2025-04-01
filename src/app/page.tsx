@@ -107,6 +107,7 @@ export default function Home() {
                     className="rounded-lg"
                     style={{ objectFit: 'contain', width: '100%', height: 'auto' }}
                     quality={100}
+                    unoptimized
                   />
                 </div>
               </div>
