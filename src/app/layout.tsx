@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/react";
 import "./globals.css";
 import I18nProvider from "../components/I18nProvider";
 
@@ -36,6 +37,7 @@ export default function RootLayout({
         <I18nProvider>
           {children}
           <SpeedInsights />
+          <Analytics />
         </I18nProvider>
       </body>
     </html>
