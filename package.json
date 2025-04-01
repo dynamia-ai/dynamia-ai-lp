@@ -14,6 +14,7 @@
     "@algolia/autocomplete-theme-classic": "^1.18.1",
     "@headlessui/react": "^2.2.0",
     "@heroicons/react": "^2.2.0",
+    "@vercel/speed-insights": "^1.2.0",
     "algoliasearch": "^5.20.4",
     "framer-motion": "^12.4.10",
     "i18next": "^24.2.2",
