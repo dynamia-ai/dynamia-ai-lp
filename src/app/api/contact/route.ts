@@ -1,10 +1,11 @@
 import { Resend } from 'resend';
 import { NextResponse } from 'next/server';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 export async function POST(request: Request) {
   try {
+    // Initialize Resend instance inside the handler function instead of at module level
+    const resend = new Resend(process.env.RESEND_API_KEY);
+
     const body = await request.json();
     const { _subject, ...formData } = body;
     
