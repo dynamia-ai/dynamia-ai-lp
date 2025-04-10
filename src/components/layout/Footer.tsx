@@ -45,7 +45,7 @@ const Footer: React.FC = () => {
                 <h3 className="text-base font-medium text-gray-900 mb-4">{t('footer.platformTitle')}</h3>
                 <ul className="space-y-3">
                   <li>
-                    <Link href="https://youtu.be/gxUobykvNH4" className="text-base text-gray-500 hover:text-gray-900">
+                    <Link href={currentLocale === 'zh' ? "https://www.bilibili.com/video/BV1A7dNYAED5" : "https://youtu.be/gxUobykvNH4"} className="text-base text-gray-500 hover:text-gray-900">
                       {t('footer.getDemo')}
                     </Link>
                   </li>
