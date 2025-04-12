@@ -206,8 +206,13 @@
                 "kantaloupeStatus": true
               },
               {
-                "name": "算力切分",
-                "hamiStatus": "✅ 部分场景存在较大波动",
+                "name": "算力共享",
+                "hamiStatus": "✅",
+                "kantaloupeStatus": true
+              },
+              {
+                "name": "算力共享强隔离",
+                "hamiStatus": "false",
                 "kantaloupeStatus": true
               },
               {

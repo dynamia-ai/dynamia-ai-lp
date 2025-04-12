@@ -211,8 +211,13 @@
                 "kantaloupeStatus": true
               },
               {
-                "name": "Computing Power Partitioning",
-                "hamiStatus": "✅ Significant fluctuations in some scenarios",
+                "name": "GPU Core share",
+                "hamiStatus": "✅",
+                "kantaloupeStatus": true
+              },
+              {
+                "name": "QOS GPU Core share",
+                "hamiStatus": "false",
                 "kantaloupeStatus": true
               },
               {
