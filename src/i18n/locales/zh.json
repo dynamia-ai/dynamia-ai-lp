@@ -207,12 +207,12 @@
               },
               {
                 "name": "算力共享",
-                "hamiStatus": "✅",
+                "hamiStatus": true,
                 "kantaloupeStatus": true
               },
               {
                 "name": "算力共享强隔离",
-                "hamiStatus": "false",
+                "hamiStatus": false,
                 "kantaloupeStatus": true
               },
               {

@@ -212,12 +212,12 @@
               },
               {
                 "name": "GPU Core share",
-                "hamiStatus": "✅",
+                "hamiStatus": true,
                 "kantaloupeStatus": true
               },
               {
                 "name": "QOS GPU Core share",
-                "hamiStatus": "false",
+                "hamiStatus": false,
                 "kantaloupeStatus": true
               },
               {
