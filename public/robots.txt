@@ -1,6 +1,17 @@
 # *
 User-agent: *
 Allow: /
+Disallow: /admin
+Disallow: /private
+Disallow: /api
+
+# GPTBot
+User-agent: GPTBot
+Disallow: /
+
+# Google-Extended
+User-agent: Google-Extended
+Disallow: /
 
 # Host
 Host: https://dynamia.ai

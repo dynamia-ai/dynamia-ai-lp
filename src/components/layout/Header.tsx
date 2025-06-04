@@ -78,6 +78,7 @@ const Header: React.FC = () => {
   const navigation = [
     { name: t('navigation.hami'), href: '#', hasSubmenu: true, submenuType: 'hami' },
     { name: t('navigation.products'), href: currentLocale === 'zh' ? '/zh/products' : '/products' },
+    { name: t('navigation.solutions'), href: '#', hasSubmenu: true, submenuType: 'solutions' },
     { name: t('navigation.pricing'), href: currentLocale === 'zh' ? '/zh/pricing' : '/pricing' },
     { name: t('navigation.resources'), href: '#', hasSubmenu: true, submenuType: 'resources' },
     { name: t('navigation.company'), href: currentLocale === 'zh' ? '/zh/company' : '/company' },
@@ -142,13 +143,20 @@ const Header: React.FC = () => {
 
   // 解决方案子菜单
   const solutionsSubmenu: SubmenuItem[] = [
+    {
+      name: t('navigation.caseSfTechnology'),
+      description: t('navigation.caseSfTechnologyDesc'),
+      href: currentLocale === 'zh' ? '/zh/blog/case-sf-technology-effective-gpu' : '/blog/case-sf-technology-effective-gpu',
+      external: false,
+      iconName: 'document'
+    },
     { 
       name: t('navigation.caseTelecom'), 
       description: t('navigation.caseTelecomDesc'),
       href: currentLocale === 'zh' ? '/zh/blog/case-telecom-gpu' : '/blog/case-telecom-gpu', 
       external: false,
       iconName: 'document'
-    }
+    },
   ];
 
   // 控制下拉菜单的状态

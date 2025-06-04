@@ -1,0 +1,26 @@
+{
+  "name": "Dynamia AI - Unified Heterogeneous Computing",
+  "short_name": "Dynamia AI",
+  "description": "Enterprise-grade GPU virtualization and resource management platform",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0070f3",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/LOGO-small.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/favicon.ico",
+      "sizes": "32x32",
+      "type": "image/x-icon"
+    }
+  ],
+  "categories": ["business", "productivity", "technology"],
+  "lang": "en-US",
+  "scope": "/"
+} 
