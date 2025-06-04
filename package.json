@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "build-legacy": "NODE_OPTIONS='--max-old-space-size=4096' next build",
     "start": "next start",
     "lint": "next lint",
     "algolia:index": "node scripts/create-algolia-index.js",
@@ -25,7 +26,8 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-i18next": "^15.4.1",
-    "resend": "^4.2.0"
+    "resend": "^4.2.0",
+    "web-vitals": "^5.0.2"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

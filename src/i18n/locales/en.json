@@ -25,7 +25,9 @@
     "requestDemo": "Request Demo",
     "openMenu": "Open menu",
     "caseTelecom": "Telecom Provider Case",
-    "caseTelecomDesc": "Learn how a telecom provider leverages HAMi for GPU virtualization and heterogeneous device management"
+    "caseTelecomDesc": "Learn how a telecom provider leverages HAMi for GPU virtualization and heterogeneous device management",
+    "caseSfTechnology": "SF Technology Case",
+    "caseSfTechnologyDesc": "Discover how SF Technology builds EffectiveGPU based on HAMi to enhance AI efficiency and reduce costs"
   },
   "home": {
     "hero": {
@@ -855,6 +857,120 @@
         "title": "Transform Your GPU Infrastructure",
         "description": "Discover how HAMi can help your organization achieve similar results with efficient GPU virtualization and heterogeneous computing management.",
         "button": "Contact Us"
+      }
+    },
+    "sfTechnologyEffectiveGpu": {
+      "title": "SF Technology Partners with HAMi to Enhance AI Efficiency and Significantly Reduce Costs with EffectiveGPU",
+      "subtitle": "Discover how SF Technology built EffectiveGPU based on the open-source HAMi framework, deeply integrating heterogeneous computing virtualization and efficient scheduling capabilities to achieve production deployment in key scenarios like AI large model inference and voice recognition, significantly improving GPU utilization and realizing cost reduction and efficiency enhancement while promoting HAMi open-source ecosystem development.",
+      "overview": {
+        "title": "Company Overview",
+        "description": "SF Technology is the technology arm of SF Express, one of China's leading logistics companies. As a technology-driven enterprise, SF Technology focuses on developing innovative solutions for logistics, AI, and cloud computing services.",
+        "keyPoints": [
+          "Leading logistics technology provider",
+          "Extensive AI and machine learning applications",
+          "Large-scale GPU infrastructure requirements",
+          "Focus on cost optimization and efficiency"
+        ]
+      },
+      "challenge": {
+        "title": "Traditional GPU Management Challenges",
+        "subtitle": "Core Pain Points",
+        "description": "Traditional GPU usage patterns (such as whole-card exclusive allocation) led to GPUs being underutilized in inference and other light-load scenarios, resulting in serious resource waste.",
+        "points": [
+          "Low Resource Utilization: GPU average utilization remained below 30% for extended periods, with particularly pronounced idle computing power and memory issues in inference and testing scenarios.",
+          "Coarse Scheduling Granularity: Lack of fine-grained resource partitioning and sharing capabilities, making it difficult to achieve multi-task concurrency and resource reuse.",
+          "Heterogeneous Adaptation Difficulties: Mixed deployment of GPUs, NPUs, domestic AI chips and other multi-type devices posed ecosystem fragmentation and management complexity challenges for scheduling systems.",
+          "Impact on ROI: These issues directly affected the deployment flexibility of AI services and the return on investment (ROI) of computing infrastructure."
+        ]
+      },
+      "solution": {
+        "title": "Breaking Through with EffectiveGPU Technology Practice",
+        "subtitle": "Innovation Based on HAMi",
+        "description": "Facing these challenges, SF Technology's team launched the EffectiveGPU technology solution based on the open-source heterogeneous computing scheduling framework HAMi, combined with their own business scenario requirements.",
+        "objective": "The goal is to build an efficient, flexible, and unified GPU resource pooling and scheduling management system to solve problems of low resource utilization and management complexity.",
+        "innovations": [
+          {
+            "title": "GPU Pooling and Virtualization",
+            "description": "Integrated scattered GPU resources into a unified resource pool, enabling on-demand resource allocation through virtualization technology. This capability is based on and extends HAMi's virtualization foundation."
+          },
+          {
+            "title": "Fine-grained Resource Partitioning",
+            "description": "Supports precise partitioning by core utilization (computing power) and memory capacity, allowing a single GPU card to serve multiple applications with different requirements simultaneously, breaking the limitation of whole-card exclusive allocation. This benefits from HAMi's flexible partitioning mechanism."
+          },
+          {
+            "title": "Elastic Resource Overcommitment",
+            "description": "Introduced dual-dimension overcommitment technology for memory and computing power (up to 200% memory overcommitment ratio), combined with priority scheduling to further exploit GPU potential while ensuring QoS for high-priority tasks."
+          },
+          {
+            "title": "Unified Management and Scheduling",
+            "description": "Provides unified scheduling interfaces, abstracting and shielding underlying hardware differences, supporting unified management and efficient scheduling of heterogeneous resources including domestic GPUs. This aligns with HAMi's vision of building a unified abstraction driver framework."
+          }
+        ]
+      },
+      "results": {
+        "title": "Significant Results: Substantial Improvement in Resource Utilization and Cost Reduction",
+        "description": "The solution has completed multi-scenario deployment on SF Technology's AI platform, achieving remarkable results.",
+        "items": [
+          {
+            "title": "Large Model Inference Services",
+            "value": "28 GPUs → 65 Services",
+            "description": "Deployed 65 services using 28 GPU cards, saving 37 cards"
+          },
+          {
+            "title": "Testing Service Cluster", 
+            "value": "6 GPUs → 19 Services",
+            "description": "Deployed 19 services using 6 test GPU cards, saving 13 cards"
+          },
+          {
+            "title": "Voice Recognition Services",
+            "value": "Real-time Guaranteed",
+            "description": "Ensured real-time performance for critical tasks through priority scheduling and resource overcommitment"
+          },
+          {
+            "title": "Domestic Computing Adaptation",
+            "value": "Multi-vendor Support",
+            "description": "Successfully adapted Ascend, Kunlun and other domestic AI chips with complete scheduling support, with compatibility partially benefiting from HAMi's heterogeneous compatibility design"
+          },
+          {
+            "title": "Performance Impact",
+            "value": "Only 0.5% Degradation",
+            "description": "Minimum performance decrease of only 0.5% after adding pooling layer"
+          }
+        ]
+      },
+      "hamiIntegration": {
+        "title": "Deep Integration with HAMi Ecosystem, Building Efficient Computing Infrastructure",
+        "description": "The successful practice of EffectiveGPU technology is inseparable from deep integration with the open-source heterogeneous computing scheduling framework HAMi.",
+        "points": [
+          "EffectiveGPU's technical architecture deeply integrates HAMi's core capabilities in heterogeneous computing virtualization, multi-heterogeneous GPU efficient scheduling, unified management, and observability.",
+          "Particularly in domestic GPU management and scheduling, unified abstraction driver framework and cross-architecture scheduling models were built through HAMi ecosystem integration, achieving good adaptation and efficient utilization of domestic AI computing platforms including Huawei Ascend and Baidu Kunlun.",
+          "EffectiveGPU solution adopts HAMi ecosystem-compatible designs in virtualization interfaces, scheduling interfaces, and heterogeneous GPU compatibility, ensuring smooth technology integration and seamless application operation."
+        ]
+      },
+      "validation": {
+        "title": "Validating HAMi Value, Promoting Open-Source Heterogeneous Computing Scheduling Maturity",
+        "description": "SF Technology's successful EffectiveGPU deployment is another powerful validation of HAMi's technical concepts and engineering value.",
+        "points": [
+          "Proves that HAMi's key capabilities in flexible and reliable virtualization, efficient scheduling, unified management, and observability can fully support large enterprise actual needs in complex production environments.",
+          "As a CNCF Sandbox & CNAI landscape project, this practice has accumulated valuable experience for HAMi's further promotion of industry standardization construction and scenario implementation."
+        ]
+      },
+      "quote": {
+        "text": "Through close collaboration with the HAMi open-source community and secondary innovation based on its framework, EffectiveGPU has helped us significantly improve GPU resource efficiency and reduce operational costs. This is an exemplary case of win-win cooperation between open-source collaboration and enterprise practice.",
+        "author": "SF Technology AI Platform Lead",
+        "position": "AI Platform Lead, SF Technology"
+      },
+      "conclusion": {
+        "title": "Future Outlook",
+        "description": "SF Technology has effectively solved the core pain points of GPU resource management through the EffectiveGPU solution based on HAMi, achieving cost reduction and efficiency enhancement. Looking forward, the HAMi ecosystem will attract more industry users to jointly promote the prosperity of heterogeneous computing ecosystems."
+      },
+      "companyCard": {
+        "name": "SF Technology",
+        "description": "Leading logistics technology provider in China"
+      },
+      "cta": {
+        "exploreHami": "Explore HAMi",
+        "contactUs": "Contact Us"
       }
     }
   },
