@@ -128,8 +128,8 @@ const Header: React.FC = () => {
     { 
       name: t('navigation.resourcesBlog'), 
       description: t('navigation.resourcesBlogDesc'),
-      href: 'https://project-hami.io/blog', 
-      external: true,
+      href: currentLocale === 'zh' ? '/zh/blog' : '/blog', 
+      external: false,
       iconName: 'blog'
     },
     { 
@@ -150,13 +150,14 @@ const Header: React.FC = () => {
       external: false,
       iconName: 'document'
     },
-    { 
-      name: t('navigation.caseTelecom'), 
-      description: t('navigation.caseTelecomDesc'),
-      href: currentLocale === 'zh' ? '/zh/blog/case-telecom-gpu' : '/blog/case-telecom-gpu', 
-      external: false,
-      iconName: 'document'
-    },
+    // Temporarily hidden - Telecom Provider Case
+    // { 
+    //   name: t('navigation.caseTelecom'), 
+    //   description: t('navigation.caseTelecomDesc'),
+    //   href: currentLocale === 'zh' ? '/zh/blog/case-telecom-gpu' : '/blog/case-telecom-gpu', 
+    //   external: false,
+    //   iconName: 'document'
+    // },
   ];
 
   // 控制下拉菜单的状态
