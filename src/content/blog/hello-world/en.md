@@ -53,7 +53,6 @@ Stay tuned for upcoming posts where we'll dive deeper into:
 
 We'd love to hear from you! Whether you have questions, feedback, or ideas for future blog posts, feel free to reach out:
 
-- Follow us on [X (Twitter)](https://twitter.com/projecthami)
 - Join our [Slack community](https://cloud-native.slack.com/archives/C07T10BU4R2)
 - Star us on [GitHub](https://github.com/Project-HAMi/HAMi)
 

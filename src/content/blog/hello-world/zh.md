@@ -53,7 +53,6 @@ AI 和机器学习的世界正在快速发展，基础设施需求也在不断�
 
 我们很希望听到您的声音！无论您有问题、反馈还是对未来博客文章的想法，请随时联系我们：
 
-- 在 [X (Twitter)](https://twitter.com/projecthami) 上关注我们
 - 加入我们的 [Slack 社区](https://cloud-native.slack.com/archives/C07T10BU4R2)
 - 在 [GitHub](https://github.com/Project-HAMi/HAMi) 上给我们点星
 
