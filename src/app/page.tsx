@@ -177,6 +177,62 @@ export default function Home() {
       </section>
       */}
 
+      {/* 客户信任展示区域 */}
+      <section className="py-16 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeIn}
+            transition={{ duration: 0.5 }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+              {t('home.trustedBy.title')}
+            </h2>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              {t('home.trustedBy.description')}
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-4xl mx-auto">
+            {(() => {
+              const companies = [
+                // { name: 'Company 1', logo: '/logos/company1.svg' },
+                // { name: 'Company 2', logo: '/logos/company2.png' },
+                // { name: 'Company 3', logo: '/logos/company3.svg' },
+                // { name: 'Company 4', logo: '/logos/company4.svg' },
+                // { name: 'Company 5', logo: '/logos/company5.svg' },
+                { name: 'Company 8', logo: '/logos/company8.svg' },
+                { name: 'Company 6', logo: '/logos/company6.png' },
+                { name: 'Company 7', logo: '/logos/company7.png' },
+                { name: 'Company 9', logo: '/logos/company9.svg' },
+              ];
+              return companies.map((company, index) => (
+                <motion.div
+                  key={index}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
+                  variants={fadeIn}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  className="flex items-center justify-center h-20 bg-white rounded-lg shadow-sm p-4"
+                >
+                  <Image
+                    src={company.logo}
+                    alt={company.name}
+                    width={200}
+                    height={40}
+                    className="object-contain max-h-20"
+                  />
+                </motion.div>
+              ));
+            })()}
+          </div>
+        </div>
+      </section>
+
       {/* 核心优势部分 */}
       <section className="py-16 md:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
