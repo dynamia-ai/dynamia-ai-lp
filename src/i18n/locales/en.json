@@ -88,9 +88,9 @@
       "stats": {
         "contributors": "+60",
         "forks": "+270",
-        "stars": "+1.5K",
+        "stars": "+1.9K",
         "commits": "+600",
-        "pulls": "+43K"
+        "pulls": "+50K"
       }
     },
     "joinCommunity": {
@@ -142,6 +142,10 @@
       "title": "Ready to transform your computing infrastructure?",
       "freeTrialButton": "Apply for Trial",
       "requestDemoButton": "Request a Demo"
+    },
+    "trustedBy": {
+      "title": "Trusted by Industry Leaders",
+      "description": "Leading organizations across various industries rely on Dynamia.ai to manage their heterogeneous computing resources efficiently."
     }
   },
   "products": {

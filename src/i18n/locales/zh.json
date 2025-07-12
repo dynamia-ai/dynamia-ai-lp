@@ -88,9 +88,9 @@
       "stats": {
         "contributors": "+60",
         "forks": "+270",
-        "stars": "+1.5K",
+        "stars": "+1.9K",
         "commits": "+600",
-        "pulls": "+43K"
+        "pulls": "+50K"
       }
     },
     "joinCommunity": {
@@ -142,6 +142,10 @@
       "title": "准备好改造您的 AI 计算基础设施了吗？",
       "freeTrialButton": "开始申请试用",
       "requestDemoButton": "申请演示"
+    },
+    "trustedBy": {
+      "title": "行业领导者的信赖选择",
+      "description": "各行业的领先组织都依靠 Dynamia.ai 高效管理其异构计算资源"
     }
   },
   "products": {
