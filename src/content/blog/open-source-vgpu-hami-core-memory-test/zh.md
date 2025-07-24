@@ -34,7 +34,7 @@ HAMI vGPU 方案提供的 Core & Memory 隔离基本符合预期：
 
 使用 GPU-Operator 安装 GPU 驱动、Container Runtime 之类的
 
-然后安装 HAMI，参考 -> [上一篇文章《开源 vGPU 方案：HAMI，实现细粒度 GPU 切分》](http://192.168.58.58:3001/zh/blog/open-source-vgpu-hami-fine-grained-partitioning)
+然后安装 HAMI，参考 -> [上一篇文章《开源 vGPU 方案：HAMI，实现细粒度 GPU 切分》](https://dynamia.ai/zh/blog/open-source-vgpu-hami-fine-grained-partitioningg)
 
 
 ### 测试环境
