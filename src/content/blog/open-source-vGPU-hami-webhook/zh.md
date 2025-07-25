@@ -1,6 +1,6 @@
 ---
 title: "HAMi vGPU 原理分析 Part2：hami-webhook 原理分析"
-slug: "open-source-vgpu-hami-webhook"
+slug: "open-source-vgpu-hami-webhook-analysis"
 date: "2025-07-24"
 excerpt: "上篇我们分析了 hami-device-plugin-nvidia，知道了 HAMi 的 NVIDIA device plugin 工作原理。本文为 HAMi 原理分析的第二篇，分析 hami-scheduler 实现原理。"
 author: "密瓜智能"
@@ -242,3 +242,289 @@ objectSelector:
 即：namespace 或者 资源对象上带 hami.io/webhook=ignore label 的都不走该 Webhook 逻辑。
 
 请求的 Webhook 为
+
+```yaml
+service:
+  name: vgpu-hami-scheduler
+  namespace: kube-system
+  path: /webhook
+  port: 443
+  ```
+
+  即：对于满足条件的 Pod 的 CREATE 时，kube-apiserver 会调用该 service 指定的服务，也就是我们的 hami-webhook。
+  
+  接下来就开始分析 hami-webhook 具体做了什么。
+
+  ### 源码分析 ###
+
+  这个 Webhook 的具体实现如下：
+
+  ```go
+// pkg/scheduler/webhook.go#L52
+func (h *webhook) Handle(_ context.Context, req admission.Request) admission.Response {
+	pod := &corev1.Pod{}
+	if err := h.decoder.Decode(req, pod); err != nil {
+		klog.Errorf("Failed to decode request: %v", err)
+		return admission.Errored(http.StatusBadRequest, err)
+	}
+	if len(pod.Spec.Containers) == 0 {
+		klog.Warningf(template+" - Denying admission as pod has no containers", req.Namespace, req.Name, req.UID)
+		return admission.Denied("pod has no containers")
+	}
+
+	klog.Infof(template, req.Namespace, req.Name, req.UID)
+	hasResource := false
+	for idx, ctr := range pod.Spec.Containers {
+		c := &pod.Spec.Containers[idx]
+		if ctr.SecurityContext != nil && ctr.SecurityContext.Privileged != nil && *ctr.SecurityContext.Privileged {
+			klog.Warningf(template+" - Denying admission as container %s is privileged", req.Namespace, req.Name, req.UID, c.Name)
+			continue
+		}
+		for _, val := range device.GetDevices() {
+			found, err := val.MutateAdmission(c)
+			if err != nil {
+				klog.Errorf("validating pod failed:%s", err.Error())
+				return admission.Errored(http.StatusInternalServerError, err)
+			}
+			hasResource = hasResource || found
+		}
+	}
+
+	if !hasResource {
+		klog.Infof(template+" - Allowing admission for pod: no resource found", req.Namespace, req.Name, req.UID)
+	} else if len(config.SchedulerName) > 0 {
+		pod.Spec.SchedulerName = config.SchedulerName
+	}
+
+	marshaledPod, err := json.Marshal(pod)
+	if err != nil {
+		klog.Errorf(template+" - Failed to marshal pod, error: %v", req.Namespace, req.Name, req.UID, err)
+		return admission.Errored(http.StatusInternalServerError, err)
+	}
+	return admission.PatchResponseFromRaw(req.Object.Raw, marshaledPod)
+}
+```
+
+逻辑比较简单：
+
+1. 判断 Pod 是否需要使用 HAMi-Scheduler 进行调度
+
+2. 需要的话就修改 Pod 的 SchedulerName 字段为 hami-scheduler(名字可配置)
+
+至此，核心部分就是如何判断该 Pod 是否需要使用 hami-scheduler 进行调度呢？
+
+### 如何判断是否使用 hami-scheduler ###
+
+Webhook 中主要根据 Pod 是否申请 vGPU 资源来确定，不过也有一些特殊逻辑。
+
+### 特权模式 Pod ###
+
+首先对于特权模式的 Pod，HAMi 是直接忽略的
+
+```go
+if ctr.SecurityContext != nil {
+	if ctr.SecurityContext.Privileged != nil && *ctr.SecurityContext.Privileged {
+		klog.Warningf(template+" - Denying admission as container %s is privileged", req.Namespace, req.Name, req.UID, c.Name)
+		continue
+	}
+}
+```
+因为开启特权模式之后，Pod 可以访问宿主机上的所有设备，再做限制也没意义了，因此这里直接忽略。
+
+### 具体判断逻辑 ###
+
+然后根据 Pod 中的 Resource 来判断是否需要使用 hami-scheduler 进行调度：
+
+```go
+for _, val := range device.GetDevices() {
+	found, err := val.MutateAdmission(c)
+	if err != nil {
+		klog.Errorf("validating pod failed:%s", err.Error())
+		return admission.Errored(http.StatusInternalServerError, err)
+	}
+	hasResource = hasResource || found
+}
+```
+
+如果 Pod Resource 中有申请 HAMi 这边支持的 vGPU 资源则，那么就需要使用 HAMi-Scheduler 进行调度。
+
+而那些 Device 是 HAMi 支持的呢，就是之前 start 中初始化的：
+
+```go
+var devices map[string]Devices
+
+func GetDevices() map[string]Devices {
+	return devices
+}
+
+func InitDevices() {
+	devices = make(map[string]Devices)
+	DevicesToHandle = []string{}
+
+	devices[cambricon.CambriconMLUDevice] = cambricon.InitMLUDevice()
+	devices[nvidia.NvidiaGPUDevice]       = nvidia.InitNvidiaDevice()
+	devices[hygon.HygonDCUDevice]         = hygon.InitDCUDevice()
+	devices[iluvatar.IluvatarGPUDevice]   = iluvatar.InitIluvatarDevice()
+
+	DevicesToHandle = append(DevicesToHandle,
+		nvidia.NvidiaGPUCommonWord,
+		cambricon.CambriconMLUCommonWord,
+		hygon.HygonDCUCommonWord,
+		iluvatar.IluvatarGPUCommonWord,
+	)
+
+	for _, dev := range ascend.InitDevices() {
+		devices[dev.CommonWord()] = dev
+		DevicesToHandle = append(DevicesToHandle, dev.CommonWord())
+	}
+}
+```
+
+devices 是一个全局变量， InitDevices 则是在初始化该变量，供 Webhook 中使用，包括 NVIDIA、海光、天数、昇腾等等。
+
+这里以 NVIDIA 为例说明 HAMi 是如何判断一个 Pod 是否需要自己来调度的，MutateAdmission 具体实现如下：
+
+```go
+func (dev *NvidiaGPUDevices) MutateAdmission(ctr *corev1.Container) (bool, error) {
+	// GPU-related mutations
+	if priority, ok := ctr.Resources.Limits[corev1.ResourceName(ResourcePriority)]; ok {
+		ctr.Env = append(ctr.Env, corev1.EnvVar{
+			Name:  api.TaskPriority,
+			Value: fmt.Sprint(priority.Value()),
+		})
+	}
+
+	_, resourceNameOK := ctr.Resources.Limits[corev1.ResourceName(ResourceName)]
+	if resourceNameOK {
+		return resourceNameOK, nil
+	}
+
+	_, resourceCoresOK := ctr.Resources.Limits[corev1.ResourceName(ResourceCores)]
+	_, resourceMemOK := ctr.Resources.Limits[corev1.ResourceName(ResourceMem)]
+	_, resourceMemPercentageOK := ctr.Resources.Limits[corev1.ResourceName(ResourceMemPercentage)]
+
+	if resourceCoresOK || resourceMemOK || resourceMemPercentageOK {
+		if config.DefaultResourceNum > 0 {
+			ctr.Resources.Limits[corev1.ResourceName(ResourceName)] =
+				*resource.NewQuantity(int64(config.DefaultResourceNum), resource.BinarySI)
+			resourceNameOK = true
+		}
+	}
+
+	if !resourceNameOK && OverwriteEnv {
+		ctr.Env = append(ctr.Env, corev1.EnvVar{
+			Name:  "NVIDIA_VISIBLE_DEVICES",
+			Value: "none",
+		})
+	}
+	return resourceNameOK, nil
+}
+```
+
+首先判断如果 Pod 申请的 Resource 中有对应的 ResourceName 就直接返回 true
+
+```go
+_, resourceNameOK := ctr.Resources.Limits[corev1.ResourceName(ResourceName)]
+if resourceNameOK {
+	return resourceNameOK, nil
+}
+```
+
+NVIDIA GPU 对应的 ResourceName 为：
+
+```go
+fs.StringVar(&ResourceName, "resource-name", "nvidia.com/gpu", "resource name")
+```
+
+如果 Pod Resource 中申请了这个资源，就需要由 HAMi 进行调度，其他几个 Resource 也是一样的就不细看了。
+
+> HAMi 会支持 NVIDIA、天数、华为、寒武纪、海光等厂家的 GPU，默认 ResourceName 为：nvidia.com/gpu、iluvatar.ai/vgpu、hygon.com/dcunum、cambricon.com/mlu、huawei.com/Ascend310 等等。
+使用这些 ResourceName 时都会有 HAMi-Scheduler 进行调度。                    
+ps：这些 ResourceName 都是可以在对应 device plugin 中进行配置的。
+
+如果没有直接申请 ***nvidia.com/gpu*** ，但是申请了 gpucore、gpumem 等资源，同时 Webhook 配置的 DefaultResourceNum 大于 0 也会返回 true，并自动添加上 ***nvidia.com/gpu*** 资源的申请。
+
+```go
+_, resourceCoresOK := ctr.Resources.Limits[corev1.ResourceName(ResourceCores)]
+_, resourceMemOK := ctr.Resources.Limits[corev1.ResourceName(ResourceMem)]
+_, resourceMemPercentageOK := ctr.Resources.Limits[corev1.ResourceName(ResourceMemPercentage)]
+
+if resourceCoresOK || resourceMemOK || resourceMemPercentageOK {
+	if config.DefaultResourceNum > 0 {
+		ctr.Resources.Limits[corev1.ResourceName(ResourceName)] =
+			*resource.NewQuantity(int64(config.DefaultResourceNum), resource.BinarySI)
+		resourceNameOK = true
+	}
+}
+```
+
+### 修改SchedulerName ###
+
+对于上述满足条件的 Pod，需要由 HAMi-Scheduler 进行调度，Webhook 中会将 Pod 的 spec.schedulerName 改成 hami-scheduler。
+
+具体如下：
+
+```go
+if !hasResource {
+	klog.Infof(template+" - Allowing admission for pod: no resource found", req.Namespace, req.Name, req.UID)
+} else if len(config.SchedulerName) > 0 {
+	pod.Spec.SchedulerName = config.SchedulerName
+}
+```
+
+这样该 Pod 就会由 HAMi-Scheduler 进行调度了，接下来就是 HAMi-Scheduler 开始工作了。
+
+这里也有一个特殊逻辑：如果创建时直接指定了 nodeName，那 Webhook 就会直接拒绝，因为指定 nodeName 说明 Pod 都不需要调度了，会直接到指定节点启动，但是没经过调度，可能该节点并没有足够的资源。
+
+```go
+if pod.Spec.NodeName != "" {
+	klog.Infof(template+" - Pod already has node assigned", req.Namespace, req.Name, req.UID)
+	return admission.Denied("pod has node assigned")
+}
+```
+---
+
+## 3.小结 ##
+
+该 Webhook 的作用为：将申请了 vGPU 资源的 Pod 的调度器修改为 hami-scheduler，后续使用 hami-scheduler 进行调度。
+
+也存在一些特殊情况：
+
+- 对于开启特权模式的 Pod Webhook 会忽略，不会将其切换到 hami-scheduler 进行调度，而是依旧使用 default-scheduler。
+
+- 对于直接指定了 nodeName 的 Pod, Webhook 会直接拒绝，拦截掉 Pod 的创建。
+
+基于以上特殊情况，可能会出现以下问题，也是社区中多次有同学反馈的：
+
+**特权模式 Pod 申请了 gpucore、gpumem 等资源，创建后一直处于 Pending 状态， 无法调度，提示节点上没有 gpucore、gpumem 等资源。**
+
+因为 Webhook 直接跳过了特权模式的 Pod，所以该 Pod 会使用 default-scheduler 进行调度，然后 default-scheduler 根据 Pod 中的 ResourceName 查看时发现没有任何 Node 有 gpucore、gpumem 等资源，因此无法调度，Pod 处理 Pending 状态。
+
+> ps：gpucore、gpumem 都是虚拟资源，并不会展示在 Node 上，只有 hami-scheduler 能够处理。
+
+### HAMi Webhook 工作流程如下：
+
+1. 用户创建 Pod 并在 Pod 中申请了 vGPU 资源
+
+2. kube-apiserver 根据 MutatingWebhookConfiguration 配置请求 HAMi-Webhook
+
+3. HAMi-Webhook 检测 Pod 中的 Resource，发现是申请的由 HAMi 管理的 vGPU 资源，因此把 Pod 中的 SchedulerName 改成了 hami-scheduler，这样这个 Pod 就会由 hami-scheduler 进行调度了。
+
+- 对于特权模式的 Pod，Webhook 会直接跳过不处理
+
+- 对于使用 vGPU 资源但指定了 nodeName 的 Pod，Webhook 会直接拒绝
+
+4. 接下来则进入 hami-scheduler 调度逻辑，下篇分析~
+
+至此，我们就搞清楚了，**为什么 Pod 会使用上 hami-scheduler 以及哪些 Pod 会使用 hami-scheduler 进行调度。** 同时也说明了为什么特权模式 Pod 会无法调度的问题。
+
+下一篇就开始分析 hami-scheduler 实现了~
+
+
+---
+*想了解更多 HAMi 项目信息，请访问 [GitHub 仓库](https://github.com/Project-HAMi/HAMi) 或加入我们的 [Slack 社区](https://cloud-native.slack.com/archives/C07T10BU4R2)。* 
+---
+
+
+
+
