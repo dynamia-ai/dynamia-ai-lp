@@ -5,7 +5,7 @@ date: "2025-07-30"
 excerpt: "In this article, we analyze HAMi's scheduling feature: fine-grained scheduling based on GPU type and even UUID."
 author: “Dynamia AI Team”
 tags: ["HAMI", "GPU Sharing", "vGPU", "Kubernetes", "Heterogeneous Computing"]
-coverImage: "/images/blog/gpu9/cover.jpg"
+coverImage: "/images/blog/gpu9/cover2.jpg"
 language: "en"
 ---
 
