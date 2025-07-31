@@ -1,55 +1,55 @@
 ---
-title: "精准而优雅： HAMi 调度特性之按 GPU 类型和 UUID 调度"
+title: "Precise and Elegant: HAMi's Scheduling Feature by GPU Type and UUID"
 slug: "open-source-vgpu-hami-UUID"
 date: "2025-07-30"
-excerpt: "这一篇我们分析一下 HAMi 的调度特性：根据 GPU 类型甚至 UUID 实现精细调。"
-author: 密瓜智能
-tags: ["HAMI", "GPU 共享", "vGPU", "Kubernetes", "异构算力"]
+excerpt: "In this article, we analyze HAMi's scheduling feature: fine-grained scheduling based on GPU type and even UUID."
+author: “Dynamia AI Team”
+tags: ["HAMI", "GPU Sharing", "vGPU", "Kubernetes", "Heterogeneous Computing"]
 coverImage: "/images/blog/gpu9/cover.jpg"
-language: "zh"
+language: "en"
 ---
 
-# 精准而优雅：HAMi 调度特性之按 GPU 类型和 UUID 调度
+# Precise and Elegant: HAMi's Scheduling Feature by GPU Type and UUID
 
-本文摘自：https://mp.weixin.qq.com/s/1eQC2_WGhN7DMNnTW4r0cw
+This article is adapted from: https://mp.weixin.qq.com/s/1eQC2_WGhN7DMNnTW4r0cw
 
-上一篇我们简单分析一下 HAMi-Core(libvgpu.so) vCUDA 的工作原理，包括怎么生效的，CUDA API 怎么拦截的，以及是怎么实现的对 GPU 的 core、memory 资源的 limit 的。
+In the previous article, we briefly analyzed the working principle of HAMi-Core (libvgpu.so) vCUDA, including how it takes effect, how CUDA APIs are intercepted, and how it implements resource limits on GPU core and memory.
 
-这一篇我们分析一下 HAMi 的调度特性：根据 GPU 类型甚至 UUID 实现精细调度。
+In this article, we analyze HAMi's scheduling feature: fine-grained scheduling based on GPU type and even UUID.
 
-## 1.概述
+## 1. Overview
 
-HAMi 提供了按 GPU 类型和 GPU UUID 的精准调度的能力：
+HAMi provides the ability for precise scheduling by GPU type and GPU UUID:
 
-- By Type：通过指定 GPU 型号（如 A100、A40）来调度 Pod，让任务仅调度(或者不调度)到某些指定类型的卡上
+- By Type: Schedule Pods by specifying the GPU model (e.g., A100, A40), allowing tasks to be scheduled (or not scheduled) only on cards of certain specified types.
 
-- By UUID：通过指定特定 GPU 的 UUID 来调度任务，让任务仅调度(或者不调度)到调度到特定 UUID 对应的卡上
+- By UUID: Schedule tasks by specifying the UUID of a particular GPU, ensuring that tasks are scheduled (or not scheduled) only on the card corresponding to that specific UUID.
 
-这两个特性使得用户能够灵活地控制 Pod 的调度，确保任务在特定 GPU 上运行，从而优化资源利用或满足特定硬件要求。
+These two features allow users to flexibly control Pod scheduling, ensuring tasks run on specific GPUs to optimize resource utilization or meet specific hardware requirements.
 
-> 对于 NVIDIA GPU 来说，不论什么型号都是统一使用 nvidia.com/gpu 作为 ResourceName，即使是固定申请 10% core，对于不同 GPU 来说肯定性能也是不同的，因此可以使用该特性将性能需求较大的任务调度到高性能 GPU 上。
+> For NVIDIA GPUs, regardless of the model, `nvidia.com/gpu` is uniformly used as the ResourceName. Even when requesting a fixed 10% of the core, the performance will certainly differ for different GPUs. Therefore, this feature can be used to schedule tasks with higher performance requirements onto high-performance GPUs.
 
-具体 Workflow 可以分为以下几个步骤：
+The specific workflow can be divided into the following steps:
 
-1. Device-Plugin 上报 GPU 信息：GPU 的类型和 UUID 通过device-plugin进行上报，并注册到 Node 的 Annotations 中。
+1. Device-Plugin Reports GPU Information: The GPU's type and UUID are reported by the device-plugin and registered in the Node's Annotations.
 
-2. Pod 创建时指定 Annotations：Pod 的 Annotations 中指定要调度的 GPU 类型或 UUID。
+2. Specify Annotations When Creating a Pod: The GPU type or UUID to be scheduled is specified in the Pod's Annotations.
 
-3. HAMi Scheduler 调度：hami-scheduler根据 Pod 的 Annotations 和节点上注册的 GPU 信息，过滤掉不满足条件的节点和 GPU，并最终选择合适的节点和 GPU。
+3. HAMi Scheduler Scheduling: The hami-scheduler filters out nodes and GPUs that do not meet the conditions based on the Pod's Annotations and the registered GPU information on the nodes, and finally selects a suitable node and GPU.
 
-4. GPU 分配：当设备插件为 Pod 分配 GPU 时，它从 Annotations 中获取 GPU 信息，并进行分配。
+4. GPU Allocation: When the device plugin allocates a GPU for the Pod, it retrieves the GPU information from the Annotations and performs the allocation.
 
->以下分析基于 v2.4 版本
+> The following analysis is based on version v2.4.
 
-## 2. DevicePlugin 上报 GPU 信息
+## 2. DevicePlugin Reports GPU Information
 
-这部分之前详细分析过，推荐阅读：[HAMi vGPU 方案原理分析 Part1：hami-device-plugin-nvidia 实现](https://dynamia.ai/zh/blog/open-source-vgpu-hami-device-plugin-nvidia)
+This part has been analyzed in detail before. Recommended reading: [HAMi vGPU Solution Analysis Part 1: hami-device-plugin-nvidia Implementation](https://dynamia.ai/zh/blog/open-source-vgpu-hami-device-plugin-nvidia)
 
-### 上报 GPU 信息
+### Reporting GPU Information
 
-对于 K8s 提供的标准 DevicePlugin 来说，只能上报每个节点上有多少标准资源，通过 ResourceName 区分，例如:nvidia.com/vgpu。
+For the standard DevicePlugin provided by K8s, it can only report how many standard resources each node has, distinguished by ResourceName, for example: `nvidia.com/vgpu`.
 
-其中并不包括我们调度所需要的 GPU 信息，例如：Type、UUID、显存 等信息,因此新增了部分自定义逻辑，如下：
+This does not include the GPU information we need for scheduling, such as Type, UUID, memory, etc. Therefore, some custom logic has been added, as follows:
 
 ```go
 // pkg/device-plugin/nvidiadevice/nvinternal/plugin/register.go#L199
@@ -71,9 +71,9 @@ func (plugin *NvidiaDevicePlugin) WatchAndRegister() {
 }
 ```
 
-启动这个 WatchAndRegister 的后台 Goroutine 感知 Node 上的 GPU 信息然后以 Annoations 形式更新到 Node 对象上，以实现 GPU 信息注册。
+This `WatchAndRegister` background Goroutine is started to detect GPU information on the Node and then update it to the Node object in the form of Annotations, thereby registering the GPU information.
 
-GPU 信息格式如下：
+The GPU information format is as follows:
 
 ```go
 // pkg/device-plugin/nvidiadevice/nvinternal/plugin/register.go#L155
@@ -88,11 +88,11 @@ res = append(res, &api.DeviceInfo{
 })
 ```
 
-所以卡的型号应该是 NVIDIA-NVIDIA A40 这样的格式,NVIDIA 为固定值，NVIDIA A40 则是 Model。
+So the card model should be in the format `NVIDIA-NVIDIA A40`, where `NVIDIA` is a fixed value and `NVIDIA A40` is the Model.
 
-### 查看已注册 GPU 信息
+### Viewing Registered GPU Information
 
-可以通过解析 Node Annoations 中的 hami.io.node-nvidia-register key 找到该节点上注册的 GPU 信息，例如：
+You can find the registered GPU information on a node by parsing the `hami.io.node-nvidia-register` key in the Node's Annotations, for example:
 
 ```bash
 root@j99cloudvm:~# node=j99cloudvm
@@ -100,21 +100,21 @@ kubectl get node $node -o jsonpath='{.metadata.annotations.hami\.io/node-nvidia-
 GPU-03f69c50-207a-2038-9b45-23cac89cb67d,10,46068,100,NVIDIA-NVIDIA A40,0,true:GPU-1afede84-4e70-2174-49af-f07ebb94d1ae,10,46068,100,NVIDIA-NVIDIA A40,0,true:
 ```
 
-上述节点就包含两个 GPU，UUID 和 Type 分别是：
+The above node contains two GPUs. The UUID and Type are respectively:
 
-- Card1：GPU-03f69c50-207a-2038-9b45-23cac89cb67d NVIDIA-NVIDIA A40
+- Card1: GPU-03f69c50-207a-2038-9b45-23cac89cb67d NVIDIA-NVIDIA A40
 
-- Card2：GPU-1afede84-4e70-2174-49af-f07ebb94d1ae NVIDIA-NVIDIA A40
+- Card2: GPU-1afede84-4e70-2174-49af-f07ebb94d1ae NVIDIA-NVIDIA A40
 
-后续使用时就需要指定上述 UUID 或者 Type。
+When using it later, you will need to specify the UUID or Type mentioned above.
 
-## 3. 创建 Pod 时指定 GPU
+## 3. Specifying GPU When Creating a Pod
 
-> 在 Examples 目录下提供了相关的 Demo：https://github.com/Project-HAMi/HAMi/tree/master/examples/nvidia
+> Related demos are provided in the Examples directory: https://github.com/Project-HAMi/HAMi/tree/master/examples/nvidia
 
 ### By Type
 
-指定将 Pod 调度到 A40 型号的 GPU 上
+Specify that the Pod should be scheduled to a GPU of type A40.
 
 ```yaml
 apiVersion: v1
@@ -133,7 +133,7 @@ spec:
           nvidia.com/gpu: 2
 ```
 
-指定不能使用 A100 型号 GPU
+Specify that GPUs of type A100 should not be used.
 
 ```yaml
 apiVersion: v1
@@ -141,7 +141,7 @@ kind: Pod
 metadata:
   name: gpu-pod
   annotations:
-    nvidia.com/use-gputype: "A40"
+    nvidia.com/nouse-gputype: "A100"
 spec:
   containers:
     - name: ubuntu-container
@@ -154,7 +154,7 @@ spec:
 
 ### By UUID
 
-通过 UUID 指定将 Pod 调度到对应 GPU
+Use UUID to specify that the Pod should be scheduled to the corresponding GPU.
 
 ```yaml
 apiVersion: v1
@@ -173,7 +173,7 @@ spec:
           nvidia.com/gpu: 1
 ```
 
-通过 UUID 限制不让 Pod 调度到某些 GPU
+Use UUID to prevent the Pod from being scheduled to certain GPUs.
 
 ```yaml
 apiVersion: v1
@@ -192,59 +192,51 @@ spec:
           nvidia.com/gpu: 2
 ```
 
-## 4. Scheduler 调度时处理 Annoations
+## 4. Scheduler Processing of Annotations
 
-不管是 By Type、By UUID 还是 Use 以及 NoUse 的处理逻辑都是类似的，就不展开了，以 Use ByType 为例进行分析。
+The processing logic for By Type, By UUID, Use, and NoUse is similar, so we won't go into all of them. We'll use Use ByType as an example for analysis.
 
-参考前面几篇 HAMi 调度相关的文章:
+Refer to the previous articles on HAMi scheduling:
 
-[HAMi vGPU 原理分析 Part3：hami-scheduler 工作流程分析](https://dynamia.ai/zh/blog/open-source-vgpu-hami-scheduler)
+[HAMi vGPU Solution Analysis Part 3: hami-scheduler Workflow Analysis](https://dynamia.ai/zh/blog/open-source-vgpu-hami-scheduler)
 
-[HAMi vGPU 原理分析 Part4：Spread&Binpack 高级调度策略实现](https://dynamia.ai/zh/blog/open-source-vgpu-hami-Spread-Binpack)
+[HAMi vGPU Solution Analysis Part 4: Implementation of Advanced Scheduling Strategies Spread & Binpack](https://dynamia.ai/zh/blog/open-source-vgpu-hami-Spread-Binpack)
 
-调度流程如下：
+The scheduling process is as follows:
 
-![p1](/images/blog/gpu9/p1.jpg)
+![p2](/images/blog/gpu9/p2.jpg)
 
-1. 用户创建 Pod 并在 Pod 中申请了 vGPU 资源
+1. A user creates a Pod and requests vGPU resources in it.
 
-2. kube-apiserver 根据 MutatingWebhookConfiguration 配置请求 HAMi-Webhook
+2. The kube-apiserver requests the HAMi-Webhook according to the MutatingWebhookConfiguration.
 
-3. HAMi-Webhook 检测 Pod 中的 Resource，如果申请的由 HAMi 管理的 vGPU 资源，就会把 Pod 中的 SchedulerName 改成了 hami-scheduler，这样这个 Pod 就会由 hami-scheduler 进行调度了。
+3. The HAMi-Webhook checks the Resources in the Pod. If vGPU resources managed by HAMi are requested, it changes the SchedulerName in the Pod to `hami-scheduler`, so this Pod will be scheduled by the hami-scheduler.
+    - For privileged Pods, the Webhook will skip processing.
+    - For Pods that use vGPU resources but specify a `nodeName`, the Webhook will reject them directly.
 
-- 对于特权模式的 Pod，Webhook 会直接跳过不处理
+4. The hami-scheduler schedules the Pod. However, it uses the default k8s kube-scheduler image, so the scheduling logic is the same as the default-scheduler. **But the kube-scheduler will also call the Extender Scheduler plugin according to the KubeSchedulerConfiguration.**
+    - This Extender Scheduler is another Container in the hami-scheduler Pod, which provides both Webhook and Scheduler related APIs.
+    - When a Pod requests vGPU resources, the kube-scheduler will call the Extender Scheduler plugin via HTTP according to the configuration, thus implementing custom scheduling logic.
 
-- 对于使用 vGPU 资源但指定了 nodeName 的 Pod，Webhook 会直接拒绝
+5. The Extender Scheduler plugin contains the actual HAMi scheduling logic. During scheduling, it scores and selects nodes based on the remaining resources on the nodes.
+    - This includes the implementation of advanced scheduling strategies like spread & binpack.
 
-4. hami-scheduler 进行 Pod 调度，不过就是用的 k8s 的默认 kube-scheduler 镜像，因此调度逻辑和默认的 default-scheduler 是一样的，**但是 kube-scheduler 还会根据 KubeSchedulerConfiguration 配置，调用 Extender Scheduler 插件**
+6. Asynchronous tasks, including GPU awareness logic.
+    - A background Goroutine in the devicePlugin periodically reports the GPU resources on the Node and writes them to the Node's Annotations.
+    - In addition to the DevicePlugin, asynchronous tasks are also used to submit more information by patching annotations.
+    - The Extender Scheduler plugin parses the total GPU resources from the Node Annotations and the used GPU resources from the Annotations of running Pods on the Node, calculates the remaining available resources for each Node, and saves them in memory for scheduling use.
 
-- 这个 Extender Scheduler 就是 hami-scheduler Pod 中的另一个 Container，该 Container 同时提供了 Webhook 和 Scheduler 相关 API。
+The entire scheduling is divided into Node level and Card level. By default, the target is selected according to the configured Binpack or Spread scheduling strategy.
 
-- 当 Pod 申请了 vGPU 资源时，kube-scheduler 就会根据配置以 HTTP 形式调用 Extender Scheduler 插件，这样就实现了自定义调度逻辑
+Specifying a GPU via Annotations is an additional logic. It requires selecting a suitable Card based on the configuration in the Annotations, and finally selecting a suitable node based on the Card.
 
-5. Extender Scheduler 插件包含了真正的 hami 调度逻辑， 调度时根据节点剩余资源量进行打分选择节点
+### Filtering Out Unsatisfied Cards Based on Annotations
 
-- 这里就包含了 spread & binpark 等 高级调度策略的实现
+The core logic is in the `fitInCertainDevice` method, which checks each card one by one to see if it meets the conditions, including whether the Core and Memory meet the Pod's request, and the Type and UUID restrictions parsed from the Annotations.
 
-6. 异步任务，包括 GPU 感知逻辑
+When all cards on a Node do not meet the conditions, it means the current Node also does not meet the conditions, so the Node is also filtered out.
 
-- devicePlugin 中的后台 Goroutine 定时上报 Node 上的 GPU 资源并写入到 Node 的 Annoations
-
-- 除了 DevicePlugin 之外，还使用异步任务以 Patch Annotation 方式提交更多信息
-
-- Extender Scheduler 插件根据 Node Annoations 解析出 GPU 资源总量、从 Node 上已经运行的 Pod 的 Annoations 中解析出 GPU 使用量，计算出每个 Node 剩余的可用资源保存到内存供调度时使用
-
-整个调度分为 Node 级别和 Card 级别，默认情况下根据配置的 Binpack、Spread 调度策略选择格式的目标。
-
-当前通过 Annoations 指定 GPU 则是额外逻辑，需要根据 Annoations 中的配置选择合适 Card，最终再根据 Card 选择合适节点。
-
-### 根据 Annoations 过滤掉不满足条件的 Card
-
-核心逻辑在 fitInCertainDevice 方法中，挨个 Card 检测，判断其是否满足条件，包括 Core 和 Memory 是否满足 Pod 申请，以及 Annoations 中解析出的 Type 和 UUID 限制。
-
-当一个 Node 上的所有 Card 都不满足条件时，说明当前 Node 也不满足条件，因此把 Node 也过滤掉。
-
-最终得到满足条件的 Node 以及 Node 上满足条件的 Card，最后在根据配置的 Binpack、Spread 调度策略选择出目标节点以及 Card。
+Finally, we get the nodes that meet the conditions and the cards on those nodes that meet the conditions. Then, the target node and card are selected based on the configured Binpack or Spread scheduling strategy.
 
 ```go
 // pkg/scheduler/score.go#L65
@@ -369,7 +361,7 @@ func checkGPUtype(annos map[string]string, cardtype string) bool {
 }
 ```
 
-同样是包括 TypeUse 和 TypeNoUse 两个。
+It also includes both TypeUse and TypeNoUse.
 
 ```go
 if inuse, ok := annos[GPUInUse]; ok {
@@ -380,16 +372,15 @@ if inuse, ok := annos[GPUInUse]; ok {
     }) {
         return false
     }
-}
-```
+}```
 
-这里的 cardtype 就是类似 NVIDIA-NVIDIA-A40 这样的格式，useType 则是用户在 Annoations 中指定的 Type。
+Here, `cardtype` is in a format like `NVIDIA-NVIDIA-A40`, and `useType` is the Type specified by the user in the Annotations.
 
-同时这里使用 strings.Contains(cardtype, strings.ToUpper(useType)) 进行匹配，因此 Annoations 中可以指定NVIDIA-NVIDIA-A40 这样的 fullname 或者 A40 这样 shortname。
+At the same time, `strings.Contains(cardtype, strings.ToUpper(useType))` is used for matching, so you can specify a full name like `NVIDIA-NVIDIA-A40` or a short name like `A40` in the Annotations.
 
-当前 Card 不匹配 Annoations 中指定的任意一个 Use Type 时说明当前 Card 不满足条件，因此返回 false。
+When the current Card does not match any of the Use Types specified in the Annotations, it means the current Card does not meet the conditions, so it returns false.
 
-对于 NoUse Type 则是 只要当前 Card 匹配上 NoUse 中的任意 Card 则说明当前 Card 在 blacklist 中，也返回 false。
+For NoUse Type, if the current Card matches any Card in NoUse, it means the current Card is in the blacklist, and it also returns false.
 
 ```go
 if unuse, ok := annos[GPUNoUse]; ok {
@@ -403,11 +394,11 @@ if unuse, ok := annos[GPUNoUse]; ok {
 }
 ```
 
-这样就过滤掉了不满足提交的 Card。
+This way, cards that do not meet the requirements are filtered out.
 
 ### By UUID
 
-UUID 也是同样的，Annoations 中解析用户指定的 Use UUID 和 NoUse UUID 列表，然后匹配当前 Card，从而过滤掉不满足条件的 Card。
+UUID is the same. The Use UUID and NoUse UUID lists specified by the user are parsed from the Annotations, and then the current Card is matched to filter out unsatisfied cards.
 
 ```go
 // pkg/scheduler/score.go#L54
@@ -453,11 +444,11 @@ func (dev *NvidiaGPUDevices) CheckUUID(annos map[string]string, d util.DeviceUsa
 }
 ```
 
-> 需要注意的是：UUID 和 Type 不一样，这里是完全匹配。
+> Note: Unlike Type, UUID uses an exact match.
 
-### 记录目标 Card 到 Annoations
+### Recording the Target Card in Annotations
 
-fitInCertainDevice 方法过滤出合适 Node、Card 后，Scheduler 的 Bind 接口直接将 Node 和 Pod 绑定即可完成调度，但是 Card 是由 DevicePlugin 在分配的，因此在 Scheduler 中通过 Annoations 形式将 Card 记录到 Pod 上，后续 DevicePlugin 直接从 Annoations 中读取即可。
+After the `fitInCertainDevice` method filters out the suitable Node and Card, the Scheduler's Bind interface directly binds the Node and Pod to complete the scheduling. However, the Card is allocated by the DevicePlugin, so the Scheduler records the Card on the Pod in the form of Annotations, which the DevicePlugin can then read directly.
 
 ```go
 sort.Sort(nodeScores)
@@ -472,7 +463,7 @@ for _, val := range device.GetDevices() {
 }
 ```
 
-Annoations 大概是这样的：
+The Annotations look something like this:
 
 ```yaml
 root@test:~/lixd/hami# k get po hami-30 -oyaml
@@ -488,11 +479,11 @@ metadata:
     hami.io/vgpu-time: "1732072495"
 ```
 
-其中 hami.io/vgpu-devices-to-allocate 则是 Scheduler 为 Pod 选择的目标 GPU
+Here, `hami.io/vgpu-devices-to-allocate` is the target GPU selected by the Scheduler for the Pod.
 
-## 5. DevicePlugin 解析 GPU 并分配
+## 5. DevicePlugin Parses and Allocates the GPU
 
-在调度时，我们把最终选择的 GPU 记录到了 Pod 的 Annoations 上，DevicePlugin 这边就不需要选择 GPU 了，从 Annoations 上解析即可
+During scheduling, we recorded the finally selected GPU in the Pod's Annotations. The DevicePlugin doesn't need to select a GPU; it can just parse it from the Annotations.
 
 ```go
 // pkg/util/util.go#L281
@@ -545,7 +536,7 @@ func DecodePodDevices(checklist map[string]string, annos map[string]string) (Pod
 }
 ```
 
-具体的解析逻辑如下，就是按照预设规则，以冒号，逗号进行切分
+The specific parsing logic is as follows, which is to split by colons and commas according to preset rules.
 
 ```go
 // pkg/util/util.go#L223
@@ -581,38 +572,28 @@ func DecodeContainerDevices(str string) (ContainerDevices, error) {
 }
 ```
 
-至此，整个流程就完成了。
+At this point, the entire process is complete.
 
-## 6.小结
+## 6. Summary
 
-1. HAMi 提供了一个指定调度到(或者不调度到)某种(个) GPU 的功能：
+1. HAMi provides a feature to specify scheduling to (or not to) a certain type (or individual) of GPU:
+    - By Type: Specify the GPU Type to only schedule (or not schedule) to cards of certain specified types, e.g., A100, A40.
+    - By UUID: Specify the GPU UUID to only schedule (or not schedule) to the card corresponding to that specific UUID.
+    - This feature allows for more fine-grained scheduling, which is useful when there are multiple types of GPUs in the cluster.
 
-- By Type：指定 GPU Type，仅调度(或者不调度)到某些指定 Type 的卡上，例如：A100、A40
-
-- By UUID：指定 GPU UUID，仅调度(或者不调度)到调度到特定 UUID 对应的卡上
-
-- 通过该特性，可以实现更加精细的调度，当集群中存在多种 GPU 时比较有用
-
-2. 可以通过解析 Node Annoations 中的 hami.io.node-nvidia-register key 找到该节点上注册的 GPU 信息，例如：
-
-```bash
-root@j99cloudvm:~# node=j99cloudvm
-kubectl get node $node -o jsonpath='{.metadata.annotations.hami\.io/node-nvidia-register}'
-GPU-03f69c50-207a-2038-9b45-23cac89cb67d,10,46068,100,NVIDIA-NVIDIA A40,0,true:GPU-1afede84-4e70-2174-49af-f07ebb94d1ae,10,46068,100,NVIDIA-NVIDIA A40,0,true:
-```
-
-3. 匹配规则:
-
-- 对于 Type 当前使用 strings.Contains 方式，因此可以指定 Type 的 fullnameNVIDIA-NVIDIA A40,或者 shortname A40
-
-- 对于 UUID 则是完全匹配，必须一致才行
-
-4. 如果 Annoations 填写错误，比如指定了一个不存在的 UUID 或者 Type 则会导致调度失败，Pod 处于 Pending 状态。
+2. You can find the registered GPU information on a node by parsing the `hami.io.node-nvidia-register` key in the Node's Annotations, for example:
+    ```bash
+    root@j99cloudvm:~# node=j99cloudvm
+    kubectl get node $node -o jsonpath='{.metadata.annotations.hami\.io/node-nvidia-register}'
+    GPU-03f69c50-207a-2038-9b45-23cac89cb67d,10,46068,100,NVIDIA-NVIDIA A40,0,true:GPU-1afede84-4e70-2174-49af-f07ebb94d1ae,10,46068,100,NVIDIA-NVIDIA A40,0,true:
+    ```
+3. Matching rules:
+    - For Type, `strings.Contains` is currently used, so you can specify the full name of the type, `NVIDIA-NVIDIA A40`, or the short name, `A40`.
+    - For UUID, it is an exact match; they must be identical.
+4. If the Annotations are filled in incorrectly, for example, by specifying a non-existent UUID or Type, it will cause scheduling to fail, and the Pod will remain in a Pending state.
 
 ---
 
-*想了解更多 HAMi 项目信息，请访问 [GitHub 仓库](https://github.com/Project-HAMi/HAMi) 或加入我们的 [Slack 社区](https://cloud-native.slack.com/archives/C07T10BU4R2)。* 
+*To learn more about the HAMi project, please visit our [GitHub repository](https://github.com/Project-HAMi/HAMi) or join our [Slack community](https://cloud-native.slack.com/archives/C07T10BU4R2).*
 
 ---
-
-
