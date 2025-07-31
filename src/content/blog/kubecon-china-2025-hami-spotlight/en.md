@@ -5,7 +5,7 @@ date: "2025-06-26"
 excerpt: "KubeCon China 2025 concluded successfully, where Dynamia AI's HAMi project, as a CNCF Sandbox open-source project, shined brightly and gained high recognition from industry giants from SF Technology to AWS."
 author: "Dynamia AI Team"
 tags: ["KubeCon", "HAMi", "GPU Sharing", "Cloud Native", "Kubernetes", "AI Infrastructure"]
-coverImage: "/images/blog/kubecon-china-2025/kubecon-china-2025.png"
+coverImage: "/images/blog/kubecon-china-2025/cover.en.jpg"
 language: "en"
 ---
 
