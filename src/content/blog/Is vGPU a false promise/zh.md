@@ -3,7 +3,7 @@ title: "vGPU 是伪命题？NVIDIA 官方为什么不自己出细粒度共享呢
 slug: "Is vGPU a false promise"
 date: "2025-08-04"
 excerpt: "我会从这几个角度聊聊：HAMi 是什么，与 NVIDIA 的方案有何本质不同？NVIDIA 为何“不为”？是技术不能，还是商业不愿？HAMi 的核心竞争力与长期护城河到底在哪里？"
-author: "霓漠 Nimbus"
+author: "密瓜智能"
 tags: ["vGPU", "HAMi", "GPU共享", "云原生", "Kubernetes", "AI基础设施"]
 coverImage: "/images/blog/false promise/cover.jpg"
 language: "zh"

@@ -3,9 +3,9 @@ title: "【Run:ai KAI-Scheduler Deep Dive】Supplement: Demystifying How the Res
 slug: "Run:ai KAI-Scheduler Deep Dive"
 date: "2025-08-07"
 excerpt: "Yesterday, we took a deep dive into how KAI-Scheduler achieves fractional GPU sharing. Thank you all for your attention and lively discussion! A reader pointed out a key technical detail that needed further clarification, and today we're going to break down that very issue."
-author: "Nimbus - HAMi Project"
+author: "HAMi Project Team"
 tags: ["vGPU", "HAMi", "GPU Sharing", "Cloud Native", "Kubernetes", "AI Infrastructure"]
-coverImage: "/images/blog/Demystifying the Reservation Pod/cover2.jpg"
+coverImage: "/images/blog/Demystifying the Reservation Pod/cover.jpg"
 language: "en"
 ---
 
