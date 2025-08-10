@@ -3,7 +3,7 @@ title: "开源协同共进，Koordinator v1.6 发布：携手 HAMi 社区打造 
 slug: "Open-source synergy: Koordinator v1.6 teams up with HAMi to redefine AI/ML resource scheduling"
 date: "2025-08-05"
 excerpt: "我会从这几个角度聊聊：HAMi 是什么，与 NVIDIA 的方案有何本质不同？NVIDIA 为何“不为”？是技术不能，还是商业不愿？HAMi 的核心竞争力与长期护城河到底在哪里？"
-author: "HAMi Project"
+author: "密瓜智能"
 tags: ["vGPU", "HAMi", "GPU共享", "云原生", "Kubernetes", "AI基础设施"]
 coverImage: "/images/blog/Koordinator v1.6/cover.jpg"
 language: "zh"

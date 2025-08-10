@@ -3,7 +3,7 @@ title: "Is vGPU a False Promise? Why Doesn't NVIDIA Offer Fine-Grained Sharing I
 slug: "Is vGPU a false promise"
 date: "2025-08-04"
 excerpt: "I'll discuss this from several angles: What is HAMi, and how does it fundamentally differ from NVIDIA's solutions? Why doesn't NVIDIA do it? Is it a technical limitation or a business decision? What are HAMi's core competitiveness and long-term moat?"
-author: "Nimbus"
+author: “Dynamia AI Team"
 tags: ["vGPU", "HAMi", "GPU Sharing", "Cloud Native", "Kubernetes", "AI Infrastructure"]
 coverImage: "/images/blog/false promise/cover2.jpg"
 language: "en"
