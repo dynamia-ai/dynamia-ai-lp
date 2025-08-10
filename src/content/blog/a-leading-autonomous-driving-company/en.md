@@ -3,7 +3,7 @@ title: "【HAMi Project Team | User Case】A Leading Autonomous Driving Company 
 slug: "A leading autonomous-driving company"
 date: "2025-8-9"
 excerpt: "In its core model training scenarios, a leading autonomous driving company utilizes multi-machine distributed training with scheduling frameworks like Ray and Volcano."
-author: "HAMi Project Team"
+author: "Dynamia AI Team"
 tags: ["KubeCon", "HAMi", "GPU Sharing", "Cloud Native", "Kubernetes", "AI Infrastructure"]
 coverImage: "/images/blog/A leading autonomous-driving company/cover2.jpg"
 language: "en"
