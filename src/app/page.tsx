@@ -624,6 +624,35 @@ export default function Home() {
                 </div>
               </Link>
             </motion.div>
+
+            {/* Xinference Card */}
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              variants={fadeIn}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="bg-white rounded-lg shadow-sm border border-gray-100 p-5 hover:shadow-md transition-shadow w-[280px]"
+            >
+              <Link href="https://inference.readthedocs.io/en/latest/" className="flex flex-col items-center">
+                <div className="w-48 h-20 flex items-center justify-center">
+                  <Image
+                    src="/images/xinference.png"
+                    alt="Xinference"
+                    width={240}
+                    height={120}
+                    className="object-contain"
+                  />
+                </div>
+                <div className="flex items-center text-primary text-sm">
+                  <span className="mr-1">{t('home.ecosystem.viewDetails')}</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M5 12h14"></path>
+                    <path d="M12 5l7 7-7 7"></path>
+                  </svg>
+                </div>
+              </Link>
+            </motion.div>
           </div>
         </div>
       </section>
