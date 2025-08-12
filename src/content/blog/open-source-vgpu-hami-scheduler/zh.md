@@ -9,7 +9,6 @@ coverImage: "/images/blog/gpu5/cover.jpg"
 language: "zh"
 ---
 
-# HAMi vGPU 原理分析 Part3: hami-scheduler 工作流程分析
 上篇我们分析了 hami-webhook，该 Webhook 将申请了 vGPU 资源的 Pod 的调度器修改为 hami-scheduler，后续使用 hami-scheduler 进行调度。
 
 本文为 HAMi 原理分析的第三篇，分析 hami-scheduler 工作流程。

@@ -1,19 +1,17 @@
 ---
 title: "【PREP EDU | 密瓜智能】东南亚 AI 教育潜力独角兽，用 HAMi 构建高效 GPU 推理平台"
 slug: "PREP EDU-HAMi"
-date: "2025-8-8"
+date: "2025-08-08"
 excerpt: "在 AI 教育快速发展的当下，PREP EDU（prepedu.com） 正逐渐成为东南亚教育科技领域的关注焦点。"
 author: "密瓜智能"
 tags: ["KubeCon", "HAMi", "GPU共享", "云原生", "Kubernetes", "AI基础设施"]
-coverImage: "/images/blog/PREP EDU-HAMi/cover.jpg"
+coverImage: "/images/blog/PREP-EDU-HAMi/cover.jpg"
 language: "zh"
 ---
 
-# 【PREP EDU | 密瓜智能】东南亚 AI 教育潜力独角兽，用 HAMi 构建高效 GPU 推理平台
-
 > 作为一个由密瓜智能发起并主导的 CNCF 活跃开源项目，HAMi 由来自 15+ 国家、350+ 贡献者共同维护，已被 120+ 企业与机构在实际生产环境中采纳，具备良好的可扩展性与支持保障。
 
-![1](/images/blog/PREP EDU-HAMi/p1.png)
+![p1](/images/blog/PREP-EDU-HAMi/p1.png)
 
 在 AI 教育快速发展的当下，PREP EDU（prepedu.com） 正逐渐成为东南亚教育科技领域的关注焦点。
 
@@ -43,7 +41,8 @@ PREP EDU 的目标明确：用人工智能重塑考试备考方式。他们的�
 
 PREP EDU 操作一套**基于 Kubernetes （分发应用环境为 RKE2） 的 AI 推理服务平台**，其 GPU 集群包含多种显卡，其中以 **RTX 4070 和 RTX 4090** 为主。
 
-![2](/images/blog/PREP EDU-HAMi/p2.png)
+![p2](/images/blog/PREP-EDU-HAMi/p2.png)
+
 
 但在使用 HAMi 之前，这套系统为下列维护随时热点:
 
@@ -73,7 +72,7 @@ PREP EDU 操作一套**基于 Kubernetes （分发应用环境为 RKE2） 的 AI
 
 同时，DevOps 团队还探索了 HAMi 在 Docker 环境中自行部署以支持特殊运行场景，并定制了和 GPU Operator 的协同使用案例。
 
-![3](/images/blog/PREP EDU-HAMi/p3.png)
+![p3](/images/blog/PREP-EDU-HAMi/p3.png)
 
 ### 效果和评价
 
@@ -85,7 +84,7 @@ PREP EDU 操作一套**基于 Kubernetes （分发应用环境为 RKE2） 的 AI
 
 - **50%**：减少了 50% 由 GPU 管理引发的运维痛点。
 
-![4](/images/blog/PREP EDU-HAMi/p4.png)
+![p4](/images/blog/PREP-EDU-HAMi/p4.png)
 
 >“HAMi is a great option for vGPU scheduling, helping us optimize GPU usage for our AI microservices. Its monitoring and alerting features are also very helpful for long-term tracking. 
 
@@ -115,7 +114,7 @@ https://wiki.xeusnguyen.xyz/Tech-Second-Brain/Personal/Kubewekend/Kubewekend-Ses
 
 ---
 
-![5](/images/blog/PREP EDU-HAMi/p5.png)
+![p5](/images/blog/PREP-EDU-HAMi/p5.png)
 
 Dynamia 密瓜智能,  专注以 CNCF HAMi 项目为核心底座，提供 灵活、可靠、按需、弹性的 GPU 虚拟化 与异构算力调度、统一管理的全球化解决方案。可以插拔式、轻量化、无侵入地部署在任意公有云、私有云、混合云环境中，可支持 NVIDIA、昇腾、沐曦、寒武纪、海光、摩尔线程，天数智芯等异构芯片。
 

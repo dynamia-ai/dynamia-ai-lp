@@ -9,7 +9,6 @@ coverImage: "/images/blog/gpu5/cover2.jpg"
 language: "en"
 ---
 
-# HAMI vGPU Principle Analysis Part 3: hami-scheduler Workflow Analysis
 
 In the last article, we analyzed the `hami-webhook`, which modifies the scheduler of Pods requesting vGPU resources to `hami-scheduler`, ensuring they are scheduled by it.
 

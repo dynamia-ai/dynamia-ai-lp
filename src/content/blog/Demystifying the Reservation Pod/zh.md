@@ -9,7 +9,6 @@ coverImage: "/images/blog/Demystifying the Reservation Pod/cover.jpg"
 language: "zh"
 ---
 
-# 【Run:ai KAI-Scheduler 深度解析】补充篇：解密 Reservation Pod 如何获知 GPU 分配细节
 
 昨天我们发布的[《Nvidia 收购 Run:ai 后开源的 KAI-Scheduler vs HAMi：GPU 共享的技术路线分析与协同展望》](https://dynamia.ai/zh/blog/Run ai- KAI-scheduler vs hami)深入探讨了 KAI-Scheduler 如何实现 GPU 分数共享，非常感谢大家的关注和热烈讨论！特别是有读者指出了一个关键技术细节需要进一步澄清，今天我们就来专门解析这个问题。
 
@@ -422,7 +421,7 @@ func (b *Binder) Bind(
 }
 ```
 
-![p1](/images/blog/Demystifying the Reservation Pod/p1.png)
+![p1](/images/blog/Demystifying-the-Reservation-Pod/p1.png)
 
 ## 二、完整信息流：从调度到设备识别
 

@@ -9,8 +9,6 @@ coverImage: "/images/blog/gpu9/cover2.jpg"
 language: "en"
 ---
 
-# Precise and Elegant: HAMi's Scheduling Feature by GPU Type and UUID
-
 This article is adapted from: https://mp.weixin.qq.com/s/1eQC2_WGhN7DMNnTW4r0cw
 
 In the previous article, we briefly analyzed the working principle of HAMi-Core (libvgpu.so) vCUDA, including how it takes effect, how CUDA APIs are intercepted, and how it implements resource limits on GPU core and memory.

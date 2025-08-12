@@ -9,8 +9,6 @@ coverImage: "/images/blog/gpu10/cover.jpg"
 language: "zh"
 ---
 
-# HAMi 异构设备虚拟化之海光 DCU 实战：K8s 下的 vDCU 资源调度与纳管
-
 本文摘自：https://mp.weixin.qq.com/s/gpyhltXK3CSTkwk4ZwD74A
 
 之前通过一系列文章分析了 HAMI vGPU 部署使用以及背后的实现原理，本文则是分析海光 DCU 设备如何通过 HAMi 完成虚拟化，实现统一纳管与调度。

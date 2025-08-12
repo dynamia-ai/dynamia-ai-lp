@@ -9,8 +9,6 @@ coverImage: "/images/blog/gpu4/cover2.jpg"
 language: "en"
 ---
 
-# HAMI vGPU Principle Analysis Part 2: hami-webhook Principle Analysis
-
 In the last article, we analyzed `hami-device-plugin-nvidia` and understood how HAMI's NVIDIA device plugin works.
 
 [Previous article: "HAMI vGPU Solution Principle Analysis Part 1: hami-device-plugin-nvidia Implementation"](https://dynamia.ai/blog/open-source-vgpu-hami-device-plugin-nvidia-analysis)

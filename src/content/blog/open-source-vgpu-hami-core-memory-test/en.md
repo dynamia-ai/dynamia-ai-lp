@@ -9,8 +9,6 @@ coverImage: "/images/blog/gpu2/cover2.jpg"
 language: "en"
 ---
 
-# Open-Source vGPU Solution HAMI: Core & Memory Isolation Test
-
 I previously shared an overview of the open-source vGPU solution, HAMI. This article will focus on testing its GPU Core and Memory isolation capabilities.
 
 This article is adapted from: https://mp.weixin.qq.com/s/qfdHqpendMC6_zS_isCluw

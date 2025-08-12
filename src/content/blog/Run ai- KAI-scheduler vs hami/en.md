@@ -1,15 +1,13 @@
 ---
 title: "Nvidia's Open-Sourced KAI-Scheduler vs. HAMi: An Analysis of Technical Paths to GPU Sharing and a Look at Future Synergy"
-slug: "KAI-Scheduler vs HAMi: Technical Paths to GPU Sharing and Synergy Outlook"
+slug: "KAI-Scheduler-vs-HAMi: Technical Paths to GPU Sharing and Synergy Outlook"
 date: "2025-08-06"
 excerpt: "Today, we're doing a technical deep dive to compare the implementation methods of KAI-Scheduler and HAMi, and to look ahead at the possibilities for future collaboration."
 author: "Nimbus - HAMi Project"
 tags: ["vGPU", "HAMi", "GPU Sharing", "Cloud Native", "Kubernetes", "AI Infrastructure"]
-coverImage: "/images/blog/KAI-Scheduler VS HAMi/cover2.jpg"
+coverImage: "/images/blog/KAI-Scheduler-VS-HAMi/cover.jpg"
 language: "en"
 ---
-
-# Nvidia's Open-Sourced KAI-Scheduler vs. HAMi: An Analysis of Technical Paths to GPU Sharing and a Look at Future Synergy
 
 Recently, with Nvidia's acquisition of Run:ai and the subsequent open-sourcing of its core scheduling component, KAI-Scheduler, both the AI and Kubernetes communities have been paying close attention. The GPU Sharing feature introduced by KAI-Scheduler, in particular, has caught the eye of many who focus on GPU resource virtualization.
 
@@ -35,7 +33,7 @@ Before diving into KAI, let's first review why implementing GPU sharing in Kuber
 -   **"Black Box" State**: How can the Kubernetes cluster know that a certain GPU is already partially occupied? There's no standard way to represent this.
 -   **User Inconvenience**: Developers need a simple and intuitive way to request and use fractional GPU resources.
 
-![p7](/images/blog/KAI-Scheduler VS HAMi/p7.jpg)
+![p7](/images/blog/KAI-Scheduler-VS-HAMi/p7.jpg)
 
 ## Mechanism Explained
 
@@ -50,7 +48,7 @@ The core idea can be understood as a form of "logical deception":
 3.  This way, Kubernetes thinks the GPU is fully allocated, so the `kube-scheduler` naturally won't schedule any other Pods onto this GPU.
 4.  The actual fractional management and allocation logic is entirely maintained internally by KAI-Scheduler.
 
-![p8](/images/blog/KAI-Scheduler VS HAMi/p8.jpg)
+![p8](/images/blog/KAI-Scheduler-VS-HAMi/p8.jpg)
 
 This Reservation Pod primarily serves the following functions:
 
@@ -59,7 +57,7 @@ This Reservation Pod primarily serves the following functions:
 -   **Conflict Prevention**: It prevents the standard scheduler from touching this GPU that is being shared.
 -   **Logical Grouping**: By giving the Reservation Pod and the user Pods sharing it the same label (e.g., `gpu-group: xyz123`), it logically binds them together.
 
-![p9](/images/blog/KAI-Scheduler VS HAMi/p9.jpg)
+![p9](/images/blog/KAI-Scheduler-VS-HAMi/p9.jpg)
 
 ### III. A Deeper Technical Look: How Does KAI GPU Sharing Work?
 
@@ -170,14 +168,14 @@ type GpuSharingNodeInfo struct {
     -   `AllocatedSharedGPUsMemory`
         Records the total memory (in bytes) that has been **allocated by the Scheduler** to Pods, but which the Pods may not have actually occupied yet.
 
-![p4](/images/blog/KAI-Scheduler VS HAMi/p4.png)
+![p4](/images/blog/KAI-Scheduler-VS-HAMi/p4.png)
 
 3.  **Resource Reclamation**:
 
     -   When a user Pod sharing a GPU terminates, KAI updates its internal bookkeeping.
     -   When the last user Pod associated with a `gpu-group` ends, KAI-Scheduler detects that this `gpu-group` no longer has active user Pods, and it then deletes the corresponding Reservation Pod (logic in `syncForPods`), thereby "returning" the GPU resource to K8s.
 
-![p9](/images/blog/KAI-Scheduler VS HAMi/p9.jpg)
+![p9](/images/blog/KAI-Scheduler-VS-HAMi/p9.jpg)
 
     The resource reclamation logic is implemented in the `syncForPods` function:
 
@@ -276,8 +274,8 @@ At the same time, we also see that for one of the core requirements of GPU shari
 
 **Excitingly, we have already started active discussions with the Run:ai (Nvidia) team on these technical directions. At the recent KubeCon EU, we had productive discussions with the Run:ai CTO and his colleagues, particularly exchanging views on technical solutions for hard isolation, where HAMi shared our practices and thoughts. Both sides expressed enthusiasm for continued exploration in the field of GPU resource management and look forward to deeper technical exchanges and cooperation in the future.**
 
-![p6](/images/blog/KAI-Scheduler VS HAMi/p6.png)
-![p10](/images/blog/KAI-Scheduler VS HAMi/p10.jpg)
+![p6](/images/blog/KAI-Scheduler-VS-HAMi/p6.jpg)
+![p10](/images/blog/KAI-Scheduler-VS-HAMi/p10.jpg)
 
 > A happy photo of the HAMi maintainer with Run:ai CTO Ronen Dar and his team at KubeCon EU.
 

@@ -9,7 +9,6 @@ coverImage: "/images/blog/gpu1/cover.jpg"
 language: "zh"
 ---
 
-# 开源 vGPU 方案：HAMi —— 实现细粒度 GPU 切分  
 > 本文主要分享一个开源的 GPU 虚拟化方案：HAMi，包括如何安装、配置以及使用。
 
 本文摘自：https://mp.weixin.qq.com/s/7L6NuSSP_iMwbtooQIJUjw

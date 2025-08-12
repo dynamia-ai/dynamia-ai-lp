@@ -9,7 +9,6 @@ coverImage: "/images/blog/gpu6/cover2.jpg"
 language: "en"
 ---
 
-# HAMI vGPU Principle Analysis Part 4: Spread & Binpack Advanced Scheduling Strategy Implementation
 
 In the last article, we analyzed the `hami-scheduler` workflow and understood how `hami-webhook` and `hami-scheduler` work together.
 

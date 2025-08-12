@@ -9,7 +9,6 @@ coverImage: "/images/blog/gpu10/cover2.jpg"
 language: "en"
 ---
 
-# HAMi Heterogeneous Device Virtualization in Action with Hygon DCU: K8s-based vDCU Resource Scheduling and Management
 
 This article is adapted from: https://mp.weixin.qq.com/s/gpyhltXK3CSTkwk4ZwD74A
 
