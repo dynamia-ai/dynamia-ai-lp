@@ -3,7 +3,7 @@ title: "Open-source Synergy, Koordinator v1.6 Released: Teaming Up with the HAMi
 slug: "Open-source synergy: Koordinator v1.6 teams up with HAMi to redefine AI/ML resource scheduling"
 date: "2025-08-05"
 excerpt: "Koordinator v1.6 has been released, featuring deep collaboration with the CNCF Sandbox project HAMi to introduce strong GPU sharing isolation capabilities, providing a more efficient resource scheduling and isolation solution for AI training and inference scenarios."
-author: "HAMi Project"
+author: "Dynamia AI Team"
 tags: ["vGPU", "HAMi", "GPU Sharing", "Cloud Native", "Kubernetes", "AI Infrastructure"]
 coverImage: "/images/blog/Koordinator-v1.6/cover.jpg"
 language: "en"

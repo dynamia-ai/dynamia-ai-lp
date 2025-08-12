@@ -3,7 +3,7 @@ title: "【PREP EDU | HAMi Project Team】Southeast Asia's Potential AI Educatio
 slug: "PREP-EDU-HAMi"
 date: "2025-08-08"
 excerpt: "In the fast-growing field of AI education, PREP EDU (prepedu.com) is emerging as a focal point in Southeast Asia's EdTech sector."
-author: "HAMi Project Team"
+author: "Dynamia AI Team"
 tags: ["KubeCon", "HAMi", "GPU Sharing", "Cloud Native", "Kubernetes", "AI Infrastructure"]
 coverImage: "/images/blog/PREP-EDU-HAMi/cover2.jpg"
 language: "en"

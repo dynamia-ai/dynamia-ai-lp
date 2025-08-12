@@ -28,9 +28,15 @@ type SubmenuItem = {
 const Header: React.FC = () => {
   const { t } = useTranslation();
   const pathname = usePathname();
+  const [mounted, setMounted] = useState(false);
   
   // 确定当前语言
   const currentLocale = pathname?.startsWith('/zh') ? 'zh' : 'en';
+
+  // 确保组件已挂载，避免水合错误
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   // 切换语言
   const changeLanguage = (newLocale: string) => {
@@ -40,7 +46,9 @@ const Header: React.FC = () => {
     if (newLocale === currentLocale) return;
     
     // 设置Cookie，持久化语言选择
-    document.cookie = `NEXT_LOCALE=${newLocale}; path=/; max-age=31536000`; // 一年有效期
+    if (typeof document !== 'undefined') {
+      document.cookie = `NEXT_LOCALE=${newLocale}; path=/; max-age=31536000`; // 一年有效期
+    }
     
     let newPath;
     if (newLocale === 'en') {
@@ -64,7 +72,7 @@ const Header: React.FC = () => {
     }
     
     // 使用window.location直接跳转，绕过Next.js的客户端路由
-    if (newPath !== currentPath) {
+    if (newPath !== currentPath && typeof window !== 'undefined') {
       // 构建完整的URL
       const baseUrl = window.location.origin;
       const fullUrl = `${baseUrl}${newPath}`;
@@ -263,6 +271,27 @@ const Header: React.FC = () => {
     };
   }, [hamiMenuRef, resourcesMenuRef, solutionsMenuRef]);
 
+  // 如果组件未挂载，返回一个占位符避免水合错误
+  if (!mounted) {
+    return (
+      <div className="bg-white shadow-sm sticky top-0 z-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between h-16">
+            <div className="flex">
+              <div className="flex-shrink-0 flex items-center">
+                <div className="w-40 h-10 bg-gray-200 animate-pulse rounded"></div>
+              </div>
+            </div>
+            <div className="hidden sm:flex sm:items-center sm:space-x-4">
+              <div className="w-20 h-8 bg-gray-200 animate-pulse rounded"></div>
+              <div className="w-24 h-8 bg-gray-200 animate-pulse rounded"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <Disclosure as="nav" className="bg-white shadow-sm sticky top-0 z-50">
       {({ open }) => (
@@ -437,30 +466,30 @@ const Header: React.FC = () => {
                   ))}
                 </div>
               </div>
-              <div className="hidden sm:ml-6 sm:flex sm:items-center sm:space-x-4">
+              <div className="hidden sm:ml-16 sm:flex sm:items-center sm:space-x-2">
                 {/* 暂时隐藏搜索栏 */}
                 {/* <Search /> */}
                 
                 <Link
                   href={currentLocale === 'zh' ? '/zh/apply-trial' : '/apply-trial'}
-                  className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-primary hover:bg-primary-dark"
+                  className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-primary hover:bg-primary-dark whitespace-nowrap"
                 >
                   {t('navigation.freeTrial')}
                 </Link>
                 <Link
                   href={currentLocale === 'zh' ? '/zh/request-demo' : '/request-demo'}
-                  className="inline-flex items-center px-4 py-2 border border-primary text-sm font-medium rounded-md text-primary bg-white hover:bg-gray-50"
+                  className="inline-flex items-center px-4 py-2 border border-primary text-sm font-medium rounded-md text-primary bg-white hover:bg-gray-50 whitespace-nowrap"
                 >
                   {t('navigation.requestDemo')}
                 </Link>
                 <button
                   onClick={() => changeLanguage(currentLocale === 'zh' ? 'en' : 'zh')}
-                  className="inline-flex items-center px-2 py-1 text-l font-medium text-gray-500 hover:text-gray-700"
+                  className="inline-flex items-center px-3 py-2 text-sm font-medium text-gray-500 hover:text-gray-700 whitespace-nowrap"
                 >
-                  <svg className="h-5 w-5 inline-block mb-1 lg:mr-2 lg:mt-[2px]" width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <svg className="h-5 w-5 mr-2 flex-shrink-0" width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M87.956 73.232C92.2458 66.2434 94.5112 58.2012 94.5 50.001C94.5113 41.8006 92.2459 33.7569 87.956 26.768L87.932 26.729C83.9522 20.2422 78.3754 14.8845 71.7345 11.1676C65.0935 7.45081 57.6103 5.49915 50 5.49915C42.3897 5.49915 34.9065 7.45081 28.2656 11.1676C21.6246 14.8845 16.0478 20.2422 12.068 26.729L12.044 26.768C7.76491 33.7616 5.50049 41.8012 5.50049 50C5.50049 58.1989 7.76491 66.2384 12.044 73.232L12.069 73.272C16.0489 79.7585 21.6258 85.116 28.2667 88.8326C34.9076 92.5492 42.3906 94.5007 50.0008 94.5006C57.6109 94.5005 65.0939 92.5488 71.7347 88.8321C78.3755 85.1153 83.9523 79.7576 87.932 73.271L87.956 73.232ZM55.688 86.873C54.8399 87.6914 53.8637 88.3656 52.798 88.869C51.9236 89.2845 50.9676 89.5001 49.9995 89.5001C49.0314 89.5001 48.0754 89.2845 47.201 88.869C45.1736 87.8335 43.438 86.3063 42.153 84.427C39.5288 80.6346 37.5842 76.4148 36.406 71.956C40.9327 71.6774 45.464 71.5354 50 71.53C54.534 71.53 59.0657 71.672 63.595 71.956C62.9427 74.2484 62.128 76.4914 61.157 78.668C59.8784 81.7292 58.0215 84.515 55.688 86.873ZM10.587 52.5H28.536C28.653 57.5084 29.1959 62.4977 30.159 67.414C25.2523 67.846 20.3583 68.4394 15.477 69.194C12.6183 64.0654 10.9472 58.3605 10.587 52.5ZM15.477 30.807C20.3563 31.563 25.252 32.1564 30.164 32.587C29.1992 37.5028 28.6553 42.4919 28.538 47.5H10.587C10.9473 41.6399 12.6184 35.9353 15.477 30.807ZM44.312 13.127C45.1601 12.3086 46.1363 11.6344 47.202 11.131C48.0764 10.7156 49.0324 10.5 50.0005 10.5C50.9686 10.5 51.9246 10.7156 52.799 11.131C54.8264 12.1666 56.562 13.6938 57.847 15.573C60.4712 19.3654 62.4158 23.5853 63.594 28.044C59.0673 28.3227 54.536 28.4647 50 28.47C45.466 28.47 40.9343 28.328 36.405 28.044C37.0573 25.7516 37.872 23.5086 38.843 21.332C40.1216 18.2709 41.9785 15.485 44.312 13.127ZM89.413 47.5H71.464C71.347 42.4917 70.8041 37.5023 69.841 32.586C74.7477 32.154 79.6417 31.5607 84.523 30.806C87.3818 35.9346 89.0528 41.6395 89.413 47.5ZM35.188 67.025C34.2103 62.2416 33.6582 57.3809 33.538 52.5H66.463C66.344 57.3812 65.7929 62.2422 64.816 67.026C59.8827 66.702 54.944 66.5367 50 66.53C45.06 66.53 40.1227 66.695 35.188 67.025ZM64.812 32.975C65.7897 37.7585 66.3418 42.6192 66.462 47.5H33.538C33.657 42.6189 34.2082 37.7579 35.185 32.974C40.1183 33.298 45.057 33.4634 50.001 33.47C54.941 33.47 59.8783 33.3047 64.813 32.974L64.812 32.975ZM71.462 52.5H89.413C89.0527 58.3602 87.3816 64.0647 84.523 69.193C79.643 68.437 74.7473 67.8437 69.836 67.413C70.8008 62.4973 71.3448 57.5082 71.462 52.5ZM81.525 26.205C77.2583 26.8204 72.9793 27.3077 68.688 27.667C67.9168 24.7951 66.9221 21.9878 65.713 19.271C64.6089 16.7711 63.2197 14.4071 61.573 12.226C69.5306 14.6667 76.5137 19.5592 81.525 26.205ZM22.07 22.069C26.6349 17.4997 32.251 14.12 38.426 12.226C38.332 12.348 38.236 12.464 38.144 12.587C34.97 17.1559 32.658 22.2666 31.322 27.667C27.03 27.3037 22.748 26.8164 18.476 26.205C19.5776 24.7455 20.7785 23.3636 22.07 22.069ZM18.476 73.795C22.742 73.1797 27.021 72.6924 31.313 72.333C32.0842 75.205 33.0789 78.0122 34.288 80.729C35.3921 83.229 36.7813 85.593 38.428 87.774C30.4704 85.3334 23.4874 80.4408 18.476 73.795ZM77.932 77.931C73.3671 82.5004 67.751 85.8801 61.576 87.774C61.67 87.652 61.766 87.536 61.858 87.413C65.032 82.8441 67.344 77.7334 68.68 72.333C72.972 72.6964 77.254 73.1837 81.526 73.795C80.4244 75.2546 79.2235 76.6365 77.932 77.931Z" fill="black"/>
                   </svg>
-                  {currentLocale === 'zh' ? 'English' : '中文'}
+                  {currentLocale === 'zh' ? 'English' : 'Chinese'}
                 </button>
               </div>
               <div className="-mr-2 flex items-center sm:hidden">
@@ -566,13 +595,13 @@ const Header: React.FC = () => {
                 <div className="ml-3 space-y-2">
                   <Link
                     href={currentLocale === 'zh' ? '/zh/apply-trial' : '/apply-trial'}
-                    className="block rounded-md px-4 py-2 text-base font-medium text-white bg-primary hover:bg-primary-dark text-center"
+                    className="block rounded-md px-4 py-2 text-base font-medium text-white bg-primary hover:bg-primary-dark text-center whitespace-nowrap"
                   >
                     {t('navigation.freeTrial')}
                   </Link>
                   <Link
                     href={currentLocale === 'zh' ? '/zh/request-demo' : '/request-demo'}
-                    className="block rounded-md px-4 py-2 text-base font-medium text-primary border border-primary hover:bg-gray-50 text-center"
+                    className="block rounded-md px-4 py-2 text-base font-medium text-primary border border-primary hover:bg-gray-50 text-center whitespace-nowrap"
                   >
                     {t('navigation.requestDemo')}
                   </Link>
@@ -583,7 +612,7 @@ const Header: React.FC = () => {
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13.5 16.875h3.375m0 0h3.375m-3.375 0V13.5m0 3.375v3.375M6 10.5h2.25a2.25 2.25 0 002.25-2.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v2.25A2.25 2.25 0 006 10.5zm0 9.75h2.25A2.25 2.25 0 0010.5 18v-2.25a2.25 2.25 0 00-2.25-2.25H6a2.25 2.25 0 00-2.25 2.25V18A2.25 2.25 0 006 20.25zm9.75-9.75H18a2.25 2.25 0 002.25-2.25V6A2.25 2.25 0 0018 3.75h-2.25A2.25 2.25 0 0013.5 6v2.25a2.25 2.25 0 002.25 2.25z" />
                     </svg>
-                    {currentLocale === 'zh' ? 'English' : '中文'}
+                    {currentLocale === 'zh' ? 'English' : 'Chinese'}
                   </button>
                 </div>
               </div>

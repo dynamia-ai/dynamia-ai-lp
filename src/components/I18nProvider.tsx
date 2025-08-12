@@ -57,9 +57,17 @@ interface I18nProviderProps {
 export default function I18nProvider({ children }: I18nProviderProps) {
   const pathname = usePathname();
   const [loaded, setLoaded] = useState(false);
+  const [mounted, setMounted] = useState(false);
+  
+  // 确保组件已挂载，避免水合错误
+  useEffect(() => {
+    setMounted(true);
+  }, []);
   
   // 确保只在客户端初始化
   useEffect(() => {
+    if (!mounted) return;
+    
     // 防止重复初始化
     if (!i18n.isInitialized) {
       const i18nInstance = initI18n();
@@ -80,10 +88,10 @@ export default function I18nProvider({ children }: I18nProviderProps) {
     }
     
     setLoaded(true);
-  }, [pathname]);
+  }, [pathname, mounted]);
 
-  // 等待i18n加载完成
-  if (!loaded) {
+  // 等待组件挂载和i18n加载完成
+  if (!mounted || !loaded) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="flex flex-col items-center">
