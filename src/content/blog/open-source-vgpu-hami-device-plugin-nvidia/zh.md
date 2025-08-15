@@ -9,9 +9,6 @@ coverImage: "/images/blog/gpu3/cover.jpg"
 language: "zh"
 ---
 
-
-# 开源 vGPU 方案 HAMI 原理分析 Part1: hami-device-plugin-nvidia
-
 本文为开源 vGPU 方案 HAMI 实现原理分析第一篇，主要分析 hami-device-plugin-nvidia 实现原理。
 
 之前在 [开源 vGPU 方案：HAMi，实现细粒度 GPU 切分](https://dynamia.ai/zh/blog/open-source-vgpu-hami-fine-grained-partitioning)介绍了HAMi是什么，然后在 [开源 vGPU 方案 HAMi: Core & Memory 隔离测试](https://dynamia.ai/zh/blog/open-source-vgpu-hami-core-memory-test)中对HAMi提供的 vGPU 方案进行了测试。

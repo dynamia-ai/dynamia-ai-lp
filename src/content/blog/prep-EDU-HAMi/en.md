@@ -1,19 +1,17 @@
 ---
-title: "【PREP EDU | Melon Intelligence】Southeast Asia's Potential AI Education Unicorn Builds an Efficient GPU Inference Platform with HAMi"
-slug: "PREP EDU-HAMi"
-date: "2025-8-8"
+title: "【PREP EDU | HAMi Project Team】Southeast Asia's Potential AI Education Unicorn Builds an Efficient GPU Inference Platform with HAMi"
+slug: "PREP-EDU-HAMi"
+date: "2025-08-08"
 excerpt: "In the fast-growing field of AI education, PREP EDU (prepedu.com) is emerging as a focal point in Southeast Asia's EdTech sector."
 author: "Dynamia AI Team"
 tags: ["KubeCon", "HAMi", "GPU Sharing", "Cloud Native", "Kubernetes", "AI Infrastructure"]
-coverImage: "/images/blog/PREP EDU-HAMi/cover2.jpg"
+coverImage: "/images/blog/PREP-EDU-HAMi/cover2.jpg"
 language: "en"
 ---
 
-# 【PREP EDU | Melon Intelligence】Southeast Asia's Potential AI Education Unicorn Builds an Efficient GPU Inference Platform with HAMi
-
 > As an active CNCF open-source project initiated and led by Melon Intelligence, HAMi is co-maintained by over 350 contributors from more than 15 countries and has been adopted in production environments by over 120 enterprises and institutions, demonstrating its excellent scalability and support.
 
-![1](/images/blog/PREP EDU-HAMi/p1.png)
+![1](/images/blog/PREP-EDU-HAMi/p1.png)
 
 In the fast-growing field of AI education, PREP EDU (prepedu.com) is emerging as a focal point in Southeast Asia's EdTech sector.
 
@@ -43,7 +41,7 @@ Currently, PREP EDU not only has a large user base in its native Vietnam but has
 
 PREP EDU operates an **AI inference service platform based on Kubernetes (with RKE2 as the application distribution environment)**. Its GPU cluster includes various graphics cards, primarily **RTX 4070 and RTX 4090**.
 
-![2](/images/blog/PREP EDU-HAMi/p2.png)
+![2](/images/blog/PREP-EDU-HAMi/p2.png)
 
 But before using HAMi, the system faced the following recurring hotspots:
 
@@ -73,7 +71,7 @@ Key features include:
 
 Additionally, the DevOps team explored self-deploying HAMi in a Docker environment to support special runtime scenarios and customized collaborative use cases with the GPU Operator.
 
-![3](/images/blog/PREP EDU-HAMi/p3.png)
+![3](/images/blog/PREP-EDU-HAMi/p3.png)
 
 ### Results and Testimonials
 
@@ -85,7 +83,7 @@ After integrating HAMi, PREP EDU has successfully decoupled and automated the or
 
 - **50%**: Reduced GPU management-related operational pain points by 50%.
 
-![4](/images/blog/PREP EDU-HAMi/p4.png)
+![4](/images/blog/PREP-EDU-HAMi/p4.png)
 
 >“HAMi is a great option for vGPU scheduling, helping us optimize GPU usage for our AI microservices. Its monitoring and alerting features are also very helpful for long-term tracking. The documentation is clear, and the ability to assign workloads to specific GPU types is a huge advantage for us.”—— **Xeus Nguyen， DevOps Engineer， PREP EDU**
 
@@ -103,7 +101,7 @@ https://wiki.xeusnguyen.xyz/Tech-Second-Brain/Personal/Kubewekend/Kubewekend-Ses
 
 ---
 
-![5](/images/blog/PREP EDU-HAMi/p5.png)
+![5](/images/blog/PREP-EDU-HAMi/p5.png)
 
 Dynamia Melon Intelligence, focusing on the CNCF HAMi project as its core foundation, provides a global solution for flexible, reliable, on-demand, and elastic GPU virtualization and heterogeneous computing power scheduling and unified management. It can be deployed in a plug-and-play, lightweight, and non-intrusive manner in any public, private, or hybrid cloud environment, supporting heterogeneous chips from NVIDIA, Ascend, Metax, Cambricon, Hygon, Moore Threads, Tianshu Zhixin, and more.
 

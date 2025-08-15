@@ -17,7 +17,6 @@ This is the fifth article in the HAMI principle analysis series, providing a sim
 
 This article is adapted from: https://mp.weixin.qq.com/s/vN3uDRPpAP3UmE2Hgn75vg
 
-The [HAMi-core](https://github.com/Project-HAMi/HAMi-core) project is the core implementation of vCUDA. As its README states: HAMI-core operates by hijacking the API-call between CUDA-Runtime (libcudart.so) and CUDA-Driver (libcuda.so), as the figure below shows:
 
 ![p1](/images/blog/gpu7/p1.jpg)
 

@@ -9,7 +9,6 @@ coverImage: "/images/blog/gpu8/cover.jpg"
 language: "zh"
 ---
 
-# HAMi v2.5.0 Released，新特性一览
 
 本文摘自：https://mp.weixin.qq.com/s/Af4GaNVhoCUsE5pzd-jnBg
 

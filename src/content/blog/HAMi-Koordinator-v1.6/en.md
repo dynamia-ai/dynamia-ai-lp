@@ -5,11 +5,10 @@ date: "2025-08-05"
 excerpt: "Koordinator v1.6 has been released, featuring deep collaboration with the CNCF Sandbox project HAMi to introduce strong GPU sharing isolation capabilities, providing a more efficient resource scheduling and isolation solution for AI training and inference scenarios."
 author: "Dynamia AI Team"
 tags: ["vGPU", "HAMi", "GPU Sharing", "Cloud Native", "Kubernetes", "AI Infrastructure"]
-coverImage: "/images/blog/Koordinator v1.6/cover2.jpg"
+coverImage: "/images/blog/Koordinator-v1.6/cover.jpg"
 language: "en"
 ---
 
-# Open-source Synergy, Koordinator v1.6 Released: Teaming Up with the HAMi Community to Redefine AI/ML Heterogeneous Resource Scheduling
 
 > Original Authors: Wang Jianyu, Zeng Fansong, Song Tao, Han Rougang
 
@@ -43,7 +42,7 @@ With the rapid development of fields like deep learning and high-performance com
 2.  For NVIDIA card models like the L20 and L40S, the communication efficiency between GPUs depends on whether they belong to the same PCIe or the same NUMA node.
 3.  For Huawei's Ascend NPUs and NVIDIA H-series machines using the SharedNVSwitch mode in virtualized environments, GPU allocation must adhere to certain predefined Partition rules.
 
-![p1](/images/blog/Koordinator v1.6/p1.png)
+![p1](/images/blog/Koordinator-v1.6/p1.png)
 
 Koordinator addresses these device scenarios by providing rich device topology scheduling APIs to meet Pods' demands for GPU topology. Here are some examples of how to use these APIs:
 
@@ -170,11 +169,11 @@ We sincerely thank community developer @eahydra for their contributions to this 
 
 ### 2. End-to-End GDR Support: Improving Interconnection Performance for Cross-Machine Tasks
 
-![p2](/images/blog/Koordinator v1.6/p2.png)
+![p2](/images/blog/Koordinator-v1.6/p2.png)
 
 In AI model training scenarios, GPUs need to perform frequent collective communications to synchronize the weights updated during each training iteration. GDR, which stands for GPUDirect RDMA, aims to solve the efficiency problem of data exchange between GPUs on multiple machines. With GDR technology, GPUs on different machines can exchange data without going through the CPU and memory, which significantly saves CPU/Memory overhead and reduces latency. To achieve this goal, Koordinator v1.6.0 has designed and implemented a GPU/RDMA device joint scheduling feature. The overall architecture is as follows:
 
-![p3](/images/blog/Koordinator v1.6/p3.png)
+![p3](/images/blog/Koordinator-v1.6/p3.png)
 
 1.  Koordlet detects the GPU and RDMA devices on the node and reports the relevant information to the Device CR.
 2.  Koord-Manager synchronizes the resources from the Device CR to `node.status.allocatable`.
@@ -228,7 +227,7 @@ This situation is particularly common in the following scenarios:
 
 To solve this problem, Koordinator, in collaboration with HAMi, provides users with the ability to share and isolate GPUs, allowing multiple Pods to share the same GPU card. This approach not only significantly improves GPU resource utilization but also reduces enterprise costs while meeting the flexible resource needs of different tasks. For example, in Koordinator's GPU sharing mode, users can precisely allocate the number of GPU cores or the percentage of GPU memory, ensuring that each task gets the resources it needs without interfering with others.
 
-![p4](/images/blog/Koordinator v1.6/p4.png)
+![p4](/images/blog/Koordinator-v1.6/p4.png)
 
 HAMi is a CNCF Sandbox project aimed at providing a device management middleware for Kubernetes. HAMi-Core is its core module, which provides GPU sharing and isolation capabilities by intercepting API calls between the CUDA-Runtime (`libcudart.so`) and the CUDA-Driver (`libcuda.so`). In version v1.6.0, Koordinator utilizes the GPU isolation function of HAMi-Core to provide an end-to-end GPU sharing solution.
 
@@ -349,7 +348,7 @@ In addition, in mixed-workload scenarios, the resource demands of different task
 -   In a cluster that runs both GPU training tasks and regular CPU-intensive tasks, if a CPU-intensive task is scheduled to a GPU node and consumes a large amount of CPU and memory resources, it may cause subsequent GPU tasks to fail to start due to insufficient non-CPU resources, eventually leaving them in a Pending state.
 -   In a multi-tenant environment, some users may only request CPU and memory resources, while others need GPU resources. If the scheduler cannot distinguish between these demands, it may lead to resource contention and unfair resource allocation.
 
-![p5](/images/blog/Koordinator v1.6/p5.png)
+![p5](/images/blog/Koordinator-v1.6/p5.png)
 
 The native NodeResourcesFit plugin in Kubernetes currently only supports configuring the same scoring strategy for different resources, as shown below:
 
@@ -607,7 +606,7 @@ To achieve these goals, Koordinator continues to build and improve its resource 
 
 Mid-tier resource over-commitment was introduced in Koordinator v1.3, providing dynamic resource over-commitment based on [node profiling](https://koordinator.sh/docs/designs/node-prediction/). However, to ensure the stability of over-committed resources, Mid-tier resources were entirely derived from the allocated Prod pods on the node. This meant that an empty node initially had no Mid-tier resources, which caused many inconveniences for workloads using Mid-tier resources. The Koordinator community has received feedback and contributions from some enterprise users on this issue.
 
-![p6](/images/blog/Koordinator v1.6/p6.png)
+![p6](/images/blog/Koordinator-v1.6/p6.png)
 
 In version v1.6, Koordinator has updated the over-commitment calculation formula as follows:
 
@@ -685,14 +684,19 @@ As cluster sizes continue to grow, the stability and reasonableness of the desch
 #### 1. `LowNodeLoad` Plugin Optimization:
 
 a. The `LowNodeLoad` plugin now supports configuring `ProdHighThresholds` and `ProdLowThresholds`, which, combined with Koordinator's priority, allows for differentiated management of workload resource utilization. This can reduce hotspot issues caused by production applications, thereby achieving more fine-grained load balancing.
+
 b. Optimized the sorting logic for Pods to be evicted. By using a segmented function scoring algorithm, it selects the most suitable Pod for eviction, ensuring reasonable resource allocation and avoiding stability issues caused by evicting the Pod with the highest resource utilization.
+
 c. Optimized the pre-eviction check logic for Pods. Before evicting a Pod, `LowNodeLoad` now checks one by one whether the target node will become a new hotspot node due to the descheduling. This optimization effectively prevents repeated descheduling.
 
 #### 2. `MigrationController` Enhancement:
 
 a. The `MigrationController` has an `ObjectLimiter` capability to control the eviction frequency of a workload within a certain period. It now supports configuring namespace-level eviction rate limiting for more fine-grained control over evictions within a namespace. The `ObjectLimiter` has also been moved from the Arbitrator to inside the `MigrationController` to fix a potential rate-limiting failure issue in concurrent scenarios.
+
 b. A new `EvictAllBarePods` configuration item has been added, allowing users to enable the eviction of Pods without an `OwnerRef`, thereby increasing the flexibility of descheduling.
+
 c. A new `MaxMigratingGlobally` configuration item has been added. The `MigrationController` can now independently control the maximum number of Pod evictions, reducing stability risks.
+
 d. Optimized the calculation logic of the `GetMaxUnavailable` method. When the calculated maximum number of unavailable replicas for a workload is rounded down to 0, it is now defaulted to 1, preventing the user's control over the number of unavailable replicas from losing its expected accuracy and consistency.
 
 #### 3. A new global descheduling configuration parameter, `MaxNoOfPodsToEvictTotal`, has been added to ensure a global maximum number of Pod evictions for the descheduler, reducing the burden on the cluster and improving stability.

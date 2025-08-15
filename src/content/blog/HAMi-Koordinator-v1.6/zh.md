@@ -5,11 +5,10 @@ date: "2025-08-05"
 excerpt: "我会从这几个角度聊聊：HAMi 是什么，与 NVIDIA 的方案有何本质不同？NVIDIA 为何“不为”？是技术不能，还是商业不愿？HAMi 的核心竞争力与长期护城河到底在哪里？"
 author: "密瓜智能"
 tags: ["vGPU", "HAMi", "GPU共享", "云原生", "Kubernetes", "AI基础设施"]
-coverImage: "/images/blog/Koordinator v1.6/cover.jpg"
+coverImage: "/images/blog/Koordinator-v1.6/cover.jpg"
 language: "zh"
 ---
 
-# 开源协同共进，Koordinator v1.6 发布：携手 HAMi 社区打造 AI/ML 异构资源调度新篇章
 
 > 原文作者：王建宇、曾凡松、宋涛、韩柔刚
 
@@ -45,7 +44,7 @@ language: "zh"
 
 3. 对于华为的晟腾NPU以及虚拟化环境中采用 SharedNVSwitch模式的NVIDIA H系列机器，GPU的分配需要遵守一些预定义的Partition规则。
 
-![p1](/images/blog/Koordinator v1.6/p1.png)
+![p1](/images/blog/Koordinator-v1.6/p1.png)
 
 Koordinator针对上述设备场景，提供了丰富的设备拓扑调度API来满足Pod对于GPU拓扑的诉求。下面是这些API的使用举例：
 
@@ -174,11 +173,11 @@ spec:
 
 ### 2、端到端GDR支持：提升跨机任务的互联性能
 
-![p2](/images/blog/Koordinator v1.6/p2.png)
+![p2](/images/blog/Koordinator-v1.6/p2.png)
 
 在AI模型训练场景中，GPU之间需要进行频繁的集合通信，以同步训练过程迭代更新的权重。GDR全称叫做GPUDirect RDMA，其目的是解决多机GPU设备之间交换数据的效率问题。通过GDR技术多机之间GPU交换数据可以不经过CPU和内存，大幅节省CPU/Memory开销同时降低延时。为了实现这一目标，Koordinator v1.6.0版本中设计实现了GPU/RDMA设备联合调度特性，整体架构如下：
 
-![p3](/images/blog/Koordinator v1.6/p3.png)
+![p3](/images/blog/Koordinator-v1.6/p3.png)
 
 1. Koordlet检测节点上的GPU和RDMA设备，并将相关信息上报给Device CR。
 
@@ -238,7 +237,7 @@ spec:
 
 为了解决这一问题，Koordinator结合HAMi为用户提供了GPU共享隔离的能力，允许多个Pod共享同一张GPU卡。通过这种方式，不仅可以显著提高GPU的资源利用率，还能降低企业成本，同时满足不同任务对资源的灵活需求。例如，在Koordinator的 GPU共享模式下，用户可以精确分配GPU核心数或显存比例，确保每个任务都能获得所需的资源，同时避免相互干扰。
 
-![p4](/images/blog/Koordinator v1.6/p4.png)
+![p4](/images/blog/Koordinator-v1.6/p4.png)
 
 HAMi是CNCF Sandbox项目，旨在为Kubernetes提供一个设备管理中间件。HAMi-Core是它的核心模块，通过劫持CUDA-Runtime（libcudart.so）和CUDA-Driver（libcuda.so）之间的API调用提供GPU共享隔离能力。在v1.6.0版本中，Koordinator利用HAMi-Core的GPU隔离功能，提供端到端的GPU共享解决方案。
 
@@ -398,7 +397,7 @@ spec:
 
 - 在多租户环境中，某些用户可能只申请CPU和内存资源，而另一些用户则需要GPU资源。如果调度器不能区分这些需求，可能会导致资源争用和不公平的资源分配。
 
-![p5](/images/blog/Koordinator v1.6/p5.png)
+![p5](/images/blog/Koordinator-v1.6/p5.png)
 
 Kubernetes原生的NodeResourcesFit插件目前对不同资源只支持配置同样的打分策略，举例如下：
 
@@ -685,7 +684,7 @@ profiles:
 
 Mid资源超卖从Koordinator v1.3版本开始引入，提供基于[节点画像](https://koordinator.sh/docs/designs/node-prediction/)的动态资源超卖能力。但是，为了确保超卖资源的稳定性，Mid资源完全从节点上已分配的Prod pods中获取，意味着空节点一开始是没有Mid资源的，这给一些工作负载使用Mid资源带来了诸多不便，Koordinator社区也收到了一些企业用户的反馈和贡献。
 
-![p6](/images/blog/Koordinator v1.6/p6.png)
+![p6](/images/blog/Koordinator-v1.6/p6.png)
 
 在v1.6版本中，Koordinator更新了超卖计算公式，如下：
 

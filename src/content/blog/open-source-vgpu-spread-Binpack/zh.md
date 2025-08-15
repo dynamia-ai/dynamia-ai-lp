@@ -9,8 +9,6 @@ coverImage: "/images/blog/gpu6/cover.jpg"
 language: "zh"
 ---
 
-# HAMi vGPU 原理分析 Part 4: Spread&Binpack 高级调度策略实现
-
 上篇我们分析了 hami-scheduler 工作流程，知道了 hami-webhook、hami-scheduler 是怎么配合工作的。
 
 [HAMi vGPU 原理分析 Part3：hami-scheduler 工作流程分析](https://dynamia.ai/zh/blog/open-source-vgpu-hami-scheduler)

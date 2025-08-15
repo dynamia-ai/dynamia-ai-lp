@@ -9,7 +9,6 @@ coverImage: "/images/blog/gpu8/cover2.jpg"
 language: "en"
 ---
 
-# HAMi v2.5.0 Released: A Look at the New Features
 
 This article is adapted from: https://mp.weixin.qq.com/s/Af4GaNVhoCUsE5pzd-jnBg
 

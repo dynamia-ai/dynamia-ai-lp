@@ -9,7 +9,6 @@ coverImage: "/images/blog/gpu9/cover.jpg"
 language: "zh"
 ---
 
-# 精准而优雅：HAMi 调度特性之按 GPU 类型和 UUID 调度
 
 本文摘自：https://mp.weixin.qq.com/s/1eQC2_WGhN7DMNnTW4r0cw
 

@@ -9,8 +9,6 @@ coverImage: "/images/blog/gpu2/cover.jpg"
 language: "zh"
 ---
 
-# 开源 vGPU 方案 HAMI: Core & Memory 隔离测试
-
 之前给大家分享了开源的 vGPU 方案 HAMI，本文主要对其提供的 GPU Core & Memory 隔离功能进行测试。
 
 本文摘自：https://mp.weixin.qq.com/s/qfdHqpendMC6_zS_isCluw

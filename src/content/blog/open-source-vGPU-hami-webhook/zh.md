@@ -9,8 +9,6 @@ coverImage: "/images/blog/gpu4/cover.jpg"
 language: "zh"
 ---
 
-# HAMi vGPU 原理分析 Part2：hami-webhook 原理分析
-
 上篇我们分析了 hami-device-plugin-nvidia，知道了 HAMi 的 NVIDIA device plugin 工作原理。
 
 [上一篇文章《HAMi vGPU 方案原理分析 Part1: hami-device-plugin-nvidia 实现》](https://dynamia.ai/zh/blog/open-source-vgpu-hami-device-plugin-nvidia)

@@ -9,7 +9,6 @@ coverImage: "/images/blog/gpu1/cover2.jpg"
 language: "en"
 ---
 
-# Open-source vGPU Solution: HAMi — Fine-Grained GPU Partitioning  
 > This article introduces an open-source GPU virtualization solution: HAMi, including installation, configuration, and usage.
 
 This article is excerpted from：https://mp.weixin.qq.com/s/7L6NuSSP_iMwbtooQIJUjw

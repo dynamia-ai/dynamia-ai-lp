@@ -1,15 +1,13 @@
 ---
 title: "【密瓜智能 | 用户案例】某头部智驾公司通过 HAMi 实现 GPU 精细化管理与资源利用最大化"
 slug: "A leading autonomous-driving company"
-date: "2025-8-9"
+date: "2025-08-09"
 excerpt: "某头部智驾公司在核心模型训练场景中，采用多机分布式训练，使用如 Ray、Volcano 等调度框架。"
 author: "密瓜智能"
 tags: ["KubeCon", "HAMi", "GPU共享", "云原生", "Kubernetes", "AI基础设施"]
-coverImage: "/images/blog/A leading autonomous-driving company/cover.jpg"
+coverImage: "/images/blog/A-leading-autonomous-driving-company/cover.jpg"
 language: "zh"
 ---
-
-# 【密瓜智能 | 用户案例】某头部智驾公司通过 HAMi 实现 GPU 精细化管理与资源利用最大化
 
 >作为一个活跃的开源项目，HAMi 由来自 15+ 国家、350+ 贡献者共同维护，已被 120+ 企业与机构在实际生产环境中采纳，具备良好的可扩展性与支持保障。
 
@@ -35,7 +33,7 @@ language: "zh"
 
 ## 解决方案
 
-![1](/images/blog/A leading autonomous-driving company/p1.jpg)
+![1](/images/blog/A-leading-autonomous-driving-company/p1.jpg)
 
 面对 GPU 资源调度的复杂需求，该公司创新性地采用了 **HAMi + KubeVirt** 混合架构，在云桌面平台中实现了灵活高效的 GPU 管理。该方案的核心设计在于：
 
@@ -51,7 +49,7 @@ HAMi 负责容器环境的 GPU 调度，支持按需分配 vGPU 资源，用户�
 
 在众多 GPU 虚拟化方案中，HAMi 最终成为该头部智驾公司的技术选择，主要基于以下关键考量：
 
-![2](/images/blog/A leading autonomous-driving company/p2.png)
+![2](/images/blog/A-leading-autonomous-driving-company/p2.png)
 
 1. **精准匹配业务场景**
 
@@ -77,7 +75,7 @@ HAMi 负责容器环境的 GPU 调度，支持按需分配 vGPU 资源，用户�
 
 通过引入 **HAMi** 并构建 **双轨 GPU 管理架构**，该公司在云桌面场景中实现了从资源紧张到高效调度的转变，具体成效包括：
 
-![3](/images/blog/A leading autonomous-driving company/p3.png)
+![3](/images/blog/A-leading-autonomous-driving-company/p3.png)
 
 - **GPU 利用率从大于 20% 提升至 60~70%，提升约 200%**：通过单卡虚拟化技术，有效消除资源闲置占用，让每块显卡发挥最大价值；
 
@@ -103,7 +101,7 @@ HAMi 负责容器环境的 GPU 调度，支持按需分配 vGPU 资源，用户�
 
 ---
 
-![5](/images/blog/PREP EDU-HAMi/p5.png)
+![5](/images/blog/PREP-EDU-HAMi/p5.png)
 
 Dynamia 密瓜智能,  专注以 CNCF HAMi 项目为核心底座，提供 灵活、可靠、按需、弹性的 GPU 虚拟化 与异构算力调度、统一管理的全球化解决方案。可以插拔式、轻量化、无侵入地部署在任意公有云、私有云、混合云环境中，可支持 NVIDIA、昇腾、沐曦、寒武纪、海光、摩尔线程，天数智芯等异构芯片。
 
