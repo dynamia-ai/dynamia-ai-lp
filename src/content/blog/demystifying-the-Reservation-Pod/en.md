@@ -6,7 +6,6 @@ excerpt: "Yesterday, we took a deep dive into how KAI-Scheduler achieves fractio
 author: "Dynamia AI Team"
 tags: ["vGPU", "HAMi", "GPU Sharing", "Cloud Native", "Kubernetes", "AI Infrastructure"]
 coverImage: "/images/blog/Demystifying-the-Reservation-Pod/cover.jpg"
-language: "en"
 ---
 
 Yesterday, our article, [Nvidia's Open-Sourced KAI-Scheduler vs. HAMi: An Analysis of Technical Paths to GPU Sharing and a Look at Future Synergy](https://dynamia.ai/en/blog/KAI-Scheduler vs HAMi: Technical Paths to GPU Sharing and Synergy Outlook), took a deep dive into how KAI-Scheduler achieves fractional GPU sharing. We're very grateful for all the attention and lively discussion it generated! In particular, a reader pointed out a key technical detail that needed further clarification. Today, we're going to dedicate this post to analyzing that very issue.
@@ -402,7 +401,7 @@ func (b *Binder) Bind(
 }
 ```
 
-![p2](/images/blog/Demystifying-the-Reservation-Pod/p1.jpg)
+![p2](/images/blog/Demystifying-the-Reservation-Pod/p2.jpg)
 
 ## II. The Complete Information Flow: From Scheduling to Device Identification
 

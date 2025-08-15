@@ -16,7 +16,6 @@ language: "zh"
 
 本文摘自：https://mp.weixin.qq.com/s/vN3uDRPpAP3UmE2Hgn75vg
 
-[HAMi-core]（HAMi-core: https://github.com/Project-HAMi/HAMi-core）项目就是 vCUDA 的核心实现，正如其 README 所说：HAMi-core operates by Hijacking the API-call between CUDA-Runtime(libcudart.so) and CUDA-Driver(libcuda.so), as the figure below:
 
 ![p1](/images/blog/gpu7/p1.jpg)
 
