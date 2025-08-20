@@ -100,4 +100,4 @@ export const faqSchema = (faqs: Array<{question: string, answer: string}>) => ({
   }))
 });
 
-export default StructuredData; 
+export default StructuredData;

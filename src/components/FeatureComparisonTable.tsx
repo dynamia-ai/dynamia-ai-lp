@@ -36,7 +36,9 @@ export default function FeatureComparisonTable() {
   
   // 确保数据可用
   if (!featureComparisonData || !featureComparisonData.categories) {
-    console.error('Failed to load feature comparison data from i18n');
+    if (process.env.NODE_ENV === 'development') {
+      console.error('Failed to load feature comparison data from i18n');
+    }
     return null;
   }
   

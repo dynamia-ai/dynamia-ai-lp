@@ -14,12 +14,6 @@ interface FormSuccessMessageProps {
 export default function FormSuccessMessage({ translationKey, isError = false }: FormSuccessMessageProps) {
   const { t, i18n } = useTranslation();
   
-  // Log the current language and translation key for debugging
-  console.log('Current language:', i18n.language);
-  console.log('Translation key:', translationKey);
-  console.log('Raw EN translation:', i18n.getResource('en', 'translation', translationKey));
-  console.log('Raw ZH translation:', i18n.getResource('zh', 'translation', translationKey));
-  
   // Use fallback messages in case translations fail
   const fallbackMessages = {
     'pricing.form.submitSuccess': {
