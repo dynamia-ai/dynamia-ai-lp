@@ -36,6 +36,16 @@ function getLocale(request: NextRequest) {
 export function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
   
+  // 创建响应
+  const response = NextResponse.next();
+  
+  // 添加安全头
+  response.headers.set('X-Frame-Options', 'DENY');
+  response.headers.set('X-Content-Type-Options', 'nosniff');
+  response.headers.set('X-XSS-Protection', '1; mode=block');
+  response.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
+  response.headers.set('Permissions-Policy', 'camera=(), microphone=(), geolocation=()');
+  
   // 排除不需要处理的路径
   if (
     pathname.startsWith('/_next') ||
@@ -43,7 +53,7 @@ export function middleware(request: NextRequest) {
     pathname.startsWith('/static') ||
     pathname.includes('.')
   ) {
-    return NextResponse.next();
+    return response;
   }
   
   // 获取locale
@@ -54,10 +64,10 @@ export function middleware(request: NextRequest) {
     locale => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
   );
   
-  if (pathnameHasLocale) return NextResponse.next();
+  if (pathnameHasLocale) return response;
   
   // 如果是默认locale且没有前缀，不重定向
-  if (locale === defaultLocale) return NextResponse.next();
+  if (locale === defaultLocale) return response;
   
   // 重定向到带有locale前缀的路由
   const newUrl = new URL(
@@ -65,7 +75,15 @@ export function middleware(request: NextRequest) {
     request.url
   );
   
-  return NextResponse.redirect(newUrl);
+  // 创建重定向响应并添加安全头
+  const redirectResponse = NextResponse.redirect(newUrl);
+  redirectResponse.headers.set('X-Frame-Options', 'DENY');
+  redirectResponse.headers.set('X-Content-Type-Options', 'nosniff');
+  redirectResponse.headers.set('X-XSS-Protection', '1; mode=block');
+  redirectResponse.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
+  redirectResponse.headers.set('Permissions-Policy', 'camera=(), microphone=(), geolocation=()');
+  
+  return redirectResponse;
 }
 
 // 在文件末尾添加config导出

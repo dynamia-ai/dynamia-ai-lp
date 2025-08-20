@@ -80,6 +80,19 @@ export const metadata: Metadata = {
   verification: {
     // Add Google Search Console verification when available
     // google: 'your-google-site-verification-code',
+    // yandex: 'your-yandex-verification-code',
+    // bing: 'your-bing-verification-code',
+  },
+  // 增强的 SEO 配置
+  alternates: {
+    canonical: 'https://dynamia.ai',
+    languages: {
+      'en-US': 'https://dynamia.ai',
+      'zh-CN': 'https://dynamia.ai/zh',
+    },
+  },
+  other: {
+    'google-site-verification': process.env.GOOGLE_SITE_VERIFICATION || '',
   },
 };
 
@@ -91,10 +104,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {/* Performance optimizations */}
+        {/* Enhanced performance optimizations */}
         <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+        <link rel="dns-prefetch" href="//fonts.gstatic.com" />
+        <link rel="dns-prefetch" href="//www.google-analytics.com" />
         <link rel="dns-prefetch" href="//cdn.jsdelivr.net" />
         <link rel="preconnect" href="https://vitals.vercel-analytics.com" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
 
         {/* Preload critical resources */}
         <link
@@ -103,23 +120,57 @@ export default function RootLayout({
           as="image"
           type="image/svg+xml"
         />
+        <link
+          rel="preload"
+          href="/fonts/geist-sans.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
 
-        {/* Security headers */}
+        {/* Enhanced security headers */}
         <meta httpEquiv="X-Content-Type-Options" content="nosniff" />
-        <meta httpEquiv="X-Frame-Options" content="DENY" />
         <meta httpEquiv="X-XSS-Protection" content="1; mode=block" />
         <meta httpEquiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
+        <meta httpEquiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()" />
 
-        {/* Viewport for responsive design */}
+        {/* Optimized viewport for responsive design */}
         <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 
-        {/* Theme color for mobile browsers */}
-        <meta name="theme-color" content="#0070f3" />
-        <meta name="msapplication-TileColor" content="#0070f3" />
+        {/* Enhanced theme colors for mobile browsers */}
+        <meta name="theme-color" content="#1f2937" />
+        <meta name="msapplication-TileColor" content="#1f2937" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+        {/* SEO enhancements */}
+        <meta name="format-detection" content="telephone=no, date=no, email=no, address=no" />
+        <meta name="google" content="notranslate" />
+        <meta name="mobile-web-app-capable" content="yes" />
+        
+        {/* Structured data for organization */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              "name": "Dynamia AI",
+              "url": "https://dynamia.ai",
+              "logo": "https://dynamia.ai/LOGO.svg",
+              "description": "Enterprise-grade heterogeneous computing platform for AI, HPC, and Edge workloads",
+              "foundingDate": "2023",
+              "industry": "Software Technology",
+              "sameAs": [
+                "https://github.com/Project-HAMi/HAMi",
+                "https://twitter.com/dynamia_ai",
+                "https://linkedin.com/company/dynamia-ai"
+              ]
+            })
+          }}
+        />
 
         {/* Apple specific meta tags */}
         <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
         <meta name="apple-mobile-web-app-title" content="Dynamia AI" />
 
         {/* Structured Data for Organization */}

@@ -1,20 +1,71 @@
-# *
+# 通用爬虫规则
 User-agent: *
 Allow: /
-Disallow: /admin
-Disallow: /private
-Disallow: /api
 
-# GPTBot
+# 优化的搜索引擎爬虫指令
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Slurp
+Allow: /
+Crawl-delay: 2
+
+# 禁止爬取私有和管理页面
+Disallow: /admin/
+Disallow: /_next/
+Disallow: /api/
+Disallow: /.netlify/
+Disallow: /private/
+Disallow: /temp/
+
+# 允许重要的资源文件
+Allow: /public/
+Allow: /images/
+Allow: /icons/
+Allow: /logos/
+Allow: /*.css
+Allow: /*.js
+Allow: /*.svg
+Allow: /*.png
+Allow: /*.jpg
+Allow: /*.jpeg
+Allow: /*.webp
+
+# AI 爬虫控制
 User-agent: GPTBot
 Disallow: /
 
-# Google-Extended
 User-agent: Google-Extended
 Disallow: /
 
-# Host
+User-agent: ChatGPT-User
+Disallow: /
+
+# SEO 工具爬虫控制
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+# 社交媒体爬虫
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+# Host 声明
 Host: https://dynamia.ai
 
-# Sitemaps
+# Sitemap 位置
 Sitemap: https://dynamia.ai/sitemap.xml
+Sitemap: https://dynamia.ai/sitemap-0.xml

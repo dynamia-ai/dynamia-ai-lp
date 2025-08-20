@@ -8,15 +8,45 @@ interface SEOConfig {
   url?: string;
   type?: "website" | "article";
   locale?: string;
+  publishedTime?: string;
+  modifiedTime?: string;
+  author?: string;
+  section?: string;
+  tags?: string[];
 }
 
 export const defaultSEO: SEOConfig = {
-  title: "Dynamia AI - Unified Heterogeneous Computing",
-  description: "Accelerate AI, HPC, and Edge workloads seamlessly with kantaloupe.",
-  keywords: "dynamia ai, heterogeneous computing, GPU virtualization, AI infrastructure, HAMi",
-  image: "/LOGO-small.svg",
+  title: "Dynamia AI - Unified Heterogeneous Computing Platform",
+  description: "Accelerate AI, HPC, and Edge workloads seamlessly with kantaloupe. Enterprise-grade GPU virtualization, resource management, and unified heterogeneous computing solutions.",
+  keywords: "dynamia ai, heterogeneous computing, GPU virtualization, AI infrastructure, HAMi, kantaloupe, enterprise computing, GPU sharing, kubernetes GPU, AI workloads, HPC computing, edge computing, container orchestration, resource management",
+  image: "/LOGO.svg",
   type: "website",
   locale: "en_US",
+};
+
+// SEO-optimized keywords by category
+export const seoKeywords = {
+  primary: [
+    "heterogeneous computing",
+    "GPU virtualization", 
+    "AI infrastructure",
+    "enterprise computing",
+    "resource management"
+  ],
+  secondary: [
+    "dynamia ai",
+    "kantaloupe platform", 
+    "HAMi GPU sharing",
+    "kubernetes GPU",
+    "container orchestration"
+  ],
+  longtail: [
+    "enterprise AI workload management",
+    "GPU sharing kubernetes platform",
+    "unified heterogeneous computing solution",
+    "AI HPC edge computing platform",
+    "enterprise GPU virtualization software"
+  ]
 };
 
 export function generateMetadata(config: SEOConfig): Metadata {

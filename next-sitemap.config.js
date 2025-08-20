@@ -1,12 +1,31 @@
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
   siteUrl: process.env.SITE_URL || 'https://dynamia.ai',
-  generateRobotsTxt: true,
-  // Optional: 更改 sitemap 的默认输出目录
+  generateRobotsTxt: false, // 我们已经手动创建了优化的 robots.txt
   outDir: 'public',
-  // Exclude admin, private routes and API routes
-  exclude: ['/admin/*', '/private/*', '/api/*', '/server-sitemap.xml'],
-  // Configure change frequency and priority for different route patterns
+  generateIndexSitemap: true,
+  
+  // 排除不需要索引的页面
+  exclude: [
+    '/admin/*', 
+    '/private/*', 
+    '/api/*', 
+    '/server-sitemap.xml',
+    '/_next/*',
+    '/temp/*',
+    '/test/*',
+    '/404',
+    '/500'
+  ],
+  
+  // 额外的站点地图路径
+  additionalPaths: async (config) => [
+    await config.transform(config, '/sitemap-products.xml'),
+    await config.transform(config, '/sitemap-blog.xml'),
+    await config.transform(config, '/sitemap-resources.xml'),
+  ],
+
+  // 配置不同路由的变更频率和优先级
   transform: async (config, path) => {
     // Default settings
     let changefreq = 'weekly';
@@ -55,10 +74,6 @@ module.exports = {
       alternateRefs: config.alternateRefs ?? [],
     };
   },
-  // Add additional sitemaps if needed
-  additionalPaths: async () => [
-    // Add any dynamic paths that might not be automatically discovered
-  ],
   // Optional: 配置 robots.txt
   robotsTxtOptions: {
     policies: [
