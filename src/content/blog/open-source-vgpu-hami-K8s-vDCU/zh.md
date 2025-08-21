@@ -2,8 +2,8 @@
 title: "HAMi 异构设备虚拟化之海光 DCU 实战：K8s 下的 vDCU 资源调度与纳管"
 slug: "open-source-vgpu-hami-K8s-vDCU"
 date: "2025-07-31"
-excerpt: "本文是分析海光 DCU 设备如何通过 HAMi 完成虚拟化，实现统一纳管与调度。”
-author: 密瓜智能
+excerpt: "本文是分析海光 DCU 设备如何通过 HAMi 完成虚拟化，实现统一纳管与调度。"
+author: "密瓜智能"
 tags: ["HAMI", "GPU 共享", "vGPU", "Kubernetes", "异构算力"]
 coverImage: "/images/blog/gpu10/cover.jpg"
 language: "zh"

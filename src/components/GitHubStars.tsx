@@ -22,14 +22,18 @@ const GitHubStars: React.FC<GitHubStarsProps> = ({
         const response = await fetch(`https://api.github.com/repos/${repo}`);
         
         if (!response.ok) {
-          console.error(`GitHub API 请求失败: ${response.status}`);
+          if (process.env.NODE_ENV === 'development') {
+            console.error(`GitHub API 请求失败: ${response.status}`);
+          }
           return;
         }
         
         const data = await response.json();
         setStars(data.stargazers_count);
       } catch (err) {
-        console.error('获取 GitHub Stars 失败:', err);
+        if (process.env.NODE_ENV === 'development') {
+          console.error('获取 GitHub Stars 失败:', err);
+        }
       } finally {
         setIsLoaded(true);
       }
