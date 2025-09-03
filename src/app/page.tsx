@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
@@ -17,6 +17,61 @@ const fadeIn = {
 export default function Home() {
   const { t } = useTranslation();
   const [activeTab, setActiveTab] = useState(0);
+  const ecosystemRef = useRef<HTMLDivElement>(null);
+  const [ecoIndex, setEcoIndex] = useState(0);
+  const [paused, setPaused] = useState(false);
+
+  const [ecoCount, setEcoCount] = useState(0);
+
+  useEffect(() => {
+    const el = ecosystemRef.current;
+    if (!el) return;
+    setEcoCount(el.children.length);
+  }, []);
+
+  const getStep = () => {
+    const el = ecosystemRef.current as HTMLDivElement | null;
+    if (!el || el.children.length < 2) return 304;
+    const first = el.children[0] as HTMLElement;
+    const second = el.children[1] as HTMLElement;
+    return second.offsetLeft - first.offsetLeft;
+  };
+
+  const scrollToIndex = (idx: number) => {
+    const el = ecosystemRef.current as HTMLDivElement | null;
+    if (!el) return;
+    const step = getStep();
+    const maxIdx = Math.max(0, ecoCount - 1);
+    const clamped = Math.max(0, Math.min(maxIdx, idx));
+    el.scrollTo({ left: clamped * step, behavior: 'smooth' });
+    setEcoIndex(clamped);
+  };
+
+  useEffect(() => {
+    if (paused || ecoCount <= 1) return;
+    const id = setInterval(() => {
+      setEcoIndex((prev) => {
+        const next = ecoCount > 0 ? (prev + 1) % ecoCount : 0;
+        const el = ecosystemRef.current as HTMLDivElement | null;
+        if (el) {
+          const step = getStep();
+          el.scrollTo({ left: next * step, behavior: 'smooth' });
+        }
+        return next;
+      });
+    }, 2000);
+    return () => clearInterval(id);
+  }, [paused, ecoCount]);
+
+  const handleScroll = () => {
+    const el = ecosystemRef.current as HTMLDivElement | null;
+    if (!el) return;
+    const step = getStep();
+    const idx = Math.round(el.scrollLeft / step);
+    const maxIdx = Math.max(0, ecoCount - 1);
+    const clamped = Math.max(0, Math.min(maxIdx, idx));
+    if (clamped !== ecoIndex) setEcoIndex(clamped);
+  };
 
   const featureTabs = t('home.keyAdvantages.tabs', { returnObjects: true });
   const featureTabsArray = Array.isArray(featureTabs)
@@ -566,7 +621,47 @@ export default function Home() {
             <p className="mt-4 text-lg text-gray-600">{t('home.ecosystem.subtitle')}</p>
           </div>
 
-          <div className="flex flex-wrap justify-center gap-6 max-w-4xl mx-auto">
+          <div
+            className="relative"
+            onMouseEnter={() => setPaused(true)}
+            onMouseLeave={() => setPaused(false)}
+          >
+            {/* Carousel viewport */}
+            <div
+              ref={ecosystemRef}
+              className="flex flex-nowrap gap-6 overflow-x-auto scroll-smooth py-2"
+              onScroll={handleScroll}
+            >
+
+            {/* vLLM Card */}
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              variants={fadeIn}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="bg-white rounded-lg shadow-sm border border-gray-100 p-5 hover:shadow-md transition-shadow w-[280px] flex-shrink-0"
+            >
+              <Link href="https://github.com/vllm-project/production-stack/" className="flex flex-col items-center">
+                <div className="w-48 h-20 flex items-center justify-center">
+                  <Image
+                    src="/images/vllm.png"
+                    alt="vLLM"
+                    width={240}
+                    height={120}
+                    className="object-contain"
+                  />
+                </div>
+                <div className="flex items-center text-primary text-sm">
+                  <span className="mr-1">{t('home.ecosystem.viewDetails')}</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M5 12h14"></path>
+                    <path d="M12 5l7 7-7 7"></path>
+                  </svg>
+                </div>
+              </Link>
+            </motion.div>
+
             {/* Volcano Card */}
             <motion.div
               initial="hidden"
@@ -574,7 +669,7 @@ export default function Home() {
               variants={fadeIn}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="bg-white rounded-lg shadow-sm border border-gray-100 p-5 hover:shadow-md transition-shadow w-[280px]"
+              className="bg-white rounded-lg shadow-sm border border-gray-100 p-5 hover:shadow-md transition-shadow w-[280px] flex-shrink-0"
             >
               <Link href="https://github.com/volcano-sh/volcano/blob/master/docs/user-guide/how_to_use_volcano_vgpu.md" className="flex flex-col items-center">
                 <div className="w-48 h-20 flex items-center justify-center">
@@ -603,7 +698,7 @@ export default function Home() {
               variants={fadeIn}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="bg-white rounded-lg shadow-sm border border-gray-100 p-5 hover:shadow-md transition-shadow w-[280px]"
+              className="bg-white rounded-lg shadow-sm border border-gray-100 p-5 hover:shadow-md transition-shadow w-[280px] flex-shrink-0"
             >
               <Link href="https://koordinator.sh/docs/user-manuals/device-scheduling-gpu-share-with-hami" className="flex flex-col items-center">
                 <div className="w-48 h-20 flex items-center justify-center">
@@ -632,7 +727,7 @@ export default function Home() {
               variants={fadeIn}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="bg-white rounded-lg shadow-sm border border-gray-100 p-5 hover:shadow-md transition-shadow w-[280px]"
+              className="bg-white rounded-lg shadow-sm border border-gray-100 p-5 hover:shadow-md transition-shadow w-[280px] flex-shrink-0"
             >
               <Link href="https://inference.readthedocs.io/en/latest/" className="flex flex-col items-center">
                 <div className="w-48 h-20 flex items-center justify-center">
@@ -653,6 +748,35 @@ export default function Home() {
                 </div>
               </Link>
             </motion.div>
+
+            </div>
+            {/* Navigation buttons */}
+            <button
+              aria-label="Previous"
+              onClick={() => scrollToIndex(ecoIndex - 1)}
+              className="absolute left-0 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-gray-700 border border-gray-200 rounded-full w-9 h-9 hidden md:flex items-center justify-center shadow-sm"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+            </button>
+            <button
+              aria-label="Next"
+              onClick={() => scrollToIndex(ecoIndex + 1)}
+              className="absolute right-0 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-gray-700 border border-gray-200 rounded-full w-9 h-9 hidden md:flex items-center justify-center shadow-sm"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+            </button>
+
+            {/* Indicators */}
+            <div className="absolute left-1/2 -translate-x-1/2 bottom-[-28px] flex items-center gap-2">
+              {Array.from({ length: Math.max(ecoCount, 0) }).map((_, i) => (
+                <button
+                  key={i}
+                  aria-label={`Go to slide ${i + 1}`}
+                  onClick={() => scrollToIndex(i)}
+                  className={`${i === ecoIndex ? 'bg-primary' : 'bg-gray-300'} w-2.5 h-2.5 rounded-full transition-colors`}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </section>
