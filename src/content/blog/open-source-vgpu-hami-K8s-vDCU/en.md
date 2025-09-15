@@ -5,6 +5,7 @@ date: "2025-07-31"
 excerpt: "This article analyzes how Hygon DCU devices can be virtualized through HAMi to achieve unified management and scheduling."
 author: "Dynamia AI Team"
 tags: ["HAMI", "GPU Sharing", "vGPU", "Kubernetes", "Heterogeneous Computing"]
+coverImage: "/images/blog/KAI-Scheduler-VS-HAMi/cover.jpg"
 language: "en"
 ---
 
