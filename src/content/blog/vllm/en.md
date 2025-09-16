@@ -39,8 +39,7 @@ This confirmed the real scenario demand from community users for the HAMi + vLLM
 
 ![p7](/images/blog/vllm-hami-support/vllm-and-hami.png)
 
-### Rapid Verification of Value: Issue #649
-Shortly after the PR was merged, a vLLM community user asked in Issue #649 (https://github.com/vllm-project/production-stack/issues/649): “Does it support deploying multiple models on a single GPU?”
+### Rapid Verification of Value: Issue [#649](https://github.com/vllm-project/production-stack/issues/649) : “Does it support deploying multiple models on a single GPU?”
 
 ![p7](/images/blog/vllm-hami-support/issue-conversation-0.png)
 

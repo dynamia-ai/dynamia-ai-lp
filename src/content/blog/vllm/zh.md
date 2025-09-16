@@ -42,7 +42,7 @@ vLLM 与 HAMi 的这次集成并非项目方“自上而下”的规划，而是
 ![p7](/images/blog/vllm-hami-support/vllm-and-hami.png)
 
 ### 价值的迅速印证：Issue #649
-该 PR 合并后不久，vLLM 社区用户在 Issue #649（https://github.com/vllm-project/production-stack/issues/649）中询问：“是否支持单卡部署多个模型？”
+该 PR 合并后不久，vLLM 社区用户在 Issue [#649](https://github.com/vllm-project/production-stack/issues/649) 中询问：“是否支持单卡部署多个模型？”
 
 ![p7](/images/blog/vllm-hami-support/issue-conversation-0.png)
 
