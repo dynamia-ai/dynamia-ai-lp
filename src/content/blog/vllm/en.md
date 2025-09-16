@@ -5,7 +5,7 @@ date: "2025-09-15"
 excerpt: "This article takes the PR as an entry point, combined with community Issues and mailing records, to fully restore a 'HAMi × vLLM' landing path from deployment to verification, helping you quickly achieve multi-model deployment and resource reuse in Kubernetes."
 author: "Dynamia"
 tags: ["vLLM", "HAMi", "GPU Scheduling", "Multi-Model Deployment", "Kubernetes", "AI Inference", "Community Contribution", "Cloud Native"]
-coverImage: "/images/blog/vllm/coverpage.png"
+coverImage: "/images/blog/Demystifying-the-Reservation-Pod/cover.jpg"
 language: "en"
 ---
 
@@ -37,12 +37,12 @@ To explore the motivation behind this contribution, we communicated with Andrés
 
 This confirmed the real scenario demand from community users for the HAMi + vLLM combination.
 
-![p7](/images/blog/vllm/vllm-and-hami.png)
+![p7](/images/blog/vllm-hami-support/vllm-and-hami.png)
 
 ### Rapid Verification of Value: Issue #649
 Shortly after the PR was merged, a vLLM community user asked in Issue #649 (https://github.com/vllm-project/production-stack/issues/649): “Does it support deploying multiple models on a single GPU?”
 
-![p7](/images/blog/vllm/issue-conversation.png)
+![p7](/images/blog/vllm-hami-support/issue-conversation.png)
 
 @Nimbus318 replied:
 
@@ -100,7 +100,7 @@ Write the following content into `values-hami-demo.yaml`. This configuration def
 helm upgrade --install vllm -f values-hami-demo.yaml .
 ```
 
-![p7](/images/blog/vllm/helm-upgrade.png)
+![p7](/images/blog/vllm-hami-support/helm-upgrade.png)
 
 ### 3.3 Resource Verification and Function Testing
 
@@ -116,11 +116,11 @@ helm upgrade --install vllm -f values-hami-demo.yaml .
 
 ... (translated log outputs) ...
 
-![p9](/images/blog/vllm/production-stack-1.png)
+![p9](/images/blog/vllm-hami-support/production-stack-1.png)
 
 * [https://github.com/vllm-project/production-stack/tree/main/observability）](https://github.com/vllm-project/production-stack/tree/main/observability）)
 
-![p9](/images/blog/vllm/production-stack-2.png)
+![p9](/images/blog/vllm-hami-support/production-stack-2.png)
 
 * [https://github.com/Project-HAMi/HAMi/blob/master/docs/dashboard\_cn.md）](https://github.com/Project-HAMi/HAMi/blob/master/docs/dashboard_cn.md）)
 

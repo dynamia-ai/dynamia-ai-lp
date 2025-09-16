@@ -5,7 +5,7 @@ date: "2025-09-15"
 excerpt: "本文将以该 PR 为切入点，结合社区 Issue 和邮件交流记录，从部署到验证，完整还原一条 \"HAMi × vLLM\" 的落地路径，帮助你在 Kubernetes 中快速实现多模型部署与资源复用"
 author: "密瓜智能"
 tags: ["vLLM", "HAMi", "GPU调度", "多模型部署", "Kubernetes", "AI推理", "社区贡献", "云原生"]
-coverImage: "/images/blog/vllm/coverpage.png"
+coverImage: "/images/blog/vllm-hami-support/coverpage.png"
 language: "zh"
 ---
 
@@ -39,12 +39,12 @@ vLLM 与 HAMi 的这次集成并非项目方“自上而下”的规划，而是
 
 这印证了社区用户真实使用 HAMi + vLLM 组合的场景需求。
 
-![p7](/images/blog/vllm/vllm-and-hami.png)
+![p7](/images/blog/vllm-hami-support/vllm-and-hami.png)
 
 ### 价值的迅速印证：Issue #649
 该 PR 合并后不久，vLLM 社区用户在 Issue #649（https://github.com/vllm-project/production-stack/issues/649）中询问：“是否支持单卡部署多个模型？”
 
-![p7](/images/blog/vllm/issue-conversation.png)
+![p7](/images/blog/vllm-hami-support/issue-conversation.png)
 
 
 
@@ -147,7 +147,7 @@ servingEngineSpec:
 helm upgrade --install vllm -f values-hami-demo.yaml .
 ```
 
-![p7](/images/blog/vllm/helm-upgrade.png)
+![p7](/images/blog/vllm-hami-support/helm-upgrade.png)
 
 ### 3.3 资源验证与功能测试
 #### 1. 资源分配验证：检查 GPU 共享状态
@@ -210,8 +210,8 @@ root@vllm-bge-reranker-v2-m3-vllm-stack:/vllm-workspace# nvidia-smi -L
 GPU 0: NVIDIA L4 (UUID: GPU-ed8ae6fb-ac66-2346-e6a5-d440223e29a2)
 ```
 
-![p8](/images/blog/vllm/nvidia-smi-1.png)
-![p9](/images/blog/vllm/nvidia-smi-2.png)
+![p8](/images/blog/vllm-hami-support/nvidia-smi-1.png)
+![p9](/images/blog/vllm-hami-support/nvidia-smi-2.png)
 
 #### 2. 协同功能测试：模拟真实 RAG 调用链路
 我们将通过一个自定义脚本，模拟真实的 RAG 调用链路，验证两个独立的模型服务能否在并发压力下协同工作。
@@ -350,11 +350,11 @@ Rerank p50/p95: 1225.6 / 1401.4 ms
 Total  p50/p95: 1395.5 / 1647.9 ms
 ```
 
-![p9](/images/blog/vllm/production-stack-1.png)
+![p9](/images/blog/vllm-hami-support/production-stack-1.png)
 
 - https://github.com/vllm-project/production-stack/tree/main/observability）
 
-![p9](/images/blog/vllm/production-stack-2.png)
+![p9](/images/blog/vllm-hami-support/production-stack-2.png)
 - https://github.com/Project-HAMi/HAMi/blob/master/docs/dashboard_cn.md）
 
 
