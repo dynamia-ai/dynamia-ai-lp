@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
@@ -21,6 +22,177 @@ export default function BlogPostClient({ enPost, zhPost }: BlogPostClientProps) 
   const post = currentLocale === 'zh' ? zhPost : enPost;
   const fallbackPost = currentLocale === 'zh' ? enPost : zhPost;
   const displayPost = post || fallbackPost;
+
+  useEffect(() => {
+    if (!displayPost) {
+      return;
+    }
+
+    const container = document.querySelector('.blog-content');
+    if (!container) {
+      return;
+    }
+
+    const copyLabel = currentLocale === 'zh' ? '复制' : 'Copy';
+    const copiedLabel = currentLocale === 'zh' ? '已复制' : 'Copied';
+    const failedLabel = currentLocale === 'zh' ? '复制失败' : 'Copy failed';
+    const ariaLabel = currentLocale === 'zh' ? '复制代码块' : 'Copy code snippet';
+
+    type CopyState = 'idle' | 'copied' | 'failed';
+
+    const ensureButtonStructure = (btn: HTMLButtonElement) => {
+      if (!btn.classList.contains('code-copy-enhanced')) {
+        btn.innerHTML = '<span class="code-copy-icon" aria-hidden="true"></span><span class="code-copy-text"></span>';
+        btn.classList.add('code-copy-enhanced');
+      }
+    };
+
+    const setButtonLabel = (btn: HTMLButtonElement, label: string) => {
+      const textSpan = btn.querySelector<HTMLSpanElement>('.code-copy-text');
+      if (textSpan) {
+        textSpan.textContent = label;
+      } else {
+        btn.textContent = label;
+      }
+    };
+
+    const setButtonState = (btn: HTMLButtonElement, state: CopyState) => {
+      btn.classList.toggle('copied', state === 'copied');
+      btn.classList.toggle('copy-failed', state === 'failed');
+      btn.setAttribute('data-copy-state', state);
+    };
+
+    const writeToClipboard = async (text: string) => {
+      if (navigator.clipboard?.writeText) {
+        try {
+          await navigator.clipboard.writeText(text);
+          return true;
+        } catch {
+          // fall back to legacy approach below
+        }
+      }
+
+      try {
+        const textArea = document.createElement('textarea');
+        textArea.value = text;
+        textArea.setAttribute('readonly', '');
+        textArea.style.position = 'absolute';
+        textArea.style.left = '-9999px';
+        document.body.appendChild(textArea);
+
+        const selection = document.getSelection();
+        const selectedRange = selection?.rangeCount ? selection.getRangeAt(0) : null;
+
+        textArea.select();
+        const success = document.execCommand('copy');
+
+        document.body.removeChild(textArea);
+
+        if (selectedRange && selection) {
+          selection.removeAllRanges();
+          selection.addRange(selectedRange);
+        }
+
+        return success;
+      } catch {
+        return false;
+      }
+    };
+
+    const cleanups: Array<() => void> = [];
+
+    const ensureCodeBlockContainer = (preElement: HTMLElement): HTMLDivElement | null => {
+      const parent = preElement.parentElement;
+      if (!parent) {
+        return null;
+      }
+
+      if (parent.classList.contains('code-block')) {
+        return parent as HTMLDivElement;
+      }
+
+      const wrapper = document.createElement('div');
+      wrapper.className = 'code-block';
+      parent.insertBefore(wrapper, preElement);
+      wrapper.appendChild(preElement);
+      return wrapper;
+    };
+
+    const preElements = Array.from(container.querySelectorAll('pre'));
+
+    preElements.forEach((pre) => {
+      const preElement = pre as HTMLElement;
+      const codeElement = preElement.querySelector('code');
+      if (!codeElement) {
+        return;
+      }
+
+      const containerEl = ensureCodeBlockContainer(preElement);
+      if (!containerEl) {
+        return;
+      }
+
+      let copyButton = containerEl.querySelector<HTMLButtonElement>('button.code-copy-button');
+
+      if (!copyButton) {
+        const existingInsidePre = preElement.querySelector<HTMLButtonElement>('button.code-copy-button');
+        if (existingInsidePre) {
+          copyButton = existingInsidePre;
+          containerEl.appendChild(existingInsidePre);
+        }
+      }
+
+      if (!copyButton) {
+        copyButton = document.createElement('button');
+        copyButton.type = 'button';
+        copyButton.className = 'code-copy-button';
+        containerEl.appendChild(copyButton);
+      }
+
+      ensureButtonStructure(copyButton);
+      setButtonLabel(copyButton, copyLabel);
+      setButtonState(copyButton, 'idle');
+      copyButton.setAttribute('aria-label', ariaLabel);
+
+      let resetTimeoutId: number | undefined;
+
+      const handleCopy = async () => {
+        if (resetTimeoutId) {
+          window.clearTimeout(resetTimeoutId);
+        }
+
+        const success = await writeToClipboard(codeElement.textContent ?? '');
+
+        if (success) {
+          setButtonState(copyButton, 'copied');
+          setButtonLabel(copyButton, copiedLabel);
+        } else {
+          setButtonState(copyButton, 'failed');
+          setButtonLabel(copyButton, failedLabel);
+        }
+
+        resetTimeoutId = window.setTimeout(() => {
+          setButtonState(copyButton, 'idle');
+          setButtonLabel(copyButton, copyLabel);
+        }, 2000);
+      };
+
+      copyButton.onclick = handleCopy;
+
+      cleanups.push(() => {
+        if (resetTimeoutId) {
+          window.clearTimeout(resetTimeoutId);
+        }
+        if (copyButton) {
+          copyButton.onclick = null;
+        }
+      });
+    });
+
+    return () => {
+      cleanups.forEach((cleanup) => cleanup());
+    };
+  }, [displayPost, currentLocale]);
 
   if (!displayPost) {
     return (
