@@ -193,10 +193,9 @@ aws ecr get-login-password --region us-east-1 \
     --password-stdin 709825985650.dkr.ecr.us-east-1.amazonaws.com
 
 rm -rf hami-chart && mkdir hami-chart && cd hami-chart
-helm pull oci://709825985650.dkr.ecr.us-east-1.amazonaws.com/dynamia-intelligence/hami --version 1.0.2
-tar xf hami-1.0.2.tgz
+helm pull oci://709825985650.dkr.ecr.us-east-1.amazonaws.com/dynamia-intelligence/dynamia-ai-hami --version 1.0.2
+tar xf dynamia-ai-hami-1.0.2.tgz
 helm install hami ./hami --namespace hami-system --create-namespace
-```
 
 ### Verify HAMi
 
@@ -226,9 +225,9 @@ Proceed once the annotations are present and GPU capacity is reported.
 
 export DYNAMIA_VERSION=0.4.4
 rm -rf dynamia-chart && mkdir dynamia-chart && cd dynamia-chart
-helm pull oci://709825985650.dkr.ecr.us-east-1.amazonaws.com/dynamia-intelligence/dynamiaai --version "$DYNAMIA_VERSION"
-tar xf "dynamiaai-${DYNAMIA_VERSION}.tgz"
-helm install dynamia ./dynamiaai --namespace dynamia-system --create-namespace
+helm pull oci://709825985650.dkr.ecr.us-east-1.amazonaws.com/dynamia-intelligence/dynamia-ai --version "$DYNAMIA_VERSION"
+tar xf "dynamia-ai-${DYNAMIA_VERSION}.tgz"
+helm install dynamia ./dynamia-ai --namespace dynamia-system --create-namespace
 ```
 
 ### Verify platform component deployment
