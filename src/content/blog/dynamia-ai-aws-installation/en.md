@@ -195,7 +195,7 @@ aws ecr get-login-password --region us-east-1 \
 rm -rf hami-chart && mkdir hami-chart && cd hami-chart
 helm pull oci://709825985650.dkr.ecr.us-east-1.amazonaws.com/dynamia-intelligence/dynamia-ai-hami --version 1.0.2
 tar xf dynamia-ai-hami-1.0.2.tgz
-helm install hami ./hami --namespace hami-system --create-namespace
+helm install hami ./dynamia-ai-hami --namespace hami-system --create-namespace
 
 ### Verify HAMi
 
