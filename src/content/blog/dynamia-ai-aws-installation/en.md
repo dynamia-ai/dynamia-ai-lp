@@ -92,6 +92,7 @@ cat > custom-policy.json <<'JSON'
       "Sid": "VisualEditor0",
       "Effect": "Allow",
       "Action": [
+        "license-manager:ListReceivedLicenses",
         "license-manager:CheckoutLicense",
         "license-manager:GetLicenseUsage",
         "license-manager:CheckInLicense",
@@ -192,10 +193,9 @@ aws ecr get-login-password --region us-east-1 \
     --password-stdin 709825985650.dkr.ecr.us-east-1.amazonaws.com
 
 rm -rf hami-chart && mkdir hami-chart && cd hami-chart
-helm pull oci://709825985650.dkr.ecr.us-east-1.amazonaws.com/dynamia-intelligence/dynamia-ai-hami --version 1.0.1
-tar xf dynamia-ai-hami-1.0.1.tgz
+helm pull oci://709825985650.dkr.ecr.us-east-1.amazonaws.com/dynamia-intelligence/dynamia-ai-hami --version 1.0.3
+tar xf dynamia-ai-hami-1.0.3.tgz
 helm install hami ./dynamia-ai-hami --namespace hami-system --create-namespace
-```
 
 ### Verify HAMi
 
@@ -223,7 +223,7 @@ Proceed once the annotations are present and GPU capacity is reported.
 ```bash
 # If the registry login from the previous step has expired, run it again before continuing.
 
-export DYNAMIA_VERSION=0.4.4
+export DYNAMIA_VERSION=0.4.5
 rm -rf dynamia-chart && mkdir dynamia-chart && cd dynamia-chart
 helm pull oci://709825985650.dkr.ecr.us-east-1.amazonaws.com/dynamia-intelligence/dynamia-ai --version "$DYNAMIA_VERSION"
 tar xf "dynamia-ai-${DYNAMIA_VERSION}.tgz"
