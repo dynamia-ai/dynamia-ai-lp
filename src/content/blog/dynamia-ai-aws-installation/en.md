@@ -38,6 +38,7 @@ Before you start, confirm you have the following in place. If you still need to 
   - `metrics-server`
   - `Amazon EKS Pod Identity Agent`
   - `Amazon VPC CNI`
+  - `CoreDNS`
 - `kubectl` configured for that cluster ([install kubectl](https://kubernetes.io/docs/tasks/tools/))
 - `eksctl` version 0.32.0 or later ([install eksctl](https://eksctl.io/installation/))
 - AWS CLI configured with IAM permissions to create policies and service accounts ([install AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html))
