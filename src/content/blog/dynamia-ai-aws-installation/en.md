@@ -192,7 +192,7 @@ aws ecr get-login-password --region us-east-1 \
     --username AWS \
     --password-stdin 709825985650.dkr.ecr.us-east-1.amazonaws.com
 
-export HAMI_VERSION=1.0.3
+export HAMI_VERSION=1.0.5
 rm -rf hami-chart && mkdir hami-chart && cd hami-chart
 
 helm pull oci://709825985650.dkr.ecr.us-east-1.amazonaws.com/dynamia-intelligence/dynamia-ai-hami --version "$HAMI_VERSION"
@@ -225,7 +225,7 @@ Proceed once the annotations are present and GPU capacity is reported.
 ```bash
 # If the registry login from the previous step has expired, run it again before continuing.
 
-export DYNAMIA_VERSION=0.4.5
+export DYNAMIA_VERSION=0.4.7
 rm -rf dynamia-chart && mkdir dynamia-chart && cd dynamia-chart
 helm pull oci://709825985650.dkr.ecr.us-east-1.amazonaws.com/dynamia-intelligence/dynamia-ai --version "$DYNAMIA_VERSION"
 tar xf "dynamia-ai-${DYNAMIA_VERSION}.tgz"
