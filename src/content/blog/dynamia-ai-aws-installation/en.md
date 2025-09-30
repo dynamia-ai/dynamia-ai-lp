@@ -38,6 +38,7 @@ Before you start, confirm you have the following in place. If you still need to 
   - `metrics-server`
   - `Amazon EKS Pod Identity Agent`
   - `Amazon VPC CNI`
+  - `CoreDNS`
 - `kubectl` configured for that cluster ([install kubectl](https://kubernetes.io/docs/tasks/tools/))
 - `eksctl` version 0.32.0 or later ([install eksctl](https://eksctl.io/installation/))
 - AWS CLI configured with IAM permissions to create policies and service accounts ([install AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html))
@@ -64,6 +65,7 @@ Run `eksctl get addons --cluster <your-cluster-name>` and confirm the add-ons li
 ~ $ eksctl get addons --cluster <your-cluster-name>
 NAME                    VERSION                 STATUS  ISSUES  IAMROLE UPDATE AVAILABLE                                                                                                                        CONFIGURATION VALUES    NAMESPACE       POD IDENTITY ASSOCIATION ROLES
 cert-manager            v1.18.2-eksbuild.2      ACTIVE  0                                                                                                                                                                               cert-manager
+coredns                 v1.12.1-eksbuild.2      ACTIVE  0               v1.12.4-eksbuild.1,v1.12.3-eksbuild.1,v1.12.2-eksbuild.4,v1.12.2-eksbuild.1                                                                                     kube-system
 eks-pod-identity-agent  v1.3.8-eksbuild.2       ACTIVE  0                                                                                                                                                                               kube-system
 kube-proxy              v1.33.0-eksbuild.2      ACTIVE  0               v1.33.3-eksbuild.6,v1.33.3-eksbuild.4                                                                                                                           kube-system
 metrics-server          v0.8.0-eksbuild.2       ACTIVE  0                                                                                                                                                                               kube-system
