@@ -24,7 +24,7 @@ language: "zh"
 
 我们激动地宣布 HAMi 的最新版本正式发布！本次更新在硬件厂商生态支持、核心调度器优化、关键稳定性修复以及开发者社区建设方面取得了显著进展，旨在为用户提供更强大、更稳定、更易用的 GPU 资源管理和调度解决方案。
 
-![](https://dynamia-ai.feishu.cn/space/api/box/stream/download/asynccode/?code=MzE3NDdjYWNiNDUwNTM2MzNhNzRkY2M3NTJmMmYyNzFfcW92VWNwZTFOMnRvTnB5TkZ3Mjc5R2FyZzVpWmtwMXdfVG9rZW46U29vR2JlUU5ab3NJOUR4RnIwQmNJd0xobnRiXzE3NTk5OTc0MzE6MTc2MDAwMTAzMV9WNA)
+![1760022282394](/images/blog/hami-v2.7.0/1760022282394.png)
 
 ### 版本亮点速览
 
@@ -61,7 +61,7 @@ HAMi 在云原生社区持续落地，以下为近期的用户实践：
 
 本次版本对主流异构计算硬件平台的支持进行了深度优化和扩展，旨在为用户提供更广泛的选择和更高效的资源管理能力。
 
-##### **沐曦 MetaX - 支持 sGPU ****算力****显存****共享并接入 ****QoS**** 管理（三种模式），基于 MetaXLink 的智能调度 & WebUI 全面适配**
+##### **沐曦 MetaX - 支持 sGPU ****算力****显存共享并接入 ****QoS**** 管理（三种模式），基于 MetaXLink 的智能调度 & WebUI 全面适配**
 
 HAMi v2.7.0 版本为沐曦 MetaX GPU 提供了统一的调度方案，其核心特性包括：
 
@@ -121,13 +121,11 @@ Final Score = (10 * allocatedScore) - lossScore
 
 使用 `node-scheduler-policy=spread` 时，尽可能将 Metax 资源分配在同一个 Metaxlink 或 PCIe Switch 下，如下图所示：
 
-![](https://dynamia-ai.feishu.cn/space/api/box/stream/download/asynccode/?code=MTdjMzEyOGZhMjc0ZDk0ZWQ1Mzg2ZmJmMjY3NTViNTNfeXdkVjFRYkQyR2F1VEZYYTVvc2VzSE55R2xXTjUyd2xfVG9rZW46WHRNeWJEOUVjb3I0V1V4RFJOVWNXeUdzbmZnXzE3NTk5OTc0MzE6MTc2MDAwMTAzMV9WNA)
+![1760022392372](/images/blog/hami-v2.7.0/1760022392372.png)
 
 使用 `node-scheduler-policy=binpack` 时，分配 GPU 资源，以尽量减少对 MetaxXLink 拓扑的破坏，如下图所示：
 
-![](https://dynamia-ai.feishu.cn/space/api/box/stream/download/asynccode/?code=MTlmZjgwYTQ4ZDA4MWJhZDk3YzZiYjM1YTM5YjM5ZTJfbkV5eGtCbEo0MmVUYlM1a3lKS25BQ3QySVhKdFQyUm1fVG9rZW46Rjh0Q2JycUlVb1pLQ1Z4SVZLWWNuZmUwblFoXzE3NTk5OTc0MzE6MTc2MDAwMTAzMV9WNA)
-
-图 X 由沐曦提供（公众号编辑的时候加一个图示）
+![1760022407516](/images/blog/hami-v2.7.0/1760022407516.png)
 
 **使用方式**
 
@@ -190,7 +188,7 @@ spec:
 2. 如果 GPU 已被占用，则新任务的 QoS 注解必须严格等于卡上现有任务的 QoS，否则拒绝。
 3. 请求 100% 算力的独占任务不受此规则限制。
 
-![](https://dynamia-ai.feishu.cn/space/api/box/stream/download/asynccode/?code=NDlmY2MzMmYwYTQ0MDkwZTJlZTMyM2NmOGIxYmE0YWZfNkFrUFJ3ZkowSnBxS1IxMjZRY2dsRTVtQk1JVDB1SWNfVG9rZW46QTZWQWJITU1sbzJPbjh4REdJbmNHcWExbnFlXzE3NTk5OTc0MzE6MTc2MDAwMTAzMV9WNA)
+![1760022434252](/images/blog/hami-v2.7.0/1760022434252.png)
 
 **使用方式**
 
@@ -218,13 +216,7 @@ spec:
 
 WebUI 现已全面支持沐曦 MetaX GPU 的监控指标展示，提供直观的资源使用情况概览。
 
-![](https://dynamia-ai.feishu.cn/space/api/box/stream/download/asynccode/?code=YjExMjlmMGUzOGQyNTkwMTMwODJkYmQ1ZWViZTk1YjRfWkFtSkJ3ek9VN2xNOGpic0thMlBZSXdmUmZTd1FBYUlfVG9rZW46VUQ5TmJoMXJyb2c5alh4NEhjb2N1Qzdmbm1mXzE3NTk5OTc0MzE6MTc2MDAwMTAzMV9WNA)![](https://dynamia-ai.feishu.cn/space/api/box/stream/download/asynccode/?code=YzEzYWU4NjQ2OGY0Mjc3NzE3MjlhZDhhNWRmYjc1MzZfQzUxSnBlMVZOOWtmbGc1cDdCRXBHMFl3cUNVaGRiS05fVG9rZW46UEpsa2JPdDd4b0JkbzN4RGFGeGNlUU1abkxmXzE3NTk5OTc0MzE6MTc2MDAwMTAzMV9WNA)
-
-![](https://dynamia-ai.feishu.cn/space/api/box/stream/download/asynccode/?code=OTJiZmRiZGRmNWNlNjZkYzhhMzg0YzU1MTQyZGEzOGFfZ1k3ckVBVXpNV3JBb3kxQ0FzREZqdG5LUDQ3dlZ6cDNfVG9rZW46SjdJeGJYNW5Jb1ZCd2l4QVZQSGN5THNCbm9nXzE3NTk5OTc0MzE6MTc2MDAwMTAzMV9WNA)![](https://dynamia-ai.feishu.cn/space/api/box/stream/download/asynccode/?code=MDA1NzQyZTM4ZDMyZTc0YjIwYzYzYTViOGZjNGZlMTVfTVc4eTAza0tudTFFa2hEc0pLd0pZTzdJekdoOWduRmlfVG9rZW46V3g3d2JMOWVzb3FLUkJ4OWJHNGNmZXRpbkdIXzE3NTk5OTc0MzE6MTc2MDAwMTAzMV9WNA)
-
-![](https://dynamia-ai.feishu.cn/space/api/box/stream/download/asynccode/?code=NjlhZmJjZGI1YTc5M2Y2NTI4MGM5NDA1NzQ1OGU2YTdfMWNLcjhaaFdHOW4ybHI5VmdocUJEYnpZUlp5UzkzbTNfVG9rZW46TktCQ2J4MWtrbzNrRWN4cEpKYmN1MXNOblJnXzE3NTk5OTc0MzE6MTc2MDAwMTAzMV9WNA)![](https://dynamia-ai.feishu.cn/space/api/box/stream/download/asynccode/?code=MDlmMWViOWNhNjQ4OTI1NjY4YzFiZWQwNTNkYjA4MGFfNUlTZEtSMzV2dFZub0FRenZlMU1pYVhxTkU1bGRla2ZfVG9rZW46VFpFbWJLUExBb2FCSlN4Y2NBdWNCTVVlbllnXzE3NTk5OTc0MzE6MTc2MDAwMTAzMV9WNA)
-
-说明文档：MetaX GPU 支持说明 （https://github.com/Project-HAMi/HAMi/blob/master/docs/metax-support_cn.md）
+![1760022451378](/images/blog/hami-v2.7.0/1760022451378.png)说明文档：MetaX GPU 支持说明 （https://github.com/Project-HAMi/HAMi/blob/master/docs/metax-support_cn.md）
 
 使用文档：MetaX GPU 样例 （https://github.com/Project-HAMi/HAMi/tree/master/examples/metax）
 
@@ -261,7 +253,7 @@ HAMi 调度器对昆仑芯 XPU 的拓扑寻优，其核心目标是在分配多�
 * THEN: 立即在该 wing 内部完成所有分配。这是最优且唯一的选择。
 * ELSE: 尝试寻找预定义的跨 wing 互联方案作为补救。
 
-![](https://dynamia-ai.feishu.cn/space/api/box/stream/download/asynccode/?code=ZDRhY2I5MmUzYTc5YWY2YjBmNzUxZmIyMDA2OGU5MjhfNWRUVEJEc0JjRlVObDBOSjB2MkZCVnlMRFU2ak55bWVfVG9rZW46RVF4eGJjR3dIb2hQa2d4VDA1M2N1bWpRbnBlXzE3NTk5OTc0MzE6MTc2MDAwMTAzMV9WNA)
+![1760022543611](/images/blog/hami-v2.7.0/1760022543611.png)
 
 这个实现简单而高效，它放弃了复杂的组合计算，直接追求最理想的分配方案。
 
@@ -305,7 +297,7 @@ spec:
         kunlunxin.com/vxpu: 2
 ```
 
-![](https://dynamia-ai.feishu.cn/space/api/box/stream/download/asynccode/?code=ZTQwZmViN2I3MDBkYzg1MTZlYjg0ODE5ODM0MDcwYjBfaWVxMVRvT0hpZzNDdlZEMzJ1ZklVZVlhYWlKcXBONHJfVG9rZW46RTk4dWJDUXdmb3hYaTh4SGRDSWNJRkFNblViXzE3NTk5OTc0MzE6MTc2MDAwMTAzMV9WNA)
+![1760022561696](/images/blog/hami-v2.7.0/1760022561696.png)
 
 > 优先选择 leftwing -> 从 leftwing 的开头（索引 0）开始 -> 依次拿下 0 和 1。
 
@@ -320,8 +312,8 @@ spec:
 
 Related PRs:
 
-* https://github.com/Project-HAMi/HAMi/pull/1141
-* [https://github.com/Project-HAMi/HAMi/pull/1336](https://github.com/Project-HAMi/HAMi/pull/1337)
+* [https://github.com/Project-HAMi/HAMi/pull/1141](https://github.com/Project-HAMi/HAMi/pull/1141)
+* [https://github.com/Project-HAMi/HAMi/pull/1336](https://github.com/Project-HAMi/HAMi/pull/1336)
 * [https://github.com/Project-HAMi/HAMi/pull/1337](https://github.com/Project-HAMi/HAMi/pull/1337)
 * [https://github.com/Project-HAMi/HAMi/pull/1338](https://github.com/Project-HAMi/HAMi/pull/1338)
 * [https://github.com/Project-HAMi/HAMi/pull/1366](https://github.com/Project-HAMi/HAMi/pull/1366)
@@ -330,7 +322,7 @@ Related PRs:
 
 同时也特别感谢 **百度智能云** 和 **昆仑芯团队** 在整个过程中的深度支持，为这一特性的成功落地提供了关键助力。
 
-##### **AWS Neuron - 支持设备级和核心级两种资源****分配粒度和拓扑感知调度**
+##### **AWS Neuron - 支持设备级和核心级两种资源分配粒度和拓扑感知调度**
 
 AWS 自主设计 Inferentia / Trainium 芯片，是为了在其云服务中构建更加高效、成本可控的 AI 加速基础设施。Inferentia 偏向于 推理加速，Trainium 偏向于 训练加速。这些芯片专为 AI 工作负载设计，其设计目标不仅在算力提升，同时在功耗控制和成本效率上发力。Inferentia2 在性能／瓦特比（perf per watt）上做了显著优化，Trainium2 宣称比同类 GPU 实例节省 30–40%。 HAMi 这次也是突破性的完成了和 AWS 芯片的集成、包含调度、虚拟化、可观测性。
 
@@ -350,11 +342,11 @@ HAMi 对 AWS Neuron 的拓扑感知调度，其根本设计思想是基于先验
 2. 线性抽象： 它将节点上所有 Neuron 设备视为一个从 0 开始的连续编号列表（如 [0， 1， 2， ...]），而不是一个复杂的拓扑图。
 3. 强制连续分配： 这是最核心的规则。当任务请求 N 个设备时，调度器必须在此编号列表中找到一个长度为 N 的、完全空闲的、连续的设备块。如果节点有足够数量的空闲设备但它们不相邻，调度依然会失败。
 
-![](https://dynamia-ai.feishu.cn/space/api/box/stream/download/asynccode/?code=ZDNhYjk5Yzg1N2M1MmQ4ODdkNzliYTI3ZjEwNzI3NzRfYXdRTUg1SWNmQjRLUFlqdTRabTlKQzFmVmhOWUFNVjBfVG9rZW46SEg5c2I5ajl6b1lPRnh4UVdEb2NTUG1qbjVlXzE3NTk5OTc0MzE6MTc2MDAwMTAzMV9WNA)
+![1760022669789](/images/blog/hami-v2.7.0/1760022669789.png)
 
 此外，针对 Trainium 实例，策略更严格，只允许分配特定数量（如 4， 8， 16 个）的设备组，以匹配其物理上的高速互联集群。
 
-![](https://dynamia-ai.feishu.cn/space/api/box/stream/download/asynccode/?code=MDRhMzkxNThjZGVmZTljZDEzOGRhMjBlZjM3YTM5NDZfd0NtYzRzVmpRejNzWFgxQTN2MVF5VDM4MDRvRzdtTlRfVG9rZW46RXJRTGJqU05ub0NCS2p4QXJiYWM1TnN1bmdoXzE3NTk5OTc0MzE6MTc2MDAwMTAzMV9WNA)![](https://dynamia-ai.feishu.cn/space/api/box/stream/download/asynccode/?code=MDA3ODBmNTgwZDVlNjEyZTI4N2MyZTJhZTFjYjcyMDRfRVc3dWRza3lRczU2bGpJdUxSdW1Oek10VFgxNTQ3NjhfVG9rZW46UzlPNGI4b0lYb1RjVFZ4dkFqV2NZQXh3bk1jXzE3NTk5OTc0MzE6MTc2MDAwMTAzMV9WNA)
+![1760022681536](/images/blog/hami-v2.7.0/1760022681536.png)
 
 **使用方式**
 
@@ -484,13 +476,13 @@ Related PRs:
 
 调度器偏爱“刚刚好”的分配方案。如果一个任务需要 4 块 GPU，它会给一个恰好有 4 卡空闲 NVLink 组的节点打高分，而给一个需要从 8 卡组中拆分出 4 卡的节点打低分。**此举旨在防止宝贵的大块拓扑资源被打碎，避免“资源碎片化”。**
 
-![](https://dynamia-ai.feishu.cn/space/api/box/stream/download/asynccode/?code=YWVhZDM2ZTRlMWUxNWRmMWUzZDVhZTFmNmM5ZTNkZTBfMTI2cFVOa0Fqc1ZtaHJmaW14NUYzd3hYbEp3aVBBek5fVG9rZW46Q25KRmJTcHhBb3pSTm54ZmVCZWNKbFdWbnFmXzE3NTk5OTc0MzE6MTc2MDAwMTAzMV9WNA)
+![1760022704611](/images/blog/hami-v2.7.0/1760022704611.png)
 
 * 对于单卡任务，遵循“最小破坏”原则：
 
 调度器会尽力保护完整的拓扑组。它会优先选择那些不属于任何 NVLink 拓扑组的“独立”GPU 来满足单卡任务。只有当没有独立 GPU 可用时，才会考虑动用拓扑组内的资源。**此举确保了高速互联的 GPU 组合，被预留给真正需要它们的、更有价值的多卡任务。**
 
-![](https://dynamia-ai.feishu.cn/space/api/box/stream/download/asynccode/?code=OGI3M2M1YmYxMzE4ODg4NTc3NDg1NTU3Yzg0NDZhMDlfZzBsS1VmN3hRZzNlU3pFRDJoT3BKYlpPc0FmZHllSnJfVG9rZW46SmhMS2JpZWNDb1JzSWF4WVRKdGNQSXF3bllkXzE3NTk5OTc0MzE6MTc2MDAwMTAzMV9WNA)
+![1760022715503](/images/blog/hami-v2.7.0/1760022715503.png)
 
 **使用方式**
 
@@ -518,7 +510,7 @@ spec:
 
 Related PRs:
 
-* https://github.com/Project-HAMi/HAMi/pull/1018
+* [https://github.com/Project-HAMi/HAMi/pull/1018](https://github.com/Project-HAMi/HAMi/pull/1018)
 * [https://github.com/Project-HAMi/HAMi/pull/1276](https://github.com/Project-HAMi/HAMi/pull/1276)
 
 由衷感谢社区开发者 @lengrongfu，@fyp711 对该特性的贡献！
@@ -544,7 +536,7 @@ HAMi 引入了对 ResourceQuota 的扩展机制，使其能够智能地处理与
 1. 智能关联计算：HAMi 调度器能够识别出同一个 Pod 请求中的多个 GPU 资源，并将它们关联起来进行计算。对于上面的例子，HAMi 会正确地将总显存请求量计算为 2 （个 GPU） * 2000MB = 4000MB。这确保了 ResourceQuota 能够精确反映真实的资源消耗。
 2. 动态实时计算：对于按百分比或未指定具体值的请求，HAMi 会在调度决策时，根据 Pod 即将被分配到的物理 GPU 的实际规格，动态计算出确切的资源占用量并计入配额。例如，一个 50% 显存的请求若被调度到一块 24GB 的 GPU 上，ResourceQuota 将准确扣除 12GB。
 
-![](https://dynamia-ai.feishu.cn/space/api/box/stream/download/asynccode/?code=MWI1N2NmMjJlY2VhYzU5YmM0MzQ0ZGYyN2ZjMzA1ZGRfYzU3Rjk4QVlFenhHWWY5UGdxRkJNTVRmNlFiek14TDJfVG9rZW46SDgzR2J4V2hEbzVMM214c1ZDcWNEOUE0bnJ6XzE3NTk5OTc0MzE6MTc2MDAwMTAzMV9WNA)
+![1760022741019](/images/blog/hami-v2.7.0/1760022741019.png)
 
 **使用方式**
 
@@ -560,7 +552,7 @@ spec:
     limits.nvidia.com/gpumem: "3000" 
 ```
 
-使用文档：NVIDIA 扩展 ResourceQuota 指南 （https://project-hami.io/zh/docs/userguide/nvidia-device/using-resourcequota/）
+使用文档：NVIDIA 扩展 ResourceQuota 指南 （https://project-hami.io/docs/userguide/nvidia-device/using-resourcequota/）
 
 Related PRs:
 
@@ -597,9 +589,9 @@ HAMi 不仅关注底层硬件支持，也致力于与上层 AI 应用生态的�
 
 此外， **vLLM 社区近期正式合并了 **  **[[PR #579: Feat - Add Support HAMi Resources Variables]](https://github.com/vllm-project/production-stack/pull/579)** ，使 vLLM 原生支持 HAMi 。这意味着用户在运行 vLLM 时，可以直接基于 HAMi 的虚拟化与调度能力配置资源，进一步降低集成成本，提升兼容性与易用性。
 
-![](https://dynamia-ai.feishu.cn/space/api/box/stream/download/asynccode/?code=ZTVlNjg1N2U3ZWMzNWI1NDg1MDdkZTk1OTVkNGY5ODRfSXZuTWcwd3JEQUZyY25aaUdKdmcxb1lPQ0RwN3laT2VfVG9rZW46Qk5ETmJuNHQxb1dzdE94Q2lGaGNGV1FobkFkXzE3NTk5OTc0MzE6MTc2MDAwMTAzMV9WNA)
+![1760022750966](/images/blog/hami-v2.7.0/1760022750966.png)
 
-![](https://dynamia-ai.feishu.cn/space/api/box/stream/download/asynccode/?code=OTE3M2YwMGVlMDU5ZjI5MmM5YzM2MjNmYjA3MGFiZDlfelFRQTZsVGs4N25Vc0JQNFRtaGpGRDJpQjRWb040R0tfVG9rZW46UGtBQmJMY1lob1RUN0Z4WVB0d2NLNjRZbkRiXzE3NTk5OTc0MzE6MTc2MDAwMTAzMV9WNA)
+![1760022756700](/images/blog/hami-v2.7.0/1760022756700.png)
 
 Related PRs:
 
@@ -618,7 +610,7 @@ Xinference 是 Xorbits 开源的多模型推理框架，提供 Supervisor/Worker
 * 部署层面简化，用户无需二次开发即可直接原生使用 HAMi 的虚拟化能力；
 * 支持配额化与可观测性管理，更适合多用户、多任务并发的生产场景。
 
-![](https://dynamia-ai.feishu.cn/space/api/box/stream/download/asynccode/?code=OWU2YmEyNzNiNDdmZmZiYjJhNmMzOGM0NGQwMGRlYTRfV0JRVm9BdjNEcmw1NEhWTXZYU0MySm5xR0R0WTQ1U1ZfVG9rZW46TE8xZ2JYWUYxb2s4eGd4TzdJMWNhSE1ObjBkXzE3NTk5OTc0MzE6MTc2MDAwMTAzMV9WNA)![](https://dynamia-ai.feishu.cn/space/api/box/stream/download/asynccode/?code=Yzk5ZTAwMDY0NWM2NWRhMzE3MWEwY2M5NzkyOWVmZGVfWXU4UlNGU0VaVGpRMTBWZkxTRWNGWFFjVnRUZFl4ODVfVG9rZW46V0FmTmJlVjlwb3lWUnN4UjV3V2NnRGNLbjViXzE3NTk5OTc0MzE6MTc2MDAwMTAzMV9WNA)
+![1760022774131](/images/blog/hami-v2.7.0/1760022774131.png)
 
 Related PRs:
 
@@ -632,7 +624,7 @@ Volcano 提供的 GPU 虚拟化功能支持按显存和算力申请部分 GPU �
 
  **Volcano v1.12 提供了动态 MIG 切分与调度能力** ，可根据用户申请的 GPU 用量实时选择合适的 MIG 实例大小，并使用 Best-Fit 算法减少资源浪费。同时支持 BinPack 和 Spread 等 GPU 打分策略，以减少资源碎片并提升 GPU 利用率。用户可使用统一的 `volcano.sh/vgpu-number`、`volcano.sh/vgpu-cores`、`volcano.sh/vgpu-memory` API 申请资源，无需关注底层实现。
 
-![](https://dynamia-ai.feishu.cn/space/api/box/stream/download/asynccode/?code=MWIxNTJjMjBiNGM5OWRlODgyMDJlNDgxMDRhY2ViMDdfNnQydmE2WjJOQUNScFQ2djJudHprTDB4WmJoUUdzTUhfVG9rZW46SndUNGJjMzhEbzV4RFh4T2FZZmNDOEJ2blpnXzE3NTk5OTc0MzE6MTc2MDAwMTAzMV9WNA)
+![1760022781830](/images/blog/hami-v2.7.0/1760022781830.png)
 
 ```YAML
 apiVersion: v1
@@ -652,11 +644,14 @@ spec:
           volcano.sh/vgpu-memory: 8000
 ```
 
-设计文档：Dynamic MIG 设计文档（https://github.com/volcano-sh/volcano/blob/master/docs/design/dynamic-mig.md）
+设计文档：Dynamic MIG 设计文档（[https://github.com/volcano-sh/volcano/blob/master/docs/design/dynamic-mig.md](https://github.com/volcano-sh/volcano/blob/master/docs/design/dynamic-mig.md)）
 
-使用文档：Dynamic MIG 使用文档（https://volcano.sh/zh/docs/gpu_virtualization/）
+使用文档：Dynamic MIG 使用文档（[https://volcano.sh/docs/gpu_virtualization/](https://volcano.sh/docs/gpu_virtualization/)）
 
- **Related PRs** : https://github.com/volcano-sh/volcano/pull/4290, https://github.com/volcano-sh/volcano/pull/3953
+ **Related PRs** :
+
+- [https://github.com/volcano-sh/volcano/pull/4290](https://github.com/volcano-sh/volcano/pull/4290)
+- https://github.com/volcano-sh/volcano/pull/3953
 
 由衷感谢社区开发者 @sailorvii， @archlitchi 对该特性的贡献！
 
@@ -664,11 +659,7 @@ spec:
 
 HAMi 社区的壮大离不开每一位贡献者的辛勤付出！
 
-#### 贡献者
-
-![img](https://dynamia-ai.feishu.cn/space/api/box/stream/download/asynccode/?code=N2ExNDMyY2M1YmJlM2QxZmQxYzYwM2NjZDdiMWQwYzVfd012ZnA1bExFSElqaHpMaXEzUUJSS3pGTFROenBPNkxfVG9rZW46WnVHcmIxTDFzb3FNQ1Z4bEdXRmNOVXAzblVUXzE3NTk5OTc0MzE6MTc2MDAwMTAzMV9WNA)
-
-![img](https://dynamia-ai.feishu.cn/space/api/box/stream/download/asynccode/?code=MWI3N2MwMjU0OGMwZjIxMjk0NmNkZWU1OWMxNmY2NWVfbEg2NE92NGdzbXEzblhhZTVMQ2cxUzVqbDZPR1RVd2ZfVG9rZW46TDJNamJjUTIzb1lpR3J4dUxMOWN3U0lCbmFmXzE3NTk5OTc0MzE6MTc2MDAwMTAzMV9WNA)
+![1760022871607](/images/blog/hami-v2.7.0/1760022871607.png)
 
 为进一步推动 HAMi 社区的发展与治理，咱们迎来了新的贡献者与角色任命：
 

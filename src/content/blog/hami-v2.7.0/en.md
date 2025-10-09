@@ -51,7 +51,7 @@ In Vietnam Telecom's production practice, HAMi demonstrated robust GPU resource 
 
 ## AWS Neuron — Device- and **Core-Level** Sharing with Topology Awareness
 
-AWS-designed **Inferentia** and **Trainium** accelerators aim to deliver more efficient and cost-controlled AI infrastructure on AWS. **Inferentia** targets inference acceleration, while **Trainium** targets training. These chips are purpose-built for AI workloads, focusing not only on raw performance but also on **performance-per-watt** and overall cost efficiency. **Inferentia2** brings notable gains in perf-per-watt, and **Trainium2** is stated to reduce costs by **30–40%** versus comparable GPU instances. HAMi now provides integrated support for these AWS accelerators—covering **scheduling, ** **virtualization**  **, and observability** .
+AWS-designed **Inferentia** and **Trainium** accelerators aim to deliver more efficient and cost-controlled AI infrastructure on AWS. **Inferentia** targets inference acceleration, while **Trainium** targets training. These chips are purpose-built for AI workloads, focusing not only on raw performance but also on **performance-per-watt** and overall cost efficiency. **Inferentia2** brings notable gains in perf-per-watt, and **Trainium2** is stated to reduce costs by **30–40%** versus comparable GPU instances. HAMi now provides integrated support for these AWS accelerators—covering **scheduling**, **virtualization**  **, and observability** .
 
 **What HAMi adds for ****AWS****Neuron**
  HAMi enables **fine-grained scheduling and sharing** of AWS **Trainium** and **Inferentia** accelerators in Kubernetes.
@@ -71,11 +71,11 @@ AWS-designed **Inferentia** and **Trainium** accelerators aim to deliver more ef
 2. **Linear abstraction.** All Neuron resources on a node are modeled as a **contiguous, zero-indexed list** (e.g., `[0, 1, 2, …]`), rather than a complex graph.
 3. **Contiguous-block allocation (hard rule).** When a workload requests **N** devices/cores, the scheduler must find a **fully free, contiguous block of length N** within that list. If a node has enough free units but they are  **non-adjacent** , the placement  **fails** .
 
-![](https://dynamia-ai.feishu.cn/space/api/box/stream/download/asynccode/?code=MDE4YjAzZTQzODdiMTNlODVlMmRiNGM3N2YzZjA2YzRfcDd1Qmw2WXo4T05iSjh2U3NZODNINmFoMFBSdzM5aXVfVG9rZW46Vm01TGJTcWtUb200RVZ4S0hwVGNvVUxHbmpoXzE3NTk5OTkwNDc6MTc2MDAwMjY0N19WNA)
+![1760022669789](/images/blog/hami-v2.7.0/1760022669789.png)
 
 For Trainium instances, allocation is constrained to specific contiguous group sizes (e.g., 4/8/16) to align with the underlying high-bandwidth interconnect topology.
 
-![img](https://dynamia-ai.feishu.cn/space/api/box/stream/download/asynccode/?code=YmVjZmI2N2JjMDBlZmY4ODYxZmVhOGMzY2U4Mzk3ZDFfSE5BWHJOV2IxV1ZzcTlsNEhzbG81Y09VVDR0aWE5YjdfVG9rZW46RElOeGJsS2thb1B2aUV4U0NvYmNLT0RFbkJnXzE3NTk5OTkwOTM6MTc2MDAwMjY5M19WNA)
+![1760022681536](/images/blog/hami-v2.7.0/1760022681536.png)
 
 **Examples**
 
@@ -159,13 +159,13 @@ When a GPU-requesting workload arrives, the scheduler reconstructs each node’s
 
 Prefer **exact-size** NVLink groups. If a job needs 4 GPUs, a node with a  **free 4-** **GPU** **NVLink set** scores higher than a node that would  **carve 4 out of an 8-GPU NVLink group** . This avoids breaking large, valuable topology blocks and reduces fragmentation.
 
-![](https://dynamia-ai.feishu.cn/space/api/box/stream/download/asynccode/?code=OTg0MmQ2NGFiYTg3YmQ0ZWYwMGZjZWEwYTZlYzhlNWNfbXlWa3Q1ckpreTFMZ3M4dWUwSGxVMWFZblJjQTNVWmhfVG9rZW46VGM2RmJXWXZwb29nZTR4ZXFsNmN5RDhFbnFoXzE3NTk5OTkwMjQ6MTc2MDAwMjYyNF9WNA)
+![1760023921307](/images/blog/hami-v2.7.0/1760023921307.png)
 
-* **Single-GPU jobs — “Least-disruption” principle.**
+* **Single-GPU jobs — "Least-disruption" principle.**
 
 Prefer **standalone** GPUs that are not members of any NVLink group. Only consume GPUs from within NVLink groups when no standalone options remain. This preserves intact high-bandwidth groups for workloads that truly need them.
 
-![](https://dynamia-ai.feishu.cn/space/api/box/stream/download/asynccode/?code=MzhhMTIzODc5YjMxY2Q4MWU4MTFmMzAxNjY0ZWI5YWVfTm1xZER0RWFVeGUwbll3V3F2YlFUekhHRzY5dVEwRHNfVG9rZW46U0FKMmIzTFAxb09VdEN4c3dYbGNTT3NpbkxoXzE3NTk5OTkwMjQ6MTc2MDAwMjYyNF9WNA)
+![1760023911556](/images/blog/hami-v2.7.0/1760023911556.png)
 
 ```YAML
 apiVersion: v1
@@ -209,7 +209,7 @@ Related PRs:
 * **Linked accounting:** Understands per-GPU semantics and computes the **true total** for quota enforcement.
 * **Dynamic deduction:** Resolves percent-based/unspecified values **at scheduling time** based on the selected device.
 
-![](https://dynamia-ai.feishu.cn/space/api/box/stream/download/asynccode/?code=OGQwOWVkN2JjZTNmNGEzNGVhMTk0MjIwYTAyMjNlZjBfWWZRbWF0RFk3T1FDVkoyZFEzRW1XOXBvU0gxcmtobEJfVG9rZW46WE10NGJEWFRWb2llTkJ4Nnh6Y2NaWTE2bm5nXzE3NTk5OTkxMzU6MTc2MDAwMjczNV9WNA)
+![1760023762746](/images/blog/hami-v2.7.0/1760023762746.png)
 
 **Example**
 
@@ -252,11 +252,13 @@ During Tensor Parallelism (TP), vLLM relies on the **NCCL** library for high-per
 3. **Symbol resolution fix:** Resolved intermittent symbol reference issues that could lead to process  **hangs** , increasing system robustness.
 4. **Context management fix:** Corrected context-size accounting when contexts are recreated, preventing potential errors caused by size mismatches.
 
- In addition, the vLLM community has merged [[PR #579: Feat - Add Support HAMi Resources Variables]](https://github.com/vllm-project/production-stack/pull/579) enabling **native HAMi support** in vLLM. This allows users to configure resources directly via HAMi’s virtualization and scheduling layer, reducing integration overhead while improving compatibility and ease of use.
+ In addition, the vLLM community has merged [[PR #579: Feat - Add Support HAMi Resources Variables]](https://github.com/vllm-project/production-stack/pull/579) enabling **native HAMi support** in vLLM. This allows users to configure resources directly via HAMi's virtualization and scheduling layer, reducing integration overhead while improving compatibility and ease of use.
 
-![img](https://dynamia-ai.feishu.cn/space/api/box/stream/download/asynccode/?code=MDdkNjcyMWRhYzcwYjM0MWRhMmRhMmY3ZTlkZWJhZjZfUjBSM1dNUkhjRTVBRnlDWXJZTlg2bDFOVHJ4d3pyZ0JfVG9rZW46U0dsdWJ0UkJybzd6QXl4UU52VmNWbnFXbkZkXzE3NTk5OTkzNDI6MTc2MDAwMjk0Ml9WNA)![](https://dynamia-ai.feishu.cn/space/api/box/stream/download/asynccode/?code=YjE2NjAzZjYwYjVmMDJkZDI3YThkYTZlOTZkZmZmZjRfaXlia0ZSNzN3U0Y1cjQzckFFV0VCeTBTUVZldkY0MndfVG9rZW46U0dsdWJ0UkJybzd6QXl4UU52VmNWbnFXbkZkXzE3NTk5OTgwMDA6MTc2MDAwMTYwMF9WNA)
+![1760022750966](/images/blog/hami-v2.7.0/1760022750966.png)
 
-**![](https://dynamia-ai.feishu.cn/space/api/box/stream/download/asynccode/?code=YmRlMzhmMDJmM2U1MzcyNDQwNTA4N2FhZDY2OGU4Y2RfOXVDMUptS0hvTGpoMlZZczUxaEIwNWlha0lLY05YbVRfVG9rZW46UEtZYmJKaWJ5b0V5Z0l4WWh3WWMxWGg0bkRlXzE3NTk5OTkzNjk6MTc2MDAwMjk2OV9WNA)Related PRs**
+![1760022756700](/images/blog/hami-v2.7.0/1760022756700.png)
+
+**Related PRs**
 
 * [https://github.com/vllm-project/production-stack/pull/579](https://github.com/vllm-project/production-stack/pull/579)
   *Sincere thanks to @andresd95 for the contribution.*
@@ -269,7 +271,7 @@ In enterprise practice, Xinference often encounters: (a)  **small models monopol
 
 To address this, the community merged  **[** **PR #6]** , adding **native HAMi ****vGPU**** support** in the Helm chart. With a simple flag, users can enable HAMi and propagate resource variables such as `gpucores` and `gpumem-percentage` through to both Supervisor and Worker.
 
-![](https://dynamia-ai.feishu.cn/space/api/box/stream/download/asynccode/?code=NDE4ZjA0NWFlZTBiNzZmYTYxODg4YTc2NGEzZmQ1M2JfNTJUamdyQ0VpdFlXUWpSYkNYc0R0OExldTFUeVNvbm1fVG9rZW46WTEzTWJhdkhFbzBDZWZ4VVM1cmN5UlRRbk1nXzE3NTk5OTgwMDA6MTc2MDAwMTYwMF9WNA)![](https://dynamia-ai.feishu.cn/space/api/box/stream/download/asynccode/?code=OGQ3MmUwOWUwOTQyNGExZWYzYTEwYWM0YjhjYTZkOTlfbXdKeGJUdzd5UG1BQ3dEbVdGTGNBdzZBcXdYcDVCNmxfVG9rZW46WTEzTWJhdkhFbzBDZWZ4VVM1cmN5UlRRbk1nXzE3NTk5OTkzNzY6MTc2MDAwMjk3Nl9WNA)![](https://dynamia-ai.feishu.cn/space/api/box/stream/download/asynccode/?code=YzBmZjBlOTljNTQ2ZjdmZmIzMzc2ZTA1NmI4NDhhYWZfb2EzOXc5elVRSmo0WmlieTBQSHVQdVN0MGZ1YkV2ZXNfVG9rZW46R3J0U2JIR0NEb0NHVnh4S1dBb2NWQnJLblVlXzE3NTk5OTkzNzY6MTc2MDAwMjk3Nl9WNA)![](https://dynamia-ai.feishu.cn/space/api/box/stream/download/asynccode/?code=NzIwYzk4N2IzNjQ5YTk2MTJhMjdiMTQyMDhkNGRlZmNfdGk3N1l1MlpHNUZzTFA3bHY1Mms5cDFkMlBCWnZlRmNfVG9rZW46R3J0U2JIR0NEb0NHVnh4S1dBb2NWQnJLblVlXzE3NTk5OTgwMDA6MTc2MDAwMTYwMF9WNA)
+![1760022774131](/images/blog/hami-v2.7.0/1760022774131.png)
 
 **Outcomes**
 
@@ -288,7 +290,7 @@ Volcano’s GPU virtualization supports requesting **partial GPU resources** (me
 
 **Volcano v1.12** introduces **dynamic** ***MIG** *creation and scheduling** . It selects MIG instance sizes **at runtime** based on requested GPU usage and applies a **best-fit** strategy to reduce waste. It also supports **binpack** and **spread** scoring to control fragmentation and boost utilization. Users request resources via a **unified ****API** (`volcano.sh/vgpu-number`, `…/vgpu-cores`, `…/vgpu-memory`) without worrying about the underlying implementation.
 
-![](https://dynamia-ai.feishu.cn/space/api/box/stream/download/asynccode/?code=NjRmNDYxOTY5MzBiNDUyNGQ3YTNmMmIwNmQ5YTdmYmRfckJWWjJYYjhsejFLa05SbTZ3VmRKakZsa0JVUXFMYUtfVG9rZW46WmZvb2Joa1pyb3F3N2p4V3NWQ2NtTDRYbm5lXzE3NTk5OTkyNTU6MTc2MDAwMjg1NV9WNA)![](https://dynamia-ai.feishu.cn/space/api/box/stream/download/asynccode/?code=YTkyMWM2MGUxMDBlNWZmMTYzMTY0NTcyNzAyYjk4ZDJfTWhvOG9UdWsyQ25hcndZT2wwZEhjcTRBTHMxN2RzZ0JfVG9rZW46WmZvb2Joa1pyb3F3N2p4V3NWQ2NtTDRYbm5lXzE3NTk5OTgwMDA6MTc2MDAwMTYwMF9WNA)
+![1760022781830](/images/blog/hami-v2.7.0/1760022781830.png)
 
 **Example**
 
@@ -328,6 +330,7 @@ spec:
 * Extended ResourceQuota (multi-GPU correctness)
 
 **Stability & quality** :
+
 * Safer type conversions; CI build fixes (incl. 910B4-1 template)
 * vGPU metric corrections; allocation fixes
 * Linting & refactors for a cleaner codebase
@@ -346,9 +349,8 @@ spec:
 
 # Contributors & New Roles
 
-![](https://dynamia-ai.feishu.cn/space/api/box/stream/download/asynccode/?code=OTcwZmYxMjhiZjk4OTE5YjZkOTZmMWM5NmY3NDU0OTJfSUQ1WnVHanE0d2F1NVBQY1lKbU1heUJBN0tidlB1UkNfVG9rZW46TTB2UWJXZXN6b3BpUzl4YzJyWmNoWnNsbktMXzE3NTk5OTkxNzQ6MTc2MDAwMjc3NF9WNA)![](https://dynamia-ai.feishu.cn/space/api/box/stream/download/asynccode/?code=MzJiYWU0MWY3YjUwZmJmOGMzOTAyMzJhYWNiYjExNzNfYTBFYWY2SUFUS2xUSzFLVDR0bDVDVkNqbjBUUFJKMTdfVG9rZW46S2pHTGI3c1hEb0EySTZ4M2FDUGNiYlhabjJkXzE3NTk5OTkxNzQ6MTc2MDAwMjc3NF9WNA)
+![1760022871607](/images/blog/hami-v2.7.0/1760022871607.png)
 
-* **HAMi Member:** @fyp711
 * **HAMi Member:** @fyp711
 * **HAMi Reviewers:** @lengrongfu, @chaunceyjiang, @Shouren, @ouyangluwei163
 * **volcano-vgpu-device-plugin Reviewer & Approver:** @SataQiu
