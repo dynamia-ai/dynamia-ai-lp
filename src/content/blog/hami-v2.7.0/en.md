@@ -365,14 +365,3 @@ spec:
 * **Kubernetes DRA:** First-class **Dynamic Resource Allocation** for finer-grained, policy-driven heterogeneous scheduling.
 * **WebUI:** More analytics, custom alerts, and historical insights.
 * **Ecosystem** **:** Deeper integrations across hardware and AI frameworks to broaden real-world coverage.
-
----
-
-HAMi, short for Heterogeneous AI Computing Virtualization Middleware, is a "one-stop" architecture designed to manage heterogeneous AI computing devices in Kubernetes clusters, providing sharing capabilities and task-level resource isolation for heterogeneous AI devices. HAMi is committed to improving the utilization of heterogeneous computing devices in Kubernetes clusters, providing a unified reuse interface for different types of heterogeneous devices. Currently, it is a CNCF Sandbox project and has been included in the CNCF CNAI category technology landscape.
-
-![p5](/images/blog/PREP-EDU-HAMi/p5.png)
-
-Dynamia focuses on CNCF HAMi as the core foundation, providing flexible, reliable, on-demand, and elastic GPU virtualization and heterogeneous computing scheduling, and unified management global solutions. It can be deployed in a plug-in, lightweight, non-intrusive way in any public cloud, private cloud, or hybrid cloud environment, and supports heterogeneous chips such as NVIDIA, Ascend, Muxi, Cambricon, Hygon, Moore Threads, and Biren.
-
-> Website: [https://dynamia.ai](https://dynamia.ai)
-> Email: [info@dynamia.ai](mailto:info@dynamia.ai)

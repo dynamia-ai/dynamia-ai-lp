@@ -717,12 +717,3 @@ HAMi 社区的壮大离不开每一位贡献者的辛勤付出！
 * **生态系统扩展** ：持续与更多硬件厂商和 AI 框架进行深度集成，拓宽 HAMi 的应用场景，打造更开放、更繁荣的异构计算生态。
 
 感谢所有社区成员和贡献者的大力支持！期待与大家共同建设更强大的 HAMi！在“芯”与“序”的坐标中，绘制更远的开源航图。
-
-HAMi（Heterogeneous AI Computing Virtualization Middleware，异构 AI 计算虚拟化中间件）是一个旨在管理 Kubernetes 集群中异构 AI 计算设备的"一站式"架构，为异构 AI 设备提供共享能力和任务级别的资源隔离。HAMi 致力于提高 Kubernetes 集群中异构计算设备的利用率，为不同类型的异构设备提供统一的复用接口。目前是 CNCF Sandbox 项目，并已纳入 CNCF CNAI 类别技术全景图。
-
-![p5](/images/blog/PREP-EDU-HAMi/p5.png)
-
-Dynamia 聚焦 CNCF HAMi 为核心基座，提供灵活、可靠、按需、弹性的 GPU 虚拟化和异构算力调度、统一管理全球化解决方案。可以在任何公有云、私有云、混合云环境下以插件式、轻量化、无侵入的方式部署，并支持 NVIDIA、昇腾、沐曦、寒武纪、海光、摩尔线程、壁仞等异构芯片。
-
-> 官网：[https://dynamia.ai](https://dynamia.ai)
-> 邮箱：[info@dynamia.ai](mailto:info@dynamia.ai)
