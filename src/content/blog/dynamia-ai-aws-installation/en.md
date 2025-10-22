@@ -244,7 +244,7 @@ helm pull oci://709825985650.dkr.ecr.us-east-1.amazonaws.com/dynamia-intelligenc
 tar xf "dynamia-ai-${DYNAMIA_VERSION}.tgz"
 helm install dynamia ./dynamia-ai --namespace dynamia-system --create-namespace \
 # uncomment to using neuron device
-# --set monitoring.vendorRules.neuron.enbaled=true
+# --set monitoring.vendorRules.neuron.enabled=true
 ```
 
 ### Verify platform component deployment
