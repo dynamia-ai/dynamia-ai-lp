@@ -238,7 +238,7 @@ Proceed once the annotations are present and GPU capacity is reported.
 ```bash
 # If the registry login from the previous step has expired, run it again before continuing.
 
-export DYNAMIA_VERSION=0.4.9
+export DYNAMIA_VERSION=0.4.10
 rm -rf dynamia-chart && mkdir dynamia-chart && cd dynamia-chart
 helm pull oci://709825985650.dkr.ecr.us-east-1.amazonaws.com/dynamia-intelligence/dynamia-ai --version "$DYNAMIA_VERSION"
 tar xf "dynamia-ai-${DYNAMIA_VERSION}.tgz"
