@@ -38,6 +38,8 @@ Before you start, confirm you have the following in place. If you still need to 
   - `metrics-server`
   - `Amazon EKS Pod Identity Agent`
   - `Amazon VPC CNI`
+  - `Amazon EBS CSI Driver`.  
+**Note:** Disable EKS Auto Mode to avoid compatibility issues. 
 - `kubectl` configured for that cluster ([install kubectl](https://kubernetes.io/docs/tasks/tools/))
 - `eksctl` version 0.32.0 or later ([install eksctl](https://eksctl.io/installation/))
 - AWS CLI configured with IAM permissions to create policies and service accounts ([install AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html))
@@ -56,6 +58,9 @@ aws sts get-caller-identity
 
 # Expected: 0.32.0 or later
 eksctl version
+
+# Connect to your cluster
+aws eks update-kubeconfig --region <your-region> --name <your-cluster-name>
 ```
 
 Run `eksctl get addons --cluster <your-cluster-name>` and confirm the add-ons listed above are present and report `ACTIVE` status before continuing. Such as
@@ -63,6 +68,7 @@ Run `eksctl get addons --cluster <your-cluster-name>` and confirm the add-ons li
 ```bash
 ~ $ eksctl get addons --cluster <your-cluster-name>
 NAME                    VERSION                 STATUS  ISSUES  IAMROLE UPDATE AVAILABLE                                                                                                                        CONFIGURATION VALUES    NAMESPACE       POD IDENTITY ASSOCIATION ROLES
+aws-ebs-csi-driver      v1.49.0-eksbuild.1      ACTIVE  0                                                                                                                                                          kube-system      arn:aws:iam::265950574560:role/AmazonEKSPodIdentityAmazonEBSCSIDriverRole
 cert-manager            v1.18.2-eksbuild.2      ACTIVE  0                                                                                                                                                                               cert-manager
 eks-pod-identity-agent  v1.3.8-eksbuild.2       ACTIVE  0                                                                                                                                                                               kube-system
 kube-proxy              v1.33.0-eksbuild.2      ACTIVE  0               v1.33.3-eksbuild.6,v1.33.3-eksbuild.4                                                                                                                           kube-system
@@ -130,8 +136,12 @@ Dynamia AI Platform relies on several open-source components. Install them befor
 helm install prometheus \
   oci://ghcr.io/prometheus-community/charts/kube-prometheus-stack \
   --namespace monitoring \
-  --create-namespace
+  --create-namespace \
+  --set prometheus.prometheusSpec.storageSpec.volumeClaimTemplate.spec.storageClassName=gp2 \
+  --set prometheus.prometheusSpec.storageSpec.volumeClaimTemplate.spec.accessModes[0]=ReadWriteOnce \
+  --set prometheus.prometheusSpec.storageSpec.volumeClaimTemplate.spec.resources.requests.storage=50Gi
 ```
+**Note:** This command just creates basic gp2 storage for Prometheus. You can change the storageClassName to your preferred storage class.
 
 ### 3.2 Envoy Gateway
 
@@ -147,7 +157,7 @@ helm install eg \
 
 Install cert-manager from the EKS console under **Cluster → Add-ons → Community add-ons**, or follow the [AWS documentation](https://docs.aws.amazon.com/eks/latest/userguide/lbc-manifest.html#lbc-cert).
 
-### 3.4 (Optional) DCGM exporter for NVIDIA GPU nodes
+### 3.4 DCGM exporter for NVIDIA GPU nodes (FOR NVIDIA GPU CLUSTER ONLY)
 
 ```bash
 helm repo add gpu-helm-charts https://nvidia.github.io/dcgm-exporter/helm-charts
@@ -159,6 +169,9 @@ helm install dcgm-exporter \
 
 kubectl label node <YOUR-NVIDIA-NODE> gpu=on
 ```
+
+### 3.5 Neuron Device Plugin and Monitor (FOR NEURON CLUSTER ONLY)
+You can refer to [Neuron Device Plugin](https://awsdocs-neuron.readthedocs-hosted.com/en/latest/containers/kubernetes-getting-started.html#neuron-device-plugin) and [Neuron Monitor](https://awsdocs-neuron.readthedocs-hosted.com/en/latest/containers/kubernetes-getting-started.html#neuron-monitor-daemonset) instructions to install Neuron Device Plugin and Neuron Monitor.
 
 ### Verify dependency readiness
 
@@ -192,7 +205,7 @@ aws ecr get-login-password --region us-east-1 \
     --username AWS \
     --password-stdin 709825985650.dkr.ecr.us-east-1.amazonaws.com
 
-export HAMI_VERSION=1.0.5
+export HAMI_VERSION=1.0.6
 rm -rf hami-chart && mkdir hami-chart && cd hami-chart
 
 helm pull oci://709825985650.dkr.ecr.us-east-1.amazonaws.com/dynamia-intelligence/dynamia-ai-hami --version "$HAMI_VERSION"
@@ -225,11 +238,13 @@ Proceed once the annotations are present and GPU capacity is reported.
 ```bash
 # If the registry login from the previous step has expired, run it again before continuing.
 
-export DYNAMIA_VERSION=0.4.7
+export DYNAMIA_VERSION=0.4.10
 rm -rf dynamia-chart && mkdir dynamia-chart && cd dynamia-chart
 helm pull oci://709825985650.dkr.ecr.us-east-1.amazonaws.com/dynamia-intelligence/dynamia-ai --version "$DYNAMIA_VERSION"
 tar xf "dynamia-ai-${DYNAMIA_VERSION}.tgz"
-helm install dynamia ./dynamia-ai --namespace dynamia-system --create-namespace
+helm install dynamia ./dynamia-ai --namespace dynamia-system --create-namespace \
+# uncomment to using neuron device
+# --set monitoring.vendorRules.neuron.enabled=true
 ```
 
 ### Verify platform component deployment
