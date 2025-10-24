@@ -208,14 +208,3 @@ HAMi 对 NVIDIA GPU 的拓扑感知调度，在设计上体现了清晰的工程
   * [https://github.com/Project-HAMi/HAMi/pull/1276](https://github.com/Project-HAMi/HAMi/pull/1276)
 
 再次由衷感谢社区开发者 @lengrongfu，@fyp711 对该特性的贡献！
-
----
-
-HAMi（Heterogeneous AI Computing Virtualization Middleware，异构 AI 计算虚拟化中间件）是一个旨在管理 Kubernetes 集群中异构 AI 计算设备的"一站式"架构，为异构 AI 设备提供共享能力和任务级别的资源隔离。HAMi 致力于提高 Kubernetes 集群中异构计算设备的利用率，为不同类型的异构设备提供统一的复用接口。目前是 CNCF Sandbox 项目，并已纳入 CNCF CNAI 类别技术全景图。
-
-![p5](/images/blog/PREP-EDU-HAMi/p5.png)
-
-Dynamia 聚焦 CNCF HAMi 为核心基座，提供灵活、可靠、按需、弹性的 GPU 虚拟化和异构算力调度、统一管理全球化解决方案。可以在任何公有云、私有云、混合云环境下以插件式、轻量化、无侵入的方式部署，并支持 NVIDIA、昇腾、沐曦、寒武纪、海光、摩尔线程、壁仞等异构芯片。
-
-> 官网：[https://dynamia.ai](https://dynamia.ai)
-> 邮箱：[info@dynamia.ai](mailto:info@dynamia.ai)
