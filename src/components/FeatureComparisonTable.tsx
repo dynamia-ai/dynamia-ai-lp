@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 interface FeatureProps {
   name: string;
   hamiStatus: string | boolean;
-  kantaloupeStatus: boolean;
+  kantaloupeStatus: string | boolean;
 }
 
 // 定义表格数据结构，用于类型检查
@@ -53,19 +53,36 @@ export default function FeatureComparisonTable() {
   
   // 渲染状态标记
   const renderStatus = (status: string | boolean) => {
-    if (typeof status === 'string' && status.startsWith('✅')) {
-      // 显示带备注的状态
-      return (
-        <div className="flex flex-col items-center">
-          <div className="rounded-full bg-primary p-1 w-5 h-5 flex items-center justify-center">
-            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M5 13l4 4L19 7" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
+    if (typeof status === 'string') {
+      const trimmedStatus = status.trim();
+
+      if (trimmedStatus.startsWith('✅')) {
+        const note = trimmedStatus.replace('✅', '').trim();
+
+        return (
+          <div className="flex flex-col items-center">
+            <div className="rounded-full bg-primary p-1 w-5 h-5 flex items-center justify-center">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5 13l4 4L19 7" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </div>
+            {note ? (
+              <span className="text-xs text-gray-500 mt-1 text-center">
+                {note}
+              </span>
+            ) : null}
           </div>
-          <span className="text-xs text-gray-500 mt-1 text-center">{status.replace('✅', '').trim()}</span>
+        );
+      }
+
+      return (
+        <div className="text-sm font-semibold text-gray-900 text-center">
+          {trimmedStatus}
         </div>
       );
-    } else if (status === true) {
+    }
+
+    if (status === true) {
       return (
         <div className="rounded-full bg-primary p-1 w-5 h-5 flex items-center justify-center mx-auto">
           <svg viewBox="0 0 24 24" width="16" height="16" fill="none" xmlns="http://www.w3.org/2000/svg">

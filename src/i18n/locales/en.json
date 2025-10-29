@@ -204,6 +204,21 @@
             ]
           },
           {
+            "name": "Scale",
+            "features": [
+              {
+                "name": "Nodes",
+                "hamiStatus": "1 - 20 nodes",
+                "kantaloupeStatus": "20 - 1000 nodes"
+              },
+              {
+                "name": "GPUs",
+                "hamiStatus": "1 - 160 GPUs",
+                "kantaloupeStatus": "100 - 8000 GPUs"
+              }
+            ]
+          },
+          {
             "name": "Core Capabilities",
             "features": [
               {

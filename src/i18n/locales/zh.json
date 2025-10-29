@@ -199,6 +199,21 @@
             ]
           },
           {
+            "name": "规模",
+            "features": [
+              {
+                "name": "节点数",
+                "hamiStatus": "1 - 20 nodes",
+                "kantaloupeStatus": "20 - 1000 nodes"
+              },
+              {
+                "name": "GPU 数量",
+                "hamiStatus": "1 - 160 GPUs",
+                "kantaloupeStatus": "100 - 8000 GPUs"
+              }
+            ]
+          },
+          {
             "name": "核心能力",
             "features": [
               {
