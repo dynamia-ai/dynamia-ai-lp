@@ -1,7 +1,7 @@
 ---
 title: "【原理解析】HAMi 扩展 ResourceQuota | 精准的 GPU 资源配额管理实现详解"
 slug: "hami-extended-resourcequota-implementation"
-date: "2025-10-24"
+date: "2025-11-03"
 excerpt: "HAMi v2.7.0 针对原生 Kubernetes ResourceQuota 在 GPU 等异构算力场景下的局限性，推出了扩展 ResourceQuota 机制。本文深入代码实现，详细剖析 HAMi 如何解决资源关联和动态资源两大痛点，为多租户环境提供精准的 GPU 资源配额管理。"
 author: "Dynamia AI Team"
 tags: ["HAMi", "ResourceQuota", "GPU", "Kubernetes", "Resource Management", "Multi-tenancy", "Deep Dive", "NVIDIA"]
