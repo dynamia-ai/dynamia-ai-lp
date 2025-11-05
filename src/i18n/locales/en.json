@@ -103,6 +103,10 @@
         "title": "Talk with us on Slack",
         "action": "Join"
       },
+      "discord": {
+        "title": "Chat with us on Discord",
+        "action": "Join"
+      },
       "twitter": {
         "title": "Follow us on X",
         "action": "Follow"

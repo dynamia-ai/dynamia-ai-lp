@@ -103,6 +103,10 @@
         "title": "在 Slack 与我们交流",
         "action": "加入"
       },
+      "discord": {
+        "title": "在 Discord 与我们交流",
+        "action": "加入"
+      },
       "twitter": {
         "title": "在 X 上关注我们",
         "action": "关注"
