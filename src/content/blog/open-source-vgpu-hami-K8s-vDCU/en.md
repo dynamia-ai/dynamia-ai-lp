@@ -1,10 +1,11 @@
 ---
 title: "HAMi Heterogeneous Device Virtualization with Hygon DCU: vDCU Resource Scheduling in K8s"
+coverTitle: "Hygon DCU Virtualization with HAMi"
 slug: "open-source-vgpu-hami-K8s-vDCU"
 date: "2025-07-31"
 excerpt: "This article analyzes how Hygon DCU devices can be virtualized through HAMi to achieve unified management and scheduling."
 author: "Dynamia AI Team"
-tags: ["HAMI", "GPU Sharing", "vGPU", "Kubernetes", "Heterogeneous Computing"]
+tags: ["HAMi", "GPU Sharing", "vGPU", "Kubernetes", "Heterogeneous Computing"]
 coverImage: "/images/blog/gpu10/cover2.jpg"
 language: "en"
 ---

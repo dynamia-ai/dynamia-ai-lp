@@ -67,14 +67,14 @@ export default async function BlogPostPage({ params }: PageProps) {
     notFound();
   }
 
-  // Convert markdown to HTML for both languages if they exist
-  const enContent = enPost ? await markdownToHtml(enPost.content) : null;
-  const zhContent = zhPost ? await markdownToHtml(zhPost.content) : null;
+  // Convert markdown to HTML and extract TOC for both languages if they exist
+  const enResult = enPost ? await markdownToHtml(enPost.content) : null;
+  const zhResult = zhPost ? await markdownToHtml(zhPost.content) : null;
 
   return (
     <BlogPostClient 
-      enPost={enPost ? { ...enPost, content: enContent! } : null}
-      zhPost={zhPost ? { ...zhPost, content: zhContent! } : null}
+      enPost={enPost && enResult ? { ...enPost, content: enResult.html, toc: enResult.toc } : null}
+      zhPost={zhPost && zhResult ? { ...zhPost, content: zhResult.html, toc: zhResult.toc } : null}
     />
   );
 } 

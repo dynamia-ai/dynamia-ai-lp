@@ -1,10 +1,11 @@
 ---
 title: "【Run:ai KAI-Scheduler 深度解析】补充篇：解密 Reservation Pod 如何获知 GPU 分配细节"
+coverTitle: "Run:ai KAI-Scheduler | GPU 分配细节解析"
 slug: "Run:ai KAI-Scheduler Deep Dive"
 date: "2025-08-07"
 excerpt: "昨天深入探讨了 KAI-Scheduler 如何实现 GPU 分数共享，非常感谢大家的关注和热烈讨论！有读者指出了一个关键技术细节需要进一步澄清，今天我们就来专门解析这个问题。"
 author: "密瓜智能"
-tags: ["vGPU", "HAMi", "GPU共享", "云原生", "Kubernetes", "AI基础设施"]
+tags: ["vGPU", "HAMi", "GPU 共享", "云原生", "Kubernetes", "AI 基础设施"]
 coverImage: "/images/blog/Demystifying-the-Reservation-Pod/cover.jpg"
 language: "zh"
 ---

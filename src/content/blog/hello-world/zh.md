@@ -1,11 +1,12 @@
 ---
 title: "Hello World - 欢迎来到我们的博客"
+coverTitle: "Hello World - 欢迎来到我们的博客"
 slug: "hello-world"
 date: "2025-06-25"
 excerpt: "欢迎来到我们的全新博客！这是我们的第一篇文章，展示 HAMi 和 Dynamia AI 的强大功能。"
 author: "密瓜智能"
-tags: ["欢迎", "博客", "hami", "入门指南"]
-coverImage: "/images/blog/hello-world.svg"
+tags: ["欢迎", "博客", "HAMi", "入门指南"]
+# coverImage: "/images/blog/hello-world.svg"  # 注释掉以使用动态生成的背景图
 language: "zh"
 ---
 

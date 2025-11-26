@@ -1,10 +1,11 @@
 ---
 title: "从顺丰科技到 AWS | 密瓜智能 HAMi 项目在 KubeCon China 广受行业巨头关注"
+coverTitle: "从顺丰科技到AWS | 密瓜智能HAMi项目在KubeConChina广受行业巨头关注"
 slug: "kubecon-china-2025-hami-spotlight"
 date: "2025-06-26"
 excerpt: "KubeCon China 2025 盛大落幕，密瓜智能 HAMi 项目作为 CNCF Sandbox 开源项目大放异彩，获得从顺丰科技到 AWS 等行业巨头的高度关注和认可。"
 author: "密瓜智能"
-tags: ["KubeCon", "HAMi", "GPU共享", "云原生", "Kubernetes", "AI基础设施"]
+tags: ["KubeCon", "HAMi", "GPU 共享", "云原生", "Kubernetes", "AI 基础设施"]
 coverImage: "/images/blog/kubecon-china-2025/kubecon-china-2025.png"
 language: "zh"
 ---

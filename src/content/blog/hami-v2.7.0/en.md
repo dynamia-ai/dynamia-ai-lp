@@ -1,5 +1,6 @@
 ---
 title: "HAMi 2.7.0 — Of Silicon & Scheduling | Stronger, Smarter, Broader."
+coverTitle: "HAMi 2.7.0 — Of Silicon & Scheduling | Stronger, Smarter, Broade"
 slug: "hami-v2.7.0-released"
 date: "2025-10-09"
 excerpt: "HAMi v2.7.0 is here! Featuring full support for Kunlun XPU, Enflame GCU, AWS Neuron, and MetaX, enhanced scheduler optimizations, expanded application ecosystem integration, improved WebUI functionality, and thriving community growth."

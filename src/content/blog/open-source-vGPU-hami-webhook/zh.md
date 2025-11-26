@@ -1,10 +1,11 @@
 ---
 title: "HAMi vGPU 原理分析 Part2：hami-webhook 原理分析"
+coverTitle: "HAMi-webhook 原理分析与实现"
 slug: "open-source-vgpu-hami-webhook-analysis"
 date: "2025-07-24"
 excerpt: "上篇我们分析了 hami-device-plugin-nvidia，知道了 HAMi 的 NVIDIA device plugin 工作原理。本文为 HAMi 原理分析的第二篇，分析 hami-scheduler 实现原理。"
 author: "密瓜智能"
-tags: ["HAMI", "GPU 共享", "vGPU", "Kubernetes", "异构算力"]
+tags: ["HAMi", "GPU 共享", "vGPU", "Kubernetes", "异构算力"]
 coverImage: "/images/blog/gpu4/cover.jpg"
 language: "zh"
 ---

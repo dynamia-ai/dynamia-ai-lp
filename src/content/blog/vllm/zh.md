@@ -1,10 +1,11 @@
 ---
 title: "「全球共建：vLLM 社区原生支持 HAMi，推理效率飞跃」— 来自西班牙开发者的贡献"
+coverTitle: "全球共建：VLLM社区原生支持HAMi，推理效率飞跃"
 slug: "vllm-community-hami-support-efficiency-spanish-contributor"
 date: "2025-09-15"
 excerpt: "本文将以该 PR 为切入点，结合社区 Issue 和邮件交流记录，从部署到验证，完整还原一条 \"HAMi × vLLM\" 的落地路径，帮助你在 Kubernetes 中快速实现多模型部署与资源复用"
 author: "密瓜智能"
-tags: ["vLLM", "HAMi", "GPU调度", "多模型部署", "Kubernetes", "AI推理", "社区贡献", "云原生"]
+tags: ["vLLM", "HAMi", "GPU 调度", "多模型部署", "Kubernetes", "AI 推理", "社区贡献", "云原生"]
 coverImage: "/images/blog/vllm-hami-support/coverpage.png"
 language: "zh"
 ---

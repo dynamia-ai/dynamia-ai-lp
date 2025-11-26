@@ -1,10 +1,11 @@
 ---
 title: "HAMI 入门必知：新手必读的 9 个关键问题"
+coverTitle: "HAMI 入门必知：新手必读的 9 个关键问题"
 slug: "hami-getting-started-9-key-questions"
 date: "2025-06-25"
 excerpt: "GPU 利用率低？异构设备难管理？本文用 9 个问答带你快速上手 HAMI，从硬件兼容、vGPU 原理到分布式训练、动态资源、未来路线图一站式扫盲。"
 author: 密瓜智能
-tags: ["HAMI", "GPU 共享", "vGPU", "Kubernetes", "异构算力"]
+tags: ["HAMi", "GPU 共享", "vGPU", "Kubernetes", "异构算力"]
 coverImage: "/images/blog/faq/coverimage.jpg"
 language: "zh"
 ---

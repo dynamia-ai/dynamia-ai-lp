@@ -1,5 +1,6 @@
 ---
 title: "Deep Dive: HAMi Extended ResourceQuota | Precise GPU Resource Quota Management Implementation"
+coverTitle: "ResourceQuota-Based Precise GPU Management with HAMi"
 slug: "hami-extended-resourcequota-implementation"
 date: "2025-11-03"
 excerpt: "HAMi v2.7.0 introduces an extended ResourceQuota mechanism to address limitations of native Kubernetes ResourceQuota in GPU and heterogeneous computing scenarios. This article provides an in-depth code analysis of how HAMi solves the two major pain points of resource correlation and dynamic resources, offering precise GPU resource quota management for multi-tenant environments."

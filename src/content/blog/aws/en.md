@@ -1,5 +1,6 @@
 ---
 title: "Virtualizing Any GPU on AWS with HAMi: Free Memory Isolation"
+coverTitle: "Virtualizing Any GPU on AWS with HAMi: Free Memory Isolation"
 slug: "virtualizing-gpu-aws-hami-free-memory-isolation"
 date: "2025-09-16"
 excerpt: "This article takes the PR as an entry point, combined with community Issues and mailing records, to fully restore a 'HAMi × vLLM' landing path from deployment to verification, helping you quickly achieve multi-model deployment and resource reuse in Kubernetes."

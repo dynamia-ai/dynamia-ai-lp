@@ -1,10 +1,11 @@
 ---
 title: "Kubernetes GPU 调度：一个 2x2 的实践模型 (节点 × GPU 的紧凑与分散策略)"
+coverTitle: "Kubernetes GPU 调度 ｜ 一个2x2的实践模型节点xGPU的紧凑与分散策略"
 slug: "device-aware-gpu-binpack-spread-on-k8s-with-hami"
 date: "2025-09-19"
 excerpt: "深入探讨 Kubernetes GPU 调度的 2×2 实践模型：结合节点和 GPU 两个维度的紧凑/分散策略。通过 HAMi 实现超越原生 K8s 的设备感知调度能力，包含四种调度模式的实战演示，帮助您在成本效率、GPU 可用性和 AI 工作负载性能之间找到最佳平衡。"
 author: "密瓜智能"
-tags: ["GPU调度", "HAMi", "设备感知调度", "GPU虚拟化", "DRA", "GPU管理", "资源优化", "最佳实践"]
+tags: ["GPU 调度", "HAMi", "设备感知调度", "GPU 虚拟化", "DRA", "GPU 管理", "资源优化", "最佳实践"]
 coverImage: "/images/blog/device-aware-gpu-binpack-spread-on-k8s-with-hami/cover-zh.png"
 language: "zh"
 ---

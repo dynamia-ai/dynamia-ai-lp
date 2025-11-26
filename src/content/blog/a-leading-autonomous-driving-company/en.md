@@ -1,5 +1,6 @@
 ---
 title: "【HAMi Project Team | User Case】A Leading Autonomous Driving Company Achieves Fine-Grained GPU Management and Maximizes Resource Utilization with HAMi"
+coverTitle: "User Case: HAMi GPU Governance for Autonomous Driving"
 slug: "A leading autonomous-driving company"
 date: "2025-08-09"
 excerpt: "In its core model training scenarios, a leading autonomous driving company utilizes multi-machine distributed training with scheduling frameworks like Ray and Volcano."

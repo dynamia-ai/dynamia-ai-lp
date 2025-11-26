@@ -1,10 +1,11 @@
 ---
 title: "HAMI vGPU Principle Analysis Part 2: hami-webhook Principle Analysis"
+coverTitle: "HAMI vGPU Principle Analysis Part 2: hami-webhook Principle Analysis"
 slug: "open-source-vgpu-hami-webhook-analysis"
 date: "2025-07-24"
 excerpt: "In the last article, we analyzed hami-device-plugin-nvidia and understood how HAMI's NVIDIA device plugin works. This is the second article in the HAMI principle analysis series, analyzing the implementation of hami-scheduler."
 author: "Dynamia AI Team"
-tags: ["HAMI", "GPU Sharing", "vGPU", "Kubernetes", "Heterogeneous Computing"]
+tags: ["HAMi", "GPU Sharing", "vGPU", "Kubernetes", "Heterogeneous Computing"]
 coverImage: "/images/blog/gpu4/cover2.jpg"
 language: "en"
 ---

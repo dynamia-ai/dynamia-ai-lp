@@ -1,5 +1,6 @@
 ---
 title: "在 AWS 上虚拟化任意 GPU：HAMi 实现自由显存隔离"
+coverTitle: "在 AWS 上虚拟化任意 GPU：HAMi 实现自由显存隔离"
 slug: "virtualizing-gpu-aws-hami-free-memory-isolation"
 date: "2025-09-16"
 excerpt: "本文以 PR 为切入点，结合社区 Issue 和邮件记录，完整还原一条 'HAMi × vLLM' 的落地路径，帮助你在 Kubernetes 中快速实现多模型部署与资源复用。"

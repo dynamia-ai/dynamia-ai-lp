@@ -1,11 +1,12 @@
 ---
 
 title: "HAMI vGPU Solution Principle Analysis: hami-device-plugin-nvidia Implementation"
+coverTitle: "HAMi NVIDIA Device Plugin Implementation"
 slug: "open-source-vgpu-hami-device-plugin-nvidia-analysis"
 date: "2025-07-23"
 excerpt: "This is the first article in a series analyzing the implementation principles of the open-source vGPU solution HAMI, focusing on the hami-device-plugin-nvidia."
 author: "Dynamia AI Team"
-tags: ["HAMI", "GPU Sharing", "vGPU", "Kubernetes", "Heterogeneous Computing"]
+tags: ["HAMi", "GPU Sharing", "vGPU", "Kubernetes", "Heterogeneous Computing"]
 coverImage: "/images/blog/gpu3/cover2.jpg"
 language: "en"
 

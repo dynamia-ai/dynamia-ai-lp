@@ -1,10 +1,11 @@
 ---
 title: "HAMi vGPU 原理分析 Part4：Spread&Binpack 高级调度策略实现"
+coverTitle: "HAMi Spread&Binpack 高级调度策略实现"
 slug: "open-source-vgpu-hami-Spread-Binpack"
 date: "2025-07-26"
 excerpt: "本文为 HAMi 原理分析的第四篇，分析 hami-scheduler 在调度时是如何选择节点的，即：Spread、Binpack 等高级调度策略是怎么实现的。"
 author: 密瓜智能
-tags: ["HAMI", "GPU 共享", "vGPU", "Kubernetes", "异构算力"]
+tags: ["HAMi", "GPU 共享", "vGPU", "Kubernetes", "异构算力"]
 coverImage: "/images/blog/gpu6/cover.jpg"
 language: "zh"
 ---

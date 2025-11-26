@@ -1,5 +1,6 @@
 ---
 title: "HAMi vGPU Solution: Fine-Grained GPU Partitioning"
+coverTitle: "HAMi vGPU Solution: Fine-Grained GPU Partitioning"
 slug: "open-source-vgpu-hami-fine-grained-partitioning"
 date: "2025-07-21"
 excerpt: "This article introduces HAMi, an open-source GPU virtualization solution, including installation, configuration, and usage."

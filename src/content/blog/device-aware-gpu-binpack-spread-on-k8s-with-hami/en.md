@@ -1,5 +1,6 @@
 ---
 title: "Two Axes, Four Patterns: Device-Aware GPU Binpack/Spread on K8s with HAMi"
+coverTitle: "Device-Aware GPU Binpack/Spread Scheduling on Kubernetes"
 slug: "device-aware-gpu-binpack-spread-on-k8s-with-hami"
 date: "2025-09-19"
 excerpt: "Explore a practical 2×2 framework for GPU scheduling in Kubernetes: combining node and GPU-level binpack/spread strategies. Learn how HAMi enables device-aware scheduling beyond native K8s capabilities, with hands-on examples of four distinct patterns that balance cost efficiency, GPU availability, and performance for AI workloads."

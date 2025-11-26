@@ -1,5 +1,6 @@
 ---
 title: "Global Co-building: vLLM Community Natively Supports HAMi, Inference Efficiency Leap — Contribution from a Spanish Developer"
+coverTitle: "Global Co-building: vLLM Community Natively Supports HAMi"
 slug: "vllm-community-hami-support-efficiency-spanish-contributor"
 date: "2025-09-15"
 excerpt: "This article takes the PR as an entry point, combined with community Issues and mailing records, to fully restore a 'HAMi × vLLM' landing path from deployment to verification, helping you quickly achieve multi-model deployment and resource reuse in Kubernetes."

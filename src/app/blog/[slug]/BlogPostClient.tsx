@@ -3,11 +3,15 @@
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
-import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import MainLayout from '@/components/layout/MainLayout';
 import { formatDate } from '@/lib/blog-client';
 import { BlogPost } from '@/types/blog';
+import TableOfContents from '@/components/TableOfContents';
+import DynamicBlogCover from '@/components/DynamicBlogCover';
+import BlogShareButtons from '@/components/BlogShareButtons';
+import BlogAIShareSection from '@/components/BlogAIShareSection';
 
 interface BlogPostClientProps {
   enPost: (BlogPost & { content: string }) | null;
@@ -16,12 +20,23 @@ interface BlogPostClientProps {
 
 export default function BlogPostClient({ enPost, zhPost }: BlogPostClientProps) {
   const { i18n } = useTranslation();
+  const router = useRouter();
   const currentLocale = i18n.language as 'en' | 'zh';
   
   // Select the appropriate post based on language
   const post = currentLocale === 'zh' ? zhPost : enPost;
-  const fallbackPost = currentLocale === 'zh' ? enPost : zhPost;
-  const displayPost = post || fallbackPost;
+  // 根据当前语言生成博客路径
+  const blogListPath = currentLocale === 'zh' ? '/zh/blog' : '/blog';
+  const getBlogPostPath = (slug: string) => currentLocale === 'zh' ? `/zh/blog/${slug}` : `/blog/${slug}`;
+  
+  // 如果当前语言的博客不存在，但另一个语言的博客存在，重定向到博客列表页
+  useEffect(() => {
+    if (!post && (enPost || zhPost)) {
+      router.replace(blogListPath);
+    }
+  }, [currentLocale, post, enPost, zhPost, router, blogListPath]);
+  
+  const displayPost = post;
 
   useEffect(() => {
     if (!displayPost) {
@@ -194,6 +209,23 @@ export default function BlogPostClient({ enPost, zhPost }: BlogPostClientProps) 
     };
   }, [displayPost, currentLocale]);
 
+  // 如果当前语言的博客不存在，但另一个语言的博客存在，显示加载状态（正在重定向）
+  // 只有在两个语言的博客都不存在时，才显示 "Post Not Found"
+  if (!post && (enPost || zhPost)) {
+    return (
+      <MainLayout>
+        <div className="min-h-screen flex items-center justify-center">
+          <div className="text-center">
+            <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-r-2 border-b-2 border-primary mx-auto mb-4"></div>
+            <p className="text-gray-600">
+              {currentLocale === 'zh' ? '正在跳转...' : 'Redirecting...'}
+            </p>
+          </div>
+        </div>
+      </MainLayout>
+    );
+  }
+
   if (!displayPost) {
     return (
       <MainLayout>
@@ -209,7 +241,7 @@ export default function BlogPostClient({ enPost, zhPost }: BlogPostClientProps) 
               }
             </p>
             <Link 
-              href="/blog"
+              href={blogListPath}
               className="inline-flex items-center px-4 py-2 bg-primary text-white rounded-md hover:bg-primary-dark transition-colors"
             >
               {currentLocale === 'zh' ? '返回博客' : 'Back to Blog'}
@@ -223,7 +255,9 @@ export default function BlogPostClient({ enPost, zhPost }: BlogPostClientProps) 
   return (
     <MainLayout>
       <article className="py-16 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-center items-start">
+            <div className="max-w-4xl xl:mr-60">
           {/* Breadcrumb */}
           <nav className="mb-8">
             <ol className="flex items-center space-x-2 text-sm text-gray-500">
@@ -234,7 +268,7 @@ export default function BlogPostClient({ enPost, zhPost }: BlogPostClientProps) 
               </li>
               <li>/</li>
               <li>
-                <Link href="/blog" className="hover:text-primary">
+                <Link href={blogListPath} className="hover:text-primary">
                   {currentLocale === 'zh' ? '博客' : 'Blog'}
                 </Link>
               </li>
@@ -253,76 +287,93 @@ export default function BlogPostClient({ enPost, zhPost }: BlogPostClientProps) 
             <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-6">
               {displayPost.title}
             </h1>
-            
-            <div className="flex flex-wrap items-center gap-4 text-gray-600 mb-8">
-              <div className="flex items-center">
-                <span className="font-medium">{displayPost.author}</span>
-              </div>
-              <div className="flex items-center">
-                <time dateTime={displayPost.date}>
-                  {formatDate(displayPost.date, currentLocale)}
-                </time>
-              </div>
-              <div className="flex items-center">
-                <span>{displayPost.readingTime}</span>
-              </div>
+
+            {/* Published Date */}
+            <div className="mb-4 text-sm text-gray-500">
+              <time dateTime={displayPost.date}>
+                {formatDate(displayPost.date, currentLocale)}
+              </time>
             </div>
 
             {displayPost.tags && displayPost.tags.length > 0 && (
-              <div className="flex flex-wrap gap-2 mb-8">
+              <div className="flex flex-wrap gap-2 mb-6">
                 {displayPost.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="inline-block bg-primary-lighter text-primary-dark text-sm px-3 py-1 rounded-full"
+                    className="inline-block bg-primary-lighter text-primary-dark text-sm font-semibold px-3.5 py-1.5 rounded-full"
                   >
-                    #{tag}
+                    {tag}
                   </span>
                 ))}
               </div>
             )}
 
-            {displayPost.coverImage && (
-              <div className="aspect-video relative rounded-lg overflow-hidden">
-                <Image
-                  src={displayPost.coverImage}
-                  alt={displayPost.title}
-                  fill
-                  className="object-cover"
-                  priority
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1024px"
-                />
+            {/* Excerpt */}
+            {displayPost.excerpt && (
+              <div className="mb-8 relative pl-6 border-l-4 border-gray-300">
+                <p className="text-lg text-gray-600 leading-7 italic">
+                  {displayPost.excerpt}
+                </p>
               </div>
             )}
+
+            <div className="aspect-video relative rounded-lg overflow-hidden">
+              <DynamicBlogCover
+                title={displayPost.coverTitle || displayPost.title}
+                className="w-full h-full"
+                variant="detail"
+              />
+            </div>
+
+            {/* Share Buttons */}
+            <BlogShareButtons 
+              title={displayPost.title}
+              url={getBlogPostPath(displayPost.slug)}
+            />
           </motion.header>
 
-          {/* Content */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="blog-content"
-            dangerouslySetInnerHTML={{ __html: displayPost.content }}
-          />
+              {/* Content */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                className="blog-content"
+                dangerouslySetInnerHTML={{ __html: displayPost.content }}
+              />
 
+              {/* AI Share Section */}
+              <div className="mt-12">
+                <BlogAIShareSection
+                  title={displayPost.title}
+                  url={getBlogPostPath(displayPost.slug)}
+                />
+              </div>
 
+              {/* Back to blog */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.6 }}
+                className="mt-12 pt-8 border-t border-gray-200"
+              >
+                <Link 
+                  href={blogListPath}
+                  className="inline-flex items-center text-primary hover:text-primary-dark transition-colors"
+                >
+                  <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                  </svg>
+                  {currentLocale === 'zh' ? '返回博客' : 'Back to Blog'}
+                </Link>
+              </motion.div>
+            </div>
 
-          {/* Back to blog */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.6 }}
-            className="mt-12 pt-8 border-t border-gray-200"
-          >
-            <Link 
-              href="/blog"
-              className="inline-flex items-center text-primary hover:text-primary-dark transition-colors"
-            >
-              <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-              </svg>
-              {currentLocale === 'zh' ? '返回博客' : 'Back to Blog'}
-            </Link>
-          </motion.div>
+          </div>
+          
+          {/* Table of Contents - 固定在页面最右侧 */}
+          <aside className="hidden xl:block fixed right-8 top-24 w-64 z-10">
+            <TableOfContents toc={displayPost.toc || []} />
+          </aside>
         </div>
       </article>
     </MainLayout>

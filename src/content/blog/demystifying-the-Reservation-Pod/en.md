@@ -1,5 +1,6 @@
 ---
 title: "【Run:ai KAI-Scheduler Deep Dive】Supplement: Demystifying How the Reservation Pod Discovers GPU Allocation Details"
+coverTitle: "Deep Dive: HAMi’s KAI-Scheduler Mechanics"
 slug: "Run:ai KAI-Scheduler Deep Dive"
 date: "2025-08-07"
 excerpt: "Yesterday, we took a deep dive into how KAI-Scheduler achieves fractional GPU sharing. Thank you all for your attention and lively discussion! A reader pointed out a key technical detail that needed further clarification, and today we're going to break down that very issue."

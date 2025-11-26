@@ -1,10 +1,11 @@
 ---
 title: "HAMi vGPU 原理分析 Part3：hami- scheduler 工作流程分析"
+coverTitle: "HAMi-scheduler 工作流程分析"
 slug: "open-source-vgpu-hami-scheduler-analysis"
 date: "2025-07-25"
 excerpt: "本文为 HAMi 原理分析的第三篇，分析 hami-scheduler 工作流程。"
 author: 密瓜智能
-tags: ["HAMI", "GPU 共享", "vGPU", "Kubernetes", "异构算力"]
+tags: ["HAMi", "GPU 共享", "vGPU", "Kubernetes", "异构算力"]
 coverImage: "/images/blog/gpu5/cover.jpg"
 language: "zh"
 ---

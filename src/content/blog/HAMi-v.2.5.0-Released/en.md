@@ -1,10 +1,11 @@
 ---
 title: "HAMi v2.5.0 Released: A Look at the New Features"
+coverTitle: "HAMi v2.5.0 Released: A Look at the New Features"
 slug: "HAMi v2.5.0 Released"
 date: "2025-07-29"
 excerpt: "HAMi v2.5.0 is released! It adds dynamic MIG support and brings significant improvements in stability and usability. Come and see what's new."
 author: “Dynamia AI Team”
-tags: ["HAMI", "GPU Sharing", "vGPU", "Kubernetes", "Heterogeneous Computing"]
+tags: ["HAMi", "GPU Sharing", "vGPU", "Kubernetes", "Heterogeneous Computing"]
 coverImage: "/images/blog/gpu8/cover2.jpg"
 language: "en"
 ---

@@ -1,5 +1,6 @@
 ---
 title: "Xinference × HAMi | 原生支持 GPU 共享，让 AI 模型服务降本增效"
+coverTitle: "携手 Xinference 共建异构算力新基座 ｜ 让 AI 推理更普惠、更高效"
 slug: "hami-xinference-vgpu-integration"
 date: "2025-11-06"
 excerpt: "Xinference 通过 Helm Chart 原生支持 HAMi vGPU，让多模型推理平台实现 GPU 安全共享、精细配额和统一治理。本文详细介绍如何一键启用 HAMi vGPU，以及在生产环境中实现降本增效的最佳实践。"

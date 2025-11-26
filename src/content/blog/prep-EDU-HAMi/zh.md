@@ -1,10 +1,11 @@
 ---
 title: "【PREP EDU | 密瓜智能】东南亚 AI 教育潜力独角兽，用 HAMi 构建高效 GPU 推理平台"
+coverTitle: "PREP EDU × HAMi | 东南亚教育 AI GPU 平台"
 slug: "PREP EDU-HAMi"
 date: "2025-08-08"
 excerpt: "在 AI 教育快速发展的当下，PREP EDU（prepedu.com） 正逐渐成为东南亚教育科技领域的关注焦点。"
 author: "密瓜智能"
-tags: ["KubeCon", "HAMi", "GPU共享", "云原生", "Kubernetes", "AI基础设施"]
+tags: ["KubeCon", "HAMi", "GPU 共享", "云原生", "Kubernetes", "AI 基础设施"]
 coverImage: "/images/blog/PREP-EDU-HAMi/cover.jpg"
 language: "zh"
 ---

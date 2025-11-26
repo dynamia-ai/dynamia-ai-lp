@@ -1,10 +1,11 @@
 ---
 title: "HAMi vGPU 方案：实现细粒度 GPU 切分"
+coverTitle: "开源vGPU方案：HAMi GPU细粒度切分"
 slug: "open-source-vgpu-hami-fine-grained-partitioning"
 date: "2025-07-21"
 excerpt: "本文主要分享一个开源的GPU虚拟化方案：HAMi，包括如何安装、配置以及使用。"
 author: 密瓜智能
-tags: ["HAMI", "GPU 共享", "vGPU", "Kubernetes", "异构算力"]
+tags: ["HAMi", "GPU 共享", "vGPU", "Kubernetes", "异构算力"]
 coverImage: "/images/blog/gpu1/cover.jpg"
 language: "zh"
 ---

@@ -1,5 +1,6 @@
 ---
 title: "HAMi v2.7.0 重磅发布 | 异构芯片全面拓展，调度更稳、生态更强"
+coverTitle: "HAMiv2.7.0重磅发布 | 异构芯片全面拓展，调度更稳、生态更强"
 slug: "hami-v2.7.0-released"
 date: "2025-10-09"
 excerpt: "HAMi v2.7.0 重磅发布！新增昆仑芯 XPU、燧原 GCU、AWS Neuron 及沐曦 MetaX 完整支持，调度器核心优化升级，应用层生态整合增强，WebUI 功能全面提升，社区蓬勃发展。"

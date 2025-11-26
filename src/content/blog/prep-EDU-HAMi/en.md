@@ -1,5 +1,6 @@
 ---
 title: "【PREP EDU | HAMi Project Team】Southeast Asia's Potential AI Education Unicorn Builds an Efficient GPU Inference Platform with HAMi"
+coverTitle: "PREP EDU × HAMi: Scaling AI Workloads in Southeast Asia"
 slug: "PREP-EDU-HAMi"
 date: "2025-08-08"
 excerpt: "In the fast-growing field of AI education, PREP EDU (prepedu.com) is emerging as a focal point in Southeast Asia's EdTech sector."

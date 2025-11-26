@@ -1,15 +1,16 @@
 ---
 title: "【密瓜智能 | 用户案例】某头部智驾公司通过 HAMi 实现 GPU 精细化管理与资源利用最大化"
+coverTitle: " 用户案例 | 智驾企业的 GPU 精细化管理"
 slug: "A leading autonomous-driving company"
 date: "2025-08-09"
 excerpt: "某头部智驾公司在核心模型训练场景中，采用多机分布式训练，使用如 Ray、Volcano 等调度框架。"
 author: "密瓜智能"
-tags: ["KubeCon", "HAMi", "GPU共享", "云原生", "Kubernetes", "AI基础设施"]
+tags: ["KubeCon", "HAMi", "GPU 共享", "云原生", "Kubernetes", "AI 基础设施"]
 coverImage: "/images/blog/A-leading-autonomous-driving-company/cover.jpg"
 language: "zh"
 ---
 
->作为一个活跃的开源项目，HAMi 由来自 15+ 国家、350+ 贡献者共同维护，已被 120+ 企业与机构在实际生产环境中采纳，具备良好的可扩展性与支持保障。
+>作为一个活跃的开源项目，HAMi 由来自 15+ 国家、350+ 贡献者共同维护，已被 200+ 企业与机构在实际生产环境中采纳，具备良好的可扩展性与支持保障。
 
 ## 用户简介
 
