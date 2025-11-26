@@ -1,10 +1,11 @@
 ---
 title: "HAMI vGPU Principle Analysis Part 5: HAMI-core (libvgpu.so) vCUDA Working Principle Analysis"
+coverTitle: "HAMi-Core (ibvgpu.so): How Fine-Grained vGPU Works"
 slug: "open-source-vgpu-hami-core-libvgpu-so-vcuda-analysis"
 date: "2025-07-28"
 excerpt: "This is the fifth article in the HAMI principle analysis series, providing a simple analysis of the working principles of HAMI-Core, including how it takes effect, how CUDA APIs are intercepted, and how it implements resource limits for GPU core and memory."
 author: “Dynamia AI Team”
-tags: ["HAMI", "GPU Sharing", "vGPU", "Kubernetes", "Heterogeneous Computing"]
+tags: ["HAMi", "GPU Sharing", "vGPU", "Kubernetes", "Heterogeneous Computing"]
 coverImage: "/images/blog/gpu7/cover2.jpg"
 language: "en"
 ---

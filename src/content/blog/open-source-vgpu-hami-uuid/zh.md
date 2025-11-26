@@ -1,10 +1,11 @@
 ---
 title: "精准而优雅： HAMi 调度特性之按 GPU 类型和 UUID 调度"
+coverTitle: "精准而优雅： HAMi 调度特性之按 GPU 类型和 UUID 调度"
 slug: "open-source-vgpu-hami-UUID"
 date: "2025-07-30"
 excerpt: "这一篇我们分析一下 HAMi 的调度特性：根据 GPU 类型甚至 UUID 实现精细调。"
 author: 密瓜智能
-tags: ["HAMI", "GPU 共享", "vGPU", "Kubernetes", "异构算力"]
+tags: ["HAMi", "GPU 共享", "vGPU", "Kubernetes", "异构算力"]
 coverImage: "/images/blog/gpu9/cover.jpg"
 language: "zh"
 ---

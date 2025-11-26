@@ -1,10 +1,11 @@
 ---
 title: "HAMi v2.5.0 Released 新特性一览"
+coverTitle: "HAMi v2.5.0 Released 新特性一览"
 slug: "HAMi v2.5.0 Released ”"
 date: "2025-07-29"
 excerpt: "HAMi v2.5.0 发布啦，新增了动态 MIG 支持的同时稳定性、易用性都有较大提升，快来看看吧。"
 author: "密瓜智能"
-tags: ["HAMI", "GPU 共享", "vGPU", "Kubernetes", "异构算力"]
+tags: ["HAMi", "GPU 共享", "vGPU", "Kubernetes", "异构算力"]
 coverImage: "/images/blog/gpu8/cover.jpg"
 language: "zh"
 ---

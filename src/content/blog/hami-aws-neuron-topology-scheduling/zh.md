@@ -1,5 +1,6 @@
 ---
 title: "基于 HAMi 实现亚马逊云科技 Trainium 与 Inferentia 核心级共享与策略性拓扑调度"
+coverTitle: "基于 HAMi 实现亚马逊云科技 Trainium 与 Inferentia 核心级共享与策略性拓扑调度"
 slug: "hami-aws-neuron-core-sharing-topology-scheduling"
 date: "2025-11-11"
 excerpt: "深度解析 HAMi v2.7.0 如何实现对亚马逊云科技 Trainium 与 Inferentia 芯片的核心级共享与策略性拓扑调度，通过基于先验知识的调度算法，在保持性能稳定的同时显著降低管理成本。"

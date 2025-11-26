@@ -1,5 +1,6 @@
 ---
 title: "Is vGPU a False Promise? Why Doesn't NVIDIA Offer Fine-Grained Sharing Itself?"
+coverTitle: "Why Fine-Grained vGPU Matters Beyond NVIDIA MIG"
 slug: "Is vGPU a false promise"
 date: "2025-08-04"
 excerpt: "I'll discuss this from several angles: What is HAMi, and how does it fundamentally differ from NVIDIA's solutions? Why doesn't NVIDIA do it? Is it a technical limitation or a business decision? What are HAMi's core competitiveness and long-term moat?"

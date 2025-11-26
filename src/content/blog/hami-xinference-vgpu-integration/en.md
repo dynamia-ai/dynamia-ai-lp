@@ -1,5 +1,6 @@
 ---
 title: "Xinference × HAMi | Native GPU Sharing Support for Cost-Effective AI Model Services"
+coverTitle: "Xinference × HAMi | Cost-Effective vGPU Sharing"
 slug: "hami-xinference-vgpu-integration"
 date: "2025-11-06"
 excerpt: "Xinference natively supports HAMi vGPU through Helm Chart, enabling multi-model inference platforms to achieve secure GPU sharing, fine-grained quotas, and unified governance. This article details how to enable HAMi vGPU with one click and implement best practices for cost reduction in production environments."

@@ -632,7 +632,48 @@
     },
     "blog": {
       "title": "博客",
-      "description": "来自我们团队的见解、教程和新闻"
+      "description": "来自我们团队的见解、教程和新闻",
+      "filterByTags": "按标签筛选",
+      "allTags": "全部",
+      "more": "更多",
+      "less": "收起",
+      "showingPostsTagged": "显示标签为 \"{{tag}}\" 的文章 ({{count}} 篇)",
+      "tableOfContents": "本页目录",
+      "aiShare": {
+        "exploreTitle": "用 AI 探索",
+        "exploreSubtitle": "使用 AI 工具深入理解文章内容",
+        "shareTitle": "分享这篇文章",
+        "shareAt": "分享到：",
+        "tipLabel": "提示",
+        "tip": "AI将帮助您总结要点并分析技术细节。",
+        "aiPrompt": "请访问这个链接并为我总结这篇文章：{{url}}",
+        "aiTools": {
+          "chatgpt": {
+            "name": "ChatGPT",
+            "desc": "智能总结"
+          },
+          "perplexity": {
+            "name": "Perplexity",
+            "desc": "深度分析"
+          },
+          "claude": {
+            "name": "Claude",
+            "desc": "专业洞察"
+          },
+          "gemini": {
+            "name": "Google AI",
+            "desc": "快速见解"
+          },
+          "grok": {
+            "name": "Grok",
+            "desc": "X AI 分析"
+          },
+          "deepseek": {
+            "name": "DeepSeek",
+            "desc": "深度分析"
+          }
+        }
+      }
     },
     "whitepapers": {
       "title": "白皮书",

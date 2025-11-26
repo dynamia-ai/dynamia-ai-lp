@@ -600,7 +600,48 @@
     },
     "blog": {
       "title": "Blog",
-      "description": "Insights, tutorials, and news from our team"
+      "description": "Insights, tutorials, and news from our team",
+      "filterByTags": "Filter by Tags",
+      "allTags": "All Tags",
+      "more": "More",
+      "less": "Less",
+      "showingPostsTagged": "Showing posts tagged \"{{tag}}\" ({{count}} posts)",
+      "tableOfContents": "On this page",
+      "aiShare": {
+        "exploreTitle": "Explore with AI",
+        "exploreSubtitle": "Use AI tools to gain deeper understanding",
+        "shareTitle": "Share this article",
+        "shareAt": "Share at:",
+        "tipLabel": "Tip",
+        "tip": "AI will help you summarize key points and analyze technical details.",
+        "aiPrompt": "Visit this URL and summarize the post for me: {{url}}",
+        "aiTools": {
+          "chatgpt": {
+            "name": "ChatGPT",
+            "desc": "Smart Summary"
+          },
+          "perplexity": {
+            "name": "Perplexity",
+            "desc": "Deep Analysis"
+          },
+          "claude": {
+            "name": "Claude",
+            "desc": "Professional Insights"
+          },
+          "gemini": {
+            "name": "Google AI",
+            "desc": "Quick Insights"
+          },
+          "grok": {
+            "name": "Grok",
+            "desc": "X AI Analysis"
+          },
+          "deepseek": {
+            "name": "DeepSeek",
+            "desc": "Deep Analysis"
+          }
+        }
+      }
     },
     "whitepapers": {
       "title": "Whitepapers",

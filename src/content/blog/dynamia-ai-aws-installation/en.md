@@ -1,5 +1,6 @@
 ---
 title: "Deploy Dynamia AI Platform on AWS with EKS"
+coverTitle: "Deploy Dynamia AI Platform on AWS with EKS"
 slug: "deploy-dynamia-ai-aws"
 date: "2025-09-26"
 excerpt: "Follow this battle-tested checklist to prepare IAM, install cluster add-ons, and roll out the Dynamia AI Platform on Amazon EKS in about an hour."

@@ -110,7 +110,7 @@ export default function Home() {
   return (
     <MainLayout>
       {/* Hero Section */}
-      <section className="py-16 md:py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-white to-primary-lighter">
+      <section className="py-16 md:py-24 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <motion.div
@@ -763,6 +763,35 @@ export default function Home() {
                     width={240}
                     height={120}
                     className="object-contain"
+                  />
+                </div>
+                <div className="flex items-center text-primary text-sm">
+                  <span className="mr-1">{t('home.ecosystem.viewDetails')}</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M5 12h14"></path>
+                    <path d="M12 5l7 7-7 7"></path>
+                  </svg>
+                </div>
+              </Link>
+            </motion.div>
+
+            {/* Kueue Card */}
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              variants={fadeIn}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="bg-white rounded-lg shadow-sm border border-gray-100 p-5 hover:shadow-md transition-shadow w-[280px] flex-shrink-0"
+            >
+              <Link href="https://kueue.sigs.k8s.io/docs/" className="flex flex-col items-center">
+                <div className="w-48 h-20 flex items-center justify-center">
+                  <Image
+                    src="/images/kueue.svg"
+                    alt="Kueue"
+                    width={160}
+                    height={65}
+                    className="object-contain max-w-[160px] max-h-[65px]"
                   />
                 </div>
                 <div className="flex items-center text-primary text-sm">

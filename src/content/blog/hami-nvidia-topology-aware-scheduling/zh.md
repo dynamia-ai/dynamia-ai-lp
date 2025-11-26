@@ -1,5 +1,6 @@
 ---
 title: "【原理解析】HAMi × NVIDIA | GPU 拓扑感知调度实现详解"
+coverTitle: "【原理解析】HAMi×NVIDIA GPU拓扑感知调度实现详解"
 slug: "hami-nvidia-topology-aware-scheduling-deep-dive"
 date: "2025-10-22"
 excerpt: "HAMi v2.7.0 正式推出 NVIDIA GPU 拓扑感知调度功能。本文深入代码实现，详细剖析 HAMi 在支持拓扑感知调度时的具体设计与实现原理，解析如何通过智能调度将计算任务精确部署到物理连接最紧密的 GPU 组合上。"

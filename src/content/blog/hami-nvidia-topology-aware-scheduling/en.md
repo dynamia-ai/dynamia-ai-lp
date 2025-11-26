@@ -1,5 +1,6 @@
 ---
 title: "Deep Dive: HAMi × NVIDIA | GPU Topology-Aware Scheduling Implementation"
+coverTitle: "Deep Dive: HAMi × NVIDIA | GPU Topology-Aware Scheduling Implementation"
 slug: "hami-nvidia-topology-aware-scheduling-deep-dive"
 date: "2025-10-22"
 excerpt: "HAMi v2.7.0 introduces topology-aware scheduling for NVIDIA GPUs. This article provides an in-depth code analysis of HAMi's design and implementation principles for topology-aware scheduling, explaining how intelligent scheduling precisely deploys compute tasks on the most tightly connected GPU combinations."

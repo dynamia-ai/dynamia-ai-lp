@@ -1,5 +1,6 @@
 ---
 title: "Nvidia's Open-Sourced KAI-Scheduler vs. HAMi: An Analysis of Technical Paths to GPU Sharing and a Look at Future Synergy"
+coverTitle: "KAI-Scheduler vs. HAMi: Technical Paths to GPU Sharing"
 slug: "KAI-Scheduler-vs-HAMi: Technical Paths to GPU Sharing and Synergy Outlook"
 date: "2025-08-06"
 excerpt: "Today, we're doing a technical deep dive to compare the implementation methods of KAI-Scheduler and HAMi, and to look ahead at the possibilities for future collaboration."
