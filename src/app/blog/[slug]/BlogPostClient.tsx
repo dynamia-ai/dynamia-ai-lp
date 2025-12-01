@@ -300,7 +300,7 @@ export default function BlogPostClient({ enPost, zhPost }: BlogPostClientProps) 
                 {displayPost.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="inline-block bg-primary-lighter text-primary-dark text-sm font-semibold px-3.5 py-1.5 rounded-full"
+                    className="inline-block bg-primary-lighter text-gray-700 text-sm font-semibold px-3.5 py-1.5 rounded-full"
                   >
                     {tag}
                   </span>

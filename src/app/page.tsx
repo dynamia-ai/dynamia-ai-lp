@@ -786,13 +786,16 @@ export default function Home() {
             >
               <Link href="https://kueue.sigs.k8s.io/docs/" className="flex flex-col items-center">
                 <div className="w-48 h-20 flex items-center justify-center">
-                  <Image
-                    src="/images/kueue.svg"
-                    alt="Kueue"
-                    width={160}
-                    height={65}
-                    className="object-contain max-w-[160px] max-h-[65px]"
-                  />
+                  <div className="flex items-center -translate-x-4">
+                    <Image
+                      src="/images/kueue.svg"
+                      alt="Kueue"
+                      width={120}
+                      height={50}
+                      className="object-contain max-w-[120px] max-h-[50px] -mr-8"
+                    />
+                    <span className="text-[#326ce5] font-bold text-2xl tracking-tight">Kueue</span>
+                  </div>
                 </div>
                 <div className="flex items-center text-primary text-sm">
                   <span className="mr-1">{t('home.ecosystem.viewDetails')}</span>
