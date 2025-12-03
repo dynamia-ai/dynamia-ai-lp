@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
@@ -14,12 +14,22 @@ const fadeIn = {
   visible: { opacity: 1, y: 0 },
 };
 
+// 箭头图标组件
+const ArrowIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M5 12h14"></path>
+    <path d="M12 5l7 7-7 7"></path>
+  </svg>
+);
+
 export default function Home() {
   const { t } = useTranslation();
   const [activeTab, setActiveTab] = useState(0);
   const ecosystemRef = useRef<HTMLDivElement>(null);
   const [ecoIndex, setEcoIndex] = useState(0);
   const [paused, setPaused] = useState(false);
+  const isScrollingRef = useRef(false);
+  const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const [ecoCount, setEcoCount] = useState(0);
 
@@ -27,6 +37,15 @@ export default function Home() {
     const el = ecosystemRef.current;
     if (!el) return;
     setEcoCount(el.children.length);
+  }, []);
+
+  // 组件卸载时清理 timeout
+  useEffect(() => {
+    return () => {
+      if (scrollTimeoutRef.current) {
+        clearTimeout(scrollTimeoutRef.current);
+      }
+    };
   }, []);
 
   const getStep = () => {
@@ -37,40 +56,60 @@ export default function Home() {
     return second.offsetLeft - first.offsetLeft;
   };
 
-  const scrollToIndex = (idx: number) => {
+  const scrollToIndex = useCallback((idx: number) => {
     const el = ecosystemRef.current as HTMLDivElement | null;
     if (!el) return;
+    
+    // 清理之前的 timeout
+    if (scrollTimeoutRef.current) {
+      clearTimeout(scrollTimeoutRef.current);
+    }
+    
     const step = getStep();
-    const maxIdx = Math.max(0, ecoCount - 1);
-    const clamped = Math.max(0, Math.min(maxIdx, idx));
-    el.scrollTo({ left: clamped * step, behavior: 'smooth' });
+    // 限制索引在有效范围内
+    const clamped = Math.max(0, Math.min(ecoCount - 1, idx));
+    
+    // 标记正在程序化滚动，避免 handleScroll 在滚动过程中更新状态
+    isScrollingRef.current = true;
     setEcoIndex(clamped);
-  };
+    
+    el.scrollTo({ left: clamped * step, behavior: 'smooth' });
+    
+    // 滚动完成后重置标志
+    scrollTimeoutRef.current = setTimeout(() => {
+      isScrollingRef.current = false;
+      scrollTimeoutRef.current = null;
+    }, 600);
+  }, [ecoCount]);
 
   useEffect(() => {
     if (paused || ecoCount <= 1) return;
     const id = setInterval(() => {
-      setEcoIndex((prev) => {
-        const next = ecoCount > 0 ? (prev + 1) % ecoCount : 0;
-        const el = ecosystemRef.current as HTMLDivElement | null;
-        if (el) {
-          const step = getStep();
-          el.scrollTo({ left: next * step, behavior: 'smooth' });
-        }
-        return next;
-      });
+      scrollToIndex((ecoIndex + 1) % ecoCount);
     }, 2000);
     return () => clearInterval(id);
-  }, [paused, ecoCount]);
+  }, [paused, ecoCount, ecoIndex, scrollToIndex]);
 
   const handleScroll = () => {
+    // 如果正在程序化滚动，忽略手动滚动事件，避免闪烁
+    if (isScrollingRef.current) return;
+    
     const el = ecosystemRef.current as HTMLDivElement | null;
     if (!el) return;
     const step = getStep();
     const idx = Math.round(el.scrollLeft / step);
-    const maxIdx = Math.max(0, ecoCount - 1);
-    const clamped = Math.max(0, Math.min(maxIdx, idx));
+    // 限制索引在有效范围内
+    const clamped = Math.max(0, Math.min(ecoCount - 1, idx));
     if (clamped !== ecoIndex) setEcoIndex(clamped);
+  };
+
+  // 获取卡片的选中状态样式
+  const getCardClassName = (index: number) => {
+    const baseClasses = 'bg-white rounded-lg shadow-sm border border-gray-100 p-5 hover:shadow-md transition-all duration-300 w-[280px] flex-shrink-0';
+    const activeClasses = ecoIndex === index 
+      ? 'ring-2 ring-primary ring-offset-2 shadow-lg opacity-100' 
+      : 'opacity-75';
+    return `${baseClasses} ${activeClasses}`;
   };
 
   const featureTabs = t('home.keyAdvantages.tabs', { returnObjects: true });
@@ -655,7 +694,7 @@ export default function Home() {
             {/* Carousel viewport */}
             <div
               ref={ecosystemRef}
-              className="flex flex-nowrap gap-6 overflow-x-auto scroll-smooth py-2"
+              className="flex flex-nowrap gap-6 overflow-x-auto scroll-smooth py-2 px-2 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
               onScroll={handleScroll}
             >
 
@@ -666,7 +705,7 @@ export default function Home() {
               variants={fadeIn}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="bg-white rounded-lg shadow-sm border border-gray-100 p-5 hover:shadow-md transition-shadow w-[280px] flex-shrink-0"
+              className={getCardClassName(0)}
             >
               <Link href="https://github.com/vllm-project/production-stack/" className="flex flex-col items-center">
                 <div className="w-48 h-20 flex items-center justify-center">
@@ -680,10 +719,7 @@ export default function Home() {
                 </div>
                 <div className="flex items-center text-primary text-sm">
                   <span className="mr-1">{t('home.ecosystem.viewDetails')}</span>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M5 12h14"></path>
-                    <path d="M12 5l7 7-7 7"></path>
-                  </svg>
+                  <ArrowIcon />
                 </div>
               </Link>
             </motion.div>
@@ -695,7 +731,7 @@ export default function Home() {
               variants={fadeIn}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="bg-white rounded-lg shadow-sm border border-gray-100 p-5 hover:shadow-md transition-shadow w-[280px] flex-shrink-0"
+              className={getCardClassName(1)}
             >
               <Link href="https://github.com/volcano-sh/volcano/blob/master/docs/user-guide/how_to_use_volcano_vgpu.md" className="flex flex-col items-center">
                 <div className="w-48 h-20 flex items-center justify-center">
@@ -709,10 +745,7 @@ export default function Home() {
                 </div>
                 <div className="flex items-center text-primary text-sm">
                   <span className="mr-1">{t('home.ecosystem.viewDetails')}</span>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M5 12h14"></path>
-                    <path d="M12 5l7 7-7 7"></path>
-                  </svg>
+                  <ArrowIcon />
                 </div>
               </Link>
             </motion.div>
@@ -724,7 +757,7 @@ export default function Home() {
               variants={fadeIn}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="bg-white rounded-lg shadow-sm border border-gray-100 p-5 hover:shadow-md transition-shadow w-[280px] flex-shrink-0"
+              className={getCardClassName(2)}
             >
               <Link href="https://koordinator.sh/docs/user-manuals/device-scheduling-gpu-share-with-hami" className="flex flex-col items-center">
                 <div className="w-48 h-20 flex items-center justify-center">
@@ -738,10 +771,7 @@ export default function Home() {
                 </div>
                 <div className="flex items-center text-primary text-sm">
                   <span className="mr-1">{t('home.ecosystem.viewDetails')}</span>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M5 12h14"></path>
-                    <path d="M12 5l7 7-7 7"></path>
-                  </svg>
+                  <ArrowIcon />
                 </div>
               </Link>
             </motion.div>
@@ -753,7 +783,7 @@ export default function Home() {
               variants={fadeIn}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="bg-white rounded-lg shadow-sm border border-gray-100 p-5 hover:shadow-md transition-shadow w-[280px] flex-shrink-0"
+              className={getCardClassName(3)}
             >
               <Link href="https://inference.readthedocs.io/en/latest/" className="flex flex-col items-center">
                 <div className="w-48 h-20 flex items-center justify-center">
@@ -767,10 +797,7 @@ export default function Home() {
                 </div>
                 <div className="flex items-center text-primary text-sm">
                   <span className="mr-1">{t('home.ecosystem.viewDetails')}</span>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M5 12h14"></path>
-                    <path d="M12 5l7 7-7 7"></path>
-                  </svg>
+                  <ArrowIcon />
                 </div>
               </Link>
             </motion.div>
@@ -782,7 +809,7 @@ export default function Home() {
               variants={fadeIn}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="bg-white rounded-lg shadow-sm border border-gray-100 p-5 hover:shadow-md transition-shadow w-[280px] flex-shrink-0"
+              className={getCardClassName(4)}
             >
               <Link href="https://kueue.sigs.k8s.io/docs/" className="flex flex-col items-center">
                 <div className="w-48 h-20 flex items-center justify-center">
@@ -799,10 +826,7 @@ export default function Home() {
                 </div>
                 <div className="flex items-center text-primary text-sm">
                   <span className="mr-1">{t('home.ecosystem.viewDetails')}</span>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M5 12h14"></path>
-                    <path d="M12 5l7 7-7 7"></path>
-                  </svg>
+                  <ArrowIcon />
                 </div>
               </Link>
             </motion.div>
@@ -812,21 +836,23 @@ export default function Home() {
             <button
               aria-label="Previous"
               onClick={() => scrollToIndex(ecoIndex - 1)}
-              className="absolute left-0 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-gray-700 border border-gray-200 rounded-full w-9 h-9 hidden md:flex items-center justify-center shadow-sm"
+              disabled={ecoIndex === 0}
+              className="absolute left-0 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-[#0FD05D] hover:text-white hover:border-[#0FD05D] text-gray-700 border border-gray-200 rounded-full w-10 h-10 hidden md:flex items-center justify-center shadow-md transition-all disabled:opacity-50 disabled:cursor-not-allowed hover:scale-110 disabled:hover:scale-100 active:bg-[#0FD05D] active:text-white active:scale-95 focus:outline-none focus:ring-2 focus:ring-[#0FD05D] focus:ring-offset-2"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
             </button>
             <button
               aria-label="Next"
               onClick={() => scrollToIndex(ecoIndex + 1)}
-              className="absolute right-0 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-gray-700 border border-gray-200 rounded-full w-9 h-9 hidden md:flex items-center justify-center shadow-sm"
+              disabled={ecoIndex >= ecoCount - 1}
+              className="absolute right-0 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-[#0FD05D] hover:text-white hover:border-[#0FD05D] text-gray-700 border border-gray-200 rounded-full w-10 h-10 hidden md:flex items-center justify-center shadow-md transition-all disabled:opacity-50 disabled:cursor-not-allowed hover:scale-110 disabled:hover:scale-100 active:bg-[#0FD05D] active:text-white active:scale-95 focus:outline-none focus:ring-2 focus:ring-[#0FD05D] focus:ring-offset-2"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 18l6-6-6-6"/></svg>
             </button>
 
             {/* Indicators */}
             <div className="absolute left-1/2 -translate-x-1/2 bottom-[-28px] flex items-center gap-2">
-              {Array.from({ length: Math.max(ecoCount, 0) }).map((_, i) => (
+              {Array.from({ length: ecoCount }).map((_, i) => (
                 <button
                   key={i}
                   aria-label={`Go to slide ${i + 1}`}
