@@ -9,9 +9,8 @@ import remarkRehype from 'remark-rehype';
 import rehypeRaw from 'rehype-raw';
 import rehypeHighlight from 'rehype-highlight';
 import rehypeStringify from 'rehype-stringify';
-import readingTime from 'reading-time';
 import { cache } from 'react';
-import { BlogPost, BlogPostMeta, TocItem } from '@/types/blog';
+import { BlogPost, BlogPostMeta, BlogPostsResult, TocItem } from '@/types/blog';
 
 const CONTENT_PATH = path.join(process.cwd(), 'src/content/blog');
 
@@ -40,9 +39,6 @@ export function getBlogPost(slug: string, language: 'en' | 'zh' = 'en'): BlogPos
     const fileContents = fs.readFileSync(fullPath, 'utf8');
     const { data, content } = matter(fileContents);
 
-    // Calculate reading time
-    const stats = readingTime(content);
-
     return {
       slug,
       title: data.title || '',
@@ -54,7 +50,6 @@ export function getBlogPost(slug: string, language: 'en' | 'zh' = 'en'): BlogPos
       coverTitle: data.coverTitle, // 自定义封面标题
       language: data.language || language,
       content,
-      readingTime: stats.text,
     };
   } catch (error) {
     console.error(`Error reading blog post ${slug}:`, error);
@@ -77,11 +72,6 @@ function getBlogPostMeta(slug: string, language: 'en' | 'zh' = 'en'): BlogPostMe
       // 不提取 excerpt，只解析 frontmatter
       excerpt: false,
     });
-    
-    // 根据摘要估算阅读时间，列表页不需要精确的阅读时间
-    const estimatedReadingTime = data.excerpt 
-      ? `${Math.ceil(data.excerpt.length / 200)} min read`
-      : '5 min read';
 
     return {
       slug,
@@ -93,7 +83,6 @@ function getBlogPostMeta(slug: string, language: 'en' | 'zh' = 'en'): BlogPostMe
       coverImage: data.coverImage,
       coverTitle: data.coverTitle,
       language: data.language || language,
-      readingTime: estimatedReadingTime,
     };
   } catch (error) {
     console.error(`Error reading blog post meta ${slug}:`, error);
@@ -101,10 +90,11 @@ function getBlogPostMeta(slug: string, language: 'en' | 'zh' = 'en'): BlogPostMe
   }
 }
 
-// 获取所有博客文章元数据（使用缓存优化性能）
-export const getAllBlogPosts = cache((language: 'en' | 'zh' = 'en'): BlogPostMeta[] => {
+// 获取所有博客文章元数据和标签（使用缓存优化性能）
+export const getAllBlogPosts = cache((language: 'en' | 'zh' = 'en'): BlogPostsResult => {
   const slugs = getBlogPostSlugs();
   const posts: BlogPostMeta[] = [];
+  const tags = new Set<string>();
   
   // 需要隐藏的文章 slug 列表
   const hiddenSlugs = ['hello-world'];
@@ -118,13 +108,20 @@ export const getAllBlogPosts = cache((language: 'en' | 'zh' = 'en'): BlogPostMet
     const post = getBlogPostMeta(slug, language);
     if (post) {
       posts.push(post);
+      // 同时收集标签
+      post.tags.forEach(tag => tags.add(tag));
     }
   }
   
   // Sort by date (newest first)
-  return posts.sort((a, b) => {
+  const sortedPosts = posts.sort((a, b) => {
     return new Date(b.date).getTime() - new Date(a.date).getTime();
   });
+  
+  return {
+    posts: sortedPosts,
+    tags: Array.from(tags).sort(),
+  };
 });
 
 // 从 Markdown AST 中提取标题（h2-h6）
@@ -257,29 +254,12 @@ export async function markdownToHtml(markdown: string): Promise<{ html: string; 
 
 // Get posts by tag
 export function getBlogPostsByTag(tag: string, language: 'en' | 'zh' = 'en'): BlogPostMeta[] {
-  const allPosts = getAllBlogPosts(language);
-  return allPosts.filter(post => 
+  const { posts } = getAllBlogPosts(language);
+  return posts.filter(post => 
     post.tags.some(postTag => 
       postTag.toLowerCase() === tag.toLowerCase()
     )
   );
-}
-
-// 从已加载的文章中提取所有唯一标签（优化：避免重复读取文件）
-export function getAllTagsFromPosts(posts: BlogPostMeta[]): string[] {
-  const tags = new Set<string>();
-  
-  posts.forEach(post => {
-    post.tags.forEach(tag => tags.add(tag));
-  });
-  
-  return Array.from(tags).sort();
-}
-
-// 获取所有唯一标签
-export function getAllTags(language: 'en' | 'zh' = 'en'): string[] {
-  const allPosts = getAllBlogPosts(language);
-  return getAllTagsFromPosts(allPosts);
 }
 
 // Format date for display

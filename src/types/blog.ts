@@ -17,7 +17,6 @@ export interface BlogPost {
   coverTitle?: string; // 自定义封面标题，如果不设置则使用 title
   language: 'en' | 'zh';
   content: string;
-  readingTime: string;
   toc?: TocItem[]; // 目录数据（服务器端生成）
 }
 
@@ -32,5 +31,10 @@ export interface BlogPostMeta {
   coverImage?: string;
   coverTitle?: string; // 自定义封面标题，如果不设置则使用 title
   language: 'en' | 'zh';
-  readingTime: string;
+}
+
+// Blog posts result with tags
+export interface BlogPostsResult {
+  posts: BlogPostMeta[];
+  tags: string[];
 } 
