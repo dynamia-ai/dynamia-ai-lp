@@ -11,7 +11,7 @@ coverImage: "/images/blog/Demystifying-the-Reservation-Pod/cover.jpg"
 
 Yesterday, our article, [Nvidia's Open-Sourced KAI-Scheduler vs. HAMi: An Analysis of Technical Paths to GPU Sharing and a Look at Future Synergy](https://dynamia.ai/en/blog/KAI-Scheduler vs HAMi: Technical Paths to GPU Sharing and Synergy Outlook), took a deep dive into how KAI-Scheduler achieves fractional GPU sharing. We're very grateful for all the attention and lively discussion it generated! In particular, a reader pointed out a key technical detail that needed further clarification. Today, we're going to dedicate this post to analyzing that very issue.
 
-### # Reader Feedback and Technical Clarification
+### Reader Feedback and Technical Clarification
 
 A reader mentioned in the comments:
 
@@ -42,7 +42,7 @@ KAI-Scheduler's core innovation is the introduction of the Reservation Pod mecha
 -   Kubernetes allocates a complete physical GPU to this Pod.
 -   KAI-Scheduler internally manages this "reserved" GPU, allowing multiple user Pods to share the same physical GPU.
 
-### # The Complete Pod Scheduling and GPU Allocation Flow
+### The Complete Pod Scheduling and GPU Allocation Flow
 
 To understand the entire process more clearly, let's break down the complete flow from the time a user submits a Pod to when it ultimately obtains GPU resources:
 
@@ -147,7 +147,7 @@ func (rsc *service) createResourceReservationPod(
     1.  After creating the Reservation Pod, KAI-Scheduler blocks and waits for the Pod to obtain the actual GPU device UUID.
     2.  During this waiting period, the Pod is assigned a physical GPU device by the NVIDIA Container Runtime.
 
-### # The Information Acquisition Challenge
+### The Information Acquisition Challenge
 
 In the process described above, there is a key information gap: **when the Reservation Pod is successfully scheduled, KAI-Scheduler does not immediately know which specific physical GPU device on the node it has been assigned to.**
 
@@ -178,7 +178,7 @@ type GpuSharingNodeInfo struct {
 
 KAI-Scheduler cleverly solves this problem with the following design:
 
-### #1. Device Information Reporting Container
+### 1. Device Information Reporting Container
 
 The Reservation Pod container runs a small application (`cmd/resourcereservation`) that can read the GPU device information mounted for the Pod by the NVIDIA Container Runtime.
 
@@ -228,7 +228,7 @@ func GetGPUDevice(ctx context.Context, podName string, namespace string) (string
 }
 ```
 
-### #2. Information Feedback
+### 2. Information Feedback
 
 The device information reporting container writes the obtained GPU device UUID into the Reservation Pod's Annotations.
 
@@ -302,7 +302,7 @@ func (pp *PodPatcher) PatchDeviceInfo(ctx context.Context, uuid string) error {
 }
 ```
 
-### #3. Watch Mechanism
+### 3. Watch Mechanism
 
 KAI-Scheduler monitors changes to the Reservation Pod via the Kubernetes Watch API. As soon as it detects the annotation with the GPU device UUID, it retrieves this information and updates its internal state.
 
@@ -347,7 +347,7 @@ func (rsc *service) waitForGPUReservationPodAllocation(
 }
 ```
 
-### #4. User Pod Binding
+### 4. User Pod Binding
 
 After obtaining the GPU UUID, KAI-Scheduler will:
 

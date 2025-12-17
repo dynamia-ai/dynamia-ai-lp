@@ -129,24 +129,36 @@ function extractTocFromAST(ast: any): TocItem[] {
   const toc: TocItem[] = [];
   const usedIds = new Set<string>();
 
+  // 递归提取节点中的纯文本内容，处理加粗、斜体、链接等包装
+  function extractText(node: any): string {
+    if (!node) return '';
+
+    if (node.type === 'text' || node.type === 'code') {
+      return node.value || '';
+    }
+
+    if (
+      node.type === 'strong' ||
+      node.type === 'emphasis' ||
+      node.type === 'link'
+    ) {
+      return (node.children || [])
+        .map((child: any) => extractText(child))
+        .join('');
+    }
+
+    if (node.children && Array.isArray(node.children)) {
+      return node.children.map((child: any) => extractText(child)).join('');
+    }
+
+    return '';
+  }
+
   function traverse(node: any) {
-    // 只提取 h2-h6 标题（h1 是文章标题）
-    if (node.type === 'heading' && node.depth >= 2 && node.depth <= 6) {
-      // 提取标题文本
-      const text = node.children
-        .map((child: any) => {
-          if (child.type === 'text') return child.value;
-          if (child.type === 'code') return child.value;
-          if (child.type === 'link') {
-            // 处理链接中的文本
-            return child.children
-              ?.map((c: any) => (c.type === 'text' ? c.value : ''))
-              .join('') || '';
-          }
-          return '';
-        })
-        .join('')
-        .trim();
+    // 只提取 h2-h4 标题（h1 是文章标题）
+    if (node.type === 'heading' && node.depth >= 2 && node.depth <= 3) {
+      // 提取标题文本（包括加粗、斜体、链接中的文字）
+      const text = extractText(node).trim();
 
       if (text) {
         // 生成 ID（与客户端逻辑保持一致）
