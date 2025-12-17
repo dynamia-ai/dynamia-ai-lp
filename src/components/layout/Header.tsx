@@ -158,6 +158,13 @@ const Header: React.FC = () => {
       external: false,
       iconName: 'document'
     },
+    {
+      name: t('navigation.casePrepEdu'),
+      description: t('navigation.casePrepEduDesc'),
+      href: currentLocale === 'zh' ? '/zh/blog/case-prep-edu-hami' : '/blog/case-prep-edu-hami',
+      external: false,
+      iconName: 'document'
+    },
     // Temporarily hidden - Telecom Provider Case
     // { 
     //   name: t('navigation.caseTelecom'), 
