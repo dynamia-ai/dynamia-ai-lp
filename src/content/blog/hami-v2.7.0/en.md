@@ -16,7 +16,7 @@ language: "en"
 > *Silicon—the many textures of compute.*
 > *Scheduling—the rhythm that finds paths through complexity.*
 >
-> We do not promise the wind; we promise an ****order**** you can sail by.
+> We do not promise the wind; we promise an **order** you can sail by.
 > A release takes shape not because all is perfect, but because  ***order lets imperfection run in parallel*** *.*
 
 # Release Highlights
@@ -52,9 +52,9 @@ In Vietnam Telecom's production practice, HAMi demonstrated robust GPU resource 
 
 ## AWS Neuron — Device- and **Core-Level** Sharing with Topology Awareness
 
-AWS-designed **Inferentia** and **Trainium** accelerators aim to deliver more efficient and cost-controlled AI infrastructure on AWS. **Inferentia** targets inference acceleration, while **Trainium** targets training. These chips are purpose-built for AI workloads, focusing not only on raw performance but also on **performance-per-watt** and overall cost efficiency. **Inferentia2** brings notable gains in perf-per-watt, and **Trainium2** is stated to reduce costs by **30–40%** versus comparable GPU instances. HAMi now provides integrated support for these AWS accelerators—covering **scheduling**, **virtualization**  **, and observability** .
+AWS-designed **Inferentia** and **Trainium** accelerators aim to deliver more efficient and cost-controlled AI infrastructure on AWS. **Inferentia** targets inference acceleration, while **Trainium** targets training. These chips are purpose-built for AI workloads, focusing not only on raw performance but also on **performance-per-watt** and overall cost efficiency. **Inferentia2** brings notable gains in perf-per-watt, and **Trainium2** is stated to reduce costs by **30–40%** versus comparable GPU instances. HAMi now provides integrated support for these AWS accelerators—covering **scheduling**, **virtualization**, and **observability**.
 
-**What HAMi adds for ****AWS****Neuron**
+**What HAMi adds for AWS Neuron**
  HAMi enables **fine-grained scheduling and sharing** of AWS **Trainium** and **Inferentia** accelerators in Kubernetes.
 
 **Key capabilities**
@@ -63,8 +63,8 @@ AWS-designed **Inferentia** and **Trainium** accelerators aim to deliver more ef
 2. **Topology-aware placement.** For workloads that require multiple NeuronCores, the scheduler places them on  **low-latency core groupings** , maximizing intra-node communication efficiency.
 3. **Simplified UX.** Users declare Neuron resources in Pod YAML—just like CPU/memory—by requesting `aws.amazon.com/neuron` (device) or `aws.amazon.com/neuroncore` (core). HAMi handles the underlying mapping.
 
-**How ****topology**** awareness works**
- HAMi’s topology-aware scheduling for AWS Neuron is based on **policy encoded from prior knowledge** of EC2 Neuron platforms rather than runtime topology discovery. Insights from AWS’s native scheduling logic for specific **EC2 ****Neuron**** instance types** are **codified** into HAMi’s internal rules.
+**How topology awareness works**
+HAMi’s topology-aware scheduling for AWS Neuron is based on **policy encoded from prior knowledge** of EC2 Neuron platforms rather than runtime topology discovery. Insights from AWS’s native scheduling logic for specific **EC2 Neuron instance types** are **codified** into HAMi’s internal rules.
 
 **Implementation principles**
 
@@ -129,7 +129,7 @@ Related PR: [https://github.com/Project-HAMi/HAMi/pull/1238](https://github.com/
 
 ## NVIDIA GPU — **Topology-Aware Scheduling** (NVLink-First, Fragment-Aware)
 
-This feature targets performance bottlenecks in  **high-performance computing (**  **HPC** **)** and **large-scale** ****AI** training** . When a job needs 2, 4, 8, or more GPUs, forcing those GPUs to communicate solely over the relatively slow **PCIe** bus makes data exchange the bottleneck and degrades end-to-end training throughput. By contrast, if the GPUs are placed on **NVLink-connected** sets, communication bandwidth increases dramatically, unlocking substantially higher overall performance.
+This feature targets performance bottlenecks in **high-performance computing (HPC)** and **large-scale AI training**. When a job needs 2, 4, 8, or more GPUs, forcing those GPUs to communicate solely over the relatively slow **PCIe** bus makes data exchange the bottleneck and degrades end-to-end training throughput. By contrast, if the GPUs are placed on **NVLink-connected** sets, communication bandwidth increases dramatically, unlocking substantially higher overall performance.
 
 ### Topology Optimization: Design Rationale
 
@@ -142,7 +142,7 @@ The mechanism has two stages: **Topology** **Registration** and  **Scheduling De
 Goal: turn each node’s otherwise invisible physical GPU interconnects into standardized data that the cluster scheduler can reason about.
 
 1. **Discovery.** On every GPU node, the **device plugin** uses NVIDIA **NVML** to obtain the pairwise physical link type between all GPUs—accurately distinguishing **NVLink** from standard **PCIe** links.
-2. **Modeling.** The results are assembled into a clear **connectivity**** matrix** (an adjacency table) that records, for any two GPUs, whether they are connected via NVLink or PCIe. This matrix is the node’s digital blueprint of its GPU topology.
+2. **Modeling.** The results are assembled into a clear **connectivity matrix** (an adjacency table) that records, for any two GPUs, whether they are connected via NVLink or PCIe. This matrix is the node’s digital blueprint of its GPU topology.
 3. **Publication.** The matrix is serialized to **JSON** and attached to the node as an  **annotation** . From that point, the node’s physical topology is globally visible and queryable by the scheduler.
 
 #### Stage 2: Scheduling Decision — Selecting the Optimal Placement
@@ -270,7 +270,7 @@ During Tensor Parallelism (TP), vLLM relies on the **NCCL** library for high-per
 
 In enterprise practice, Xinference often encounters: (a)  **small models monopolizing full GPUs** , leading to waste; and (b) **limited quota/observability** for multi-tenant scenarios.
 
-To address this, the community merged  **[** **PR #6]** , adding **native HAMi ****vGPU**** support** in the Helm chart. With a simple flag, users can enable HAMi and propagate resource variables such as `gpucores` and `gpumem-percentage` through to both Supervisor and Worker.
+To address this, the community merged **[PR #6]**, adding **native HAMi vGPU support** in the Helm chart. With a simple flag, users can enable HAMi and propagate resource variables such as `gpucores` and `gpumem-percentage` through to both Supervisor and Worker.
 
 ![1760022774131](/images/blog/hami-v2.7.0/1760022774131.png)
 
@@ -289,7 +289,7 @@ To address this, the community merged  **[** **PR #6]** , adding **native HAMi *
 
 Volcano’s GPU virtualization supports requesting **partial GPU resources** (memory/compute) and, together with the Device Plugin, enforces **hardware isolation** to improve utilization. Traditional GPU virtualization typically intercepts CUDA API calls to limit usage. With NVIDIA Ampere, **MIG** (  **Multi-Instance GPU** **)** allows a single physical GPU to be partitioned into multiple isolated instances; however, generic MIG schemes often rely on  **pre-fixed instance sizes** , which can introduce waste and reduce flexibility.
 
-**Volcano v1.12** introduces **dynamic** ***MIG** *creation and scheduling** . It selects MIG instance sizes **at runtime** based on requested GPU usage and applies a **best-fit** strategy to reduce waste. It also supports **binpack** and **spread** scoring to control fragmentation and boost utilization. Users request resources via a **unified ****API** (`volcano.sh/vgpu-number`, `…/vgpu-cores`, `…/vgpu-memory`) without worrying about the underlying implementation.
+**Volcano v1.12** introduces **dynamic MIG creation and scheduling**. It selects MIG instance sizes **at runtime** based on requested GPU usage and applies a **best-fit** strategy to reduce waste. It also supports **binpack** and **spread** scoring to control fragmentation and boost utilization. Users request resources via a **unified API** (`volcano.sh/vgpu-number`, `…/vgpu-cores`, `…/vgpu-memory`) without worrying about the underlying implementation.
 
 ![1760022781830](/images/blog/hami-v2.7.0/1760022781830.png)
 

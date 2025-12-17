@@ -13,7 +13,7 @@ language: "zh"
 
 昨天我们发布的[《Nvidia 收购 Run:ai 后开源的 KAI-Scheduler vs HAMi：GPU 共享的技术路线分析与协同展望》](https://dynamia.ai/zh/blog/Run ai- KAI-scheduler vs hami)深入探讨了 KAI-Scheduler 如何实现 GPU 分数共享，非常感谢大家的关注和热烈讨论！特别是有读者指出了一个关键技术细节需要进一步澄清，今天我们就来专门解析这个问题。
 
-###  #读者反馈与技术澄清
+### 读者反馈与技术澄清
 
 有读者在评论中提到：
 
@@ -47,7 +47,7 @@ KAI-Scheduler 的核心创新是引入 Reservation Pod 机制，解决原生 Kub
 
 - KAI-Scheduler 在内部管理这个被"预留"的 GPU，实现多个用户 Pod 共享同一个物理 GPU
 
-### # 完整的Pod调度与GPU分配流程
+### 完整的Pod调度与GPU分配流程
 
 为了更清晰地理解整个过程，让我们详细梳理从用户提交 Pod 到最终获取 GPU 资源的完整流程：
 
@@ -165,7 +165,7 @@ func (rsc *service) createResourceReservationPod(
 
 (2) 等待过程中，Pod 会被 NVIDIA Container Runtime 分配物理 GPU 设备
 
-### # 信息获取难题
+### 信息获取难题
 
 在上述流程中，存在一个关键的信息差：**当 Reservation Pod 被成功调度后，KAI-Scheduler 并不立即知道这个 Pod 被分配到了节点上的哪个具体物理 GPU 设备。**
 
@@ -196,7 +196,7 @@ type GpuSharingNodeInfo struct {
 
 KAI-Scheduler 通过以下设计巧妙解决了这个问题：
 
-### #1 设备信息上报容器
+### 1 设备信息上报容器
 
 Reservation Pod 容器运行一个小型应用程序（cmd/resourcereservation），它能够读取到 NVIDIA Container Runtime 为 Pod 挂载的 GPU 设备信息。
 
@@ -246,7 +246,7 @@ func GetGPUDevice(ctx context.Context, podName string, namespace string) (string
 }
 ```
 
-### #2 信息回传
+### 2 信息回传
 
 设备信息上报容器将获取到的 GPU 设备 UUID 写入 Reservation Pod 的 Annotations 中。
 
@@ -320,7 +320,7 @@ func (pp *PodPatcher) PatchDeviceInfo(ctx context.Context, uuid string) error {
 }
 ```
 
-### #3 Watch 机制
+### 3 Watch 机制
 
 KAI-Scheduler 通过 Kubernetes Watch API 监控 Reservation Pod 的变化，一旦发现 GPU 设备 UUID 的注解出现，就获取该信息并更新内部状态。
 
@@ -365,7 +365,7 @@ func (rsc *service) waitForGPUReservationPodAllocation(
 }
 ```
 
-### #4 用户 Pod 绑定
+### 4 用户 Pod 绑定
 
 获取 GPU UUID 后，KAI-Scheduler 会：
 
