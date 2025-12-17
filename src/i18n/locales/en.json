@@ -27,7 +27,9 @@
     "caseTelecom": "Telecom Provider Case",
     "caseTelecomDesc": "Learn how a telecom provider leverages HAMi for GPU virtualization and heterogeneous device management",
     "caseSfTechnology": "SF Technology Case",
-    "caseSfTechnologyDesc": "Discover how SF Technology builds EffectiveGPU based on HAMi to enhance AI efficiency and reduce costs"
+    "caseSfTechnologyDesc": "Discover how SF Technology builds EffectiveGPU based on HAMi to enhance AI efficiency and reduce costs",
+    "casePrepEdu": "PREP EDU Case",
+    "casePrepEduDesc": "Explore how PREP EDU achieves intelligent scheduling of Heterogeneous GPUs based on HAMi to boost resource utilization and O&M efficiency"
   },
   "home": {
     "hero": {
@@ -1031,6 +1033,99 @@
       "companyCard": {
         "name": "SF Technology",
         "description": "Leading logistics technology provider in China"
+      },
+      "cta": {
+        "exploreHami": "Explore HAMi",
+        "contactUs": "Contact Us"
+      }
+    },
+    "prepEduHami": {
+      "title": "PREP EDU × HAMi | Intelligent Heterogeneous GPU Scheduling for Enhanced AI Service Efficiency",
+      "subtitle": "PREP EDU deployed the HAMi framework to add fine-grained vGPU sharing and GPU aware scheduling to its production Kubernetes (RKE2) clusters. This addressed concrete problems: GPU utilization below 20%, frequent out-of-memory crashes from shared cards, and the operational overhead of manually scheduling workloads across mixed GPU hardware. The result was a measurable increase in inference task density and platform stability.",
+      "overview": {
+        "title": "Company Overview",
+        "description": "PREP EDU is one of Southeast Asia’s fastest-growing edtech companies. It offers AI-powered language learning and test preparation services across Southeast Asia and relies on stable, large-scale, low-latency inference, making the efficiency of its underlying GPU infrastructure a primary cost and performance driver.",
+        "keyPoints": [
+          "A leading provider of AI-driven cross-border test-prep services",
+          "Dedicated to implementing personalized AI-based learning scenarios and optimizing learning experiences",
+          "Committed to addressing infrastructure scaling challenges in AI teaching environments",
+          "Promotes open-source technologies in hands-on education and research environments"
+        ]
+      },
+      "challenge": {
+        "title": "Rising Complexity in Heterogeneous GPU Scheduling",
+        "description": "As PREP EDU’s large-scale AI inference workloads expanded, traditional GPU usage models could no longer support the rapidly growing service demands. In a mixed-GPU environment (RTX 4070 / RTX 4090), resource waste, unbalanced scheduling, and compatibility issues became critical.",
+        "points": [
+          "Low GPU Utilization: Allocating GPUs exclusively as full cards prevented inference workloads from making effective use of available resources. Average utilization often remained as low as 10–20%, leaving both compute capacity and memory significantly underused.",
+          "Frequent Resource Conflicts: Without proper isolation and scheduling mechanisms, competing workloads frequently triggered memory contention, pushing GPU memory usage to 90–95%. This led to application crashes, interrupted inference processes, and ultimately impacted overall service stability.",
+          "Challenges in Heterogeneous Scheduling: In mixed-GPU environments combining RTX 4070 and 4090 models, different projects often required specific GPU types. Lacking a unified allocation and selection mechanism, resource dispatching became complex and error-prone.",
+          "High Compatibility Barriers: Any new solution needed to remain fully compatible with existing components such as RKE2, GPU Operator, and containerd. Non-transparent or intrusive approaches risked increasing operational overhead or disrupting existing production workflows."
+        ]
+      },
+      "solution": {
+        "title": "Solution: Implementing Efficient GPU Orchestration with HAMi",
+        "description": "To address long-standing issues such as heterogeneous scheduling complexity, low GPU utilization, and insufficient resource isolation, PREP EDU adopted HAMi to build a lightweight and non-intrusive GPU virtualization and orchestration solution within its existing RKE2 + GPU Operator + multi-model NVIDIA GPU environment. ",
+        "objective": "Through this integration, PREP EDU significantly reduced resource waste and conflict frequency while ensuring the platform can scale smoothly with growing AI inference workloads.",
+        "innovations": [
+          {
+            "title": "Virtualization & GPU Partitioning",
+            "description": "Workloads received resource limits based on NLP token lengths and service needs, enabling precise vGPU allocation."
+          },
+          {
+            "title": "Heterogeneous GPU Management",
+            "description": "With HAMi, workloads can be scheduled by GPU type (e.g., run specific services only on RTX 4070 or 4090), using annotations to ensure compatibility and performance."
+          },
+          {
+            "title": "Seamless Application Integration",
+            "description": "Transparent device virtualization allows GPU sharing and isolation without modifying existing applications."
+          },
+          {
+            "title": "GPU-Specific Assignment",
+            "description": "Tasks can be allocated by GPU UUID, enabling multiple processes to run on a single 24GB RTX 4090 in a controlled manner."
+          },
+          {
+            "title": "Full Compatibility",
+            "description": "HAMi and NVIDIA GPU Operator coexist smoothly, both running on containerd. Combined with Prometheus monitoring, the system integrates seamlessly with RKE2 and containerd."
+          }
+        ]
+      },
+      "results": {
+        "title": "Results: Major Increases in  GPU Utilization &  Inference Stability",
+        "description": "The solution has been fully validated in PREP EDU’s production-scale inference platform. After adopting HAMi, PREP EDU successfully decoupled and automatically organized its GPU resources:",
+        "items": [
+          {
+            "title": "Production Environment Usage",
+            "value": "1+ Year",
+            "description": "1+ years of stable production usage"
+          },
+          {
+            "title": "GPU Infrastructure Optimization",
+            "value": "90%",
+            "description": "90% of GPU infrastructure optimized through HAMi"
+          },
+          {
+            "title": "Reduce O&M Pain Points",
+            "value": "50%",
+            "description": "50% reduction in GPU-related operational incidents"
+          }
+        ]
+      },
+      "hamiIntegration": {
+        "title": "Deep Integration with the HAMi Ecosystem to Build a High-Performance Inference Foundation",
+        "description": "PREP EDU's progress in GPU virtualization and intelligent scheduling is built on its deep integration with the HAMi ecosystem.",
+        "points": [
+          "By integrating HAMi's device virtualization, fine-grained vGPU partitioning, heterogeneous scheduling, and built-in observability, PREP EDU is able to unify and efficiently share multiple GPU models—without any modifications to existing applications.",
+          "By adopting HAMi's transparent virtualization, annotation-based scheduling, and UUID-level binding, PREP EDU achieves consistent scheduling across RTX 4070 and 4090 GPUs, allowing tasks to detect GPU types, allocate resources on demand, and run multiple instances concurrently. HAMi's seamless compatibility with GPU Operator, RKE2, and containerd also ensures that new nodes automatically join the unified resource pool.",
+          "By validating HAMi in real production workflows—including Docker-based self-hosting, automated node onboarding, and joint optimization with GPU Operator—PREP EDU extends HAMi's applicability and demonstrates its flexibility and engineering maturity at scale."
+        ]
+      },
+      "conclusion": {
+        "title": "Future Outlook",
+        "description": "By adopting HAMi-powered GPU virtualization and intelligent scheduling, PREP EDU has solved the core challenges of managing heterogeneous GPUs at scale, significantly improving inference efficiency and resource utilization. Looking forward, the HAMi ecosystem is poised to attract more industry adopters and further accelerate the growth of heterogeneous computing infrastructures."
+      },
+      "companyCard": {
+        "name": "PREP EDU",
+        "description": "Fast-growing EdTech company in Southeast Asia"
       },
       "cta": {
         "exploreHami": "Explore HAMi",

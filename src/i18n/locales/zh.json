@@ -27,7 +27,9 @@
     "caseTelecom": "电信运营商案例",
     "caseTelecomDesc": "了解某电信运营商如何利用 HAMi 实现 GPU 虚拟化与异构设备管理",
     "caseSfTechnology": "顺丰科技案例",
-    "caseSfTechnologyDesc": "探索顺丰科技如何基于 HAMi 打造 EffectiveGPU，提升 AI 效率并降低成本"
+    "caseSfTechnologyDesc": "探索顺丰科技如何基于 HAMi 打造 EffectiveGPU，提升 AI 效率并降低成本",
+    "casePrepEdu": "PREP EDU 案例",
+    "casePrepEduDesc": "探索 PREP EDU 如何基于 HAMi 实现异构 GPU 智能调度，全面提升资源利用率与运维效率"
   },
   "home": {
     "hero": {
@@ -1100,6 +1102,99 @@
       "companyCard": {
         "name": "顺丰科技",
         "description": "中国领先的物流科技服务提供商"
+      },
+      "cta": {
+        "exploreHami": "探索 HAMi",
+        "contactUs": "联系我们"
+      }
+    },
+    "prepEduHami": {
+      "title": "PREP EDU × HAMi｜异构 GPU 智能调度，全面提升 AI 服务效率",
+      "subtitle": "探索PREP EDU 基于 HAMi，在 Kubernetes（RKE2）生产环境实现异构 GPU 虚拟化与智能调度，解决了多型号显卡利用率低、显存冲突、资源隔离不足等痛点。HAMi 的 vGPU 精细化分配、GPU 类型感知调度、透明设备虚拟化与 Prometheus 监控体系，帮助PREP EDU 在大规模 AI 推理场景中显著提升资源利用率与运维效率。",
+      "overview": {
+        "title": "公司概述",
+        "description": "PREP EDU 是东南亚增长迅速的教育科技公司，专注于以人工智能重塑语言学习与考试备考体验。",
+        "keyPoints": [
+          "AI 驱动的跨境考试备考服务领航者",
+          "专注 AI 个性化学习场景的技术落地与体验优化",
+          "致力于AI 教学场景下的算力管理痛点",
+          "注重开源技术教学与科研实践的融合"
+        ]
+      },
+      "challenge": {
+        "title": "异构 GPU 调度复杂度不断攀升",
+        "description": "在 PREP EDU 的大规模 AI 推理业务中，传统的 GPU 使用模式已无法满足快速增长的服务需求，尤其是在混合显卡（RTX 4070 / RTX 4090）环境下，资源浪费、调度不均衡与兼容性问题愈发明显。",
+        "points": [
+          "GPU 利用率偏低：静态整卡分配方式使得推理服务难以吃满 GPU 资源，平均利用率长期低至 10–20%，大量显存与算力处于闲置状态。",
+          "资源冲突频发：缺乏有效的隔离与调度机制时，多任务竞争显存常导致占用飙升至 90–95%，引发应用崩溃与推理中断，影响业务稳定性。",
+          "异构调度困难：4070 与 4090 并存的环境中，不同项目常需指定 GPU 类型，但缺乏统一的分配能力，使资源调度复杂且易产生调度失配问题。",
+          "兼容性门槛高：新方案需与现有 RKE2、GPU Operator、containerd 等组件完全兼容，任何不透明或侵入式的机制都可能增加维护成本或破坏现有业务链路。"
+        ]
+      },
+      "solution": {
+        "title": "破局之路：基于 HAMi 的高效 GPU Orchestration 实践",
+        "description": "面对异构 GPU 调度复杂、利用率低以及资源隔离不足等核心挑战，PREP EDU 工程团队基于开源异构算力调度框架 HAMi，并结合自身大规模 AI 推理业务场景，构建了新一代的 GPU 虚拟化与智能调度体系。",
+        "objective": "目标是在现有 RKE2 + GPU Operator + NVIDIA 多型号 GPU 的生产环境中，实现 稳定、高效、无侵入 的 GPU 资源管理能力，全面解决资源浪费、冲突频发、扩展困难等问题。",
+        "innovations": [
+          {
+            "title": "虚拟化与 GPU 划分",
+            "description": "针对多个推理服务，根据 NLP token 长度与服务需求为每个工作负载设置特定限制。"
+          },
+          {
+            "title": "异构 GPU 管理",
+            "description": "使用 HAMi，可以按 GPU 类型分配工作负载（例如将某些项目仅运行在 RTX 4070 或 4090 上），通过 annotation 实现基于资源选择的兼容性与效率提升。"
+          },
+          {
+            "title": "无缝应用集成",
+            "description": "通过透明设备虚拟化，在无需修改应用的情况下启用 GPU 共享与隔离。"
+          },
+          {
+            "title": "GPU 指定能力",
+            "description": "能够按 GPU UUID 分配任务（例如在某张 24GB 的 RTX 4090 上运行多个进程）。"
+          },
+          {
+            "title": "兼容性",
+            "description": "HAMi 和 NVIDIA GPU Operator 能在其环境中无冲突共存，两者均被配置为使用 containerd。同时借助 Prometheus 实现监控与告警，并与 Kubernetes（RKE2）及 containerd 无缝集成。"
+          }
+        ]
+      },
+      "results": {
+        "title": "显著成效：GPU 利用率全面提升，推理稳定性大幅增强",
+        "description": "方案已在 PREP EDU 的大规模 AI 推理平台完成生产验证，在接入 HAMi 后，PREP EDU 已完成 GPU 设备的解耦和自动组织：",
+        "items": [
+          {
+            "title": "生产环境使用",
+            "value": "1+ 年",
+            "description": "在生产环境中稳定使用 HAMi 超过 1 年"
+          },
+          {
+            "title": "GPU 基础设施优化",
+            "value": "90%",
+            "description": "通过 HAMi 优化了 90% 的 GPU 基础设施"
+          },
+          {
+            "title": "运维痛点减少",
+            "value": "50%",
+            "description": "减少了 50% 由 GPU 管理引发的运维痛点"
+          }
+        ]
+      },
+      "hamiIntegration": {
+        "title": "深度融合 HAMi 生态，共筑高效 GPU 推理底座",
+        "description": "PREP EDU 在 GPU 虚拟化与智能调度方面的成功实践，离不开与开源异构算力调度框架 HAMi 的深度集成。",
+        "points": [
+          "在生产环境中，PREP EDU 的 GPU Orchestration 架构充分利用了 HAMi 在设备虚拟化、vGPU 精细切分、异构调度与可观测性上的核心能力，使多型号 GPU 能够在无需修改应用的前提下实现高效共享与统一管理。",
+          "在调度与资源管理层面，PREP EDU 通过集成 HAMi 的透明虚拟化、annotation 调度能力与 UUID 精准绑定机制，实现了跨 RTX 4070 与 4090 的一致性调度体验，使 GPU 类型可感知、资源可按需分配、多实例可并发运行。同时，依托 HAMi 与 GPU Operator、RKE2、containerd 的无缝兼容性，PREP EDU 能够在现有架构下平滑接入虚拟化调度能力，并将新节点自动纳入统一资源池中。",
+          "在落地实践方面，PREP EDU 在生产环境中的长期探索——包括 Docker 场景下的自托管模式、节点自动纳管流程以及与 GPU Operator 的协同优化，进一步拓展了 HAMi 的应用边界，使其在真实业务规模下展现出更高的灵活性与工程成熟度。"
+        ]
+      },
+      "conclusion": {
+        "title": "展望未来",
+        "description": "PREP EDU 通过基于 HAMi 的 GPU 虚拟化与智能调度方案，成功解决了多型号 GPU 管理的核心痛点，显著提升了推理效率与资源利用率。展望未来，HAMi 生态将吸引更多行业用户，共同促进异构算力生态的繁荣。"
+      },
+      "companyCard": {
+        "name": "PREP EDU",
+        "description": "东南亚增长迅速的教育科技公司"
       },
       "cta": {
         "exploreHami": "探索 HAMi",
