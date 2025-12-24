@@ -811,7 +811,7 @@ export default function Home() {
               transition={{ duration: 0.5, delay: 0.1 }}
               className={getCardClassName(4)}
             >
-              <Link href="https://kueue.sigs.k8s.io/docs/" className="flex flex-col items-center">
+              <Link href="https://github.com/kubernetes-sigs/kueue/blob/main/site/content/en/docs/tasks/run/using_hami.md" className="flex flex-col items-center">
                 <div className="w-48 h-20 flex items-center justify-center">
                   <div className="flex items-center -translate-x-4">
                     <Image
